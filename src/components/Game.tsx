@@ -28,6 +28,11 @@ import Character from "./Character";
 const StyledGame = styled.div`
   height: 100%;
   width: 100%;
+  position: relative;
+  transform: translate(
+    calc(50% - (16vw / 2.34) / 2),
+    calc(50% - (16vw / 2.34) / 2)
+  );
 `;
 
 interface BackgroundProps {

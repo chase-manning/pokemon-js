@@ -136,7 +136,6 @@
   width: 100%;
   border-radius: 3px;
   margin-bottom: 15px;
-  position: relative;
   overflow: hidden;
 
   @media (min-width: 768px) {

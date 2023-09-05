@@ -8,6 +8,8 @@ const StyledApp = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 5px;
+  padding-bottom: 28px;
 `;
 
 const App = () => {

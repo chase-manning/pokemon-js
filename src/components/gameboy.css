@@ -1,7 +1,10 @@
 .gameboy {
   position: relative;
-  width: 350px;
-  height: 570px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
   border-radius: 20px;
   padding: 20px;
   background-color: #4f50db;
@@ -37,6 +40,12 @@
   box-shadow: 0px 5px 0px #3d38b5;
   border-bottom: 2px solid #9998eb;
 }
+
+.gameboy .section {
+  width: 100%;
+  min-height: 199px;
+}
+
 .gameboy .screen-area {
   position: relative;
   padding: 35px 50px 5px 50px;
@@ -111,7 +120,7 @@
 .gameboy .screen-area .display {
   background-color: #929d97;
   height: 190px;
-  width: 210px;
+  width: 100%;
   border-radius: 3px;
   margin-bottom: 15px;
 }

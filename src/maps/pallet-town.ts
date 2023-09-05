@@ -188,6 +188,48 @@ const palletTown: MapType = {
       3: true,
     },
   },
+  text: {
+    5: {
+      3: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+      11: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+    8: {
+      4: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+    9: {
+      7: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+    13: {
+      13: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+    15: {
+      10: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+  },
 };
 
 export default palletTown;

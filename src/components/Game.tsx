@@ -33,7 +33,6 @@ const Container = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  border: solid 1px pink;
 `;
 
 const StyledGame = styled.div`

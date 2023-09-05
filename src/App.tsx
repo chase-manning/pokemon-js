@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Gameboy from "./components/Gameboy";
 import Game from "./components/Game";
 
+import "./App.css";
+
 const StyledApp = styled.div`
   background: var(--bg);
   width: 100vw;

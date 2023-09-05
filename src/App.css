@@ -1,0 +1,14 @@
+@font-face {
+  font-family: "PokemonGB";
+  src: url("./assets/fonts/Pokemon-GB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "PressStart2P";
+  src: url("./assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+
+* {
+  font-family: "PokemonGB";
+  line-height: 1.7;
+}

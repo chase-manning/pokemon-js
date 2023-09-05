@@ -3,8 +3,8 @@ import Gameboy from "./components/Gameboy";
 
 const StyledApp = styled.div`
   background: var(--bg);
-  height: 100vh;
   width: 100vw;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;

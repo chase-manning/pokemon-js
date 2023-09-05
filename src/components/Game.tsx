@@ -89,7 +89,7 @@ const Item = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = true; // TODO
+  const showGrid = false; // TODO
   const moveSpeed = 250; // TODO
   const blockPixelWidth = 16; // TODO
   const blockPixelHeight = 16; // TODO

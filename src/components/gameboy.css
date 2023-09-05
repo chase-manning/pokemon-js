@@ -131,11 +131,13 @@
   background-color: #23252d;
 }
 .gameboy .screen-area .display {
-  background-color: #929d97;
+  background-color: black;
   height: 190px;
   width: 100%;
   border-radius: 3px;
   margin-bottom: 15px;
+  position: relative;
+  overflow: hidden;
 
   @media (min-width: 768px) {
     height: calc(100% - 45px);

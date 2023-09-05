@@ -59,7 +59,7 @@ const Background = styled.img<BackgroundProps>`
 `;
 
 const Game = () => {
-  const moveSpeed = 200; // TODO
+  const moveSpeed = 250; // TODO
   const bgBlockWidth = 20; // TODO
   const bgBlockHeight = 18; // TODO
   const blockPixelWidth = 16; // TODO

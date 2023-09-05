@@ -131,6 +131,7 @@
   background-color: #23252d;
 }
 .gameboy .screen-area .display {
+  position: relative;
   background-color: black;
   height: 190px;
   width: 100%;

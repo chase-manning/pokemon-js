@@ -6,6 +6,7 @@ import {
   moveLeft,
   moveRight,
   moveUp,
+  pressA,
   selectMap,
   selectMovingDown,
   selectMovingLeft,
@@ -24,6 +25,16 @@ import {
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import Character from "./Character";
+import Text from "./Text";
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: solid 1px pink;
+`;
 
 const StyledGame = styled.div`
   height: 100%;
@@ -58,7 +69,27 @@ const Background = styled.img<BackgroundProps>`
   transition: transform 0.2s steps(5, end);
 `;
 
+const Overlay = styled.div<BackgroundProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(${(props) => props.width}vw / 2.34);
+  height: calc(${(props) => props.height}vw / 2.34);
+  transition: transform 0.2s steps(5, end);
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(18, 1fr);
+`;
+
+const Item = styled.div`
+  border: solid 1px red;
+  color: red;
+  font-size: 3rem;
+  font-weight: bold;
+`;
+
 const Game = () => {
+  const showGrid = true; // TODO
   const moveSpeed = 250; // TODO
   const blockPixelWidth = 16; // TODO
   const blockPixelHeight = 16; // TODO
@@ -198,18 +229,52 @@ const Game = () => {
     };
   }, [dispatch, movingUp, movingDown, movingLeft, movingRight, moveInterval]);
 
+  // Presses Enter (A)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Enter") {
+        console.log("A");
+        dispatch(pressA());
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [dispatch]);
+
   return (
-    <StyledGame>
-      <Background
-        style={{
-          transform: `translate(${translateX}, ${translateY})`,
-        }}
-        src={map.image}
-        width={map.width * blockPixelWidth}
-        height={map.height * blockPixelHeight}
-      />
-      <Character />
-    </StyledGame>
+    <Container>
+      <StyledGame>
+        <Background
+          style={{
+            transform: `translate(${translateX}, ${translateY})`,
+          }}
+          src={map.image}
+          width={map.width * blockPixelWidth}
+          height={map.height * blockPixelHeight}
+        />
+        <Character />
+        {showGrid && (
+          <Overlay
+            style={{
+              transform: `translate(${translateX}, ${translateY})`,
+            }}
+            width={map.width * blockPixelWidth}
+            height={map.height * blockPixelHeight}
+          >
+            {Array.from(Array(map.width * map.height).keys()).map((i) => {
+              const x = i % 20;
+              const y = Math.floor(i / 20);
+              return <Item key={i}>{`${y}, ${x}`}</Item>;
+            })}
+          </Overlay>
+        )}
+      </StyledGame>
+      <Text />
+    </Container>
   );
 };
 

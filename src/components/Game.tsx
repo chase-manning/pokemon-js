@@ -7,10 +7,23 @@ import {
   moveLeft,
   moveRight,
   moveUp,
+  selectMovingDown,
+  selectMovingLeft,
+  selectMovingRight,
+  selectMovingUp,
   selectX,
   selectY,
+  startMovingDown,
+  startMovingLeft,
+  startMovingRight,
+  startMovingUp,
+  stopMovingDown,
+  stopMovingLeft,
+  stopMovingRight,
+  stopMovingUp,
 } from "../state/gameSlice";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Character from "./Character";
 
 const StyledGame = styled.div`
   height: 100%;
@@ -41,6 +54,7 @@ const Background = styled.img<BackgroundProps>`
 `;
 
 const Game = () => {
+  const moveSpeed = 200; // TODO
   const bgBlockWidth = 20; // TODO
   const bgBlockHeight = 18; // TODO
   const blockPixelWidth = 16; // TODO
@@ -50,6 +64,17 @@ const Game = () => {
 
   const x = useSelector(selectX);
   const y = useSelector(selectY);
+  const movingUp = useSelector(selectMovingUp);
+  const movingDown = useSelector(selectMovingDown);
+  const movingRight = useSelector(selectMovingRight);
+  const movingLeft = useSelector(selectMovingLeft);
+
+  const [moveInterval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
+
+  console.log("moveUp", movingUp);
+  console.log("moveDown", movingDown);
+  console.log("moveRight", movingRight);
+  console.log("moveLeft", movingLeft);
 
   const translateX = `calc(
     (
@@ -71,26 +96,108 @@ const Game = () => {
     const handleKeyDown = (e: KeyboardEvent) => {
       switch (e.key) {
         case "ArrowUp":
-          dispatch(moveUp());
-          break;
-        case "ArrowRight":
-          dispatch(moveRight());
+          if (!movingDown && !movingLeft && !movingRight) {
+            dispatch(startMovingUp());
+          }
           break;
         case "ArrowDown":
-          dispatch(moveDown());
+          if (!movingUp && !movingLeft && !movingRight) {
+            dispatch(startMovingDown());
+          }
           break;
         case "ArrowLeft":
-          dispatch(moveLeft());
+          if (!movingUp && !movingDown && !movingRight) {
+            dispatch(startMovingLeft());
+          }
+          break;
+        case "ArrowRight":
+          if (!movingUp && !movingDown && !movingLeft) {
+            dispatch(startMovingRight());
+          }
+          break;
+      }
+    };
+
+    const handleKeyUp = (e: KeyboardEvent) => {
+      switch (e.key) {
+        case "ArrowUp":
+          dispatch(stopMovingUp());
+          break;
+        case "ArrowDown":
+          dispatch(stopMovingDown());
+          break;
+        case "ArrowLeft":
+          dispatch(stopMovingLeft());
+          break;
+        case "ArrowRight":
+          dispatch(stopMovingRight());
           break;
       }
     };
 
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("keyup", handleKeyUp);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [dispatch]);
+  }, [dispatch, movingUp, movingDown, movingLeft, movingRight]);
+
+  useEffect(() => {
+    if (movingUp && !moveInterval) {
+      dispatch(moveUp());
+      setMoveInterval(
+        setInterval(() => {
+          dispatch(moveUp());
+        }, moveSpeed)
+      );
+    }
+    if (movingDown && !moveInterval) {
+      dispatch(moveDown());
+      setMoveInterval(
+        setInterval(() => {
+          dispatch(moveDown());
+        }, moveSpeed)
+      );
+    }
+    if (movingLeft && !moveInterval) {
+      dispatch(moveLeft());
+      setMoveInterval(
+        setInterval(() => {
+          dispatch(moveLeft());
+        }, moveSpeed)
+      );
+    }
+    if (movingRight && !moveInterval) {
+      dispatch(moveRight());
+      setMoveInterval(
+        setInterval(() => {
+          dispatch(moveRight());
+        }, moveSpeed)
+      );
+    }
+    if (
+      !movingUp &&
+      !movingDown &&
+      !movingLeft &&
+      !movingRight &&
+      moveInterval
+    ) {
+      if (moveInterval) {
+        clearInterval(moveInterval);
+        setTimeout(() => {
+          setMoveInterval(null);
+        }, moveSpeed);
+      }
+    }
+
+    return () => {
+      if (moveInterval) {
+        clearInterval(moveInterval);
+      }
+    };
+  }, [dispatch, movingUp, movingDown, movingLeft, movingRight, moveInterval]);
 
   return (
     <StyledGame>
@@ -102,6 +209,7 @@ const Game = () => {
         width={bgBlockWidth * blockPixelWidth}
         height={bgBlockHeight * blockPixelHeight}
       />
+      <Character />
     </StyledGame>
   );
 };

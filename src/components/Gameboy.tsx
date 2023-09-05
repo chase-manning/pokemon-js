@@ -1,9 +1,13 @@
 import "./gameboy.css";
 
-const Gameboy = () => {
+interface Props {
+  children?: React.ReactNode;
+}
+
+const Gameboy = ({ children }: Props) => {
   return (
     <div className="gameboy" id="GameBoy">
-      <div className="section">
+      <div className="display-section">
         <div className="screen-area">
           <div className="power">
             <div className="indicator">
@@ -15,7 +19,7 @@ const Gameboy = () => {
             POWER
           </div>
 
-          <canvas className="display" id="mainCanvas"></canvas>
+          <div className="display">{children}</div>
 
           <div className="label">
             <div className="title">GAME BOY</div>
@@ -31,7 +35,7 @@ const Gameboy = () => {
 
         <div className="nintendo">Nintendo</div>
       </div>
-      <div className="section">
+      <div className="control-section">
         <div className="controls">
           <div className="dpad">
             <div className="up">

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Gameboy from "./components/Gameboy";
+import Game from "./components/Game";
 
 const StyledApp = styled.div`
   background: var(--bg);
@@ -19,7 +20,9 @@ const StyledApp = styled.div`
 const App = () => {
   return (
     <StyledApp>
-      <Gameboy>meow</Gameboy>
+      <Gameboy>
+        <Game />
+      </Gameboy>
     </StyledApp>
   );
 };

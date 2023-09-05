@@ -36,6 +36,8 @@ const Background = styled.img<BackgroundProps>`
   image-rendering: pixelated;
   image-rendering: optimize-contrast;
   -ms-interpolation-mode: nearest-neighbor;
+
+  transition: transform 0.2s steps(5, end);
 `;
 
 const Game = () => {

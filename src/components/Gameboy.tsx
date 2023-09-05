@@ -1,10 +1,34 @@
+import { useDispatch, useSelector } from "react-redux";
 import "./gameboy.css";
+import {
+  selectMovingDown,
+  selectMovingLeft,
+  selectMovingRight,
+  selectMovingUp,
+  startMovingDown,
+  startMovingLeft,
+  startMovingRight,
+  startMovingUp,
+  stopMovingDown,
+  stopMovingLeft,
+  stopMovingRight,
+  stopMovingUp,
+} from "../state/gameSlice";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const Gameboy = ({ children }: Props) => {
+  const dispatch = useDispatch();
+
+  const movingLeft = useSelector(selectMovingLeft);
+  const movingUp = useSelector(selectMovingUp);
+  const movingRight = useSelector(selectMovingRight);
+  const movingDown = useSelector(selectMovingDown);
+
+  const moving = movingLeft || movingUp || movingRight || movingDown;
+
   return (
     <div className="gameboy" id="GameBoy">
       <div className="display-section">
@@ -38,16 +62,52 @@ const Gameboy = ({ children }: Props) => {
       <div className="control-section">
         <div className="controls">
           <div className="dpad">
-            <div className="up">
+            <div
+              className="up"
+              onTouchStart={() => {
+                if (moving) return;
+                dispatch(startMovingUp());
+              }}
+              onTouchEnd={() => {
+                dispatch(stopMovingUp());
+              }}
+            >
               <i className="fa fa-caret-up"></i>
             </div>
-            <div className="right">
+            <div
+              className="right"
+              onTouchStart={() => {
+                if (moving) return;
+                dispatch(startMovingRight());
+              }}
+              onTouchEnd={() => {
+                dispatch(stopMovingRight());
+              }}
+            >
               <i className="fa fa-caret-right"></i>
             </div>
-            <div className="down">
+            <div
+              className="down"
+              onTouchStart={() => {
+                if (moving) return;
+                dispatch(startMovingDown());
+              }}
+              onTouchEnd={() => {
+                dispatch(stopMovingDown());
+              }}
+            >
               <i className="fa fa-caret-down"></i>
             </div>
-            <div className="left">
+            <div
+              className="left"
+              onTouchStart={() => {
+                if (moving) return;
+                dispatch(startMovingLeft());
+              }}
+              onTouchEnd={() => {
+                dispatch(stopMovingLeft());
+              }}
+            >
               <i className="fa fa-caret-left"></i>
             </div>
             <div className="middle"></div>

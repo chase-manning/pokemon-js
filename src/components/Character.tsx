@@ -19,8 +19,6 @@ const StyledCharacter = styled.img`
 `;
 
 const Character = () => {
-  const blockPixelWidth = 16; // TODO
-
   return <StyledCharacter src={frontStill} alt="Character" />;
 };
 

@@ -26,13 +26,20 @@ const StyledText = styled.div<TextProps>`
   bottom: 0;
   width: 100%;
   height: 20%;
-  border: solid 1px green;
   background: #f8f8f8;
 
   h1 {
     color: black;
     font-size: 30px;
     font-family: "PokemonGB";
+
+    @media (max-width: 768px) {
+      font-size: 9px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    height: 30%;
   }
 
   ::after {
@@ -52,6 +59,14 @@ const StyledText = styled.div<TextProps>`
       2em 5em 0 #181010, 3em 5em 0 #181010, 1em 6em 0 #181010, 2em 6em 0 #181010;
     transform: rotate(90deg);
     animation: ${flashing} 1s infinite;
+
+    @media (max-width: 768px) {
+      bottom: ${(props) => (props.done ? "13px" : "-100px")};
+      right: 10px;
+      width: 1.3px;
+      height: 1.3px;
+      font-size: 1.3px;
+    }
   }
 `;
 
@@ -77,7 +92,7 @@ const Text = () => {
   return (
     <>
       <link rel="stylesheet" href="./styles/css-pokemon-gameboy.css" />
-      <StyledText className="framed" done={liveIndex > text.length}>
+      <StyledText className="framed no-hd" done={liveIndex > text.length}>
         <h1>{liveText}</h1>
       </StyledText>
     </>

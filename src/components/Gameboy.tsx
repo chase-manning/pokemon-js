@@ -115,9 +115,9 @@ const Gameboy = ({ children }: Props) => {
           </div>
           <div className="a-b">
             <div className="b">B</div>
-            <button className="a" onClick={() => dispatch(pressA())}>
+            <div className="a" onClick={() => dispatch(pressA())}>
               A
-            </button>
+            </div>
           </div>
         </div>
 

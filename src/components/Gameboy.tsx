@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import "./gameboy.css";
 import {
+  pressA,
   selectMovingDown,
   selectMovingLeft,
   selectMovingRight,
@@ -114,7 +115,9 @@ const Gameboy = ({ children }: Props) => {
           </div>
           <div className="a-b">
             <div className="b">B</div>
-            <div className="a">A</div>
+            <button className="a" onClick={() => dispatch(pressA())}>
+              A
+            </button>
           </div>
         </div>
 

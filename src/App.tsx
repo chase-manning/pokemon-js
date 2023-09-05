@@ -10,12 +10,16 @@ const StyledApp = styled.div`
   align-items: center;
   padding: 5px;
   padding-bottom: 28px;
+
+  @media (min-width: 768px) {
+    padding: 5px;
+  }
 `;
 
 const App = () => {
   return (
     <StyledApp>
-      <Gameboy />
+      <Gameboy>meow</Gameboy>
     </StyledApp>
   );
 };

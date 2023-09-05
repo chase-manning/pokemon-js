@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Gameboy from "./components/Gameboy";
 
 const StyledApp = styled.div`
   background: var(--bg);
@@ -10,7 +11,11 @@ const StyledApp = styled.div`
 `;
 
 const App = () => {
-  return <StyledApp>meow</StyledApp>;
+  return (
+    <StyledApp>
+      <Gameboy />
+    </StyledApp>
+  );
 };
 
 export default App;

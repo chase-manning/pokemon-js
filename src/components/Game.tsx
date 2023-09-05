@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
-import palletTown from "../assets/map/pallet-town.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
   moveDown,
   moveLeft,
   moveRight,
   moveUp,
+  selectMap,
   selectMovingDown,
   selectMovingLeft,
   selectMovingRight,
@@ -60,8 +60,6 @@ const Background = styled.img<BackgroundProps>`
 
 const Game = () => {
   const moveSpeed = 250; // TODO
-  const bgBlockWidth = 20; // TODO
-  const bgBlockHeight = 18; // TODO
   const blockPixelWidth = 16; // TODO
   const blockPixelHeight = 16; // TODO
 
@@ -73,13 +71,14 @@ const Game = () => {
   const movingDown = useSelector(selectMovingDown);
   const movingRight = useSelector(selectMovingRight);
   const movingLeft = useSelector(selectMovingLeft);
+  const map = useSelector(selectMap);
 
   const [moveInterval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
   const translateX = `calc(
     (
       (
-        ${bgBlockWidth * blockPixelWidth}vw / 2.34
+        ${map.width * blockPixelWidth}vw / 2.34
       ) / 20
     ) * ${-x}
   )`;
@@ -87,7 +86,7 @@ const Game = () => {
   const translateY = `calc(
     (
       (
-        ${bgBlockHeight * blockPixelHeight}vw / 2.34
+        ${map.height * blockPixelHeight}vw / 2.34
       ) / 18
     ) * ${-y}
   )`;
@@ -205,9 +204,9 @@ const Game = () => {
         style={{
           transform: `translate(${translateX}, ${translateY})`,
         }}
-        src={palletTown}
-        width={bgBlockWidth * blockPixelWidth}
-        height={bgBlockHeight * blockPixelHeight}
+        src={map.image}
+        width={map.width * blockPixelWidth}
+        height={map.height * blockPixelHeight}
       />
       <Character />
     </StyledGame>

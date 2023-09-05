@@ -32,6 +32,7 @@ const StyledText = styled.div<TextProps>`
   h1 {
     color: black;
     font-size: 30px;
+    font-family: "PokemonGB";
   }
 
   ::after {

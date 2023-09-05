@@ -76,11 +76,6 @@ const Game = () => {
 
   const [moveInterval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
-  console.log("moveUp", movingUp);
-  console.log("moveDown", movingDown);
-  console.log("moveRight", movingRight);
-  console.log("moveLeft", movingLeft);
-
   const translateX = `calc(
     (
       (

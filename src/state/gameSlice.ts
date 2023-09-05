@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
+import { MapType } from "../maps/map-types";
+import palletTown from "../maps/pallet-town";
 
 export enum Direction {
   Front = "front",
@@ -16,6 +18,7 @@ export interface GameState {
   movingLeft: boolean;
   movingRight: boolean;
   lastDirection: Direction;
+  map: MapType;
 }
 
 const initialState: GameState = {
@@ -26,6 +29,7 @@ const initialState: GameState = {
   movingLeft: false,
   movingRight: false,
   lastDirection: Direction.Front,
+  map: palletTown,
 };
 
 export const gameSlice = createSlice({
@@ -33,18 +37,26 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     moveLeft: (state) => {
+      if (state.map.walls[state.y] && state.map.walls[state.y][state.x - 1])
+        return;
       state.x -= 1;
       state.lastDirection = Direction.Left;
     },
     moveRight: (state) => {
+      if (state.map.walls[state.y] && state.map.walls[state.y][state.x + 1])
+        return;
       state.x += 1;
       state.lastDirection = Direction.Right;
     },
     moveUp: (state) => {
+      if (state.map.walls[state.y - 1] && state.map.walls[state.y - 1][state.x])
+        return;
       state.y -= 1;
       state.lastDirection = Direction.Back;
     },
     moveDown: (state) => {
+      if (state.map.walls[state.y + 1] && state.map.walls[state.y + 1][state.x])
+        return;
       state.y += 1;
       state.lastDirection = Direction.Front;
     },
@@ -84,6 +96,9 @@ export const gameSlice = createSlice({
       state.y = action.payload;
       state.lastDirection = Direction.Front;
     },
+    setMap: (state, action: PayloadAction<MapType>) => {
+      state.map = action.payload;
+    },
   },
 });
 
@@ -100,6 +115,9 @@ export const {
   stopMovingRight,
   stopMovingUp,
   stopMovingDown,
+  setX,
+  setY,
+  setMap,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
@@ -113,6 +131,8 @@ export const selectMovingRight = (state: RootState) => state.game.movingRight;
 export const selectMovingUp = (state: RootState) => state.game.movingUp;
 
 export const selectMovingDown = (state: RootState) => state.game.movingDown;
+
+export const selectMap = (state: RootState) => state.game.map;
 
 export const selectLastDirection = (state: RootState) =>
   state.game.lastDirection;

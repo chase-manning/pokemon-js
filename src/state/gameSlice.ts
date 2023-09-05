@@ -11,8 +11,8 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  x: 5,
-  y: 10,
+  x: 8,
+  y: 13,
   movingUp: false,
   movingDown: false,
   movingLeft: false,

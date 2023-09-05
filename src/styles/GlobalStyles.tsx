@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-size: 10px;
         color: var(--main);
+        -webkit-tap-highlight-color: transparent;
     }
 
     button {

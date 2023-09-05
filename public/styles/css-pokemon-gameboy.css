@@ -99,6 +99,7 @@ button,
 .button {
   position: relative;
   font-family: "PokemonGB";
+  line-height: 1.7;
   font-size: 1em;
   background: none;
   border: none;
@@ -2183,6 +2184,7 @@ ul.buttons.compact li {
 
 body {
   font-family: "PokemonGB";
+  line-height: 1.7;
   font-smooth: never;
   -webkit-font-smoothing: none;
   min-width: 320px;

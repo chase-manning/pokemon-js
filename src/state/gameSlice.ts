@@ -41,24 +41,28 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     moveLeft: (state) => {
+      if (state.x === 0) return;
       if (state.map.walls[state.y] && state.map.walls[state.y][state.x - 1])
         return;
       state.x -= 1;
       state.lastDirection = Direction.Left;
     },
     moveRight: (state) => {
+      if (state.x === state.map.width - 1) return;
       if (state.map.walls[state.y] && state.map.walls[state.y][state.x + 1])
         return;
       state.x += 1;
       state.lastDirection = Direction.Right;
     },
     moveUp: (state) => {
+      if (state.y === 0) return;
       if (state.map.walls[state.y - 1] && state.map.walls[state.y - 1][state.x])
         return;
       state.y -= 1;
       state.lastDirection = Direction.Back;
     },
     moveDown: (state) => {
+      if (state.y === state.map.height - 1) return;
       if (state.map.walls[state.y + 1] && state.map.walls[state.y + 1][state.x])
         return;
       state.y += 1;

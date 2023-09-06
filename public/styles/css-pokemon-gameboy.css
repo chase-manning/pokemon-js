@@ -2186,7 +2186,6 @@ ul.buttons.compact li {
 
 body {
   font-family: "PokemonGB";
-  line-height: 1.7;
   font-smooth: never;
   -webkit-font-smoothing: none;
   min-width: 320px;
@@ -2202,6 +2201,7 @@ h4,
 h5,
 h6 {
   font-weight: normal;
+  line-height: 1.7;
 }
 
 .wrapper {
@@ -2249,5 +2249,3 @@ h6 {
     padding: 0.5em;
   }
 }
-
-/*# sourceMappingURL=css-pokemon-gameboy.css.map */

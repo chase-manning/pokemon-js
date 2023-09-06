@@ -1,4 +1,5 @@
 import palletTownImage from "../assets/map/pallet-town.png";
+import houseA1f from "./house-a-1f";
 import { MapType } from "./map-types";
 
 const palletTown: MapType = {
@@ -6,6 +7,10 @@ const palletTown: MapType = {
   image: palletTownImage,
   height: 18,
   width: 20,
+  start: {
+    x: 8,
+    y: 13,
+  },
   walls: {
     1: {
       0: true,
@@ -228,6 +233,11 @@ const palletTown: MapType = {
         "adipiscing elit, sed do eiusmod tempor",
         "incididunt ut labore et dolore magna aliqua.",
       ],
+    },
+  },
+  maps: {
+    5: {
+      5: houseA1f,
     },
   },
 };

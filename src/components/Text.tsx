@@ -85,16 +85,14 @@ const Text = () => {
     }
   }, [text]);
 
-  if (!text) return null;
-
-  const liveText = text.substring(0, liveIndex);
-
   return (
     <>
       <link rel="stylesheet" href="./styles/css-pokemon-gameboy.css" />
-      <StyledText className="framed no-hd" done={liveIndex > text.length}>
-        <h1>{liveText}</h1>
-      </StyledText>
+      {text && (
+        <StyledText className="framed no-hd" done={liveIndex > text.length}>
+          <h1>{text.substring(0, liveIndex)}</h1>
+        </StyledText>
+      )}
     </>
   );
 };

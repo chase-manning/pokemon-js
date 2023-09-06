@@ -20,11 +20,13 @@ h6 {
   margin: 1em 0 0 0;
   width: 100%;
   max-width: 100%;
+
+  @media (max-width: 768px) {
+    border-image: url("./images/frame.png") 7 round;
+    border-width: 7px;
+  }
 }
-.framed.no-hd {
-  border-image: url("./images/frame.png") 7 round;
-  border-width: 7px;
-}
+
 .framed.neutral {
   background: #f8f3f8;
   color: #181010;

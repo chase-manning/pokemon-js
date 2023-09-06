@@ -24,8 +24,8 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  x: 8,
-  y: 13,
+  x: palletTown.start.x,
+  y: palletTown.start.y,
   movingUp: false,
   movingDown: false,
   movingLeft: false,
@@ -65,18 +65,22 @@ export const gameSlice = createSlice({
       state.lastDirection = Direction.Front;
     },
     startMovingLeft: (state) => {
+      if (state.text) return;
       state.movingLeft = true;
       state.lastDirection = Direction.Left;
     },
     startMovingRight: (state) => {
+      if (state.text) return;
       state.movingRight = true;
       state.lastDirection = Direction.Right;
     },
     startMovingUp: (state) => {
+      if (state.text) return;
       state.movingUp = true;
       state.lastDirection = Direction.Back;
     },
     startMovingDown: (state) => {
+      if (state.text) return;
       state.movingDown = true;
       state.lastDirection = Direction.Front;
     },
@@ -104,6 +108,7 @@ export const gameSlice = createSlice({
       state.map = action.payload;
     },
     pressA: (state) => {
+      // If reading text
       if (state.text) {
         state.textIndex += 1;
         if (state.textIndex >= state.text.length) {
@@ -113,6 +118,7 @@ export const gameSlice = createSlice({
         return;
       }
 
+      // Getting coords in front of character
       let x = state.x;
       let y = state.y;
       switch (state.lastDirection) {
@@ -129,12 +135,21 @@ export const gameSlice = createSlice({
           x += 1;
           break;
       }
+
+      // Reading text
       if (
         state.map.text[y] &&
         state.map.text[y][x] &&
         state.map.text[y][x].length > 0
       ) {
         state.text = state.map.text[y][x];
+      }
+
+      // Changing map
+      if (state.map.maps[y] && state.map.maps[y][x]) {
+        state.map = state.map.maps[y][x];
+        state.x = state.map.start.x;
+        state.y = state.map.start.y;
       }
     },
     closeText: (state) => {

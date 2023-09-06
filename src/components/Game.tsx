@@ -26,6 +26,7 @@ import {
 import { useEffect, useState } from "react";
 import Character from "./Character";
 import Text from "./Text";
+import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
 
 const Container = styled.div`
   position: absolute;
@@ -54,8 +55,8 @@ const Background = styled.img<BackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(${(props) => props.width}vw / 2.34);
-  height: calc(${(props) => props.height}vw / 2.34);
+  width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
+  height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
 
   image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
@@ -72,12 +73,12 @@ const Overlay = styled.div<BackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(${(props) => props.width}vw / 2.34);
-  height: calc(${(props) => props.height}vw / 2.34);
+  width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
+  height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
   transition: transform 0.2s steps(5, end);
   display: grid;
-  grid-template-columns: repeat(20, 1fr);
-  grid-template-rows: repeat(18, 1fr);
+  grid-template-columns: repeat(${(props) => props.width}, 1fr);
+  grid-template-rows: repeat(${(props) => props.height}, 1fr);
 `;
 
 const Item = styled.div`
@@ -88,10 +89,8 @@ const Item = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = false; // TODO
+  const showGrid = true; // TODO
   const moveSpeed = 250; // TODO
-  const blockPixelWidth = 16; // TODO
-  const blockPixelHeight = 16; // TODO
 
   const dispatch = useDispatch();
 
@@ -108,16 +107,16 @@ const Game = () => {
   const translateX = `calc(
     (
       (
-        ${map.width * blockPixelWidth}vw / 2.34
-      ) / 20
+        ${map.width * BLOCK_PIXEL_WIDTH}vw / 2.34
+      ) / ${map.width}
     ) * ${-x}
   )`;
 
   const translateY = `calc(
     (
       (
-        ${map.height * blockPixelHeight}vw / 2.34
-      ) / 18
+        ${map.height * BLOCK_PIXEL_HEIGHT}vw / 2.34
+      ) / ${map.height}
     ) * ${-y}
   )`;
 
@@ -252,8 +251,8 @@ const Game = () => {
             transform: `translate(${translateX}, ${translateY})`,
           }}
           src={map.image}
-          width={map.width * blockPixelWidth}
-          height={map.height * blockPixelHeight}
+          width={map.width}
+          height={map.height}
         />
         <Character />
         {showGrid && (
@@ -261,12 +260,12 @@ const Game = () => {
             style={{
               transform: `translate(${translateX}, ${translateY})`,
             }}
-            width={map.width * blockPixelWidth}
-            height={map.height * blockPixelHeight}
+            width={map.width}
+            height={map.height}
           >
             {Array.from(Array(map.width * map.height).keys()).map((i) => {
-              const x = i % 20;
-              const y = Math.floor(i / 20);
+              const x = i % map.width;
+              const y = Math.floor(i / map.width);
               return <Item key={i}>{`${y}, ${x}`}</Item>;
             })}
           </Overlay>

@@ -1,0 +1,7 @@
+- Stop walking in black of room
+- Add ability to go back to previous room
+- Remove transition animation bug between rooms
+- Add text to house a 1f
+- Add second floor
+- Add house b
+- Add lab

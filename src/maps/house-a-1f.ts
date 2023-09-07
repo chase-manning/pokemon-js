@@ -8,7 +8,7 @@ const houseA1f: MapType = {
   width: 8,
   start: {
     x: 3,
-    y: 7,
+    y: 6,
   },
   walls: {
     0: {
@@ -50,6 +50,16 @@ const houseA1f: MapType = {
     },
   },
   maps: {},
+  exits: {
+    7: {
+      2: true,
+      3: true,
+    },
+  },
+  exitReturnLocation: {
+    x: 5,
+    y: 6,
+  },
 };
 
 export default houseA1f;

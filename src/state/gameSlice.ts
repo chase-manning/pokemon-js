@@ -22,6 +22,7 @@ export interface GameState {
   text: string[] | null;
   textIndex: number;
   mapHistory: MapType[];
+  locationHistory: { x: number; y: number }[];
 }
 
 const initialState: GameState = {
@@ -36,6 +37,7 @@ const initialState: GameState = {
   text: null,
   textIndex: 0,
   mapHistory: [],
+  locationHistory: [],
 };
 
 export const gameSlice = createSlice({
@@ -116,7 +118,12 @@ export const gameSlice = createSlice({
       state.y = action.payload;
       state.lastDirection = Direction.Front;
     },
+    setLocation: (state, action: PayloadAction<{ x: number; y: number }>) => {
+      state.x = action.payload.x;
+      state.y = action.payload.y;
+    },
     setMap: (state, action: PayloadAction<MapType>) => {
+      state.mapHistory.push(state.map);
       state.map = action.payload;
       state.x = action.payload.start.x;
       state.y = action.payload.start.y;
@@ -184,6 +191,7 @@ export const {
   setMap,
   pressA,
   closeText,
+  setLocation,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
@@ -211,5 +219,8 @@ export const selectMoving = (state: RootState) =>
   state.game.movingRight ||
   state.game.movingUp ||
   state.game.movingDown;
+
+export const selectPreviousMap = (state: RootState) =>
+  state.game.mapHistory[state.game.mapHistory.length - 1];
 
 export default gameSlice.reducer;

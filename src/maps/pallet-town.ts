@@ -239,6 +239,7 @@ const palletTown: MapType = {
       5: houseA1f,
     },
   },
+  exits: {},
 };
 
 export default palletTown;

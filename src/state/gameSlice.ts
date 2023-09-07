@@ -128,6 +128,15 @@ export const gameSlice = createSlice({
       state.x = action.payload.start.x;
       state.y = action.payload.start.y;
     },
+    exitMap(state) {
+      const previousMap = state.mapHistory.pop();
+      const newLocation = state.map.exitReturnLocation;
+      if (previousMap && newLocation) {
+        state.map = previousMap;
+        state.x = newLocation.x;
+        state.y = newLocation.y;
+      }
+    },
     pressA: (state) => {
       // If reading text
       if (state.text) {
@@ -192,6 +201,7 @@ export const {
   pressA,
   closeText,
   setLocation,
+  exitMap,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;

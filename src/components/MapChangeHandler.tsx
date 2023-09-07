@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  exitMap,
   selectMap,
-  selectPreviousMap,
   selectX,
   selectY,
-  setLocation,
   setMap,
   stopMoving,
 } from "../state/gameSlice";
@@ -34,7 +33,6 @@ const MapChangeHandler = () => {
   const x = useSelector(selectX);
   const y = useSelector(selectY);
   const map = useSelector(selectMap);
-  const previousMap = useSelector(selectPreviousMap);
 
   useEffect(() => {
     const nextMap = map.maps[y] ? map.maps[y][x] : null;
@@ -42,13 +40,14 @@ const MapChangeHandler = () => {
 
     if (!nextMap && !exit) return;
 
-    const updateMap = (map_: MapType, location?: { x: number; y: number }) => {
+    const updateMap = (map_?: MapType) => {
       dispatch(stopMoving());
       setDark(true);
       setTimeout(() => {
-        dispatch(setMap(map_));
-        if (location) {
-          dispatch(setLocation({ x: location.x, y: location.y }));
+        if (map_) {
+          dispatch(setMap(map_));
+        } else {
+          dispatch(exitMap());
         }
       }, 300);
       setTimeout(() => {
@@ -59,17 +58,9 @@ const MapChangeHandler = () => {
     if (nextMap) {
       updateMap(nextMap);
     } else if (exit) {
-      updateMap(previousMap, map.exitReturnLocation);
+      updateMap();
     }
-  }, [
-    x,
-    y,
-    map.maps,
-    dispatch,
-    map.exits,
-    previousMap,
-    map.exitReturnLocation,
-  ]);
+  }, [x, y, map.maps, dispatch, map.exits]);
 
   return <Overlay show={dark} />;
 };

@@ -21,6 +21,7 @@ export interface GameState {
   map: MapType;
   text: string[] | null;
   textIndex: number;
+  mapHistory: MapType[];
 }
 
 const initialState: GameState = {
@@ -34,6 +35,7 @@ const initialState: GameState = {
   map: palletTown,
   text: null,
   textIndex: 0,
+  mapHistory: [],
 };
 
 export const gameSlice = createSlice({
@@ -100,6 +102,12 @@ export const gameSlice = createSlice({
     stopMovingDown: (state) => {
       state.movingDown = false;
     },
+    stopMoving: (state) => {
+      state.movingLeft = false;
+      state.movingRight = false;
+      state.movingUp = false;
+      state.movingDown = false;
+    },
     setX: (state, action: PayloadAction<number>) => {
       state.x = action.payload;
       state.lastDirection = Direction.Front;
@@ -110,6 +118,8 @@ export const gameSlice = createSlice({
     },
     setMap: (state, action: PayloadAction<MapType>) => {
       state.map = action.payload;
+      state.x = action.payload.start.x;
+      state.y = action.payload.start.y;
     },
     pressA: (state) => {
       // If reading text
@@ -148,13 +158,6 @@ export const gameSlice = createSlice({
       ) {
         state.text = state.map.text[y][x];
       }
-
-      // Changing map
-      if (state.map.maps[y] && state.map.maps[y][x]) {
-        state.map = state.map.maps[y][x];
-        state.x = state.map.start.x;
-        state.y = state.map.start.y;
-      }
     },
     closeText: (state) => {
       state.text = null;
@@ -175,6 +178,7 @@ export const {
   stopMovingRight,
   stopMovingUp,
   stopMovingDown,
+  stopMoving,
   setX,
   setY,
   setMap,
@@ -201,5 +205,11 @@ export const selectLastDirection = (state: RootState) =>
 
 export const selectText = (state: RootState) =>
   state.game.text ? state.game.text[state.game.textIndex] : null;
+
+export const selectMoving = (state: RootState) =>
+  state.game.movingLeft ||
+  state.game.movingRight ||
+  state.game.movingUp ||
+  state.game.movingDown;
 
 export default gameSlice.reducer;

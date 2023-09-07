@@ -27,6 +27,7 @@ import { useEffect, useState } from "react";
 import Character from "./Character";
 import Text from "./Text";
 import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
+import MapChangeHandler from "./MapChangeHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -272,6 +273,7 @@ const Game = () => {
         )}
       </StyledGame>
       <Text />
+      <MapChangeHandler />
     </Container>
   );
 };

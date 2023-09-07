@@ -1,4 +1,3 @@
-- Add house b
 - Add lab
 - Remove grid
 - Add music

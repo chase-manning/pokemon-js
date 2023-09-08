@@ -8,6 +8,7 @@ import {
   moveUp,
   pressA,
   selectMap,
+  selectMenuOpen,
   selectMovingDown,
   selectMovingLeft,
   selectMovingRight,
@@ -28,6 +29,7 @@ import Character from "./Character";
 import Text from "./Text";
 import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
 import MapChangeHandler from "./MapChangeHandler";
+import StartMenu from "./StartMenu";
 
 const Container = styled.div`
   position: absolute;
@@ -102,6 +104,7 @@ const Game = () => {
   const movingRight = useSelector(selectMovingRight);
   const movingLeft = useSelector(selectMovingLeft);
   const map = useSelector(selectMap);
+  const menuOpen = useSelector(selectMenuOpen);
 
   const [moveInterval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
@@ -123,6 +126,7 @@ const Game = () => {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      if (menuOpen) return;
       switch (e.key) {
         case "ArrowUp":
           if (!movingDown && !movingLeft && !movingRight) {
@@ -171,7 +175,7 @@ const Game = () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
     };
-  }, [dispatch, movingUp, movingDown, movingLeft, movingRight]);
+  }, [dispatch, movingUp, movingDown, movingLeft, movingRight, menuOpen]);
 
   useEffect(() => {
     if (movingUp && !moveInterval) {
@@ -232,7 +236,6 @@ const Game = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
-        console.log("A");
         dispatch(pressA());
       }
     };
@@ -273,6 +276,7 @@ const Game = () => {
         )}
       </StyledGame>
       <Text />
+      <StartMenu />
       <MapChangeHandler />
     </Container>
   );

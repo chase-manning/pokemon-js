@@ -1,3 +1,4 @@
-- Add lab
-- Remove grid
 - Add music
+- Add sound effects
+- Add Windows
+- Intro

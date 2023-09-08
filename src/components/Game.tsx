@@ -90,7 +90,7 @@ const Item = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = true; // TODO
+  const showGrid = false; // TODO
   const moveSpeed = 250; // TODO
 
   const dispatch = useDispatch();

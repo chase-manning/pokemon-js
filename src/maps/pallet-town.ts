@@ -1,6 +1,7 @@
 import palletTownImage from "../assets/map/pallet-town.png";
 import houseA1f from "./house-a-1f";
 import houseB from "./house-b";
+import lab from "./lab";
 import { MapType } from "./map-types";
 
 const palletTown: MapType = {
@@ -122,7 +123,6 @@ const palletTown: MapType = {
       0: true,
       10: true,
       11: true,
-      12: true,
       13: true,
       14: true,
       15: true,
@@ -238,6 +238,9 @@ const palletTown: MapType = {
     5: {
       5: houseA1f,
       13: houseB,
+    },
+    11: {
+      12: lab,
     },
   },
   exits: {},

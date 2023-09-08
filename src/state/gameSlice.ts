@@ -23,6 +23,7 @@ export interface GameState {
   textIndex: number;
   mapHistory: MapType[];
   locationHistory: { x: number; y: number }[];
+  menuOpen: boolean;
 }
 
 const initialState: GameState = {
@@ -38,6 +39,7 @@ const initialState: GameState = {
   textIndex: 0,
   mapHistory: [],
   locationHistory: [],
+  menuOpen: false,
 };
 
 export const gameSlice = createSlice({
@@ -178,6 +180,9 @@ export const gameSlice = createSlice({
     closeText: (state) => {
       state.text = null;
     },
+    setMenuOpen: (state, action: PayloadAction<boolean>) => {
+      state.menuOpen = action.payload;
+    },
   },
 });
 
@@ -202,6 +207,7 @@ export const {
   closeText,
   setLocation,
   exitMap,
+  setMenuOpen,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
@@ -232,5 +238,7 @@ export const selectMoving = (state: RootState) =>
 
 export const selectPreviousMap = (state: RootState) =>
   state.game.mapHistory[state.game.mapHistory.length - 1];
+
+export const selectMenuOpen = (state: RootState) => state.game.menuOpen;
 
 export default gameSlice.reducer;

@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useState } from "react";
 import styled from "styled-components";
-import emitter, { Event } from "../app/emitter";
+import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 
 const StyledMenu = styled.div`

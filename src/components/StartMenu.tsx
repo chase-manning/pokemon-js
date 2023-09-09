@@ -1,27 +1,23 @@
+import { useDispatch, useSelector } from "react-redux";
 import Menu from "./Menu";
-import { useEffect, useState } from "react";
+import {
+  hideStartMenu,
+  selectStartMenu,
+  showStartMenu,
+} from "../state/uiSlice";
+import useEvent from "../app/use-event";
+import { Event } from "../app/emitter";
 
 const StartMenu = () => {
-  const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
+  const show = useSelector(selectStartMenu);
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === " ") {
-        setShow(true);
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, []);
+  useEvent(Event.Start, () => dispatch(showStartMenu()));
 
   return (
     <Menu
       show={show}
-      close={() => setShow(false)}
+      close={() => dispatch(hideStartMenu())}
       menuItems={[
         {
           label: "Pokédex",

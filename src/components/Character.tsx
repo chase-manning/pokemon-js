@@ -26,6 +26,7 @@ import {
   selectMovingUp,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
+import { WALK_SPEED } from "../app/constants";
 
 const StyledCharacter = styled.img`
   position: absolute;
@@ -44,8 +45,6 @@ const StyledCharacter = styled.img`
 `;
 
 const Character = () => {
-  const walkSpeed = 150; // TODO
-
   const [image, setImage] = useState(frontStill);
 
   const lastDirection = useSelector(selectLastDirection);
@@ -77,15 +76,15 @@ const Character = () => {
       if (image === frontWalk1) {
         setTimeout(() => {
           setImage(frontWalk2);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === frontWalk2) {
         setTimeout(() => {
           setImage(frontWalk3);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === frontWalk3) {
         setTimeout(() => {
           setImage(frontWalk1);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else {
         setImage(frontWalk1);
       }
@@ -95,15 +94,15 @@ const Character = () => {
       if (image === backWalk1) {
         setTimeout(() => {
           setImage(backWalk2);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === backWalk2) {
         setTimeout(() => {
           setImage(backWalk3);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === backWalk3) {
         setTimeout(() => {
           setImage(backWalk1);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else {
         setImage(backWalk1);
       }
@@ -113,15 +112,15 @@ const Character = () => {
       if (image === leftWalk1) {
         setTimeout(() => {
           setImage(leftWalk2);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === leftWalk2) {
         setTimeout(() => {
           setImage(leftWalk3);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === leftWalk3) {
         setTimeout(() => {
           setImage(leftWalk1);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else {
         setImage(leftWalk1);
       }
@@ -131,15 +130,15 @@ const Character = () => {
       if (image === rightWalk1) {
         setTimeout(() => {
           setImage(rightWalk2);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === rightWalk2) {
         setTimeout(() => {
           setImage(rightWalk3);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else if (image === rightWalk3) {
         setTimeout(() => {
           setImage(rightWalk1);
-        }, walkSpeed);
+        }, WALK_SPEED);
       } else {
         setImage(rightWalk1);
       }

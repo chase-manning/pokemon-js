@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { setMenuOpen } from "../state/gameSlice";
+import emitter, { Event } from "../app/emitter";
+import useEvent from "../app/use-event";
 
 const StyledMenu = styled.div`
   position: absolute;
@@ -24,50 +25,33 @@ interface Props {
 }
 
 const Menu = ({ show, menuItems, close }: Props) => {
-  const dispatch = useDispatch();
-
   const [activeIndex, setActiveIndex] = useState(0);
 
-  useEffect(() => {
-    if (show) dispatch(setMenuOpen(true));
-  }, [show, dispatch]);
+  useEvent(Event.Up, () => {
+    if (!show) return;
+    setActiveIndex((prev) => {
+      if (prev === 0) return prev;
+      return prev - 1;
+    });
+  });
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (!show) return;
-      if (e.key === "ArrowDown") {
-        setActiveIndex((prev) => {
-          if (prev === menuItems.length) return prev;
-          return prev + 1;
-        });
-      }
+  useEvent(Event.Down, () => {
+    if (!show) return;
+    setActiveIndex((prev) => {
+      if (prev === menuItems.length) return prev;
+      return prev + 1;
+    });
+  });
 
-      if (e.key === "ArrowUp") {
-        setActiveIndex((prev) => {
-          if (prev === 0) return prev;
-          return prev - 1;
-        });
-      }
-
-      if (e.key === "Enter") {
-        if (activeIndex < menuItems.length) {
-          menuItems[activeIndex].action();
-        } else {
-          close();
-          dispatch(setMenuOpen(false));
-          setActiveIndex(0);
-        }
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [setActiveIndex, close, menuItems, activeIndex, show, dispatch]);
-
-  console.log(activeIndex);
+  useEvent(Event.A, () => {
+    if (!show) return;
+    if (activeIndex < menuItems.length) {
+      menuItems[activeIndex].action();
+    } else {
+      close();
+      setActiveIndex(0);
+    }
+  });
 
   if (!show) return null;
 

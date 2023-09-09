@@ -1,35 +1,15 @@
 import styled from "styled-components";
 
 import { useDispatch, useSelector } from "react-redux";
-import {
-  moveDown,
-  moveLeft,
-  moveRight,
-  moveUp,
-  pressA,
-  selectMap,
-  selectMenuOpen,
-  selectMovingDown,
-  selectMovingLeft,
-  selectMovingRight,
-  selectMovingUp,
-  selectX,
-  selectY,
-  startMovingDown,
-  startMovingLeft,
-  startMovingRight,
-  startMovingUp,
-  stopMovingDown,
-  stopMovingLeft,
-  stopMovingRight,
-  stopMovingUp,
-} from "../state/gameSlice";
-import { useEffect, useState } from "react";
+import { pressA, selectMap, selectX, selectY } from "../state/gameSlice";
+import { useEffect } from "react";
 import Character from "./Character";
 import Text from "./Text";
 import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
 import MapChangeHandler from "./MapChangeHandler";
 import StartMenu from "./StartMenu";
+import KeyboardHandler from "./KeyboardHandler";
+import MovementHandler from "./MovementHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -93,20 +73,12 @@ const Item = styled.div`
 
 const Game = () => {
   const showGrid = false; // TODO
-  const moveSpeed = 250; // TODO
 
   const dispatch = useDispatch();
 
   const x = useSelector(selectX);
   const y = useSelector(selectY);
-  const movingUp = useSelector(selectMovingUp);
-  const movingDown = useSelector(selectMovingDown);
-  const movingRight = useSelector(selectMovingRight);
-  const movingLeft = useSelector(selectMovingLeft);
   const map = useSelector(selectMap);
-  const menuOpen = useSelector(selectMenuOpen);
-
-  const [moveInterval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
   const translateX = `calc(
     (
@@ -124,115 +96,8 @@ const Game = () => {
     ) * ${-y}
   )`;
 
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (menuOpen) return;
-      switch (e.key) {
-        case "ArrowUp":
-          if (!movingDown && !movingLeft && !movingRight) {
-            dispatch(startMovingUp());
-          }
-          break;
-        case "ArrowDown":
-          if (!movingUp && !movingLeft && !movingRight) {
-            dispatch(startMovingDown());
-          }
-          break;
-        case "ArrowLeft":
-          if (!movingUp && !movingDown && !movingRight) {
-            dispatch(startMovingLeft());
-          }
-          break;
-        case "ArrowRight":
-          if (!movingUp && !movingDown && !movingLeft) {
-            dispatch(startMovingRight());
-          }
-          break;
-      }
-    };
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      switch (e.key) {
-        case "ArrowUp":
-          dispatch(stopMovingUp());
-          break;
-        case "ArrowDown":
-          dispatch(stopMovingDown());
-          break;
-        case "ArrowLeft":
-          dispatch(stopMovingLeft());
-          break;
-        case "ArrowRight":
-          dispatch(stopMovingRight());
-          break;
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    window.addEventListener("keyup", handleKeyUp);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-      window.removeEventListener("keyup", handleKeyUp);
-    };
-  }, [dispatch, movingUp, movingDown, movingLeft, movingRight, menuOpen]);
-
-  useEffect(() => {
-    if (movingUp && !moveInterval) {
-      dispatch(moveUp());
-      setMoveInterval(
-        setInterval(() => {
-          dispatch(moveUp());
-        }, moveSpeed)
-      );
-    }
-    if (movingDown && !moveInterval) {
-      dispatch(moveDown());
-      setMoveInterval(
-        setInterval(() => {
-          dispatch(moveDown());
-        }, moveSpeed)
-      );
-    }
-    if (movingLeft && !moveInterval) {
-      dispatch(moveLeft());
-      setMoveInterval(
-        setInterval(() => {
-          dispatch(moveLeft());
-        }, moveSpeed)
-      );
-    }
-    if (movingRight && !moveInterval) {
-      dispatch(moveRight());
-      setMoveInterval(
-        setInterval(() => {
-          dispatch(moveRight());
-        }, moveSpeed)
-      );
-    }
-    if (
-      !movingUp &&
-      !movingDown &&
-      !movingLeft &&
-      !movingRight &&
-      moveInterval
-    ) {
-      if (moveInterval) {
-        clearInterval(moveInterval);
-        setTimeout(() => {
-          setMoveInterval(null);
-        }, moveSpeed);
-      }
-    }
-
-    return () => {
-      if (moveInterval) {
-        clearInterval(moveInterval);
-      }
-    };
-  }, [dispatch, movingUp, movingDown, movingLeft, movingRight, moveInterval]);
-
   // Presses Enter (A)
+  // TODO Remove
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Enter") {
@@ -277,7 +142,11 @@ const Game = () => {
       </StyledGame>
       <Text />
       <StartMenu />
+
+      {/* Handlers */}
       <MapChangeHandler />
+      <KeyboardHandler />
+      <MovementHandler />
     </Container>
   );
 };

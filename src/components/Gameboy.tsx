@@ -1,35 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./gameboy.css";
-import {
-  pressA,
-  selectMovingDown,
-  selectMovingLeft,
-  selectMovingRight,
-  selectMovingUp,
-  startMovingDown,
-  startMovingLeft,
-  startMovingRight,
-  startMovingUp,
-  stopMovingDown,
-  stopMovingLeft,
-  stopMovingRight,
-  stopMovingUp,
-} from "../state/gameSlice";
+import emitter, { Event } from "../app/emitter";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 const Gameboy = ({ children }: Props) => {
-  const dispatch = useDispatch();
-
-  const movingLeft = useSelector(selectMovingLeft);
-  const movingUp = useSelector(selectMovingUp);
-  const movingRight = useSelector(selectMovingRight);
-  const movingDown = useSelector(selectMovingDown);
-
-  const moving = movingLeft || movingUp || movingRight || movingDown;
-
   return (
     <div className="gameboy" id="GameBoy">
       <div className="display-section">
@@ -65,57 +41,43 @@ const Gameboy = ({ children }: Props) => {
           <div className="dpad">
             <div
               className="up"
-              onTouchStart={() => {
-                if (moving) return;
-                dispatch(startMovingUp());
-              }}
-              onTouchEnd={() => {
-                dispatch(stopMovingUp());
-              }}
+              onClick={() => emitter.emit(Event.Up)}
+              onTouchStart={() => emitter.emit(Event.StartUp)}
+              onTouchEnd={() => emitter.emit(Event.StopUp)}
             >
               <i className="fa fa-caret-up"></i>
             </div>
             <div
               className="right"
-              onTouchStart={() => {
-                if (moving) return;
-                dispatch(startMovingRight());
-              }}
-              onTouchEnd={() => {
-                dispatch(stopMovingRight());
-              }}
+              onClick={() => emitter.emit(Event.Right)}
+              onTouchStart={() => emitter.emit(Event.StartRight)}
+              onTouchEnd={() => emitter.emit(Event.StopRight)}
             >
               <i className="fa fa-caret-right"></i>
             </div>
             <div
               className="down"
-              onTouchStart={() => {
-                if (moving) return;
-                dispatch(startMovingDown());
-              }}
-              onTouchEnd={() => {
-                dispatch(stopMovingDown());
-              }}
+              onClick={() => emitter.emit(Event.Down)}
+              onTouchStart={() => emitter.emit(Event.StartDown)}
+              onTouchEnd={() => emitter.emit(Event.StopDown)}
             >
               <i className="fa fa-caret-down"></i>
             </div>
             <div
               className="left"
-              onTouchStart={() => {
-                if (moving) return;
-                dispatch(startMovingLeft());
-              }}
-              onTouchEnd={() => {
-                dispatch(stopMovingLeft());
-              }}
+              onClick={() => emitter.emit(Event.Left)}
+              onTouchStart={() => emitter.emit(Event.StartLeft)}
+              onTouchEnd={() => emitter.emit(Event.StopLeft)}
             >
               <i className="fa fa-caret-left"></i>
             </div>
             <div className="middle"></div>
           </div>
           <div className="a-b">
-            <div className="b">B</div>
-            <div className="a" onClick={() => dispatch(pressA())}>
+            <div className="b" onClick={() => emitter.emit(Event.B)}>
+              B
+            </div>
+            <div className="a" onClick={() => emitter.emit(Event.A)}>
               A
             </div>
           </div>
@@ -123,7 +85,9 @@ const Gameboy = ({ children }: Props) => {
 
         <div className="start-select">
           <div className="select">SELECT</div>
-          <div className="start">START</div>
+          <div className="start" onClick={() => emitter.emit(Event.Start)}>
+            START
+          </div>
         </div>
       </div>
 

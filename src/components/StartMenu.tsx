@@ -6,13 +6,16 @@ import {
   showStartMenu,
 } from "../state/uiSlice";
 import useEvent from "../app/use-event";
-import { Event } from "../app/emitter";
+import emitter, { Event } from "../app/emitter";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
   const show = useSelector(selectStartMenu);
 
-  useEvent(Event.Start, () => dispatch(showStartMenu()));
+  useEvent(Event.Start, () => {
+    dispatch(showStartMenu());
+    emitter.emit(Event.StopMoving);
+  });
 
   return (
     <Menu

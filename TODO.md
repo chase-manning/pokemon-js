@@ -1,9 +1,6 @@
-- Not moving when we get inside
-- Movement jumping
-- Add hold to move for controller (onTouchStart)
-- Stop moving when menu is open
 - Remove A logic from Game.tsx
 - Remove A logic from game slice
+- Movement jumping
 
 - Add music
 - Add sound effects

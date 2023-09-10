@@ -19,6 +19,7 @@ import {
 } from "../state/gameSlice";
 import { useState } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
+import { seleceMenuOpen } from "../state/uiSlice";
 
 const MovementHandler = () => {
   const moveSpeed = 250; // TODO
@@ -29,6 +30,7 @@ const MovementHandler = () => {
   const movingUp = useSelector(selectMovingUp);
   const movingLeft = useSelector(selectMovingLeft);
   const movingRight = useSelector(selectMovingRight);
+  const menuOpen = useSelector(seleceMenuOpen);
 
   const [interval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
@@ -48,7 +50,7 @@ const MovementHandler = () => {
   };
 
   const canMove = () => {
-    return !interval && !moving;
+    return !interval && !moving && !menuOpen;
   };
 
   useEvent(Event.StartDown, () => {

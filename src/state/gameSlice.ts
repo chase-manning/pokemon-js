@@ -4,8 +4,8 @@ import { MapType } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 
 export enum Direction {
-  Front = "front",
-  Back = "back",
+  Down = "down",
+  Up = "up",
   Left = "left",
   Right = "right",
 }
@@ -26,7 +26,7 @@ export interface GameState {
 const initialState: GameState = {
   pos: palletTown.start,
   moving: false,
-  direction: Direction.Front,
+  direction: Direction.Down,
   map: palletTown,
   mapHistory: [],
 };
@@ -56,7 +56,7 @@ export const gameSlice = createSlice({
       state.pos.x += 1;
     },
     moveUp: (state) => {
-      state.direction = Direction.Back;
+      state.direction = Direction.Up;
       if (state.pos.y === 0) return;
       if (
         state.map.walls[state.pos.y - 1] &&
@@ -66,7 +66,7 @@ export const gameSlice = createSlice({
       state.pos.y -= 1;
     },
     moveDown: (state) => {
-      state.direction = Direction.Front;
+      state.direction = Direction.Down;
       if (state.pos.y === state.map.height - 1) return;
       if (
         state.map.walls[state.pos.y + 1] &&

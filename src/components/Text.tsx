@@ -114,10 +114,10 @@ const Text = () => {
     // Getting coords in front of character
     let { x, y } = pos;
     switch (direction) {
-      case Direction.Front:
+      case Direction.Down:
         y += 1;
         break;
-      case Direction.Back:
+      case Direction.Up:
         y -= 1;
         break;
       case Direction.Left:

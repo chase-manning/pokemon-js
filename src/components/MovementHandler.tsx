@@ -36,16 +36,16 @@ const MovementHandler = () => {
     : pressingRight
     ? Direction.Right
     : pressingUp
-    ? Direction.Back
-    : Direction.Front;
+    ? Direction.Up
+    : Direction.Down;
 
   useEffect(() => {
     const move = (direction: Direction) => {
       switch (direction) {
-        case Direction.Front:
+        case Direction.Down:
           dispatch(moveDown());
           break;
-        case Direction.Back:
+        case Direction.Up:
           dispatch(moveUp());
           break;
         case Direction.Left:

@@ -46,13 +46,13 @@ const Character = () => {
 
   useEffect(() => {
     if (!moving) {
-      if (direction === Direction.Front) {
+      if (direction === Direction.Down) {
         setImage(frontStill);
       } else if (direction === Direction.Left) {
         setImage(leftStill);
       } else if (direction === Direction.Right) {
         setImage(rightStill);
-      } else if (direction === Direction.Back) {
+      } else if (direction === Direction.Up) {
         setImage(backStill);
       } else {
         throw new Error("Invalid last direction");
@@ -61,7 +61,7 @@ const Character = () => {
     }
 
     // TODO we can probably remove this duplication
-    if (direction === Direction.Front) {
+    if (direction === Direction.Down) {
       if (image === frontWalk1) {
         setTimeout(() => {
           setImage(frontWalk2);
@@ -79,7 +79,7 @@ const Character = () => {
       }
     }
 
-    if (direction === Direction.Back) {
+    if (direction === Direction.Up) {
       if (image === backWalk1) {
         setTimeout(() => {
           setImage(backWalk2);

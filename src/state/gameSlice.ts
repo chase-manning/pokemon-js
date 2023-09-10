@@ -20,7 +20,6 @@ export interface GameState {
   lastDirection: Direction;
   map: MapType;
   text: string[] | null;
-  textIndex: number;
   mapHistory: MapType[];
   locationHistory: { x: number; y: number }[];
 }
@@ -35,7 +34,6 @@ const initialState: GameState = {
   lastDirection: Direction.Front,
   map: palletTown,
   text: null,
-  textIndex: 0,
   mapHistory: [],
   locationHistory: [],
 };
@@ -125,47 +123,11 @@ export const gameSlice = createSlice({
         state.y = newLocation.y;
       }
     },
-    // TODO Delete
-    pressA: (state) => {
-      // If reading text
-      if (state.text) {
-        state.textIndex += 1;
-        if (state.textIndex >= state.text.length) {
-          state.text = null;
-          state.textIndex = 0;
-        }
-        return;
-      }
-
-      // Getting coords in front of character
-      let x = state.x;
-      let y = state.y;
-      switch (state.lastDirection) {
-        case Direction.Front:
-          y += 1;
-          break;
-        case Direction.Back:
-          y -= 1;
-          break;
-        case Direction.Left:
-          x -= 1;
-          break;
-        case Direction.Right:
-          x += 1;
-          break;
-      }
-
-      // Reading text
-      if (
-        state.map.text[y] &&
-        state.map.text[y][x] &&
-        state.map.text[y][x].length > 0
-      ) {
-        state.text = state.map.text[y][x];
-      }
-    },
     closeText: (state) => {
       state.text = null;
+    },
+    setText: (state, action: PayloadAction<string[]>) => {
+      state.text = action.payload;
     },
   },
 });
@@ -183,10 +145,10 @@ export const {
   setX,
   setY,
   setMap,
-  pressA,
   closeText,
   setLocation,
   exitMap,
+  setText,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
@@ -206,8 +168,7 @@ export const selectMap = (state: RootState) => state.game.map;
 export const selectLastDirection = (state: RootState) =>
   state.game.lastDirection;
 
-export const selectText = (state: RootState) =>
-  state.game.text ? state.game.text[state.game.textIndex] : null;
+export const selectText = (state: RootState) => state.game.text;
 
 export const selectMoving = (state: RootState) =>
   state.game.movingLeft ||

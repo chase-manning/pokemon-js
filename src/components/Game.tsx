@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-import { useDispatch, useSelector } from "react-redux";
-import { pressA, selectMap, selectX, selectY } from "../state/gameSlice";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { selectMap, selectX, selectY } from "../state/gameSlice";
 import Character from "./Character";
 import Text from "./Text";
 import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
@@ -74,8 +73,6 @@ const Item = styled.div`
 const Game = () => {
   const showGrid = false; // TODO
 
-  const dispatch = useDispatch();
-
   const x = useSelector(selectX);
   const y = useSelector(selectY);
   const map = useSelector(selectMap);
@@ -95,22 +92,6 @@ const Game = () => {
       ) / ${map.height}
     ) * ${-y}
   )`;
-
-  // Presses Enter (A)
-  // TODO Remove
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Enter") {
-        dispatch(pressA());
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [dispatch]);
 
   return (
     <Container>

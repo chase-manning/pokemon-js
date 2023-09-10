@@ -1,7 +1,18 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
-import { selectText } from "../state/gameSlice";
+import {
+  Direction,
+  closeText,
+  selectLastDirection,
+  selectMap,
+  selectText,
+  selectX,
+  selectY,
+  setText,
+} from "../state/gameSlice";
 import { useEffect, useState } from "react";
+import useEvent from "../app/use-event";
+import { Event } from "../app/emitter";
 
 interface TextProps {
   done: boolean;
@@ -71,8 +82,14 @@ const StyledText = styled.div<TextProps>`
 `;
 
 const Text = () => {
+  const dispatch = useDispatch();
   const text = useSelector(selectText);
   const [liveIndex, setLiveIndex] = useState(0);
+  const [textIndex, setTextIndex] = useState(0);
+  const x = useSelector(selectX);
+  const y = useSelector(selectY);
+  const lastDirection = useSelector(selectLastDirection);
+  const map = useSelector(selectMap);
 
   useEffect(() => {
     setLiveIndex(0);
@@ -83,13 +100,49 @@ const Text = () => {
 
       return () => clearInterval(interval);
     }
-  }, [text]);
+  }, [text, textIndex]);
+
+  useEvent(Event.A, () => {
+    // Reading text
+    if (text) {
+      if (textIndex === text.length - 1) {
+        setTextIndex(0);
+        dispatch(closeText());
+      } else {
+        setTextIndex((prev) => prev + 1);
+      }
+      return;
+    }
+
+    // Getting coords in front of character
+    let x_ = x;
+    let y_ = y;
+    switch (lastDirection) {
+      case Direction.Front:
+        y_ += 1;
+        break;
+      case Direction.Back:
+        y_ -= 1;
+        break;
+      case Direction.Left:
+        x_ -= 1;
+        break;
+      case Direction.Right:
+        x_ += 1;
+        break;
+    }
+
+    // Open new textbox
+    if (map.text[y_] && map.text[y_][x_] && map.text[y_][x_].length > 0) {
+      dispatch(setText(map.text[y_][x_]));
+    }
+  });
 
   if (!text) return null;
 
   return (
     <StyledText className="framed no-hd" done={liveIndex > text.length}>
-      <h1>{text.substring(0, liveIndex)}</h1>
+      <h1>{text[textIndex].substring(0, liveIndex)}</h1>
     </StyledText>
   );
 };

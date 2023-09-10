@@ -1,6 +1,5 @@
-- Change Direction to have more normal direction names
-
 - Implement start menu pages
+- What happens when you click on an item?
 - Add music
 - Add sound effects
 - Add Windows

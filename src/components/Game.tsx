@@ -9,6 +9,7 @@ import MapChangeHandler from "./MapChangeHandler";
 import StartMenu from "./StartMenu";
 import KeyboardHandler from "./KeyboardHandler";
 import MovementHandler from "./MovementHandler";
+import ItemsMenu from "./ItemsMenu";
 
 const Container = styled.div`
   position: absolute;
@@ -122,6 +123,7 @@ const Game = () => {
       </StyledGame>
       <Text />
       <StartMenu />
+      <ItemsMenu />
 
       {/* Handlers */}
       <MapChangeHandler />

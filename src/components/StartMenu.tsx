@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import {
   hideStartMenu,
   selectStartMenu,
+  showItemsMenu,
   showStartMenu,
 } from "../state/uiSlice";
 import useEvent from "../app/use-event";
@@ -32,7 +33,7 @@ const StartMenu = () => {
         },
         {
           label: "Item",
-          action: () => console.log("TODO"),
+          action: () => dispatch(showItemsMenu()),
         },
         {
           label: "Player",

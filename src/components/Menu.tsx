@@ -12,9 +12,30 @@ const StyledMenu = styled.div`
   background: white;
 `;
 
+const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+`;
+
+const Bold = styled.div`
+  font-weight: bold;
+  color: black;
+  margin-left: 45px;
+
+  font-size: 3rem;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+    line-height: 1;
+    margin-left: 15px;
+  }
+`;
+
 interface MenuItemType {
   label: string;
   action: () => void;
+  value?: number;
 }
 
 interface Props {
@@ -66,9 +87,10 @@ const Menu = ({ show, menuItems, close }: Props) => {
         ].map((item: MenuItemType, index: number) => {
           return (
             <li key={item.label}>
-              <button className={activeIndex === index ? "active-button" : ""}>
+              <Button className={activeIndex === index ? "active-button" : ""}>
                 {item.label}
-              </button>
+                {item.value && <Bold>{item.value}</Bold>}
+              </Button>
             </li>
           );
         })}

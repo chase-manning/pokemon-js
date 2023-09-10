@@ -20,7 +20,6 @@ export interface GameState {
   lastDirection: Direction;
   map: MapType;
   mapHistory: MapType[];
-  locationHistory: { x: number; y: number }[];
 }
 
 const initialState: GameState = {
@@ -33,7 +32,6 @@ const initialState: GameState = {
   lastDirection: Direction.Front,
   map: palletTown,
   mapHistory: [],
-  locationHistory: [],
 };
 
 export const gameSlice = createSlice({

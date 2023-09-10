@@ -88,6 +88,9 @@ const MovementHandler = () => {
     if (!movingRight) return;
     _stopMoving();
   });
+  useEvent(Event.StopMoving, () => {
+    _stopMoving();
+  });
 
   return null;
 };

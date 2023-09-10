@@ -6,7 +6,6 @@ import {
   selectX,
   selectY,
   setMap,
-  stopMoving,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { MapType } from "../maps/map-types";
@@ -41,7 +40,6 @@ const MapChangeHandler = () => {
     if (!nextMap && !exit) return;
 
     const updateMap = (map_?: MapType) => {
-      dispatch(stopMoving());
       setDark(true);
       setTimeout(() => {
         if (map_) {

@@ -1,18 +1,15 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import {
   Direction,
-  closeText,
   selectLastDirection,
   selectMap,
-  selectText,
   selectX,
   selectY,
-  setText,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
-import { Event } from "../app/emitter";
+import emitter, { Event } from "../app/emitter";
 
 interface TextProps {
   done: boolean;
@@ -82,8 +79,7 @@ const StyledText = styled.div<TextProps>`
 `;
 
 const Text = () => {
-  const dispatch = useDispatch();
-  const text = useSelector(selectText);
+  const [text, setText] = useState<string[] | null>(null);
   const [liveIndex, setLiveIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
   const x = useSelector(selectX);
@@ -107,7 +103,7 @@ const Text = () => {
     if (text) {
       if (textIndex === text.length - 1) {
         setTextIndex(0);
-        dispatch(closeText());
+        setText(null);
       } else {
         setTextIndex((prev) => prev + 1);
       }
@@ -134,7 +130,8 @@ const Text = () => {
 
     // Open new textbox
     if (map.text[y_] && map.text[y_][x_] && map.text[y_][x_].length > 0) {
-      dispatch(setText(map.text[y_][x_]));
+      emitter.emit(Event.StopMoving);
+      setText(map.text[y_][x_]);
     }
   });
 

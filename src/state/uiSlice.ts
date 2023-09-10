@@ -3,10 +3,12 @@ import { RootState } from "./store";
 
 interface UiState {
   startMenu: boolean;
+  textMenu: boolean;
 }
 
 const initialState: UiState = {
   startMenu: false,
+  textMenu: false,
 };
 
 export const uiSlice = createSlice({
@@ -19,13 +21,23 @@ export const uiSlice = createSlice({
     hideStartMenu: (state) => {
       state.startMenu = false;
     },
+    showTextMenu: (state) => {
+      state.textMenu = true;
+    },
+    hideTextMenu: (state) => {
+      state.textMenu = false;
+    },
   },
 });
 
-export const { showStartMenu, hideStartMenu } = uiSlice.actions;
+export const { showStartMenu, hideStartMenu, showTextMenu, hideTextMenu } =
+  uiSlice.actions;
 
 export const selectStartMenu = (state: RootState) => state.ui.startMenu;
 
-export const seleceMenuOpen = (state: RootState) => state.ui.startMenu;
+export const selectTextMenu = (state: RootState) => state.ui.textMenu;
+
+export const selectMenuOpen = (state: RootState) =>
+  state.ui.startMenu || state.ui.textMenu;
 
 export default uiSlice.reducer;

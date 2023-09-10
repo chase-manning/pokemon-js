@@ -19,7 +19,6 @@ export interface GameState {
   movingRight: boolean;
   lastDirection: Direction;
   map: MapType;
-  text: string[] | null;
   mapHistory: MapType[];
   locationHistory: { x: number; y: number }[];
 }
@@ -33,7 +32,6 @@ const initialState: GameState = {
   movingRight: false,
   lastDirection: Direction.Front,
   map: palletTown,
-  text: null,
   mapHistory: [],
   locationHistory: [],
 };
@@ -71,22 +69,18 @@ export const gameSlice = createSlice({
       state.lastDirection = Direction.Front;
     },
     startMovingLeft: (state) => {
-      if (state.text) return;
       state.movingLeft = true;
       state.lastDirection = Direction.Left;
     },
     startMovingRight: (state) => {
-      if (state.text) return;
       state.movingRight = true;
       state.lastDirection = Direction.Right;
     },
     startMovingUp: (state) => {
-      if (state.text) return;
       state.movingUp = true;
       state.lastDirection = Direction.Back;
     },
     startMovingDown: (state) => {
-      if (state.text) return;
       state.movingDown = true;
       state.lastDirection = Direction.Front;
     },
@@ -123,12 +117,6 @@ export const gameSlice = createSlice({
         state.y = newLocation.y;
       }
     },
-    closeText: (state) => {
-      state.text = null;
-    },
-    setText: (state, action: PayloadAction<string[]>) => {
-      state.text = action.payload;
-    },
   },
 });
 
@@ -145,10 +133,8 @@ export const {
   setX,
   setY,
   setMap,
-  closeText,
   setLocation,
   exitMap,
-  setText,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
@@ -167,8 +153,6 @@ export const selectMap = (state: RootState) => state.game.map;
 
 export const selectLastDirection = (state: RootState) =>
   state.game.lastDirection;
-
-export const selectText = (state: RootState) => state.game.text;
 
 export const selectMoving = (state: RootState) =>
   state.game.movingLeft ||

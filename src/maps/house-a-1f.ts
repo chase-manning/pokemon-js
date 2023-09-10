@@ -60,7 +60,7 @@ const houseA1f: MapType = {
       3: true,
     },
   },
-  exitReturnLocation: {
+  exitReturnPos: {
     x: 5,
     y: 6,
   },

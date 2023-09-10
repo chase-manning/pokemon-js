@@ -3,7 +3,7 @@ import styled, { keyframes } from "styled-components";
 import {
   Direction,
   selectDirection,
-  selectLocation,
+  selectPos,
   selectMap,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
@@ -83,7 +83,7 @@ const Text = () => {
   const [text, setText] = useState<string[] | null>(null);
   const [liveIndex, setLiveIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
-  const location = useSelector(selectLocation);
+  const pos = useSelector(selectPos);
   const direction = useSelector(selectDirection);
   const map = useSelector(selectMap);
 
@@ -112,7 +112,7 @@ const Text = () => {
     }
 
     // Getting coords in front of character
-    let { x, y } = location;
+    let { x, y } = pos;
     switch (direction) {
       case Direction.Front:
         y += 1;

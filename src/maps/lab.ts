@@ -75,7 +75,7 @@ const lab: MapType = {
       5: true,
     },
   },
-  exitReturnLocation: {
+  exitReturnPos: {
     x: 12,
     y: 12,
   },

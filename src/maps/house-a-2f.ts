@@ -63,7 +63,7 @@ const houseA2f: MapType = {
       7: true,
     },
   },
-  exitReturnLocation: {
+  exitReturnPos: {
     x: 6,
     y: 2,
   },

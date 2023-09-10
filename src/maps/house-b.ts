@@ -63,7 +63,7 @@ const houseB: MapType = {
       3: true,
     },
   },
-  exitReturnLocation: {
+  exitReturnPos: {
     x: 13,
     y: 6,
   },

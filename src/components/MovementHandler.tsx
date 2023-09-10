@@ -2,96 +2,121 @@ import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 import {
+  Direction,
   moveDown,
   moveLeft,
   moveRight,
   moveUp,
-  selectMoving,
-  selectMovingDown,
-  selectMovingLeft,
-  selectMovingRight,
-  selectMovingUp,
-  startMovingDown,
-  startMovingLeft,
-  startMovingRight,
-  startMovingUp,
-  stopMoving,
+  setMoving,
 } from "../state/gameSlice";
-import { useState } from "react";
-import { AnyAction } from "@reduxjs/toolkit";
+import { useEffect, useRef, useState } from "react";
 import { selectMenuOpen } from "../state/uiSlice";
 
 const MovementHandler = () => {
   const moveSpeed = 250; // TODO
 
   const dispatch = useDispatch();
-  const moving = useSelector(selectMoving);
-  const movingDown = useSelector(selectMovingDown);
-  const movingUp = useSelector(selectMovingUp);
-  const movingLeft = useSelector(selectMovingLeft);
-  const movingRight = useSelector(selectMovingRight);
+  const [pressingLeft, setPressingLeft] = useState(false);
+  const [pressingRight, setPressingRight] = useState(false);
+  const [pressingUp, setPressingUp] = useState(false);
+  const [pressingDown, setPressingDown] = useState(false);
+  const tickIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const [cooldown, setCooldown] = useState(false);
   const menuOpen = useSelector(selectMenuOpen);
 
-  const [interval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
+  const pressingButton =
+    pressingLeft || pressingRight || pressingUp || pressingDown;
 
-  const _stopMoving = () => {
-    dispatch(stopMoving());
-    if (interval) clearInterval(interval);
-    setMoveInterval(null);
-  };
+  useEffect(() => {
+    dispatch(setMoving(pressingButton));
+  }, [pressingButton, dispatch]);
 
-  const startMoving = (movement: AnyAction) => {
-    setMoveInterval(
-      setInterval(() => {
-        dispatch(movement);
-      }, moveSpeed)
-    );
-    dispatch(movement);
-  };
+  const direction = pressingLeft
+    ? Direction.Left
+    : pressingRight
+    ? Direction.Right
+    : pressingUp
+    ? Direction.Back
+    : Direction.Front;
 
-  const canMove = () => {
-    return !interval && !moving && !menuOpen;
-  };
+  useEffect(() => {
+    const move = (direction: Direction) => {
+      switch (direction) {
+        case Direction.Front:
+          dispatch(moveDown());
+          break;
+        case Direction.Back:
+          dispatch(moveUp());
+          break;
+        case Direction.Left:
+          dispatch(moveLeft());
+          break;
+        case Direction.Right:
+          dispatch(moveRight());
+          break;
+      }
+    };
+
+    // If moving, move the character immediately
+    if (pressingButton && !cooldown && !menuOpen) {
+      move(direction);
+      setCooldown(true);
+
+      // Clear any existing interval
+      if (tickIntervalRef.current) {
+        clearInterval(tickIntervalRef.current);
+      }
+
+      // Set up a new interval
+      tickIntervalRef.current = setInterval(() => {
+        move(direction);
+      }, moveSpeed);
+
+      setTimeout(() => setCooldown(false), moveSpeed);
+    } else if (!pressingButton && tickIntervalRef.current) {
+      // Clear the interval if the user stopped moving
+      clearInterval(tickIntervalRef.current);
+      tickIntervalRef.current = null;
+    }
+
+    return () => {
+      // Clear interval when component unmounts
+      if (tickIntervalRef.current) {
+        clearInterval(tickIntervalRef.current);
+      }
+    };
+  }, [pressingButton, direction, dispatch, cooldown, menuOpen]);
 
   useEvent(Event.StartDown, () => {
-    if (!canMove()) return;
-    dispatch(startMovingDown());
-    startMoving(moveDown());
+    setPressingDown(true);
   });
   useEvent(Event.StartUp, () => {
-    if (!canMove()) return;
-    dispatch(startMovingUp());
-    startMoving(moveUp());
+    setPressingUp(true);
   });
   useEvent(Event.StartLeft, () => {
-    if (!canMove()) return;
-    dispatch(startMovingLeft());
-    startMoving(moveLeft());
+    setPressingLeft(true);
   });
   useEvent(Event.StartRight, () => {
-    if (!canMove()) return;
-    dispatch(startMovingRight());
-    startMoving(moveRight());
+    setPressingRight(true);
   });
 
   useEvent(Event.StopDown, () => {
-    if (!movingDown) return;
-    _stopMoving();
+    setPressingDown(false);
   });
   useEvent(Event.StopUp, () => {
-    if (!movingUp) return;
-    _stopMoving();
+    setPressingUp(false);
   });
   useEvent(Event.StopLeft, () => {
-    if (!movingLeft) return;
-    _stopMoving();
+    setPressingLeft(false);
   });
   useEvent(Event.StopRight, () => {
-    if (!movingRight) return;
-    _stopMoving();
+    setPressingRight(false);
   });
   useEvent(Event.StopMoving, () => {
-    _stopMoving();
+    setPressingLeft(false);
+    setPressingRight(false);
+    setPressingUp(false);
+    setPressingDown(false);
   });
 
   return null;

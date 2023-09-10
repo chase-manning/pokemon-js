@@ -1,8 +1,8 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
 import {
   Direction,
-  selectLastDirection,
+  selectDirection,
   selectMap,
   selectX,
   selectY,
@@ -10,6 +10,7 @@ import {
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
+import { hideTextMenu, showTextMenu } from "../state/uiSlice";
 
 interface TextProps {
   done: boolean;
@@ -79,12 +80,13 @@ const StyledText = styled.div<TextProps>`
 `;
 
 const Text = () => {
+  const dispatch = useDispatch();
   const [text, setText] = useState<string[] | null>(null);
   const [liveIndex, setLiveIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
   const x = useSelector(selectX);
   const y = useSelector(selectY);
-  const lastDirection = useSelector(selectLastDirection);
+  const direction = useSelector(selectDirection);
   const map = useSelector(selectMap);
 
   useEffect(() => {
@@ -104,6 +106,7 @@ const Text = () => {
       if (textIndex === text.length - 1) {
         setTextIndex(0);
         setText(null);
+        dispatch(hideTextMenu());
       } else {
         setTextIndex((prev) => prev + 1);
       }
@@ -113,7 +116,7 @@ const Text = () => {
     // Getting coords in front of character
     let x_ = x;
     let y_ = y;
-    switch (lastDirection) {
+    switch (direction) {
       case Direction.Front:
         y_ += 1;
         break;
@@ -132,6 +135,7 @@ const Text = () => {
     if (map.text[y_] && map.text[y_][x_] && map.text[y_][x_].length > 0) {
       emitter.emit(Event.StopMoving);
       setText(map.text[y_][x_]);
+      dispatch(showTextMenu());
     }
   });
 

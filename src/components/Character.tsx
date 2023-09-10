@@ -17,14 +17,7 @@ import backWalk1 from "../assets/character/back-walk-1.png";
 import backWalk2 from "../assets/character/back-walk-2.png";
 import backWalk3 from "../assets/character/back-walk-3.png";
 import { useSelector } from "react-redux";
-import {
-  Direction,
-  selectLastDirection,
-  selectMovingDown,
-  selectMovingLeft,
-  selectMovingRight,
-  selectMovingUp,
-} from "../state/gameSlice";
+import { Direction, selectDirection, selectMoving } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { WALK_SPEED } from "../app/constants";
 
@@ -34,7 +27,7 @@ const StyledCharacter = styled.img`
   left: 0;
   width: calc(16vw / 2.34);
 
-  // TODO
+  // TODO this is duplicated everywhere
   image-rendering: optimizeSpeed;
   image-rendering: -moz-crisp-edges;
   image-rendering: -o-crisp-edges;
@@ -47,24 +40,19 @@ const StyledCharacter = styled.img`
 const Character = () => {
   const [image, setImage] = useState(frontStill);
 
-  const lastDirection = useSelector(selectLastDirection);
+  const direction = useSelector(selectDirection);
 
-  const movingDown = useSelector(selectMovingDown);
-  const movingUp = useSelector(selectMovingUp);
-  const movingLeft = useSelector(selectMovingLeft);
-  const movingRight = useSelector(selectMovingRight);
-
-  const moving = movingDown || movingUp || movingLeft || movingRight;
+  const moving = useSelector(selectMoving);
 
   useEffect(() => {
     if (!moving) {
-      if (lastDirection === Direction.Front) {
+      if (direction === Direction.Front) {
         setImage(frontStill);
-      } else if (lastDirection === Direction.Left) {
+      } else if (direction === Direction.Left) {
         setImage(leftStill);
-      } else if (lastDirection === Direction.Right) {
+      } else if (direction === Direction.Right) {
         setImage(rightStill);
-      } else if (lastDirection === Direction.Back) {
+      } else if (direction === Direction.Back) {
         setImage(backStill);
       } else {
         throw new Error("Invalid last direction");
@@ -72,7 +60,8 @@ const Character = () => {
       return;
     }
 
-    if (movingDown) {
+    // TODO we can probably remove this duplication
+    if (direction === Direction.Front) {
       if (image === frontWalk1) {
         setTimeout(() => {
           setImage(frontWalk2);
@@ -90,7 +79,7 @@ const Character = () => {
       }
     }
 
-    if (movingUp) {
+    if (direction === Direction.Back) {
       if (image === backWalk1) {
         setTimeout(() => {
           setImage(backWalk2);
@@ -108,7 +97,7 @@ const Character = () => {
       }
     }
 
-    if (movingLeft) {
+    if (direction === Direction.Left) {
       if (image === leftWalk1) {
         setTimeout(() => {
           setImage(leftWalk2);
@@ -126,7 +115,7 @@ const Character = () => {
       }
     }
 
-    if (movingRight) {
+    if (direction === Direction.Right) {
       if (image === rightWalk1) {
         setTimeout(() => {
           setImage(rightWalk2);
@@ -143,15 +132,7 @@ const Character = () => {
         setImage(rightWalk1);
       }
     }
-  }, [
-    movingDown,
-    movingUp,
-    movingLeft,
-    movingRight,
-    lastDirection,
-    image,
-    moving,
-  ]);
+  }, [image, moving, direction]);
 
   return <StyledCharacter src={image} alt="Character" />;
 };

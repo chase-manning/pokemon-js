@@ -13,11 +13,8 @@ export enum Direction {
 export interface GameState {
   x: number;
   y: number;
-  movingUp: boolean;
-  movingDown: boolean;
-  movingLeft: boolean;
-  movingRight: boolean;
-  lastDirection: Direction;
+  moving: boolean;
+  direction: Direction;
   map: MapType;
   mapHistory: MapType[];
 }
@@ -25,11 +22,8 @@ export interface GameState {
 const initialState: GameState = {
   x: palletTown.start.x,
   y: palletTown.start.y,
-  movingUp: false,
-  movingDown: false,
-  movingLeft: false,
-  movingRight: false,
-  lastDirection: Direction.Front,
+  moving: false,
+  direction: Direction.Front,
   map: palletTown,
   mapHistory: [],
 };
@@ -39,62 +33,32 @@ export const gameSlice = createSlice({
   initialState,
   reducers: {
     moveLeft: (state) => {
+      state.direction = Direction.Left;
       if (state.x === 0) return;
       if (state.map.walls[state.y] && state.map.walls[state.y][state.x - 1])
         return;
       state.x -= 1;
-      state.lastDirection = Direction.Left;
     },
     moveRight: (state) => {
+      state.direction = Direction.Right;
       if (state.x === state.map.width - 1) return;
       if (state.map.walls[state.y] && state.map.walls[state.y][state.x + 1])
         return;
       state.x += 1;
-      state.lastDirection = Direction.Right;
     },
     moveUp: (state) => {
+      state.direction = Direction.Back;
       if (state.y === 0) return;
       if (state.map.walls[state.y - 1] && state.map.walls[state.y - 1][state.x])
         return;
       state.y -= 1;
-      state.lastDirection = Direction.Back;
     },
     moveDown: (state) => {
+      state.direction = Direction.Front;
       if (state.y === state.map.height - 1) return;
       if (state.map.walls[state.y + 1] && state.map.walls[state.y + 1][state.x])
         return;
       state.y += 1;
-      state.lastDirection = Direction.Front;
-    },
-    startMovingLeft: (state) => {
-      state.movingLeft = true;
-      state.lastDirection = Direction.Left;
-    },
-    startMovingRight: (state) => {
-      state.movingRight = true;
-      state.lastDirection = Direction.Right;
-    },
-    startMovingUp: (state) => {
-      state.movingUp = true;
-      state.lastDirection = Direction.Back;
-    },
-    startMovingDown: (state) => {
-      state.movingDown = true;
-      state.lastDirection = Direction.Front;
-    },
-    stopMoving: (state) => {
-      state.movingLeft = false;
-      state.movingRight = false;
-      state.movingUp = false;
-      state.movingDown = false;
-    },
-    setX: (state, action: PayloadAction<number>) => {
-      state.x = action.payload;
-      state.lastDirection = Direction.Front;
-    },
-    setY: (state, action: PayloadAction<number>) => {
-      state.y = action.payload;
-      state.lastDirection = Direction.Front;
     },
     setLocation: (state, action: PayloadAction<{ x: number; y: number }>) => {
       state.x = action.payload.x;
@@ -115,6 +79,9 @@ export const gameSlice = createSlice({
         state.y = newLocation.y;
       }
     },
+    setMoving: (state, action: PayloadAction<boolean>) => {
+      state.moving = action.payload;
+    },
   },
 });
 
@@ -123,40 +90,21 @@ export const {
   moveRight,
   moveUp,
   moveDown,
-  startMovingLeft,
-  startMovingRight,
-  startMovingUp,
-  startMovingDown,
-  stopMoving,
-  setX,
-  setY,
   setMap,
   setLocation,
   exitMap,
+  setMoving,
 } = gameSlice.actions;
 
 export const selectX = (state: RootState) => state.game.x;
 
 export const selectY = (state: RootState) => state.game.y;
 
-export const selectMovingLeft = (state: RootState) => state.game.movingLeft;
-
-export const selectMovingRight = (state: RootState) => state.game.movingRight;
-
-export const selectMovingUp = (state: RootState) => state.game.movingUp;
-
-export const selectMovingDown = (state: RootState) => state.game.movingDown;
-
 export const selectMap = (state: RootState) => state.game.map;
 
-export const selectLastDirection = (state: RootState) =>
-  state.game.lastDirection;
+export const selectDirection = (state: RootState) => state.game.direction;
 
-export const selectMoving = (state: RootState) =>
-  state.game.movingLeft ||
-  state.game.movingRight ||
-  state.game.movingUp ||
-  state.game.movingDown;
+export const selectMoving = (state: RootState) => state.game.moving;
 
 export const selectPreviousMap = (state: RootState) =>
   state.game.mapHistory[state.game.mapHistory.length - 1];

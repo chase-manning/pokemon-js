@@ -1,12 +1,6 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  exitMap,
-  selectMap,
-  selectX,
-  selectY,
-  setMap,
-} from "../state/gameSlice";
+import { exitMap, selectLocation, selectMap, setMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { MapType } from "../maps/map-types";
 
@@ -29,13 +23,16 @@ const Overlay = styled.div<OverlayProps>`
 const MapChangeHandler = () => {
   const [dark, setDark] = useState(false);
   const dispatch = useDispatch();
-  const x = useSelector(selectX);
-  const y = useSelector(selectY);
+  const location = useSelector(selectLocation);
   const map = useSelector(selectMap);
 
   useEffect(() => {
-    const nextMap = map.maps[y] ? map.maps[y][x] : null;
-    const exit = map.exits[y] ? map.exits[y][x] : null;
+    const nextMap = map.maps[location.y]
+      ? map.maps[location.y][location.x]
+      : null;
+    const exit = map.exits[location.y]
+      ? map.exits[location.y][location.x]
+      : null;
 
     if (!nextMap && !exit) return;
 
@@ -58,7 +55,7 @@ const MapChangeHandler = () => {
     } else if (exit) {
       updateMap();
     }
-  }, [x, y, map.maps, dispatch, map.exits]);
+  }, [location, map.maps, dispatch, map.exits]);
 
   return <Overlay show={dark} />;
 };

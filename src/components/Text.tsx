@@ -3,9 +3,8 @@ import styled, { keyframes } from "styled-components";
 import {
   Direction,
   selectDirection,
+  selectLocation,
   selectMap,
-  selectX,
-  selectY,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
@@ -84,8 +83,7 @@ const Text = () => {
   const [text, setText] = useState<string[] | null>(null);
   const [liveIndex, setLiveIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
-  const x = useSelector(selectX);
-  const y = useSelector(selectY);
+  const location = useSelector(selectLocation);
   const direction = useSelector(selectDirection);
   const map = useSelector(selectMap);
 
@@ -114,27 +112,26 @@ const Text = () => {
     }
 
     // Getting coords in front of character
-    let x_ = x;
-    let y_ = y;
+    let { x, y } = location;
     switch (direction) {
       case Direction.Front:
-        y_ += 1;
+        y += 1;
         break;
       case Direction.Back:
-        y_ -= 1;
+        y -= 1;
         break;
       case Direction.Left:
-        x_ -= 1;
+        x -= 1;
         break;
       case Direction.Right:
-        x_ += 1;
+        x += 1;
         break;
     }
 
     // Open new textbox
-    if (map.text[y_] && map.text[y_][x_] && map.text[y_][x_].length > 0) {
+    if (map.text[y] && map.text[y][x] && map.text[y][x].length > 0) {
       emitter.emit(Event.StopMoving);
-      setText(map.text[y_][x_]);
+      setText(map.text[y][x]);
       dispatch(showTextMenu());
     }
   });

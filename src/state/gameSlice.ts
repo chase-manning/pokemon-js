@@ -10,9 +10,13 @@ export enum Direction {
   Right = "right",
 }
 
-export interface GameState {
+export interface LocationType {
   x: number;
   y: number;
+}
+
+export interface GameState {
+  location: LocationType;
   moving: boolean;
   direction: Direction;
   map: MapType;
@@ -20,8 +24,7 @@ export interface GameState {
 }
 
 const initialState: GameState = {
-  x: palletTown.start.x,
-  y: palletTown.start.y,
+  location: palletTown.start,
   moving: false,
   direction: Direction.Front,
   map: palletTown,
@@ -34,49 +37,58 @@ export const gameSlice = createSlice({
   reducers: {
     moveLeft: (state) => {
       state.direction = Direction.Left;
-      if (state.x === 0) return;
-      if (state.map.walls[state.y] && state.map.walls[state.y][state.x - 1])
+      if (state.location.x === 0) return;
+      if (
+        state.map.walls[state.location.y] &&
+        state.map.walls[state.location.y][state.location.x - 1]
+      )
         return;
-      state.x -= 1;
+      state.location.x -= 1;
     },
     moveRight: (state) => {
       state.direction = Direction.Right;
-      if (state.x === state.map.width - 1) return;
-      if (state.map.walls[state.y] && state.map.walls[state.y][state.x + 1])
+      if (state.location.x === state.map.width - 1) return;
+      if (
+        state.map.walls[state.location.y] &&
+        state.map.walls[state.location.y][state.location.x + 1]
+      )
         return;
-      state.x += 1;
+      state.location.x += 1;
     },
     moveUp: (state) => {
       state.direction = Direction.Back;
-      if (state.y === 0) return;
-      if (state.map.walls[state.y - 1] && state.map.walls[state.y - 1][state.x])
+      if (state.location.y === 0) return;
+      if (
+        state.map.walls[state.location.y - 1] &&
+        state.map.walls[state.location.y - 1][state.location.x]
+      )
         return;
-      state.y -= 1;
+      state.location.y -= 1;
     },
     moveDown: (state) => {
       state.direction = Direction.Front;
-      if (state.y === state.map.height - 1) return;
-      if (state.map.walls[state.y + 1] && state.map.walls[state.y + 1][state.x])
+      if (state.location.y === state.map.height - 1) return;
+      if (
+        state.map.walls[state.location.y + 1] &&
+        state.map.walls[state.location.y + 1][state.location.x]
+      )
         return;
-      state.y += 1;
+      state.location.y += 1;
     },
-    setLocation: (state, action: PayloadAction<{ x: number; y: number }>) => {
-      state.x = action.payload.x;
-      state.y = action.payload.y;
+    setLocation: (state, action: PayloadAction<LocationType>) => {
+      state.location = action.payload;
     },
     setMap: (state, action: PayloadAction<MapType>) => {
       state.mapHistory.push(state.map);
       state.map = action.payload;
-      state.x = action.payload.start.x;
-      state.y = action.payload.start.y;
+      state.location = action.payload.start;
     },
     exitMap(state) {
       const previousMap = state.mapHistory.pop();
       const newLocation = state.map.exitReturnLocation;
       if (previousMap && newLocation) {
         state.map = previousMap;
-        state.x = newLocation.x;
-        state.y = newLocation.y;
+        state.location = newLocation;
       }
     },
     setMoving: (state, action: PayloadAction<boolean>) => {
@@ -96,9 +108,7 @@ export const {
   setMoving,
 } = gameSlice.actions;
 
-export const selectX = (state: RootState) => state.game.x;
-
-export const selectY = (state: RootState) => state.game.y;
+export const selectLocation = (state: RootState) => state.game.location;
 
 export const selectMap = (state: RootState) => state.game.map;
 

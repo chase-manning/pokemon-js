@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 import { useSelector } from "react-redux";
-import { selectMap, selectX, selectY } from "../state/gameSlice";
+import { selectLocation, selectMap } from "../state/gameSlice";
 import Character from "./Character";
 import Text from "./Text";
 import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
@@ -73,8 +73,7 @@ const Item = styled.div`
 const Game = () => {
   const showGrid = false; // TODO
 
-  const x = useSelector(selectX);
-  const y = useSelector(selectY);
+  const location = useSelector(selectLocation);
   const map = useSelector(selectMap);
 
   const translateX = `calc(
@@ -82,7 +81,7 @@ const Game = () => {
       (
         ${map.width * BLOCK_PIXEL_WIDTH}vw / 2.34
       ) / ${map.width}
-    ) * ${-x}
+    ) * ${-location.x}
   )`;
 
   const translateY = `calc(
@@ -90,7 +89,7 @@ const Game = () => {
       (
         ${map.height * BLOCK_PIXEL_HEIGHT}vw / 2.34
       ) / ${map.height}
-    ) * ${-y}
+    ) * ${-location.y}
   )`;
 
   return (

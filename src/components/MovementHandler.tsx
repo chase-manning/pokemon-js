@@ -15,10 +15,7 @@ import {
   startMovingLeft,
   startMovingRight,
   startMovingUp,
-  stopMovingDown,
-  stopMovingLeft,
-  stopMovingRight,
-  stopMovingUp,
+  stopMoving,
 } from "../state/gameSlice";
 import { useState } from "react";
 import { AnyAction } from "@reduxjs/toolkit";
@@ -35,7 +32,8 @@ const MovementHandler = () => {
 
   const [interval, setMoveInterval] = useState<NodeJS.Timeout | null>(null);
 
-  const stopMoving = () => {
+  const _stopMoving = () => {
+    dispatch(stopMoving());
     if (interval) clearInterval(interval);
     setMoveInterval(null);
   };
@@ -76,23 +74,19 @@ const MovementHandler = () => {
 
   useEvent(Event.StopDown, () => {
     if (!movingDown) return;
-    dispatch(stopMovingDown());
-    stopMoving();
+    _stopMoving();
   });
   useEvent(Event.StopUp, () => {
     if (!movingUp) return;
-    dispatch(stopMovingUp());
-    stopMoving();
+    _stopMoving();
   });
   useEvent(Event.StopLeft, () => {
     if (!movingLeft) return;
-    dispatch(stopMovingLeft());
-    stopMoving();
+    _stopMoving();
   });
   useEvent(Event.StopRight, () => {
     if (!movingRight) return;
-    dispatch(stopMovingRight());
-    stopMoving();
+    _stopMoving();
   });
 
   return null;

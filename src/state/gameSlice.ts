@@ -92,18 +92,6 @@ export const gameSlice = createSlice({
       state.movingDown = true;
       state.lastDirection = Direction.Front;
     },
-    stopMovingLeft: (state) => {
-      state.movingLeft = false;
-    },
-    stopMovingRight: (state) => {
-      state.movingRight = false;
-    },
-    stopMovingUp: (state) => {
-      state.movingUp = false;
-    },
-    stopMovingDown: (state) => {
-      state.movingDown = false;
-    },
     stopMoving: (state) => {
       state.movingLeft = false;
       state.movingRight = false;
@@ -191,10 +179,6 @@ export const {
   startMovingRight,
   startMovingUp,
   startMovingDown,
-  stopMovingLeft,
-  stopMovingRight,
-  stopMovingUp,
-  stopMovingDown,
   stopMoving,
   setX,
   setY,

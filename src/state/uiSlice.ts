@@ -5,12 +5,14 @@ interface UiState {
   startMenu: boolean;
   textMenu: boolean;
   itemsMenu: boolean;
+  playerMenu: boolean;
 }
 
 const initialState: UiState = {
   startMenu: false,
   textMenu: false,
   itemsMenu: false,
+  playerMenu: false,
 };
 
 export const uiSlice = createSlice({
@@ -35,6 +37,12 @@ export const uiSlice = createSlice({
     hideItemsMenu: (state) => {
       state.itemsMenu = false;
     },
+    showPlayerMenu: (state) => {
+      state.playerMenu = true;
+    },
+    hidePlayerMenu: (state) => {
+      state.playerMenu = false;
+    },
   },
 });
 
@@ -45,6 +53,8 @@ export const {
   hideTextMenu,
   showItemsMenu,
   hideItemsMenu,
+  showPlayerMenu,
+  hidePlayerMenu,
 } = uiSlice.actions;
 
 export const selectStartMenu = (state: RootState) => state.ui.startMenu;
@@ -53,7 +63,12 @@ export const selectTextMenu = (state: RootState) => state.ui.textMenu;
 
 export const selectItemsMenu = (state: RootState) => state.ui.itemsMenu;
 
+export const selectPlayerMenu = (state: RootState) => state.ui.playerMenu;
+
 export const selectMenuOpen = (state: RootState) =>
-  state.ui.startMenu || state.ui.textMenu || state.ui.itemsMenu;
+  state.ui.startMenu ||
+  state.ui.textMenu ||
+  state.ui.itemsMenu ||
+  state.ui.playerMenu;
 
 export default uiSlice.reducer;

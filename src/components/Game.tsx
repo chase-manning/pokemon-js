@@ -10,6 +10,7 @@ import StartMenu from "./StartMenu";
 import KeyboardHandler from "./KeyboardHandler";
 import MovementHandler from "./MovementHandler";
 import ItemsMenu from "./ItemsMenu";
+import PlayerMenu from "./PlayerMenu";
 
 const Container = styled.div`
   position: absolute;
@@ -124,6 +125,7 @@ const Game = () => {
       <Text />
       <StartMenu />
       <ItemsMenu />
+      <PlayerMenu />
 
       {/* Handlers */}
       <MapChangeHandler />

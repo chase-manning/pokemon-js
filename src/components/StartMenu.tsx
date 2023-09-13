@@ -4,6 +4,7 @@ import {
   hideStartMenu,
   selectStartMenu,
   showItemsMenu,
+  showPlayerMenu,
   showStartMenu,
 } from "../state/uiSlice";
 import useEvent from "../app/use-event";
@@ -37,7 +38,7 @@ const StartMenu = () => {
         },
         {
           label: "Player",
-          action: () => console.log("TODO"),
+          action: () => dispatch(showPlayerMenu()),
         },
         {
           label: "Save",

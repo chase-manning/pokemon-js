@@ -1,4 +1,5 @@
 - Implement start menu pages
+  - CREATE DETAILED BREAKDOWN
 - What happens when you click on an item?
 - Add music
 - Add sound effects

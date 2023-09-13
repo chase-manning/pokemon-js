@@ -42,12 +42,14 @@ interface Props {
   show: boolean;
   menuItems: MenuItemType[];
   close: () => void;
+  disabled?: boolean;
 }
 
-const Menu = ({ show, menuItems, close }: Props) => {
+const Menu = ({ show, menuItems, close, disabled }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEvent(Event.Up, () => {
+    if (disabled) return;
     if (!show) return;
     setActiveIndex((prev) => {
       if (prev === 0) return prev;
@@ -56,6 +58,7 @@ const Menu = ({ show, menuItems, close }: Props) => {
   });
 
   useEvent(Event.Down, () => {
+    if (disabled) return;
     if (!show) return;
     setActiveIndex((prev) => {
       if (prev === menuItems.length) return prev;
@@ -64,6 +67,7 @@ const Menu = ({ show, menuItems, close }: Props) => {
   });
 
   useEvent(Event.A, () => {
+    if (disabled) return;
     if (!show) return;
     if (activeIndex < menuItems.length) {
       menuItems[activeIndex].action();

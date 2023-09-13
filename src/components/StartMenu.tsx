@@ -3,6 +3,7 @@ import Menu from "./Menu";
 import {
   hideStartMenu,
   selectStartMenu,
+  selectStartMenuSubOpen,
   showItemsMenu,
   showPlayerMenu,
   showStartMenu,
@@ -13,6 +14,7 @@ import emitter, { Event } from "../app/emitter";
 const StartMenu = () => {
   const dispatch = useDispatch();
   const show = useSelector(selectStartMenu);
+  const disabled = useSelector(selectStartMenuSubOpen);
 
   useEvent(Event.Start, () => {
     dispatch(showStartMenu());
@@ -21,6 +23,7 @@ const StartMenu = () => {
 
   return (
     <Menu
+      disabled={disabled}
       show={show}
       close={() => dispatch(hideStartMenu())}
       menuItems={[

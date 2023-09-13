@@ -71,4 +71,7 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.itemsMenu ||
   state.ui.playerMenu;
 
+export const selectStartMenuSubOpen = (state: RootState) =>
+  state.ui.textMenu || state.ui.itemsMenu || state.ui.playerMenu;
+
 export default uiSlice.reducer;

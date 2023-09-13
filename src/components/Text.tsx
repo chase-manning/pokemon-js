@@ -9,7 +9,7 @@ import {
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
-import { hideTextMenu, showTextMenu } from "../state/uiSlice";
+import { hideTextMenu, selectMenuOpen, showTextMenu } from "../state/uiSlice";
 
 interface TextProps {
   done: boolean;
@@ -86,6 +86,7 @@ const Text = () => {
   const pos = useSelector(selectPos);
   const direction = useSelector(selectDirection);
   const map = useSelector(selectMap);
+  const menuOpen = useSelector(selectMenuOpen);
 
   useEffect(() => {
     setLiveIndex(0);
@@ -99,6 +100,8 @@ const Text = () => {
   }, [text, textIndex]);
 
   useEvent(Event.A, () => {
+    if (menuOpen) return;
+
     // Reading text
     if (text) {
       if (textIndex === text.length - 1) {

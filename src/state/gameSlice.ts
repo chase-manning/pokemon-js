@@ -32,6 +32,7 @@ export interface GameState {
   map: MapType;
   mapHistory: MapType[];
   inventory: InventoryItemType[];
+  name: string;
 }
 
 const initialState: GameState = {
@@ -50,6 +51,7 @@ const initialState: GameState = {
       amount: 1,
     },
   ],
+  name: "Blue",
 };
 
 export const gameSlice = createSlice({
@@ -134,6 +136,9 @@ export const gameSlice = createSlice({
         state.inventory[i].amount -= action.payload.amount;
       }
     },
+    setName: (state, action: PayloadAction<string>) => {
+      state.name = action.payload;
+    },
   },
 });
 
@@ -148,6 +153,7 @@ export const {
   setMoving,
   addInventory,
   removeInventory,
+  setName,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -162,5 +168,7 @@ export const selectInventory = (state: RootState) => state.game.inventory;
 
 export const selectPreviousMap = (state: RootState) =>
   state.game.mapHistory[state.game.mapHistory.length - 1];
+
+export const selectName = (state: RootState) => state.game.name;
 
 export default gameSlice.reducer;

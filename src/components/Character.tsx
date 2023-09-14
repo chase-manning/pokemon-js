@@ -20,21 +20,13 @@ import { useSelector } from "react-redux";
 import { Direction, selectDirection, selectMoving } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { WALK_SPEED } from "../app/constants";
+import PixelImage from "../styles/PixelImage";
 
-const StyledCharacter = styled.img`
+const StyledCharacter = styled(PixelImage)`
   position: absolute;
   top: calc((-16vw / 2.34) / 5);
   left: 0;
   width: calc(16vw / 2.34);
-
-  // TODO this is duplicated everywhere
-  image-rendering: optimizeSpeed;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: pixelated;
-  image-rendering: optimize-contrast;
-  -ms-interpolation-mode: nearest-neighbor;
 `;
 
 const Character = () => {

@@ -11,6 +11,7 @@ import KeyboardHandler from "./KeyboardHandler";
 import MovementHandler from "./MovementHandler";
 import ItemsMenu from "./ItemsMenu";
 import PlayerMenu from "./PlayerMenu";
+import PixelImage from "../styles/PixelImage";
 
 const Container = styled.div`
   position: absolute;
@@ -35,20 +36,12 @@ interface BackgroundProps {
   height: number;
 }
 
-const Background = styled.img<BackgroundProps>`
+const Background = styled(PixelImage)<BackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
   width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
   height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
-
-  image-rendering: optimizeSpeed;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: -o-crisp-edges;
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: pixelated;
-  image-rendering: optimize-contrast;
-  -ms-interpolation-mode: nearest-neighbor;
 
   transition: transform 0.2s steps(5, end);
 `;

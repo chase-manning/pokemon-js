@@ -35,7 +35,7 @@ const Bold = styled.div`
 interface MenuItemType {
   label: string;
   action: () => void;
-  value?: number;
+  value?: string | number;
 }
 
 interface Props {
@@ -112,7 +112,7 @@ const Menu = ({ show, menuItems, close, disabled, noSelect }: Props) => {
                 }
               >
                 {item.label}
-                {item.value && <Bold>{item.value}</Bold>}
+                {item.value !== undefined && <Bold>{item.value}</Bold>}
               </Button>
             </li>
           );

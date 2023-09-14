@@ -1,5 +1,7 @@
-- Implement start menu pages
-  - CREATE DETAILED BREAKDOWN
+- Add Pokedex Menu
+- Add Pokemon Menu
+- Add Save Menu
+- Add Option Menu
 - What happens when you click on an item?
 - Add music
 - Add sound effects

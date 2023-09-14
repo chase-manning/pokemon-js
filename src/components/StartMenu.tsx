@@ -27,14 +27,14 @@ const StartMenu = () => {
       show={show}
       close={() => dispatch(hideStartMenu())}
       menuItems={[
-        {
-          label: "Pokédex",
-          action: () => console.log("TODO"),
-        },
-        {
-          label: "Pokémon",
-          action: () => console.log("TODO"),
-        },
+        // {
+        //   label: "Pokédex",
+        //   action: () => console.log("TODO"),
+        // },
+        // {
+        //   label: "Pokémon",
+        //   action: () => console.log("TODO"),
+        // },
         {
           label: "Item",
           action: () => dispatch(showItemsMenu()),
@@ -43,14 +43,14 @@ const StartMenu = () => {
           label: "Player",
           action: () => dispatch(showPlayerMenu()),
         },
-        {
-          label: "Save",
-          action: () => console.log("TODO"),
-        },
-        {
-          label: "Option",
-          action: () => console.log("TODO"),
-        },
+        // {
+        //   label: "Save",
+        //   action: () => console.log("TODO"),
+        // },
+        // {
+        //   label: "Option",
+        //   action: () => console.log("TODO"),
+        // },
       ]}
     />
   );

@@ -77,6 +77,13 @@ const Menu = ({ show, menuItems, close, disabled }: Props) => {
     }
   });
 
+  useEvent(Event.B, () => {
+    if (disabled) return;
+    if (!show) return;
+    close();
+    setActiveIndex(0);
+  });
+
   if (!show) return null;
 
   return (

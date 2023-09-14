@@ -121,6 +121,14 @@ button,
   }
 }
 
+.no-select-button {
+  padding: 0 0 0 0.2em;
+
+  @media (max-width: 768px) {
+    padding: 0 0 0 0.5em;
+  }
+}
+
 .active-button::before {
   content: "";
   position: absolute;

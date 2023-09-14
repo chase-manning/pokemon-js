@@ -43,9 +43,10 @@ interface Props {
   menuItems: MenuItemType[];
   close: () => void;
   disabled?: boolean;
+  noSelect?: boolean;
 }
 
-const Menu = ({ show, menuItems, close, disabled }: Props) => {
+const Menu = ({ show, menuItems, close, disabled, noSelect }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEvent(Event.Up, () => {
@@ -89,16 +90,27 @@ const Menu = ({ show, menuItems, close, disabled }: Props) => {
   return (
     <StyledMenu>
       <ul className="framed buttons">
-        {[
-          ...menuItems,
-          {
-            label: "Exit",
-            action: close,
-          },
-        ].map((item: MenuItemType, index: number) => {
+        {(noSelect
+          ? menuItems
+          : [
+              ...menuItems,
+              {
+                label: "Exit",
+                action: close,
+              },
+            ]
+        ).map((item: MenuItemType, index: number) => {
           return (
             <li key={item.label}>
-              <Button className={activeIndex === index ? "active-button" : ""}>
+              <Button
+                className={
+                  noSelect
+                    ? "no-select-button"
+                    : activeIndex === index
+                    ? "active-button"
+                    : ""
+                }
+              >
                 {item.label}
                 {item.value && <Bold>{item.value}</Bold>}
               </Button>

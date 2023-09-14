@@ -1,10 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import Menu from "./Menu";
 import { hidePlayerMenu, selectPlayerMenu } from "../state/uiSlice";
+import { selectName } from "../state/gameSlice";
 
 const PlayerMenu = () => {
   const dispatch = useDispatch();
   const show = useSelector(selectPlayerMenu);
+  const name = useSelector(selectName);
 
   return (
     <Menu
@@ -12,9 +14,8 @@ const PlayerMenu = () => {
       close={() => dispatch(hidePlayerMenu())}
       menuItems={[
         {
-          label: "TODO",
-          value: 1,
-          action: () => console.log("TODO"), // This is a reminder to check what the actual values are and populate them
+          label: `Player ${name}`,
+          action: () => console.log("TODO"),
         },
       ]}
     />

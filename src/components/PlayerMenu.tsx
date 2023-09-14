@@ -10,6 +10,7 @@ const PlayerMenu = () => {
 
   return (
     <Menu
+      noSelect
       show={show}
       close={() => dispatch(hidePlayerMenu())}
       menuItems={[

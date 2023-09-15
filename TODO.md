@@ -1,7 +1,8 @@
+- Implement the ability to save
 - Add Pokedex Menu
 - Add Pokemon Menu
-- Add Save Menu
 - Add Option Menu
+- Add title screen
 - What happens when you click on an item?
 - Add music
 - Add sound effects

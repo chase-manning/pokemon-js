@@ -17,8 +17,6 @@ h6 {
   border-width: 21px;
   border-style: solid;
   padding: 1em;
-  margin: 3px;
-  width: 100%;
   max-width: 100%;
 
   @media (max-width: 768px) {
@@ -2274,7 +2272,6 @@ h6 {
 @media only screen and (max-width: 760px) {
   .framed {
     padding: 0.5em;
-    margin: 3px;
   }
   .stats {
     padding: 0.5em;

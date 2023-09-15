@@ -3,12 +3,23 @@ import styled from "styled-components";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 
-const StyledMenu = styled.div`
+interface MenuProps {
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
+}
+
+const StyledMenu = styled.div<MenuProps>`
   position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
+  right: ${(props) => (props.right ? props.right : props.left ? "auto" : "0")};
+  top: ${(props) => (props.top ? props.top : props.bottom ? "auto" : "50%")};
+  left: ${(props) => (props.left ? props.left : "auto")};
+  bottom: ${(props) => (props.bottom ? props.bottom : "auto")};
+  transform: ${(props) =>
+    props.bottom || props.top ? "none" : "translateY(-50%)"};
   z-index: 100;
+  width: auto;
   background: white;
 `;
 
@@ -44,9 +55,25 @@ interface Props {
   close: () => void;
   disabled?: boolean;
   noSelect?: boolean;
+  noExit?: boolean;
+  top?: string;
+  right?: string;
+  bottom?: string;
+  left?: string;
 }
 
-const Menu = ({ show, menuItems, close, disabled, noSelect }: Props) => {
+const Menu = ({
+  show,
+  menuItems,
+  close,
+  disabled,
+  noSelect,
+  noExit,
+  top,
+  right,
+  bottom,
+  left,
+}: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   useEvent(Event.Up, () => {
@@ -79,6 +106,7 @@ const Menu = ({ show, menuItems, close, disabled, noSelect }: Props) => {
   });
 
   useEvent(Event.B, () => {
+    if (noExit) return;
     if (disabled) return;
     if (!show) return;
     close();
@@ -88,9 +116,9 @@ const Menu = ({ show, menuItems, close, disabled, noSelect }: Props) => {
   if (!show) return null;
 
   return (
-    <StyledMenu>
+    <StyledMenu top={top} right={right} bottom={bottom} left={left}>
       <ul className="framed buttons">
-        {(noSelect
+        {(noSelect || noExit
           ? menuItems
           : [
               ...menuItems,

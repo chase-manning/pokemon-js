@@ -12,6 +12,7 @@ import MovementHandler from "./MovementHandler";
 import ItemsMenu from "./ItemsMenu";
 import PlayerMenu from "./PlayerMenu";
 import PixelImage from "../styles/PixelImage";
+import TitleScreen from "./TitleScreen";
 
 const Container = styled.div`
   position: absolute;
@@ -119,6 +120,7 @@ const Game = () => {
       <StartMenu />
       <ItemsMenu />
       <PlayerMenu />
+      <TitleScreen />
 
       {/* Handlers */}
       <MapChangeHandler />

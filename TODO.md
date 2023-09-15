@@ -1,10 +1,13 @@
-- Implement the ability to save
+- Add load functionality
 - Add Pokedex Menu
 - Add Pokemon Menu
 - Add Option Menu
-- Add title screen
 - What happens when you click on an item?
 - Add music
 - Add sound effects
 - Add Windows
 - Intro
+- Add grass around map
+- Make RPCs walk
+- Animate water
+- Animate flowers

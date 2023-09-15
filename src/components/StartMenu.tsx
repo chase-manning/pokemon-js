@@ -12,7 +12,7 @@ import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
 import ConfirmationMenu from "./ConfirmationMenu";
-import { selectName } from "../state/gameSlice";
+import { save, selectName } from "../state/gameSlice";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,9 @@ const StartMenu = () => {
         show={saving}
         preMessage="Would you like to SAVE the game?"
         postMessage={`${name} saved the game!`}
-        confirm={() => console.log("TODO")}
+        confirm={() => {
+          dispatch(save());
+        }}
         cancel={() => setSaving(false)}
       />
     </>

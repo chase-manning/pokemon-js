@@ -139,6 +139,21 @@ export const gameSlice = createSlice({
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
+    save: (state) => {
+      localStorage.setItem("game", JSON.stringify(state));
+    },
+    load: (state) => {
+      const savedGame = localStorage.getItem("game");
+      if (!savedGame) return;
+      const savedGameState = JSON.parse(savedGame) as GameState;
+      state.pos = savedGameState.pos;
+      state.moving = savedGameState.moving;
+      state.direction = savedGameState.direction;
+      state.map = savedGameState.map;
+      state.mapHistory = savedGameState.mapHistory;
+      state.inventory = savedGameState.inventory;
+      state.name = savedGameState.name;
+    },
   },
 });
 
@@ -154,6 +169,8 @@ export const {
   addInventory,
   removeInventory,
   setName,
+  save,
+  load,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

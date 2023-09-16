@@ -149,9 +149,6 @@ import pokemon148 from "../assets/pokemon/front/148.png";
 import pokemon149 from "../assets/pokemon/front/149.png";
 import pokemon150 from "../assets/pokemon/front/150.png";
 import pokemon151 from "../assets/pokemon/front/151.png";
-import pokemon152 from "../assets/pokemon/front/152.png";
-import pokemon153 from "../assets/pokemon/front/153.png";
-import pokemon154 from "../assets/pokemon/front/154.png";
 
 export interface PokemonType {
   image: string;
@@ -309,9 +306,6 @@ const pokemonData: Record<number, PokemonType> = {
   149: { image: pokemon149 },
   150: { image: pokemon150 },
   151: { image: pokemon151 },
-  152: { image: pokemon152 },
-  153: { image: pokemon153 },
-  154: { image: pokemon154 },
 };
 
 export default pokemonData;

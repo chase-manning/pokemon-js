@@ -1,5 +1,7 @@
 import labImage from "../assets/map/lab.png";
-import { MapType } from "./map-types";
+import { MapId, MapType } from "./map-types";
+
+import music from "../assets/music/maps/oaks-laboratory.mp3";
 
 const lab: MapType = {
   name: "Lab",
@@ -79,6 +81,8 @@ const lab: MapType = {
     x: 12,
     y: 12,
   },
+  exitReturnMap: MapId.PalletTown,
+  music: music,
 };
 
 export default lab;

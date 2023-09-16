@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { MapType } from "../maps/map-types";
+import { MapId, MapType } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
+import mapData from "../maps/map-data";
 
 export enum ItemType {
   Potion = "Potion",
@@ -29,8 +30,7 @@ export interface GameState {
   pos: PosType;
   moving: boolean;
   direction: Direction;
-  map: MapType;
-  mapHistory: MapType[];
+  map: MapId;
   inventory: InventoryItemType[];
   name: string;
 }
@@ -39,8 +39,7 @@ const initialState: GameState = {
   pos: palletTown.start,
   moving: false,
   direction: Direction.Down,
-  map: palletTown,
-  mapHistory: [],
+  map: MapId.PalletTown,
   inventory: [
     {
       item: ItemType.Potion,
@@ -61,56 +60,51 @@ export const gameSlice = createSlice({
     moveLeft: (state) => {
       state.direction = Direction.Left;
       if (state.pos.x === 0) return;
-      if (
-        state.map.walls[state.pos.y] &&
-        state.map.walls[state.pos.y][state.pos.x - 1]
-      )
+      const map = mapData[state.map];
+      if (map.walls[state.pos.y] && map.walls[state.pos.y][state.pos.x - 1])
         return;
       state.pos.x -= 1;
     },
     moveRight: (state) => {
       state.direction = Direction.Right;
-      if (state.pos.x === state.map.width - 1) return;
-      if (
-        state.map.walls[state.pos.y] &&
-        state.map.walls[state.pos.y][state.pos.x + 1]
-      )
+      const map = mapData[state.map];
+      if (state.pos.x === map.width - 1) return;
+      if (map.walls[state.pos.y] && map.walls[state.pos.y][state.pos.x + 1])
         return;
       state.pos.x += 1;
     },
     moveUp: (state) => {
       state.direction = Direction.Up;
       if (state.pos.y === 0) return;
-      if (
-        state.map.walls[state.pos.y - 1] &&
-        state.map.walls[state.pos.y - 1][state.pos.x]
-      )
+      const map = mapData[state.map];
+      if (map.walls[state.pos.y - 1] && map.walls[state.pos.y - 1][state.pos.x])
         return;
       state.pos.y -= 1;
     },
     moveDown: (state) => {
       state.direction = Direction.Down;
-      if (state.pos.y === state.map.height - 1) return;
-      if (
-        state.map.walls[state.pos.y + 1] &&
-        state.map.walls[state.pos.y + 1][state.pos.x]
-      )
+      const map = mapData[state.map];
+      if (state.pos.y === map.height - 1) return;
+      if (map.walls[state.pos.y + 1] && map.walls[state.pos.y + 1][state.pos.x])
         return;
       state.pos.y += 1;
     },
     setPos: (state, action: PayloadAction<PosType>) => {
       state.pos = action.payload;
     },
-    setMap: (state, action: PayloadAction<MapType>) => {
-      state.mapHistory.push(state.map);
+    setMap: (state, action: PayloadAction<MapId>) => {
       state.map = action.payload;
-      state.pos = action.payload.start;
+      const map = mapData[action.payload];
+      state.pos = map.start;
     },
     exitMap(state) {
-      const previousMap = state.mapHistory.pop();
-      const newPos = state.map.exitReturnPos;
+      const map = mapData[state.map];
+      if (!map.exitReturnMap) throw new Error("No exit return map");
+      const previousMap = mapData[map.exitReturnMap];
+      if (!previousMap) throw new Error("No previous map");
+      const newPos = map.exitReturnPos;
       if (previousMap && newPos) {
-        state.map = previousMap;
+        state.map = map.exitReturnMap;
         state.pos = newPos;
       }
     },
@@ -150,7 +144,6 @@ export const gameSlice = createSlice({
       state.moving = savedGameState.moving;
       state.direction = savedGameState.direction;
       state.map = savedGameState.map;
-      state.mapHistory = savedGameState.mapHistory;
       state.inventory = savedGameState.inventory;
       state.name = savedGameState.name;
     },
@@ -175,7 +168,7 @@ export const {
 
 export const selectPos = (state: RootState) => state.game.pos;
 
-export const selectMap = (state: RootState) => state.game.map;
+export const selectMap = (state: RootState) => mapData[state.game.map];
 
 export const selectDirection = (state: RootState) => state.game.direction;
 
@@ -183,8 +176,11 @@ export const selectMoving = (state: RootState) => state.game.moving;
 
 export const selectInventory = (state: RootState) => state.game.inventory;
 
-export const selectPreviousMap = (state: RootState) =>
-  state.game.mapHistory[state.game.mapHistory.length - 1];
+export const selectPreviousMap = (state: RootState) => {
+  const returnMap = mapData[state.game.map].exitReturnMap;
+  if (!returnMap) return null;
+  return mapData[returnMap];
+};
 
 export const selectName = (state: RootState) => state.game.name;
 

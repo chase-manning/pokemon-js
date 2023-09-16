@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { exitMap, selectPos, selectMap, setMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
-import { MapType } from "../maps/map-types";
+import { MapId, MapType } from "../maps/map-types";
 
 interface OverlayProps {
   show: boolean;
@@ -32,7 +32,7 @@ const MapChangeHandler = () => {
 
     if (!nextMap && !exit) return;
 
-    const updateMap = (map_?: MapType) => {
+    const updateMap = (map_?: MapId) => {
       setDark(true);
       setTimeout(() => {
         if (map_) {

@@ -2,7 +2,7 @@ import palletTownImage from "../assets/map/pallet-town.png";
 import houseA1f from "./house-a-1f";
 import houseB from "./house-b";
 import lab from "./lab";
-import { MapType } from "./map-types";
+import { MapId, MapType } from "./map-types";
 
 const palletTown: MapType = {
   name: "Pallet Town",
@@ -236,11 +236,11 @@ const palletTown: MapType = {
   },
   maps: {
     5: {
-      5: houseA1f,
-      13: houseB,
+      5: MapId.PalletTownHouseA1F,
+      13: MapId.PalletTownHouseB,
     },
     11: {
-      12: lab,
+      12: MapId.PalletTownLab,
     },
   },
   exits: {},

@@ -1,5 +1,5 @@
 import houseBImage from "../assets/map/house-b.png";
-import { MapType } from "./map-types";
+import { MapId, MapType } from "./map-types";
 
 const houseB: MapType = {
   name: "House B",
@@ -63,6 +63,7 @@ const houseB: MapType = {
     x: 13,
     y: 6,
   },
+  exitReturnMap: MapId.PalletTown,
 };
 
 export default houseB;

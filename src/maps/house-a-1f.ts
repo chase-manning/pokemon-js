@@ -1,6 +1,6 @@
 import houseA1FImage from "../assets/map/house-a-1f.png";
 import houseA2f from "./house-a-2f";
-import { MapType } from "./map-types";
+import { MapId, MapType } from "./map-types";
 
 const houseA1f: MapType = {
   name: "House A 1F",
@@ -47,7 +47,7 @@ const houseA1f: MapType = {
   },
   maps: {
     1: {
-      7: houseA2f,
+      7: MapId.PalletTownHouseA2F,
     },
   },
   exits: {
@@ -60,6 +60,7 @@ const houseA1f: MapType = {
     x: 5,
     y: 6,
   },
+  exitReturnMap: MapId.PalletTown,
 };
 
 export default houseA1f;

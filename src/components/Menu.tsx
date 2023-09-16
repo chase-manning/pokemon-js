@@ -79,6 +79,8 @@ const Menu = ({
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
+  // TODO Change to use Arrow component
+
   useEvent(Event.Up, () => {
     if (disabled) return;
     if (!show) return;

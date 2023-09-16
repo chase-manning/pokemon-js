@@ -8,6 +8,7 @@ interface MenuProps {
   right?: string;
   bottom?: string;
   left?: string;
+  width?: string;
 }
 
 const StyledMenu = styled.div<MenuProps>`
@@ -19,7 +20,7 @@ const StyledMenu = styled.div<MenuProps>`
   transform: ${(props) =>
     props.bottom || props.top ? "none" : "translateY(-50%)"};
   z-index: 100;
-  width: auto;
+  width: ${(props) => (props.width ? props.width : "auto")};
   background: white;
 `;
 
@@ -60,6 +61,7 @@ interface Props {
   right?: string;
   bottom?: string;
   left?: string;
+  width?: string;
 }
 
 const Menu = ({
@@ -73,6 +75,7 @@ const Menu = ({
   right,
   bottom,
   left,
+  width,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -116,8 +119,14 @@ const Menu = ({
   if (!show) return null;
 
   return (
-    <StyledMenu top={top} right={right} bottom={bottom} left={left}>
-      <ul className="framed buttons">
+    <StyledMenu
+      top={top}
+      right={right}
+      bottom={bottom}
+      left={left}
+      width={width}
+    >
+      <ul className="framed buttons" style={{ width: "100%" }}>
         {(noSelect || noExit
           ? menuItems
           : [

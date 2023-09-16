@@ -76,7 +76,7 @@ const ColorOverlay = styled.div`
   height: 100%;
   background: var(--bg);
   mix-blend-mode: darken;
-  opacity: 1;
+  opacity: 0.5;
 `;
 
 const Game = () => {

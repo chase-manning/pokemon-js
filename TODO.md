@@ -1,6 +1,5 @@
 ===========
 
-- Reduce pink
 - Add pokemon battles (break down)
 - Add Pokemon Stats
 - Make it a PWA

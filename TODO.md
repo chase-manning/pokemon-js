@@ -1,8 +1,8 @@
 ===========
 
-- Add Pokemon Menu
 - Reduce pink
 - Add pokemon battles (break down)
+- Add Pokemon Stats
 - Make it a PWA
 - Test with no internet after download
 - Add more maps

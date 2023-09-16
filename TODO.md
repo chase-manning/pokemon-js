@@ -1,13 +1,17 @@
+- Stop moving when in load screen
+
+===========
+
 - Add load functionality
-- Add Pokedex Menu
-- Add Pokemon Menu
-- Add Option Menu
-- What happens when you click on an item?
 - Add music
 - Add sound effects
-- Add Windows
-- Intro
+- What happens when you click on an item?
+- Add more maps
 - Add grass around map
+- Add Pokemon Menu
+- Add pokemon battles (break down)
+- Add Option Menu
+- Add Pokedex Menu
 - Make RPCs walk
 - Animate water
 - Animate flowers

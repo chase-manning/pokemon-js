@@ -13,6 +13,7 @@ import ItemsMenu from "./ItemsMenu";
 import PlayerMenu from "./PlayerMenu";
 import PixelImage from "../styles/PixelImage";
 import TitleScreen from "./TitleScreen";
+import LoadScreen from "./LoadScreen";
 
 const Container = styled.div`
   position: absolute;
@@ -120,6 +121,7 @@ const Game = () => {
       <StartMenu />
       <ItemsMenu />
       <PlayerMenu />
+      <LoadScreen />
       <TitleScreen />
 
       {/* Handlers */}

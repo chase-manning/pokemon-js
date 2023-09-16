@@ -99,7 +99,8 @@ export const gameSlice = createSlice({
     },
     exitMap(state) {
       const map = mapData[state.map];
-      if (!map.exitReturnMap) throw new Error("No exit return map");
+      if (!map) return;
+      if (!map.exitReturnMap) return;
       const previousMap = mapData[map.exitReturnMap];
       if (!previousMap) throw new Error("No previous map");
       const newPos = map.exitReturnPos;

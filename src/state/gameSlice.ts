@@ -26,6 +26,13 @@ export interface PosType {
   y: number;
 }
 
+export interface PokemonInstance {
+  id: number;
+  level: number;
+  experience: number;
+  hp: number;
+}
+
 export interface GameState {
   pos: PosType;
   moving: boolean;
@@ -33,6 +40,7 @@ export interface GameState {
   map: MapId;
   inventory: InventoryItemType[];
   name: string;
+  pokemon: PokemonInstance[];
 }
 
 const initialState: GameState = {
@@ -51,6 +59,44 @@ const initialState: GameState = {
     },
   ],
   name: "Blue",
+  pokemon: [
+    {
+      id: 1,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+    {
+      id: 4,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+    {
+      id: 7,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+    {
+      id: 1,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+    {
+      id: 4,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+    {
+      id: 7,
+      level: 5,
+      experience: 0,
+      hp: 20,
+    },
+  ],
 };
 
 export const gameSlice = createSlice({
@@ -186,5 +232,7 @@ export const selectPreviousMap = (state: RootState) => {
 export const selectName = (state: RootState) => state.game.name;
 
 export const selectHasSave = () => localStorage.getItem("game") !== null;
+
+export const selectPokemon = (state: RootState) => state.game.pokemon;
 
 export default gameSlice.reducer;

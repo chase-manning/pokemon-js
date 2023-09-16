@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import usePokemon from "../app/use-pokemon";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
+import { useDispatch, useSelector } from "react-redux";
+import { hideTitleMenu, selectTitleMenu } from "../state/uiSlice";
 
 const StyledTitleScreen = styled.div`
   position: absolute;
@@ -106,8 +108,9 @@ const Pokemon = styled(PixelImage)`
 `;
 
 const TitleScreen = () => {
+  const dispatch = useDispatch();
   const [pokemonId, setPokemonId] = useState<number | null>(null);
-  const [show, setShow] = useState(true);
+  const show = useSelector(selectTitleMenu);
 
   const pokemon = usePokemon(pokemonId);
 
@@ -127,7 +130,7 @@ const TitleScreen = () => {
 
   useEvent(Event.A, () => {
     if (!show) return;
-    setShow(false);
+    dispatch(hideTitleMenu());
   });
 
   if (!show) return null;

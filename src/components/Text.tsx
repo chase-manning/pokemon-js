@@ -9,7 +9,12 @@ import {
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
-import { hideTextMenu, selectStartMenu, showTextMenu } from "../state/uiSlice";
+import {
+  hideText,
+  selectStartMenu,
+  selectText,
+  showText,
+} from "../state/uiSlice";
 
 interface TextProps {
   done: boolean;
@@ -35,6 +40,7 @@ const StyledText = styled.div<TextProps>`
   width: 100%;
   height: 20%;
   background: var(--bg);
+  z-index: 1000;
 
   h1 {
     color: black;
@@ -80,13 +86,13 @@ const StyledText = styled.div<TextProps>`
 
 const Text = () => {
   const dispatch = useDispatch();
-  const [text, setText] = useState<string[] | null>(null);
   const [liveIndex, setLiveIndex] = useState(0);
   const [textIndex, setTextIndex] = useState(0);
   const pos = useSelector(selectPos);
   const direction = useSelector(selectDirection);
   const map = useSelector(selectMap);
   const startMenuOpen = useSelector(selectStartMenu);
+  const text = useSelector(selectText);
 
   useEffect(() => {
     setLiveIndex(0);
@@ -100,19 +106,18 @@ const Text = () => {
   }, [text, textIndex]);
 
   useEvent(Event.A, () => {
-    if (startMenuOpen) return;
-
     // Reading text
     if (text) {
       if (textIndex === text.length - 1) {
         setTextIndex(0);
-        setText(null);
-        dispatch(hideTextMenu());
+        dispatch(hideText());
       } else {
         setTextIndex((prev) => prev + 1);
       }
       return;
     }
+
+    if (startMenuOpen) return;
 
     // Getting coords in front of character
     let { x, y } = pos;
@@ -134,8 +139,7 @@ const Text = () => {
     // Open new textbox
     if (map.text[y] && map.text[y][x] && map.text[y][x].length > 0) {
       emitter.emit(Event.StopMoving);
-      setText(map.text[y][x]);
-      dispatch(showTextMenu());
+      dispatch(showText(map.text[y][x]));
     }
   });
 

@@ -1,9 +1,9 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 
 interface UiState {
+  text: string[] | null;
   startMenu: boolean;
-  textMenu: boolean;
   itemsMenu: boolean;
   playerMenu: boolean;
   titleMenu: boolean;
@@ -12,8 +12,8 @@ interface UiState {
 }
 
 const initialState: UiState = {
+  text: null,
   startMenu: false,
-  textMenu: false,
   itemsMenu: false,
   playerMenu: false,
   titleMenu: true,
@@ -30,12 +30,6 @@ export const uiSlice = createSlice({
     },
     hideStartMenu: (state) => {
       state.startMenu = false;
-    },
-    showTextMenu: (state) => {
-      state.textMenu = true;
-    },
-    hideTextMenu: (state) => {
-      state.textMenu = false;
     },
     showItemsMenu: (state) => {
       state.itemsMenu = true;
@@ -58,14 +52,18 @@ export const uiSlice = createSlice({
     hideGameboyMenu: (state) => {
       state.gameboyMenu = false;
     },
+    showText: (state, action: PayloadAction<string[]>) => {
+      state.text = action.payload;
+    },
+    hideText: (state) => {
+      state.text = null;
+    },
   },
 });
 
 export const {
   showStartMenu,
   hideStartMenu,
-  showTextMenu,
-  hideTextMenu,
   showItemsMenu,
   hideItemsMenu,
   showPlayerMenu,
@@ -73,11 +71,15 @@ export const {
   hideTitleMenu,
   hideLoadMenu,
   hideGameboyMenu,
+  showText,
+  hideText,
 } = uiSlice.actions;
+
+export const selectText = (state: RootState) => state.ui.text;
 
 export const selectStartMenu = (state: RootState) => state.ui.startMenu;
 
-export const selectTextMenu = (state: RootState) => state.ui.textMenu;
+export const selectTextMenu = (state: RootState) => state.ui.text !== null;
 
 export const selectItemsMenu = (state: RootState) => state.ui.itemsMenu;
 
@@ -91,7 +93,7 @@ export const selectGameboyMenu = (state: RootState) => state.ui.gameboyMenu;
 
 export const selectMenuOpen = (state: RootState) =>
   state.ui.startMenu ||
-  state.ui.textMenu ||
+  state.ui.text !== null ||
   state.ui.itemsMenu ||
   state.ui.playerMenu ||
   state.ui.titleMenu ||

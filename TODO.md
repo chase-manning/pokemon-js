@@ -1,8 +1,6 @@
-- Title screen and load screen are a different color. Consider alighning them
-
 ===========
 
-- Add load functionality
+- Title screen and load screen are a different color. Consider alighning them
 - Add music
 - Add sound effects
 - What happens when you click on an item?

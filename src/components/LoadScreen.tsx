@@ -59,7 +59,7 @@ const LoadScreen = () => {
         noExit
         top="2px"
         left="2px"
-        width="12rem"
+        padding="7vw"
       />
     </StyledLoadScreen>
   );

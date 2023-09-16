@@ -8,20 +8,20 @@ interface MenuProps {
   right?: string;
   bottom?: string;
   left?: string;
-  width?: string;
 }
 
 const StyledMenu = styled.div<MenuProps>`
   position: absolute;
+  z-index: 100;
+  width: auto;
+  background: white;
+
   right: ${(props) => (props.right ? props.right : props.left ? "auto" : "0")};
   top: ${(props) => (props.top ? props.top : props.bottom ? "auto" : "50%")};
   left: ${(props) => (props.left ? props.left : "auto")};
   bottom: ${(props) => (props.bottom ? props.bottom : "auto")};
   transform: ${(props) =>
     props.bottom || props.top ? "none" : "translateY(-50%)"};
-  z-index: 100;
-  width: ${(props) => (props.width ? props.width : "auto")};
-  background: white;
 `;
 
 const Button = styled.button`
@@ -61,7 +61,7 @@ interface Props {
   right?: string;
   bottom?: string;
   left?: string;
-  width?: string;
+  padding?: string;
 }
 
 const Menu = ({
@@ -75,7 +75,7 @@ const Menu = ({
   right,
   bottom,
   left,
-  width,
+  padding,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -119,14 +119,11 @@ const Menu = ({
   if (!show) return null;
 
   return (
-    <StyledMenu
-      top={top}
-      right={right}
-      bottom={bottom}
-      left={left}
-      width={width}
-    >
-      <ul className="framed buttons" style={{ width: "100%" }}>
+    <StyledMenu top={top} right={right} bottom={bottom} left={left}>
+      <ul
+        className="framed buttons"
+        style={{ width: "100%", paddingRight: padding || "0" }}
+      >
         {(noSelect || noExit
           ? menuItems
           : [

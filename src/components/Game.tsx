@@ -62,7 +62,6 @@ const Overlay = styled.div<BackgroundProps>`
 
 const Item = styled.div`
   border: solid 1px red;
-  color: red;
   font-size: 3rem;
   font-weight: bold;
 `;

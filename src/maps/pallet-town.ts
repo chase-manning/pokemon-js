@@ -1,8 +1,7 @@
 import palletTownImage from "../assets/map/pallet-town.png";
-import houseA1f from "./house-a-1f";
-import houseB from "./house-b";
-import lab from "./lab";
 import { MapId, MapType } from "./map-types";
+
+import music from "../assets/music/maps/pallet-town.mp3";
 
 const palletTown: MapType = {
   name: "Pallet Town",
@@ -244,6 +243,7 @@ const palletTown: MapType = {
     },
   },
   exits: {},
+  music,
 };
 
 export default palletTown;

@@ -15,6 +15,7 @@ import PixelImage from "../styles/PixelImage";
 import TitleScreen from "./TitleScreen";
 import LoadScreen from "./LoadScreen";
 import SoundHandler from "./SoundHandler";
+import GameboyMenu from "./GameboyMenu";
 
 const Container = styled.div`
   position: absolute;
@@ -135,6 +136,7 @@ const Game = () => {
       <PlayerMenu />
       <LoadScreen />
       <TitleScreen />
+      <GameboyMenu />
 
       {/* Handlers */}
       <MapChangeHandler />

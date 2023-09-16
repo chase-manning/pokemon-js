@@ -4,7 +4,7 @@ import { selectGameboyMenu, selectLoadMenu } from "../state/uiSlice";
 
 import mapData from "../maps/map-data";
 import { MapType } from "../maps/map-types";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 

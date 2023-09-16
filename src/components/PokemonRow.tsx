@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { PokemonInstance } from "../state/gameSlice";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import { PokemonMetadata } from "../app/pokemon-metadata";
+import HealthBar from "./HealthBar";
+import Frame from "./Frame";
+import Arrow from "./Arrow";
 
 import monsterA from "../assets/pokemon/simple/monster-a.png";
 import monsterB from "../assets/pokemon/simple/monster-b.png";
@@ -23,8 +26,6 @@ import grassA from "../assets/pokemon/simple/grass-a.png";
 import grassB from "../assets/pokemon/simple/grass-b.png";
 import ballA from "../assets/pokemon/simple/ball-a.png";
 import ballB from "../assets/pokemon/simple/ball-b.png";
-import HealthBar from "./HealthBar";
-import Frame from "./Frame";
 
 const getIcons = (metadata: PokemonMetadata): { a: string; b: string } => {
   // Is Voltorb or Electrode
@@ -97,6 +98,9 @@ const ArrowContainer = styled.div`
 const Image = styled.img`
   height: 19px;
   margin-right: 10px;
+
+  // The sprites seemd a bit yellow, so I added a hue-rotate filter to make them more red
+  filter: hue-rotate(-25deg);
 `;
 
 const InfoContainer = styled.div`
@@ -149,20 +153,23 @@ const Container = styled.div`
 
 interface Props {
   pokemon: PokemonInstance;
+  active: boolean;
 }
 
-const PokemonRow = ({ pokemon }: Props) => {
+const PokemonRow = ({ pokemon, active }: Props) => {
   const metadata = usePokemonMetadata(pokemon.id);
 
   if (!metadata) return null;
 
   const icons = getIcons(metadata);
 
-  // TODO Add animation during hover
+  // TODO Add animation while active
 
   return (
     <StyledPokemonRow>
-      <ArrowContainer>{">"}</ArrowContainer>
+      <ArrowContainer>
+        <Arrow show={active} />
+      </ArrowContainer>
       <Image src={icons.a} />
 
       <InfoContainer>

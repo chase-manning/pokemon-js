@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { load, selectHasSave } from "../state/gameSlice";
 import {
   hideLoadMenu,
+  selectGameboyMenu,
   selectLoadMenu,
   selectTitleMenu,
 } from "../state/uiSlice";
@@ -15,6 +16,7 @@ const StyledLoadScreen = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
+  z-index: 1000;
   background: var(--bg);
 `;
 
@@ -24,6 +26,7 @@ const LoadScreen = () => {
   const hasSave = useSelector(selectHasSave);
   const titleOpen = useSelector(selectTitleMenu);
   const show = useSelector(selectLoadMenu);
+  const gameboyOpen = useSelector(selectGameboyMenu);
 
   const loadComplete = () => {
     setLoaded(true);
@@ -52,7 +55,7 @@ const LoadScreen = () => {
   return (
     <StyledLoadScreen>
       <Menu
-        disabled={titleOpen}
+        disabled={titleOpen || gameboyOpen}
         show={!loaded}
         menuItems={hasSave ? [loadGame, newGame] : [newGame]}
         close={() => setLoaded(true)}

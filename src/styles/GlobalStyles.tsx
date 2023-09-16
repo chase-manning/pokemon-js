@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
     :root {
         --bg: #f7e8f8;
+        --main: black;
     }
 
     * {
@@ -11,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         padding: 0;
         font-size: 10px;
         -webkit-tap-highlight-color: transparent;
+        color: var(--main);
     }
 
     button {

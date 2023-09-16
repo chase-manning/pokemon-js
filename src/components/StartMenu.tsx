@@ -13,6 +13,7 @@ import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
 import ConfirmationMenu from "./ConfirmationMenu";
 import { save, selectName } from "../state/gameSlice";
+import PokemonList from "./PokemonList";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ const StartMenu = () => {
   const name = useSelector(selectName);
 
   const [saving, setSaving] = useState(false);
+  const [pokemon, setPokemon] = useState(false);
 
   useEvent(Event.Start, () => {
     dispatch(showStartMenu());
@@ -30,7 +32,7 @@ const StartMenu = () => {
   return (
     <>
       <Menu
-        disabled={disabled || saving}
+        disabled={disabled || saving || pokemon}
         show={show}
         close={() => dispatch(hideStartMenu())}
         menuItems={[
@@ -38,10 +40,10 @@ const StartMenu = () => {
           //   label: "Pokédex",
           //   action: () => console.log("TODO"),
           // },
-          // {
-          //   label: "Pokémon",
-          //   action: () => console.log("TODO"),
-          // },
+          {
+            label: "Pokémon",
+            action: () => setPokemon(true),
+          },
           {
             label: "Item",
             action: () => dispatch(showItemsMenu()),
@@ -60,6 +62,7 @@ const StartMenu = () => {
           // },
         ]}
       />
+      {pokemon && <PokemonList />}
       <ConfirmationMenu
         show={saving}
         preMessage="Would you like to SAVE the game?"

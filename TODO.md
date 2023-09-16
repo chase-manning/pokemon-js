@@ -1,10 +1,11 @@
 ===========
 
-- What happens when you click on an item?
-- Add more maps
-- Add grass around map
 - Add Pokemon Menu
+- Reduce pink
 - Add pokemon battles (break down)
+- Make it a PWA
+- Test with no internet after download
+- Add more maps
 - Add Option Menu
 - Add Pokedex Menu
 - Make music a seamless infinite loop

@@ -1,4 +1,4 @@
-- Stop moving when in load screen
+- Title screen and load screen are a different color. Consider alighning them
 
 ===========
 

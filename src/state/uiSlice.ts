@@ -7,6 +7,7 @@ interface UiState {
   itemsMenu: boolean;
   playerMenu: boolean;
   titleMenu: boolean;
+  loadMenu: boolean;
 }
 
 const initialState: UiState = {
@@ -15,6 +16,7 @@ const initialState: UiState = {
   itemsMenu: false,
   playerMenu: false,
   titleMenu: true,
+  loadMenu: true,
 };
 
 export const uiSlice = createSlice({
@@ -48,6 +50,9 @@ export const uiSlice = createSlice({
     hideTitleMenu: (state) => {
       state.titleMenu = false;
     },
+    hideLoadMenu: (state) => {
+      state.loadMenu = false;
+    },
   },
 });
 
@@ -61,6 +66,7 @@ export const {
   showPlayerMenu,
   hidePlayerMenu,
   hideTitleMenu,
+  hideLoadMenu,
 } = uiSlice.actions;
 
 export const selectStartMenu = (state: RootState) => state.ui.startMenu;
@@ -73,12 +79,15 @@ export const selectPlayerMenu = (state: RootState) => state.ui.playerMenu;
 
 export const selectTitleMenu = (state: RootState) => state.ui.titleMenu;
 
+export const selectLoadMenu = (state: RootState) => state.ui.loadMenu;
+
 export const selectMenuOpen = (state: RootState) =>
   state.ui.startMenu ||
   state.ui.textMenu ||
   state.ui.itemsMenu ||
   state.ui.playerMenu ||
-  state.ui.titleMenu;
+  state.ui.titleMenu ||
+  state.ui.loadMenu;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;

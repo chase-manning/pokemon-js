@@ -5,7 +5,7 @@ import title from "../assets/title-screen/pokemon.png";
 import subtitle from "../assets/title-screen/version.png";
 import player from "../assets/title-screen/player.png";
 import { useEffect, useState } from "react";
-import usePokemon from "../app/use-pokemon";
+import usePokemon from "../app/use-pokemon-metadata";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import { useDispatch, useSelector } from "react-redux";
@@ -147,7 +147,7 @@ const TitleScreen = () => {
         <SubTitle src={subtitle} />
       </TitleSection>
       <PokemonPlayerContainer>
-        {pokemon && <Pokemon src={pokemon.image} />}
+        {pokemon && <Pokemon src={pokemon.images.front} />}
         <Player src={player} />
       </PokemonPlayerContainer>
     </StyledTitleScreen>

@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { MapId, MapType } from "../maps/map-types";
+import { MapId } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 import mapData from "../maps/map-data";
 

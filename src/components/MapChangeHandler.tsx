@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { exitMap, selectPos, selectMap, setMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
-import { MapId, MapType } from "../maps/map-types";
+import { MapId } from "../maps/map-types";
 
 interface OverlayProps {
   show: boolean;

@@ -7,7 +7,7 @@ interface FrameProps {
 
 const StyledFrame = styled.div<FrameProps>`
   position: relative;
-  background: #f8f8f8;
+  background: var(--bg);
 
   width: ${(props: FrameProps) => (props.wide ? "100%" : "auto")};
   height: ${(props: FrameProps) => (props.tall ? "100%" : "auto")};

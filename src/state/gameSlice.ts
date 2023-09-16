@@ -194,6 +194,12 @@ export const gameSlice = createSlice({
       state.inventory = savedGameState.inventory;
       state.name = savedGameState.name;
     },
+    swapPokemonPositions: (state, action: PayloadAction<number[]>) => {
+      const [index1, index2] = action.payload;
+      const temp = state.pokemon[index1];
+      state.pokemon[index1] = state.pokemon[index2];
+      state.pokemon[index2] = temp;
+    },
   },
 });
 
@@ -211,6 +217,7 @@ export const {
   setName,
   save,
   load,
+  swapPokemonPositions,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

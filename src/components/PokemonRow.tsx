@@ -3,7 +3,6 @@ import { PokemonInstance } from "../state/gameSlice";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import { PokemonMetadata } from "../app/pokemon-metadata";
 import HealthBar from "./HealthBar";
-import Frame from "./Frame";
 import Arrow from "./Arrow";
 
 import monsterA from "../assets/pokemon/simple/monster-a.png";
@@ -138,19 +137,6 @@ const Health = styled.div`
   margin-left: 10px;
 `;
 
-const Container = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 20%;
-  z-index: 100;
-
-  @media (max-width: 768px) {
-    height: 30%;
-  }
-`;
-
 interface Props {
   pokemon: PokemonInstance;
   active: boolean;
@@ -185,12 +171,6 @@ const PokemonRow = ({ pokemon, active }: Props) => {
         <Level>{`:L${pokemon.level}`}</Level>
         <Health>{`${pokemon.hp}/${metadata.baseStats.hp}`}</Health>
       </StatsContainer>
-
-      <Container>
-        <Frame wide tall>
-          Choose a Pokémon
-        </Frame>
-      </Container>
     </StyledPokemonRow>
   );
 };

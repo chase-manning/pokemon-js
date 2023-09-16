@@ -57,6 +57,7 @@ const ConfirmationMenu = ({
       </Container>
       <Menu
         left="0"
+        width="6rem"
         bottom={isMobile ? "30%" : "20%"}
         show={!confirmed}
         close={() => setConfirmed(true)}

@@ -1,3 +1,7 @@
+- Save menu isn't pink
+- Pallet town music plays twice when leaving house
+- Intro music not playing
+
 ===========
 
 - Add music

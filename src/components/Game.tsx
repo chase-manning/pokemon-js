@@ -14,6 +14,7 @@ import PlayerMenu from "./PlayerMenu";
 import PixelImage from "../styles/PixelImage";
 import TitleScreen from "./TitleScreen";
 import LoadScreen from "./LoadScreen";
+import SoundHandler from "./SoundHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -139,6 +140,7 @@ const Game = () => {
       <MapChangeHandler />
       <KeyboardHandler />
       <MovementHandler />
+      <SoundHandler />
     </Container>
   );
 };

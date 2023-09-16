@@ -5,7 +5,7 @@ import Game from "./components/Game";
 import "./App.css";
 
 const StyledApp = styled.div`
-  background: var(--bg);
+  background: black;
   width: 100vw;
   height: 100dvh;
   display: flex;

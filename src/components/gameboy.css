@@ -462,7 +462,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(to top, #aaa 0%, white 100%);
+  /* background: linear-gradient(to top, #aaa 0%, white 100%); */
+  /* TODO Where does this background show, what should it be instead */
+  background: green;
 }
 
 .gameboy {

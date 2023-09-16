@@ -15,7 +15,7 @@ const StyledLoadScreen = styled.div`
   left: 0;
   height: 100%;
   width: 100%;
-  background: white;
+  background: var(--bg);
 `;
 
 const LoadScreen = () => {

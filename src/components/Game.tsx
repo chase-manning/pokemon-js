@@ -67,6 +67,17 @@ const Item = styled.div`
   font-weight: bold;
 `;
 
+const ColorOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg);
+  mix-blend-mode: darken;
+  opacity: 1;
+`;
+
 const Game = () => {
   const showGrid = false; // TODO
 
@@ -117,6 +128,7 @@ const Game = () => {
           </Overlay>
         )}
       </StyledGame>
+      <ColorOverlay />
       <Text />
       <StartMenu />
       <ItemsMenu />

@@ -34,7 +34,7 @@ const StyledText = styled.div<TextProps>`
   bottom: 0;
   width: 100%;
   height: 20%;
-  background: #f8f8f8;
+  background: var(--bg);
 
   h1 {
     color: black;

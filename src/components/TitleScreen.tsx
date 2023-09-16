@@ -18,7 +18,7 @@ const StyledTitleScreen = styled.div`
   height: 100%;
   width: 100%;
   z-index: 1000;
-  background: #f7e8f8;
+  background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;

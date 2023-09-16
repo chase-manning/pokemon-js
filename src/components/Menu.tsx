@@ -14,7 +14,7 @@ const StyledMenu = styled.div<MenuProps>`
   position: absolute;
   z-index: 100;
   width: auto;
-  background: white;
+  background: var(--bg);
 
   right: ${(props) => (props.right ? props.right : props.left ? "auto" : "0")};
   top: ${(props) => (props.top ? props.top : props.bottom ? "auto" : "50%")};

@@ -27,7 +27,8 @@
       "specialDefense": 65,
       "speed": 45
     },
-    "types": ["grass", "poison"]
+    "types": ["grass", "poison"],
+    "evolution": { "pokemon": 2, "level": 16 }
   },
   "2": {
     "baseExperience": 142,
@@ -57,7 +58,8 @@
       "specialDefense": 80,
       "speed": 60
     },
-    "types": ["grass", "poison"]
+    "types": ["grass", "poison"],
+    "evolution": { "pokemon": 3, "level": 32 }
   },
   "3": {
     "baseExperience": 263,
@@ -116,7 +118,8 @@
       "specialDefense": 50,
       "speed": 65
     },
-    "types": ["fire"]
+    "types": ["fire"],
+    "evolution": { "pokemon": 5, "level": 16 }
   },
   "5": {
     "baseExperience": 142,
@@ -145,7 +148,8 @@
       "specialDefense": 65,
       "speed": 80
     },
-    "types": ["fire"]
+    "types": ["fire"],
+    "evolution": { "pokemon": 6, "level": 36 }
   },
   "6": {
     "baseExperience": 267,
@@ -203,7 +207,8 @@
       "specialDefense": 64,
       "speed": 43
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 8, "level": 16 }
   },
   "8": {
     "baseExperience": 142,
@@ -232,7 +237,8 @@
       "specialDefense": 80,
       "speed": 58
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 9, "level": 36 }
   },
   "9": {
     "baseExperience": 265,
@@ -284,7 +290,8 @@
       "specialDefense": 20,
       "speed": 45
     },
-    "types": ["bug"]
+    "types": ["bug"],
+    "evolution": { "pokemon": 11, "level": 7 }
   },
   "11": {
     "baseExperience": 72,
@@ -304,7 +311,8 @@
       "specialDefense": 25,
       "speed": 30
     },
-    "types": ["bug"]
+    "types": ["bug"],
+    "evolution": { "pokemon": 12, "level": 10 }
   },
   "12": {
     "baseExperience": 198,
@@ -355,7 +363,8 @@
       "specialDefense": 20,
       "speed": 50
     },
-    "types": ["bug", "poison"]
+    "types": ["bug", "poison"],
+    "evolution": { "pokemon": 14, "level": 7 }
   },
   "14": {
     "baseExperience": 72,
@@ -375,7 +384,8 @@
       "specialDefense": 25,
       "speed": 35
     },
-    "types": ["bug", "poison"]
+    "types": ["bug", "poison"],
+    "evolution": { "pokemon": 15, "level": 10 }
   },
   "15": {
     "baseExperience": 178,
@@ -430,7 +440,8 @@
       "specialDefense": 35,
       "speed": 56
     },
-    "types": ["normal", "flying"]
+    "types": ["normal", "flying"],
+    "evolution": { "pokemon": 17, "level": 18 }
   },
   "17": {
     "baseExperience": 122,
@@ -458,7 +469,8 @@
       "specialDefense": 50,
       "speed": 71
     },
-    "types": ["normal", "flying"]
+    "types": ["normal", "flying"],
+    "evolution": { "pokemon": 18, "level": 36 }
   },
   "18": {
     "baseExperience": 216,
@@ -513,7 +525,8 @@
       "specialDefense": 35,
       "speed": 72
     },
-    "types": ["normal"]
+    "types": ["normal"],
+    "evolution": { "pokemon": 20, "level": 20 }
   },
   "20": {
     "baseExperience": 145,
@@ -568,7 +581,8 @@
       "specialDefense": 31,
       "speed": 70
     },
-    "types": ["normal", "flying"]
+    "types": ["normal", "flying"],
+    "evolution": { "pokemon": 22, "level": 20 }
   },
   "22": {
     "baseExperience": 155,
@@ -624,7 +638,8 @@
       "specialDefense": 54,
       "speed": 55
     },
-    "types": ["poison"]
+    "types": ["poison"],
+    "evolution": { "pokemon": 24, "level": 22 }
   },
   "24": {
     "baseExperience": 157,
@@ -731,7 +746,8 @@
       "specialDefense": 30,
       "speed": 40
     },
-    "types": ["ground"]
+    "types": ["ground"],
+    "evolution": { "pokemon": 28, "level": 22 }
   },
   "28": {
     "baseExperience": 158,
@@ -787,7 +803,8 @@
       "specialDefense": 40,
       "speed": 41
     },
-    "types": ["poison"]
+    "types": ["poison"],
+    "evolution": { "pokemon": 30, "level": 16 }
   },
   "30": {
     "baseExperience": 128,
@@ -871,7 +888,8 @@
       "specialDefense": 40,
       "speed": 50
     },
-    "types": ["poison"]
+    "types": ["poison"],
+    "evolution": { "pokemon": 33, "level": 16 }
   },
   "33": {
     "baseExperience": 128,
@@ -1113,7 +1131,8 @@
       "specialDefense": 40,
       "speed": 55
     },
-    "types": ["poison", "flying"]
+    "types": ["poison", "flying"],
+    "evolution": { "pokemon": 42, "level": 22 }
   },
   "42": {
     "baseExperience": 159,
@@ -1169,7 +1188,8 @@
       "specialDefense": 65,
       "speed": 30
     },
-    "types": ["grass", "poison"]
+    "types": ["grass", "poison"],
+    "evolution": { "pokemon": 44, "level": 21 }
   },
   "44": {
     "baseExperience": 138,
@@ -1250,7 +1270,8 @@
       "specialDefense": 55,
       "speed": 25
     },
-    "types": ["bug", "grass"]
+    "types": ["bug", "grass"],
+    "evolution": { "pokemon": 47, "level": 24 }
   },
   "47": {
     "baseExperience": 142,
@@ -1306,7 +1327,8 @@
       "specialDefense": 55,
       "speed": 45
     },
-    "types": ["bug", "poison"]
+    "types": ["bug", "poison"],
+    "evolution": { "pokemon": 49, "level": 31 }
   },
   "49": {
     "baseExperience": 158,
@@ -1362,7 +1384,8 @@
       "specialDefense": 45,
       "speed": 95
     },
-    "types": ["ground"]
+    "types": ["ground"],
+    "evolution": { "pokemon": 51, "level": 26 }
   },
   "51": {
     "baseExperience": 149,
@@ -1417,7 +1440,8 @@
       "specialDefense": 40,
       "speed": 90
     },
-    "types": ["normal"]
+    "types": ["normal"],
+    "evolution": { "pokemon": 53, "level": 28 }
   },
   "53": {
     "baseExperience": 154,
@@ -1472,7 +1496,8 @@
       "specialDefense": 50,
       "speed": 55
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 55, "level": 33 }
   },
   "55": {
     "baseExperience": 175,
@@ -1527,7 +1552,8 @@
       "specialDefense": 45,
       "speed": 70
     },
-    "types": ["fighting"]
+    "types": ["fighting"],
+    "evolution": { "pokemon": 57, "level": 28 }
   },
   "57": {
     "baseExperience": 159,
@@ -1636,7 +1662,8 @@
       "specialDefense": 40,
       "speed": 90
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 61, "level": 25 }
   },
   "61": {
     "baseExperience": 135,
@@ -1709,7 +1736,8 @@
       "specialDefense": 55,
       "speed": 90
     },
-    "types": ["psychic"]
+    "types": ["psychic"],
+    "evolution": { "pokemon": 64, "level": 16 }
   },
   "64": {
     "baseExperience": 140,
@@ -1792,7 +1820,8 @@
       "specialDefense": 35,
       "speed": 35
     },
-    "types": ["fighting"]
+    "types": ["fighting"],
+    "evolution": { "pokemon": 67, "level": 28 }
   },
   "67": {
     "baseExperience": 142,
@@ -1876,7 +1905,8 @@
       "specialDefense": 30,
       "speed": 40
     },
-    "types": ["grass", "poison"]
+    "types": ["grass", "poison"],
+    "evolution": { "pokemon": 70, "level": 21 }
   },
   "70": {
     "baseExperience": 137,
@@ -1963,7 +1993,8 @@
       "specialDefense": 100,
       "speed": 70
     },
-    "types": ["water", "poison"]
+    "types": ["water", "poison"],
+    "evolution": { "pokemon": 73, "level": 30 }
   },
   "73": {
     "baseExperience": 180,
@@ -2021,7 +2052,8 @@
       "specialDefense": 30,
       "speed": 20
     },
-    "types": ["rock", "ground"]
+    "types": ["rock", "ground"],
+    "evolution": { "pokemon": 75, "level": 25 }
   },
   "75": {
     "baseExperience": 137,
@@ -2105,7 +2137,8 @@
       "specialDefense": 65,
       "speed": 90
     },
-    "types": ["fire"]
+    "types": ["fire"],
+    "evolution": { "pokemon": 78, "level": 40 }
   },
   "78": {
     "baseExperience": 175,
@@ -2161,7 +2194,8 @@
       "specialDefense": 40,
       "speed": 15
     },
-    "types": ["water", "psychic"]
+    "types": ["water", "psychic"],
+    "evolution": { "pokemon": 80, "level": 37 }
   },
   "80": {
     "baseExperience": 172,
@@ -2218,7 +2252,8 @@
       "specialDefense": 55,
       "speed": 45
     },
-    "types": ["electric", "steel"]
+    "types": ["electric", "steel"],
+    "evolution": { "pokemon": 82, "level": 30 }
   },
   "82": {
     "baseExperience": 163,
@@ -2302,7 +2337,8 @@
       "specialDefense": 35,
       "speed": 75
     },
-    "types": ["normal", "flying"]
+    "types": ["normal", "flying"],
+    "evolution": { "pokemon": 85, "level": 31 }
   },
   "85": {
     "baseExperience": 165,
@@ -2357,7 +2393,8 @@
       "specialDefense": 70,
       "speed": 45
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 87, "level": 34 }
   },
   "87": {
     "baseExperience": 166,
@@ -2413,7 +2450,8 @@
       "specialDefense": 50,
       "speed": 25
     },
-    "types": ["poison"]
+    "types": ["poison"],
+    "evolution": { "pokemon": 89, "level": 38 }
   },
   "89": {
     "baseExperience": 175,
@@ -2522,7 +2560,8 @@
       "specialDefense": 35,
       "speed": 80
     },
-    "types": ["ghost", "poison"]
+    "types": ["ghost", "poison"],
+    "evolution": { "pokemon": 93, "level": 25 }
   },
   "93": {
     "baseExperience": 142,
@@ -2631,7 +2670,8 @@
       "specialDefense": 90,
       "speed": 42
     },
-    "types": ["psychic"]
+    "types": ["psychic"],
+    "evolution": { "pokemon": 97, "level": 26 }
   },
   "97": {
     "baseExperience": 169,
@@ -2688,7 +2728,8 @@
       "specialDefense": 25,
       "speed": 50
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 99, "level": 28 }
   },
   "99": {
     "baseExperience": 166,
@@ -2744,7 +2785,8 @@
       "specialDefense": 55,
       "speed": 100
     },
-    "types": ["electric"]
+    "types": ["electric"],
+    "evolution": { "pokemon": 101, "level": 30 }
   },
   "101": {
     "baseExperience": 172,
@@ -2853,7 +2895,8 @@
       "specialDefense": 50,
       "speed": 35
     },
-    "types": ["ground"]
+    "types": ["ground"],
+    "evolution": { "pokemon": 105, "level": 28 }
   },
   "105": {
     "baseExperience": 149,
@@ -2993,7 +3036,8 @@
       "specialDefense": 45,
       "speed": 35
     },
-    "types": ["poison"]
+    "types": ["poison"],
+    "evolution": { "pokemon": 110, "level": 35 }
   },
   "110": {
     "baseExperience": 172,
@@ -3049,7 +3093,8 @@
       "specialDefense": 30,
       "speed": 25
     },
-    "types": ["ground", "rock"]
+    "types": ["ground", "rock"],
+    "evolution": { "pokemon": 112, "level": 42 }
   },
   "112": {
     "baseExperience": 170,
@@ -3190,7 +3235,8 @@
       "specialDefense": 25,
       "speed": 60
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 117, "level": 32 }
   },
   "117": {
     "baseExperience": 154,
@@ -3246,7 +3292,8 @@
       "specialDefense": 50,
       "speed": 63
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 119, "level": 33 }
   },
   "119": {
     "baseExperience": 158,
@@ -3546,7 +3593,8 @@
       "specialDefense": 20,
       "speed": 80
     },
-    "types": ["water"]
+    "types": ["water"],
+    "evolution": { "pokemon": 130, "level": 20 }
   },
   "130": {
     "baseExperience": 189,
@@ -3796,7 +3844,8 @@
       "specialDefense": 55,
       "speed": 35
     },
-    "types": ["rock", "water"]
+    "types": ["rock", "water"],
+    "evolution": { "pokemon": 139, "level": 40 }
   },
   "139": {
     "baseExperience": 173,
@@ -3850,7 +3899,8 @@
       "specialDefense": 45,
       "speed": 55
     },
-    "types": ["rock", "water"]
+    "types": ["rock", "water"],
+    "evolution": { "pokemon": 141, "level": 40 }
   },
   "141": {
     "baseExperience": 173,
@@ -4038,7 +4088,8 @@
       "specialDefense": 50,
       "speed": 50
     },
-    "types": ["dragon"]
+    "types": ["dragon"],
+    "evolution": { "pokemon": 148, "level": 30 }
   },
   "148": {
     "baseExperience": 147,
@@ -4066,7 +4117,8 @@
       "specialDefense": 70,
       "speed": 70
     },
-    "types": ["dragon"]
+    "types": ["dragon"],
+    "evolution": { "pokemon": 149, "level": 55 }
   },
   "149": {
     "baseExperience": 300,

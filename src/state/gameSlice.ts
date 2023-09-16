@@ -188,4 +188,6 @@ export const selectPreviousMap = (state: RootState) =>
 
 export const selectName = (state: RootState) => state.game.name;
 
+export const selectHasSave = () => localStorage.getItem("game") !== null;
+
 export default gameSlice.reducer;

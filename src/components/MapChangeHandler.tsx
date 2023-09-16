@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { exitMap, selectPos, selectMap, setMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { MapId } from "../maps/map-types";
+import emitter, { Event } from "../app/emitter";
 
 interface OverlayProps {
   show: boolean;
@@ -35,6 +36,7 @@ const MapChangeHandler = () => {
     const updateMap = (map_?: MapId) => {
       setDark(true);
       setTimeout(() => {
+        emitter.emit(Event.EnterDoor);
         if (map_) {
           dispatch(setMap(map_));
         } else {

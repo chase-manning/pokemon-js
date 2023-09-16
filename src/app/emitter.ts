@@ -18,6 +18,7 @@ export enum Event {
   Start = "start",
   Select = "select",
   StopMoving = "stop-moving",
+  EnterDoor = "enter-door",
 }
 
 const emitter = mitt();

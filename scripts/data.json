@@ -1,5 +1,5 @@
 {
-  "0": {
+  "1": {
     "baseExperience": 64,
     "height": 7,
     "id": 1,
@@ -29,7 +29,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "1": {
+  "2": {
     "baseExperience": 142,
     "height": 10,
     "id": 2,
@@ -59,7 +59,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "2": {
+  "3": {
     "baseExperience": 263,
     "height": 20,
     "id": 3,
@@ -89,7 +89,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "3": {
+  "4": {
     "baseExperience": 62,
     "height": 6,
     "id": 4,
@@ -118,7 +118,7 @@
     },
     "types": ["fire"]
   },
-  "4": {
+  "5": {
     "baseExperience": 142,
     "height": 11,
     "id": 5,
@@ -147,7 +147,7 @@
     },
     "types": ["fire"]
   },
-  "5": {
+  "6": {
     "baseExperience": 267,
     "height": 17,
     "id": 6,
@@ -176,7 +176,7 @@
     },
     "types": ["fire", "flying"]
   },
-  "6": {
+  "7": {
     "baseExperience": 63,
     "height": 5,
     "id": 7,
@@ -205,7 +205,7 @@
     },
     "types": ["water"]
   },
-  "7": {
+  "8": {
     "baseExperience": 142,
     "height": 10,
     "id": 8,
@@ -234,7 +234,7 @@
     },
     "types": ["water"]
   },
-  "8": {
+  "9": {
     "baseExperience": 265,
     "height": 16,
     "id": 9,
@@ -263,7 +263,7 @@
     },
     "types": ["water"]
   },
-  "9": {
+  "10": {
     "baseExperience": 39,
     "height": 3,
     "id": 10,
@@ -286,7 +286,7 @@
     },
     "types": ["bug"]
   },
-  "10": {
+  "11": {
     "baseExperience": 72,
     "height": 7,
     "id": 11,
@@ -306,7 +306,7 @@
     },
     "types": ["bug"]
   },
-  "11": {
+  "12": {
     "baseExperience": 198,
     "height": 11,
     "id": 12,
@@ -334,7 +334,7 @@
     },
     "types": ["bug", "flying"]
   },
-  "12": {
+  "13": {
     "baseExperience": 39,
     "height": 3,
     "id": 13,
@@ -357,7 +357,7 @@
     },
     "types": ["bug", "poison"]
   },
-  "13": {
+  "14": {
     "baseExperience": 72,
     "height": 6,
     "id": 14,
@@ -377,7 +377,7 @@
     },
     "types": ["bug", "poison"]
   },
-  "14": {
+  "15": {
     "baseExperience": 178,
     "height": 10,
     "id": 15,
@@ -404,7 +404,7 @@
     },
     "types": ["bug", "poison"]
   },
-  "15": {
+  "16": {
     "baseExperience": 50,
     "height": 3,
     "id": 16,
@@ -432,7 +432,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "16": {
+  "17": {
     "baseExperience": 122,
     "height": 11,
     "id": 17,
@@ -460,7 +460,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "17": {
+  "18": {
     "baseExperience": 216,
     "height": 15,
     "id": 18,
@@ -488,7 +488,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "18": {
+  "19": {
     "baseExperience": 51,
     "height": 3,
     "id": 19,
@@ -515,7 +515,7 @@
     },
     "types": ["normal"]
   },
-  "19": {
+  "20": {
     "baseExperience": 145,
     "height": 7,
     "id": 20,
@@ -542,7 +542,7 @@
     },
     "types": ["normal"]
   },
-  "20": {
+  "21": {
     "baseExperience": 52,
     "height": 3,
     "id": 21,
@@ -570,7 +570,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "21": {
+  "22": {
     "baseExperience": 155,
     "height": 12,
     "id": 22,
@@ -598,7 +598,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "22": {
+  "23": {
     "baseExperience": 58,
     "height": 20,
     "id": 23,
@@ -626,7 +626,7 @@
     },
     "types": ["poison"]
   },
-  "23": {
+  "24": {
     "baseExperience": 157,
     "height": 35,
     "id": 24,
@@ -654,7 +654,7 @@
     },
     "types": ["poison"]
   },
-  "24": {
+  "25": {
     "baseExperience": 112,
     "height": 4,
     "id": 25,
@@ -682,7 +682,7 @@
     },
     "types": ["electric"]
   },
-  "25": {
+  "26": {
     "baseExperience": 243,
     "height": 8,
     "id": 26,
@@ -706,7 +706,7 @@
     },
     "types": ["electric"]
   },
-  "26": {
+  "27": {
     "baseExperience": 60,
     "height": 6,
     "id": 27,
@@ -733,7 +733,7 @@
     },
     "types": ["ground"]
   },
-  "27": {
+  "28": {
     "baseExperience": 158,
     "height": 10,
     "id": 28,
@@ -760,7 +760,7 @@
     },
     "types": ["ground"]
   },
-  "28": {
+  "29": {
     "baseExperience": 55,
     "height": 4,
     "id": 29,
@@ -789,7 +789,7 @@
     },
     "types": ["poison"]
   },
-  "29": {
+  "30": {
     "baseExperience": 128,
     "height": 8,
     "id": 30,
@@ -818,7 +818,7 @@
     },
     "types": ["poison"]
   },
-  "30": {
+  "31": {
     "baseExperience": 253,
     "height": 13,
     "id": 31,
@@ -844,7 +844,7 @@
     },
     "types": ["poison", "ground"]
   },
-  "31": {
+  "32": {
     "baseExperience": 55,
     "height": 5,
     "id": 32,
@@ -873,7 +873,7 @@
     },
     "types": ["poison"]
   },
-  "32": {
+  "33": {
     "baseExperience": 128,
     "height": 9,
     "id": 33,
@@ -902,7 +902,7 @@
     },
     "types": ["poison"]
   },
-  "33": {
+  "34": {
     "baseExperience": 253,
     "height": 14,
     "id": 34,
@@ -927,7 +927,7 @@
     },
     "types": ["poison", "ground"]
   },
-  "34": {
+  "35": {
     "baseExperience": 113,
     "height": 6,
     "id": 35,
@@ -956,7 +956,7 @@
     },
     "types": ["fairy"]
   },
-  "35": {
+  "36": {
     "baseExperience": 242,
     "height": 13,
     "id": 36,
@@ -981,7 +981,7 @@
     },
     "types": ["fairy"]
   },
-  "36": {
+  "37": {
     "baseExperience": 60,
     "height": 6,
     "id": 37,
@@ -1009,7 +1009,7 @@
     },
     "types": ["fire"]
   },
-  "37": {
+  "38": {
     "baseExperience": 177,
     "height": 11,
     "id": 38,
@@ -1034,7 +1034,7 @@
     },
     "types": ["fire"]
   },
-  "38": {
+  "39": {
     "baseExperience": 95,
     "height": 5,
     "id": 39,
@@ -1063,7 +1063,7 @@
     },
     "types": ["normal", "fairy"]
   },
-  "39": {
+  "40": {
     "baseExperience": 218,
     "height": 10,
     "id": 40,
@@ -1088,7 +1088,7 @@
     },
     "types": ["normal", "fairy"]
   },
-  "40": {
+  "41": {
     "baseExperience": 49,
     "height": 8,
     "id": 41,
@@ -1115,7 +1115,7 @@
     },
     "types": ["poison", "flying"]
   },
-  "41": {
+  "42": {
     "baseExperience": 159,
     "height": 16,
     "id": 42,
@@ -1143,7 +1143,7 @@
     },
     "types": ["poison", "flying"]
   },
-  "42": {
+  "43": {
     "baseExperience": 64,
     "height": 5,
     "id": 43,
@@ -1171,7 +1171,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "43": {
+  "44": {
     "baseExperience": 138,
     "height": 8,
     "id": 44,
@@ -1199,7 +1199,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "44": {
+  "45": {
     "baseExperience": 245,
     "height": 12,
     "id": 45,
@@ -1225,7 +1225,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "45": {
+  "46": {
     "baseExperience": 57,
     "height": 3,
     "id": 46,
@@ -1252,7 +1252,7 @@
     },
     "types": ["bug", "grass"]
   },
-  "46": {
+  "47": {
     "baseExperience": 142,
     "height": 10,
     "id": 47,
@@ -1279,7 +1279,7 @@
     },
     "types": ["bug", "grass"]
   },
-  "47": {
+  "48": {
     "baseExperience": 61,
     "height": 10,
     "id": 48,
@@ -1308,7 +1308,7 @@
     },
     "types": ["bug", "poison"]
   },
-  "48": {
+  "49": {
     "baseExperience": 158,
     "height": 15,
     "id": 49,
@@ -1337,7 +1337,7 @@
     },
     "types": ["bug", "poison"]
   },
-  "49": {
+  "50": {
     "baseExperience": 53,
     "height": 2,
     "id": 50,
@@ -1364,7 +1364,7 @@
     },
     "types": ["ground"]
   },
-  "50": {
+  "51": {
     "baseExperience": 149,
     "height": 7,
     "id": 51,
@@ -1391,7 +1391,7 @@
     },
     "types": ["ground"]
   },
-  "51": {
+  "52": {
     "baseExperience": 58,
     "height": 4,
     "id": 52,
@@ -1419,7 +1419,7 @@
     },
     "types": ["normal"]
   },
-  "52": {
+  "53": {
     "baseExperience": 154,
     "height": 10,
     "id": 53,
@@ -1447,7 +1447,7 @@
     },
     "types": ["normal"]
   },
-  "53": {
+  "54": {
     "baseExperience": 64,
     "height": 8,
     "id": 54,
@@ -1474,7 +1474,7 @@
     },
     "types": ["water"]
   },
-  "54": {
+  "55": {
     "baseExperience": 175,
     "height": 17,
     "id": 55,
@@ -1501,7 +1501,7 @@
     },
     "types": ["water"]
   },
-  "55": {
+  "56": {
     "baseExperience": 61,
     "height": 5,
     "id": 56,
@@ -1529,7 +1529,7 @@
     },
     "types": ["fighting"]
   },
-  "56": {
+  "57": {
     "baseExperience": 159,
     "height": 10,
     "id": 57,
@@ -1557,7 +1557,7 @@
     },
     "types": ["fighting"]
   },
-  "57": {
+  "58": {
     "baseExperience": 70,
     "height": 7,
     "id": 58,
@@ -1585,7 +1585,7 @@
     },
     "types": ["fire"]
   },
-  "58": {
+  "59": {
     "baseExperience": 194,
     "height": 19,
     "id": 59,
@@ -1610,7 +1610,7 @@
     },
     "types": ["fire"]
   },
-  "59": {
+  "60": {
     "baseExperience": 60,
     "height": 6,
     "id": 60,
@@ -1638,7 +1638,7 @@
     },
     "types": ["water"]
   },
-  "60": {
+  "61": {
     "baseExperience": 135,
     "height": 10,
     "id": 61,
@@ -1666,7 +1666,7 @@
     },
     "types": ["water"]
   },
-  "61": {
+  "62": {
     "baseExperience": 255,
     "height": 13,
     "id": 62,
@@ -1691,7 +1691,7 @@
     },
     "types": ["water", "fighting"]
   },
-  "62": {
+  "63": {
     "baseExperience": 62,
     "height": 9,
     "id": 63,
@@ -1711,7 +1711,7 @@
     },
     "types": ["psychic"]
   },
-  "63": {
+  "64": {
     "baseExperience": 140,
     "height": 13,
     "id": 64,
@@ -1739,7 +1739,7 @@
     },
     "types": ["psychic"]
   },
-  "64": {
+  "65": {
     "baseExperience": 250,
     "height": 15,
     "id": 65,
@@ -1767,7 +1767,7 @@
     },
     "types": ["psychic"]
   },
-  "65": {
+  "66": {
     "baseExperience": 61,
     "height": 8,
     "id": 66,
@@ -1794,7 +1794,7 @@
     },
     "types": ["fighting"]
   },
-  "66": {
+  "67": {
     "baseExperience": 142,
     "height": 15,
     "id": 67,
@@ -1821,7 +1821,7 @@
     },
     "types": ["fighting"]
   },
-  "67": {
+  "68": {
     "baseExperience": 253,
     "height": 16,
     "id": 68,
@@ -1848,7 +1848,7 @@
     },
     "types": ["fighting"]
   },
-  "68": {
+  "69": {
     "baseExperience": 60,
     "height": 7,
     "id": 69,
@@ -1878,7 +1878,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "69": {
+  "70": {
     "baseExperience": 137,
     "height": 10,
     "id": 70,
@@ -1908,7 +1908,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "70": {
+  "71": {
     "baseExperience": 221,
     "height": 17,
     "id": 71,
@@ -1935,7 +1935,7 @@
     },
     "types": ["grass", "poison"]
   },
-  "71": {
+  "72": {
     "baseExperience": 67,
     "height": 9,
     "id": 72,
@@ -1965,7 +1965,7 @@
     },
     "types": ["water", "poison"]
   },
-  "72": {
+  "73": {
     "baseExperience": 180,
     "height": 16,
     "id": 73,
@@ -1995,7 +1995,7 @@
     },
     "types": ["water", "poison"]
   },
-  "73": {
+  "74": {
     "baseExperience": 60,
     "height": 4,
     "id": 74,
@@ -2023,7 +2023,7 @@
     },
     "types": ["rock", "ground"]
   },
-  "74": {
+  "75": {
     "baseExperience": 137,
     "height": 10,
     "id": 75,
@@ -2051,7 +2051,7 @@
     },
     "types": ["rock", "ground"]
   },
-  "75": {
+  "76": {
     "baseExperience": 223,
     "height": 14,
     "id": 76,
@@ -2079,7 +2079,7 @@
     },
     "types": ["rock", "ground"]
   },
-  "76": {
+  "77": {
     "baseExperience": 82,
     "height": 10,
     "id": 77,
@@ -2107,7 +2107,7 @@
     },
     "types": ["fire"]
   },
-  "77": {
+  "78": {
     "baseExperience": 175,
     "height": 17,
     "id": 78,
@@ -2135,7 +2135,7 @@
     },
     "types": ["fire"]
   },
-  "78": {
+  "79": {
     "baseExperience": 63,
     "height": 12,
     "id": 79,
@@ -2163,7 +2163,7 @@
     },
     "types": ["water", "psychic"]
   },
-  "79": {
+  "80": {
     "baseExperience": 172,
     "height": 16,
     "id": 80,
@@ -2192,7 +2192,7 @@
     },
     "types": ["water", "psychic"]
   },
-  "80": {
+  "81": {
     "baseExperience": 65,
     "height": 3,
     "id": 81,
@@ -2220,7 +2220,7 @@
     },
     "types": ["electric", "steel"]
   },
-  "81": {
+  "82": {
     "baseExperience": 163,
     "height": 10,
     "id": 82,
@@ -2248,7 +2248,7 @@
     },
     "types": ["electric", "steel"]
   },
-  "82": {
+  "83": {
     "baseExperience": 132,
     "height": 8,
     "id": 83,
@@ -2276,7 +2276,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "83": {
+  "84": {
     "baseExperience": 62,
     "height": 14,
     "id": 84,
@@ -2304,7 +2304,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "84": {
+  "85": {
     "baseExperience": 165,
     "height": 18,
     "id": 85,
@@ -2332,7 +2332,7 @@
     },
     "types": ["normal", "flying"]
   },
-  "85": {
+  "86": {
     "baseExperience": 65,
     "height": 11,
     "id": 86,
@@ -2359,7 +2359,7 @@
     },
     "types": ["water"]
   },
-  "86": {
+  "87": {
     "baseExperience": 166,
     "height": 17,
     "id": 87,
@@ -2386,7 +2386,7 @@
     },
     "types": ["water", "ice"]
   },
-  "87": {
+  "88": {
     "baseExperience": 65,
     "height": 9,
     "id": 88,
@@ -2415,7 +2415,7 @@
     },
     "types": ["poison"]
   },
-  "88": {
+  "89": {
     "baseExperience": 175,
     "height": 12,
     "id": 89,
@@ -2444,7 +2444,7 @@
     },
     "types": ["poison"]
   },
-  "89": {
+  "90": {
     "baseExperience": 61,
     "height": 3,
     "id": 90,
@@ -2472,7 +2472,7 @@
     },
     "types": ["water"]
   },
-  "90": {
+  "91": {
     "baseExperience": 184,
     "height": 15,
     "id": 91,
@@ -2498,7 +2498,7 @@
     },
     "types": ["water", "ice"]
   },
-  "91": {
+  "92": {
     "baseExperience": 62,
     "height": 13,
     "id": 92,
@@ -2524,7 +2524,7 @@
     },
     "types": ["ghost", "poison"]
   },
-  "92": {
+  "93": {
     "baseExperience": 142,
     "height": 16,
     "id": 93,
@@ -2550,7 +2550,7 @@
     },
     "types": ["ghost", "poison"]
   },
-  "93": {
+  "94": {
     "baseExperience": 250,
     "height": 15,
     "id": 94,
@@ -2576,7 +2576,7 @@
     },
     "types": ["ghost", "poison"]
   },
-  "94": {
+  "95": {
     "baseExperience": 77,
     "height": 88,
     "id": 95,
@@ -2604,7 +2604,7 @@
     },
     "types": ["rock", "ground"]
   },
-  "95": {
+  "96": {
     "baseExperience": 66,
     "height": 10,
     "id": 96,
@@ -2633,7 +2633,7 @@
     },
     "types": ["psychic"]
   },
-  "96": {
+  "97": {
     "baseExperience": 169,
     "height": 16,
     "id": 97,
@@ -2662,7 +2662,7 @@
     },
     "types": ["psychic"]
   },
-  "97": {
+  "98": {
     "baseExperience": 65,
     "height": 4,
     "id": 98,
@@ -2690,7 +2690,7 @@
     },
     "types": ["water"]
   },
-  "98": {
+  "99": {
     "baseExperience": 166,
     "height": 13,
     "id": 99,
@@ -2718,7 +2718,7 @@
     },
     "types": ["water"]
   },
-  "99": {
+  "100": {
     "baseExperience": 66,
     "height": 5,
     "id": 100,
@@ -2746,7 +2746,7 @@
     },
     "types": ["electric"]
   },
-  "100": {
+  "101": {
     "baseExperience": 172,
     "height": 12,
     "id": 101,
@@ -2774,7 +2774,7 @@
     },
     "types": ["electric"]
   },
-  "101": {
+  "102": {
     "baseExperience": 65,
     "height": 4,
     "id": 102,
@@ -2803,7 +2803,7 @@
     },
     "types": ["grass", "psychic"]
   },
-  "102": {
+  "103": {
     "baseExperience": 186,
     "height": 20,
     "id": 103,
@@ -2827,7 +2827,7 @@
     },
     "types": ["grass", "psychic"]
   },
-  "103": {
+  "104": {
     "baseExperience": 64,
     "height": 4,
     "id": 104,
@@ -2855,7 +2855,7 @@
     },
     "types": ["ground"]
   },
-  "104": {
+  "105": {
     "baseExperience": 149,
     "height": 10,
     "id": 105,
@@ -2883,7 +2883,7 @@
     },
     "types": ["ground"]
   },
-  "105": {
+  "106": {
     "baseExperience": 159,
     "height": 15,
     "id": 106,
@@ -2911,7 +2911,7 @@
     },
     "types": ["fighting"]
   },
-  "106": {
+  "107": {
     "baseExperience": 159,
     "height": 14,
     "id": 107,
@@ -2939,7 +2939,7 @@
     },
     "types": ["fighting"]
   },
-  "107": {
+  "108": {
     "baseExperience": 77,
     "height": 12,
     "id": 108,
@@ -2967,7 +2967,7 @@
     },
     "types": ["normal"]
   },
-  "108": {
+  "109": {
     "baseExperience": 68,
     "height": 6,
     "id": 109,
@@ -2995,7 +2995,7 @@
     },
     "types": ["poison"]
   },
-  "109": {
+  "110": {
     "baseExperience": 172,
     "height": 12,
     "id": 110,
@@ -3023,7 +3023,7 @@
     },
     "types": ["poison"]
   },
-  "110": {
+  "111": {
     "baseExperience": 69,
     "height": 10,
     "id": 111,
@@ -3051,7 +3051,7 @@
     },
     "types": ["ground", "rock"]
   },
-  "111": {
+  "112": {
     "baseExperience": 170,
     "height": 19,
     "id": 112,
@@ -3079,7 +3079,7 @@
     },
     "types": ["ground", "rock"]
   },
-  "112": {
+  "113": {
     "baseExperience": 395,
     "height": 11,
     "id": 113,
@@ -3108,7 +3108,7 @@
     },
     "types": ["normal"]
   },
-  "113": {
+  "114": {
     "baseExperience": 87,
     "height": 10,
     "id": 114,
@@ -3137,7 +3137,7 @@
     },
     "types": ["grass"]
   },
-  "114": {
+  "115": {
     "baseExperience": 172,
     "height": 22,
     "id": 115,
@@ -3165,7 +3165,7 @@
     },
     "types": ["normal"]
   },
-  "115": {
+  "116": {
     "baseExperience": 59,
     "height": 4,
     "id": 116,
@@ -3192,7 +3192,7 @@
     },
     "types": ["water"]
   },
-  "116": {
+  "117": {
     "baseExperience": 154,
     "height": 12,
     "id": 117,
@@ -3219,7 +3219,7 @@
     },
     "types": ["water"]
   },
-  "117": {
+  "118": {
     "baseExperience": 64,
     "height": 6,
     "id": 118,
@@ -3248,7 +3248,7 @@
     },
     "types": ["water"]
   },
-  "118": {
+  "119": {
     "baseExperience": 158,
     "height": 13,
     "id": 119,
@@ -3277,7 +3277,7 @@
     },
     "types": ["water"]
   },
-  "119": {
+  "120": {
     "baseExperience": 68,
     "height": 8,
     "id": 120,
@@ -3306,7 +3306,7 @@
     },
     "types": ["water"]
   },
-  "120": {
+  "121": {
     "baseExperience": 182,
     "height": 11,
     "id": 121,
@@ -3330,7 +3330,7 @@
     },
     "types": ["water", "psychic"]
   },
-  "121": {
+  "122": {
     "baseExperience": 161,
     "height": 13,
     "id": 122,
@@ -3357,7 +3357,7 @@
     },
     "types": ["psychic", "fairy"]
   },
-  "122": {
+  "123": {
     "baseExperience": 100,
     "height": 15,
     "id": 123,
@@ -3385,7 +3385,7 @@
     },
     "types": ["bug", "flying"]
   },
-  "123": {
+  "124": {
     "baseExperience": 159,
     "height": 14,
     "id": 124,
@@ -3414,7 +3414,7 @@
     },
     "types": ["ice", "psychic"]
   },
-  "124": {
+  "125": {
     "baseExperience": 172,
     "height": 11,
     "id": 125,
@@ -3442,7 +3442,7 @@
     },
     "types": ["electric"]
   },
-  "125": {
+  "126": {
     "baseExperience": 173,
     "height": 13,
     "id": 126,
@@ -3470,7 +3470,7 @@
     },
     "types": ["fire"]
   },
-  "126": {
+  "127": {
     "baseExperience": 175,
     "height": 15,
     "id": 127,
@@ -3498,7 +3498,7 @@
     },
     "types": ["bug"]
   },
-  "127": {
+  "128": {
     "baseExperience": 172,
     "height": 14,
     "id": 128,
@@ -3525,7 +3525,7 @@
     },
     "types": ["normal"]
   },
-  "128": {
+  "129": {
     "baseExperience": 40,
     "height": 9,
     "id": 129,
@@ -3548,7 +3548,7 @@
     },
     "types": ["water"]
   },
-  "129": {
+  "130": {
     "baseExperience": 189,
     "height": 65,
     "id": 130,
@@ -3574,7 +3574,7 @@
     },
     "types": ["water", "flying"]
   },
-  "130": {
+  "131": {
     "baseExperience": 187,
     "height": 25,
     "id": 131,
@@ -3603,7 +3603,7 @@
     },
     "types": ["water", "ice"]
   },
-  "131": {
+  "132": {
     "baseExperience": 101,
     "height": 3,
     "id": 132,
@@ -3623,7 +3623,7 @@
     },
     "types": ["normal"]
   },
-  "132": {
+  "133": {
     "baseExperience": 65,
     "height": 3,
     "id": 133,
@@ -3650,7 +3650,7 @@
     },
     "types": ["normal"]
   },
-  "133": {
+  "134": {
     "baseExperience": 184,
     "height": 10,
     "id": 134,
@@ -3681,7 +3681,7 @@
     },
     "types": ["water"]
   },
-  "134": {
+  "135": {
     "baseExperience": 184,
     "height": 8,
     "id": 135,
@@ -3712,7 +3712,7 @@
     },
     "types": ["electric"]
   },
-  "135": {
+  "136": {
     "baseExperience": 184,
     "height": 9,
     "id": 136,
@@ -3743,7 +3743,7 @@
     },
     "types": ["fire"]
   },
-  "136": {
+  "137": {
     "baseExperience": 79,
     "height": 8,
     "id": 137,
@@ -3771,7 +3771,7 @@
     },
     "types": ["normal"]
   },
-  "137": {
+  "138": {
     "baseExperience": 71,
     "height": 4,
     "id": 138,
@@ -3798,7 +3798,7 @@
     },
     "types": ["rock", "water"]
   },
-  "138": {
+  "139": {
     "baseExperience": 173,
     "height": 10,
     "id": 139,
@@ -3825,7 +3825,7 @@
     },
     "types": ["rock", "water"]
   },
-  "139": {
+  "140": {
     "baseExperience": 71,
     "height": 5,
     "id": 140,
@@ -3852,7 +3852,7 @@
     },
     "types": ["rock", "water"]
   },
-  "140": {
+  "141": {
     "baseExperience": 173,
     "height": 13,
     "id": 141,
@@ -3879,7 +3879,7 @@
     },
     "types": ["rock", "water"]
   },
-  "141": {
+  "142": {
     "baseExperience": 180,
     "height": 18,
     "id": 142,
@@ -3906,7 +3906,7 @@
     },
     "types": ["rock", "flying"]
   },
-  "142": {
+  "143": {
     "baseExperience": 189,
     "height": 21,
     "id": 143,
@@ -3934,7 +3934,7 @@
     },
     "types": ["normal"]
   },
-  "143": {
+  "144": {
     "baseExperience": 290,
     "height": 17,
     "id": 144,
@@ -3960,7 +3960,7 @@
     },
     "types": ["ice", "flying"]
   },
-  "144": {
+  "145": {
     "baseExperience": 290,
     "height": 16,
     "id": 145,
@@ -3986,7 +3986,7 @@
     },
     "types": ["electric", "flying"]
   },
-  "145": {
+  "146": {
     "baseExperience": 290,
     "height": 20,
     "id": 146,
@@ -4012,7 +4012,7 @@
     },
     "types": ["fire", "flying"]
   },
-  "146": {
+  "147": {
     "baseExperience": 60,
     "height": 18,
     "id": 147,
@@ -4040,7 +4040,7 @@
     },
     "types": ["dragon"]
   },
-  "147": {
+  "148": {
     "baseExperience": 147,
     "height": 40,
     "id": 148,
@@ -4068,7 +4068,7 @@
     },
     "types": ["dragon"]
   },
-  "148": {
+  "149": {
     "baseExperience": 300,
     "height": 22,
     "id": 149,
@@ -4096,7 +4096,7 @@
     },
     "types": ["dragon", "flying"]
   },
-  "149": {
+  "150": {
     "baseExperience": 340,
     "height": 20,
     "id": 150,
@@ -4125,7 +4125,7 @@
     },
     "types": ["psychic"]
   },
-  "150": {
+  "151": {
     "baseExperience": 300,
     "height": 4,
     "id": 151,

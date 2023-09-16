@@ -9,7 +9,11 @@ import usePokemon from "../app/use-pokemon";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import { useDispatch, useSelector } from "react-redux";
-import { hideTitleMenu, selectTitleMenu } from "../state/uiSlice";
+import {
+  hideTitleMenu,
+  selectGameboyMenu,
+  selectTitleMenu,
+} from "../state/uiSlice";
 
 const StyledTitleScreen = styled.div`
   position: absolute;
@@ -111,6 +115,7 @@ const TitleScreen = () => {
   const dispatch = useDispatch();
   const [pokemonId, setPokemonId] = useState<number | null>(null);
   const show = useSelector(selectTitleMenu);
+  const gameboyMenuOpen = useSelector(selectGameboyMenu);
 
   const pokemon = usePokemon(pokemonId);
 
@@ -129,7 +134,7 @@ const TitleScreen = () => {
   }, []);
 
   useEvent(Event.A, () => {
-    if (!show) return;
+    if (!show || gameboyMenuOpen) return;
     dispatch(hideTitleMenu());
   });
 

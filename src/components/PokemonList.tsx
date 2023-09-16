@@ -34,7 +34,11 @@ const Container = styled.div`
   }
 `;
 
-const PokemonList = () => {
+interface Props {
+  close: () => void;
+}
+
+const PokemonList = ({ close }: Props) => {
   const dispatch = useDispatch();
   const pokemon = useSelector(selectPokemon);
   const [active, setActive] = useState(0);
@@ -53,6 +57,12 @@ const PokemonList = () => {
 
     if (active === pokemon.length - 1) return;
     setActive((prev) => prev + 1);
+  });
+
+  useEvent(Event.B, () => {
+    if (selected) return;
+
+    close();
   });
 
   useEvent(Event.A, () => {

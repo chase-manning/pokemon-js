@@ -62,7 +62,7 @@ const StartMenu = () => {
           // },
         ]}
       />
-      {pokemon && <PokemonList />}
+      {pokemon && <PokemonList close={() => setPokemon(false)} />}
       <ConfirmationMenu
         show={saving}
         preMessage="Would you like to SAVE the game?"

@@ -99,7 +99,7 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.titleMenu ||
   state.ui.loadMenu ||
   state.ui.gameboyMenu ||
-  state.game.pokemonEncounter !== null;
+  state.game.pokemonEncounter !== undefined;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;

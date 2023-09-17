@@ -1,6 +1,7 @@
 ===========
 
 - Add pokemon battles (break down)
+- Implement one way walls (and add to route 1)
 - Add Pokemon Stats
 - Make it a PWA
 - Test with no internet after download
@@ -11,3 +12,4 @@
 - Make RPCs walk
 - Animate water
 - Animate flowers
+- Implement Map

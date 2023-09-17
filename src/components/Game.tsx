@@ -16,6 +16,7 @@ import TitleScreen from "./TitleScreen";
 import LoadScreen from "./LoadScreen";
 import SoundHandler from "./SoundHandler";
 import GameboyMenu from "./GameboyMenu";
+import EncounterHandler from "./EncounterHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -144,6 +145,7 @@ const Game = () => {
       <KeyboardHandler />
       <MovementHandler />
       <SoundHandler />
+      <EncounterHandler />
     </Container>
   );
 };

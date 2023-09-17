@@ -7,6 +7,10 @@ const StyledHealthBar = styled.div``;
 
 const Image = styled(PixelImage)`
   height: 5px;
+
+  @media (min-width: 769px) {
+    height: 2.5vh;
+  }
 `;
 
 interface Props {
@@ -15,6 +19,8 @@ interface Props {
 }
 
 const HealthBar = ({ maxHealth, currentHealth }: Props) => {
+  // TODO Show health
+
   return (
     <StyledHealthBar>
       <Image src={image} />

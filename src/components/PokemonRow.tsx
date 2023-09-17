@@ -85,6 +85,10 @@ const StyledPokemonRow = styled.div`
   display: flex;
   margin-bottom: 1px;
   align-items: center;
+
+  @media (min-width: 769px) {
+    margin-bottom: 1vh;
+  }
 `;
 
 const ArrowContainer = styled.div`
@@ -100,11 +104,18 @@ const Image = styled.img`
 
   // The sprites seemd a bit yellow, so I added a hue-rotate filter to make them more red
   filter: hue-rotate(-25deg);
+
+  @media (min-width: 769px) {
+    height: 8vh;
+    margin-right: 4vh;
+  }
 `;
 
 const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
 `;
 
 const Name = styled.div`
@@ -112,16 +123,31 @@ const Name = styled.div`
   transform: translateY(3px);
   font-family: "PokemonGB";
   text-transform: uppercase;
+
+  @media (min-width: 769px) {
+    font-size: 3.7vh;
+    transform: translateY(1vh);
+  }
 `;
 
 const HealthBarContainer = styled.div`
   margin-left: 10px;
+
+  @media (min-width: 769px) {
+    margin-left: 4vh;
+  }
 `;
 
 const StatsContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  height: 100%;
+  justify-content: space-between;
+
+  @media (min-width: 769px) {
+    margin-left: 4vh;
+  }
 `;
 
 const Level = styled.div`
@@ -129,12 +155,23 @@ const Level = styled.div`
   font-family: "PressStart2P", sans-serif;
   margin-bottom: 2px;
   margin-top: 1px;
+
+  @media (min-width: 769px) {
+    font-size: 3.3vh;
+    margin-bottom: 1vh;
+    margin-top: 0.5vh;
+  }
 `;
 
 const Health = styled.div`
   font-size: 9px;
-  font-family: "PokemonGB";
   margin-left: 10px;
+  font-family: "PokemonGB";
+
+  @media (min-width: 769px) {
+    font-size: 3.3vh;
+    margin-left: 4vh;
+  }
 `;
 
 interface Props {

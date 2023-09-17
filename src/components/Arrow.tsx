@@ -4,7 +4,7 @@ import arrow from "../assets/ui/arrow.png";
 import PixelImage from "../styles/PixelImage";
 
 const StyledArrow = styled(PixelImage)`
-  height: 10px;
+  height: 3vh;
 
   @media (max-width: 768px) {
     height: 8px;

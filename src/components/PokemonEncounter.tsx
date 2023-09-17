@@ -22,7 +22,7 @@ const StyledPokemonEncounter = styled.div`
   width: 100%;
   height: 100%;
   background: var(--bg);
-  padding-top: 3px;
+  padding-top: 1.5vh;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -30,6 +30,7 @@ const StyledPokemonEncounter = styled.div`
   height: 80%;
   @media (max-width: 768px) {
     height: 70%;
+    padding-top: 3px;
   }
 `;
 
@@ -58,7 +59,7 @@ const RightInfoSection = styled.div`
 `;
 
 const Name = styled.div`
-  font-size: 1.5rem;
+  font-size: 5.5vh;
   font-family: "PokemonGB";
   text-transform: uppercase;
 
@@ -68,8 +69,8 @@ const Name = styled.div`
 `;
 
 const Level = styled.div`
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  font-size: 4.5vh;
+  margin: 0 12vh;
   font-family: "PressStart2P", sans-serif;
 
   @media (max-width: 768px) {
@@ -79,7 +80,8 @@ const Level = styled.div`
 `;
 
 const HealthBarContainer = styled.div`
-  margin: 0 5px;
+  margin: 0 3.3vh;
+  margin-top: 1.2vh;
 
   @media (max-width: 768px) {
     margin: 0 8px;
@@ -87,11 +89,11 @@ const HealthBarContainer = styled.div`
 `;
 
 const Health = styled.div`
-  font-size: 1.5rem;
-  margin-left: 10px;
   font-family: "PokemonGB";
-  margin: 0 5px;
 
+  font-size: 5vh;
+  margin: 0 3.3vh;
+  margin-top: 1.2vh;
   @media (max-width: 768px) {
     font-size: 13px;
     margin: 0 8px;
@@ -112,17 +114,27 @@ const Image = styled.img`
 `;
 
 const Corner = styled.img`
-  height: 19px;
   transform: translateY(-50%);
+
+  height: 8vh;
+  @media (max-width: 768px) {
+    height: 19px;
+  }
 `;
 
 const CornerContainer = styled.div`
-  height: 10px;
+  height: 5vh;
+  @media (max-width: 768px) {
+    height: 10px;
+  }
 `;
 
 const CornerRight = styled.img`
-  height: 19px;
+  height: 8vh;
   transform: translateY(-70%) scaleX(-1);
+  @media (max-width: 768px) {
+    height: 19px;
+  }
 `;
 
 const TextContainer = styled.div`

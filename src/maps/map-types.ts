@@ -8,6 +8,42 @@ export enum MapId {
   PalletTownLab = "pallet-town-lab",
 }
 
+export interface PokemonEncounterData {
+  id: number;
+  chance: number;
+  conditionValues: { name: string; url: string }[];
+  maxLevel: number;
+  minLevel: number;
+}
+
+export interface EncounterData {
+  rate: number;
+  pokemon: PokemonEncounterData[];
+}
+
+export interface EncountersType {
+  walk: EncounterData;
+  surf: EncounterData;
+  oldRod: EncounterData;
+  goodRod: EncounterData;
+  superRod: EncounterData;
+  rockSmash: EncounterData;
+  headbutt: EncounterData;
+  darkGrass: EncounterData;
+  grassSpots: EncounterData;
+  caveSpots: EncounterData;
+  bridgeSpots: EncounterData;
+  superRodSpots: EncounterData;
+  surfSpots: EncounterData;
+  yellowFlowers: EncounterData;
+  purpleFlowers: EncounterData;
+  redFlowers: EncounterData;
+  roughTerrain: EncounterData;
+  gift: EncounterData;
+  giftEgg: EncounterData;
+  onlyOne: EncounterData;
+}
+
 export interface MapType {
   name: string;
   image: string;
@@ -21,4 +57,5 @@ export interface MapType {
   exitReturnMap?: MapId;
   exitReturnPos?: PosType;
   music?: string;
+  encounters?: EncountersType;
 }

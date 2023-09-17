@@ -22,6 +22,7 @@ import ball2 from "../assets/battle/ball-open-2.png";
 import ball3 from "../assets/battle/ball-open-3.png";
 import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
+import Menu from "./Menu";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -327,6 +328,7 @@ const PokemonEncounter = () => {
   // 9 = ball open 5
   // 10 = show pokemon
   // 11 = in battle
+  // 12 = running
   const [stage, setStage] = useState(-1);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
@@ -346,13 +348,6 @@ const PokemonEncounter = () => {
       setStage(-1);
     }
   }, [isInBattle]);
-
-  // TEMP
-  useEvent(Event.B, () => {
-    if (!isInBattle) return;
-    if (stage === 0) return;
-    dispatch(endEncounter());
-  });
 
   useEvent(Event.A, () => {
     if (stage === 2) {
@@ -382,6 +377,10 @@ const PokemonEncounter = () => {
         setStage(11);
       }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
     }
+
+    if (stage === 12) {
+      dispatch(endEncounter());
+    }
   });
 
   if (!isInBattle) return null;
@@ -391,6 +390,7 @@ const PokemonEncounter = () => {
       return `Wild ${enemyMetadata.name.toUpperCase()} appeared!`;
     if (stage >= 4 && stage < 10)
       return `Go! ${activeMetadata.name.toUpperCase()}!`;
+    if (stage === 12) return "Got away safely!";
     return "";
   };
 
@@ -471,6 +471,33 @@ const PokemonEncounter = () => {
               {text()}
             </Frame>
           </TextContainer>
+          <Menu
+            compact
+            show={stage === 11}
+            menuItems={[
+              {
+                label: "Fight",
+                action: () => console.log("fight"),
+              },
+              {
+                pokemon: true,
+                label: "PKMN",
+                action: () => console.log("pkmn"),
+              },
+              {
+                label: "Item",
+                action: () => console.log("Item"),
+              },
+              {
+                label: "Run",
+                action: () => setStage(12),
+              },
+            ]}
+            noExit
+            close={() => {}}
+            bottom="0"
+            right="0"
+          />
         </>
       )}
     </>

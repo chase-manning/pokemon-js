@@ -49,7 +49,7 @@ const Bold = styled.div`
   }
 `;
 
-interface MenuItemType {
+export interface MenuItemType {
   label: string;
   action: () => void;
   value?: string | number;
@@ -63,12 +63,15 @@ interface Props {
   disabled?: boolean;
   noSelect?: boolean;
   noExit?: boolean;
+  noExitOption?: boolean;
   top?: string;
   right?: string;
   bottom?: string;
   left?: string;
   padding?: string;
   compact?: boolean;
+  padd?: number;
+  tight?: boolean;
 }
 
 const Menu = ({
@@ -78,12 +81,15 @@ const Menu = ({
   disabled,
   noSelect,
   noExit,
+  noExitOption,
   top,
   right,
   bottom,
   left,
   padding,
   compact,
+  padd,
+  tight,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -122,7 +128,13 @@ const Menu = ({
     }
 
     setActiveIndex((prev) => {
-      if (prev === menuItems.length) return prev;
+      if (noExit) {
+        if (prev === menuItems.length - 1) return prev;
+      } else if (padd) {
+        if (prev === padd - 1) return prev;
+      } else {
+        if (prev === menuItems.length) return prev;
+      }
       return prev + 1;
     });
   });
@@ -180,8 +192,20 @@ const Menu = ({
         className={`framed buttons ${compact ? "compact" : ""}`}
         style={{ width: "100%", paddingRight: padding || "0" }}
       >
-        {(noSelect || noExit
-          ? menuItems
+        {(noSelect || noExit || noExitOption
+          ? padd
+            ? [
+                ...menuItems,
+                ...Array.from(Array(padd - menuItems.length).keys()).map(
+                  (i) => {
+                    return {
+                      label: "-",
+                      action: () => {},
+                    };
+                  }
+                ),
+              ]
+            : menuItems
           : [
               ...menuItems,
               {
@@ -200,6 +224,7 @@ const Menu = ({
                     ? "active-button"
                     : ""
                 } ${item.pokemon ? "pokemon" : ""}`}
+                style={{ margin: tight ? "1px 0" : "" }}
               >
                 {item.label}
                 {item.value !== undefined && <Bold>{item.value}</Bold>}

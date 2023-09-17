@@ -62,8 +62,6 @@ interface Props {
 }
 
 const HealthBar = ({ maxHealth, currentHealth, big }: Props) => {
-  // TODO Show health
-
   return (
     <StyledHealthBar>
       <HealthContainer>

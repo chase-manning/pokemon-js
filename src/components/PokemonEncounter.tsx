@@ -4,6 +4,7 @@ import {
   endEncounter,
   selectActivePokemon,
   selectPokemonEncounter,
+  setActivePokemon,
 } from "../state/gameSlice";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import Frame from "./Frame";
@@ -23,6 +24,7 @@ import ball3 from "../assets/battle/ball-open-3.png";
 import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
 import Menu from "./Menu";
+import PokemonList from "./PokemonList";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -329,9 +331,15 @@ const PokemonEncounter = () => {
   // 10 = show pokemon
   // 11 = in battle
   // 12 = running
+  // 13 = pokemon list
   const [stage, setStage] = useState(-1);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
+
+  const endEncounter_ = () => {
+    dispatch(endEncounter());
+    dispatch(setActivePokemon(0));
+  };
 
   useEffect(() => {
     if (isInBattle) {
@@ -379,7 +387,7 @@ const PokemonEncounter = () => {
     }
 
     if (stage === 12) {
-      dispatch(endEncounter());
+      endEncounter_();
     }
   });
 
@@ -482,7 +490,7 @@ const PokemonEncounter = () => {
               {
                 pokemon: true,
                 label: "PKMN",
-                action: () => console.log("pkmn"),
+                action: () => setStage(13),
               },
               {
                 label: "Item",
@@ -498,6 +506,15 @@ const PokemonEncounter = () => {
             bottom="0"
             right="0"
           />
+          {stage === 13 && (
+            <PokemonList
+              close={() => setStage(11)}
+              switchAction={(index) => {
+                dispatch(setActivePokemon(index));
+                setStage(11);
+              }}
+            />
+          )}
         </>
       )}
     </>

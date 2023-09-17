@@ -23,9 +23,10 @@ import ball2 from "../assets/battle/ball-open-2.png";
 import ball3 from "../assets/battle/ball-open-3.png";
 import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
-import Menu from "./Menu";
+import Menu, { MenuItemType } from "./Menu";
 import PokemonList from "./PokemonList";
 import { selectItemsMenu, showItemsMenu } from "../state/uiSlice";
+import useIsMobile from "../app/use-is-mobile";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -319,6 +320,7 @@ const PokemonEncounter = () => {
   const activeMetadata = usePokemonMetadata(active?.id || null);
   const activeStats = usePokemonStats(active?.id || 1, active?.level || 1);
   const itemMenuOpen = useSelector(selectItemsMenu);
+  const isMobile = useIsMobile();
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -334,6 +336,7 @@ const PokemonEncounter = () => {
   // 11 = in battle
   // 12 = running
   // 13 = pokemon list
+  // 14 = moves
   const [stage, setStage] = useState(-1);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
@@ -488,7 +491,7 @@ const PokemonEncounter = () => {
             menuItems={[
               {
                 label: "Fight",
-                action: () => console.log("fight"),
+                action: () => setStage(14),
               },
               {
                 pokemon: true,
@@ -518,6 +521,23 @@ const PokemonEncounter = () => {
               }}
             />
           )}
+          <Menu
+            tight
+            noExitOption
+            padd={4}
+            padding={isMobile ? "100px" : "40vw"}
+            show={stage === 14}
+            menuItems={active.moves.map((m) => {
+              const item: MenuItemType = {
+                label: m,
+                action: () => console.log("TODO"),
+              };
+              return item;
+            })}
+            close={() => setStage(11)}
+            bottom="0"
+            right="0"
+          />
         </>
       )}
     </>

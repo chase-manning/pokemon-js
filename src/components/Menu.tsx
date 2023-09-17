@@ -8,12 +8,12 @@ interface MenuProps {
   right?: string;
   bottom?: string;
   left?: string;
+  compact?: boolean;
 }
 
 const StyledMenu = styled.div<MenuProps>`
   position: absolute;
   z-index: 100;
-  width: auto;
   background: var(--bg);
 
   right: ${(props) => (props.right ? props.right : props.left ? "auto" : "0")};
@@ -22,6 +22,11 @@ const StyledMenu = styled.div<MenuProps>`
   bottom: ${(props) => (props.bottom ? props.bottom : "auto")};
   transform: ${(props) =>
     props.bottom || props.top ? "none" : "translateY(-50%)"};
+  width: ${(props) => (props.compact ? "410px" : "auto")};
+
+  @media (max-width: 768px) {
+    width: ${(props) => (props.compact ? "130px" : "auto")};
+  }
 `;
 
 const Button = styled.button`
@@ -48,6 +53,7 @@ interface MenuItemType {
   label: string;
   action: () => void;
   value?: string | number;
+  pokemon?: boolean;
 }
 
 interface Props {
@@ -62,6 +68,7 @@ interface Props {
   bottom?: string;
   left?: string;
   padding?: string;
+  compact?: boolean;
 }
 
 const Menu = ({
@@ -76,6 +83,7 @@ const Menu = ({
   bottom,
   left,
   padding,
+  compact,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -84,6 +92,16 @@ const Menu = ({
   useEvent(Event.Up, () => {
     if (disabled) return;
     if (!show) return;
+
+    if (compact) {
+      setActiveIndex((prev) => {
+        if (prev === 0) return prev;
+        if (prev === 1) return prev;
+        return prev - 2;
+      });
+      return;
+    }
+
     setActiveIndex((prev) => {
       if (prev === 0) return prev;
       return prev - 1;
@@ -93,8 +111,38 @@ const Menu = ({
   useEvent(Event.Down, () => {
     if (disabled) return;
     if (!show) return;
+
+    if (compact) {
+      setActiveIndex((prev) => {
+        if (prev === menuItems.length - 1) return prev;
+        if (prev === menuItems.length - 2) return prev;
+        return prev + 2;
+      });
+      return;
+    }
+
     setActiveIndex((prev) => {
       if (prev === menuItems.length) return prev;
+      return prev + 1;
+    });
+  });
+
+  useEvent(Event.Left, () => {
+    if (!compact) return;
+
+    setActiveIndex((prev) => {
+      if (prev === 0) return prev;
+      if (prev === 2) return prev;
+      return prev - 1;
+    });
+  });
+
+  useEvent(Event.Right, () => {
+    if (!compact) return;
+
+    setActiveIndex((prev) => {
+      if (prev === menuItems.length - 1) return prev;
+      if (prev === menuItems.length - 3) return prev;
       return prev + 1;
     });
   });
@@ -121,9 +169,15 @@ const Menu = ({
   if (!show) return null;
 
   return (
-    <StyledMenu top={top} right={right} bottom={bottom} left={left}>
+    <StyledMenu
+      top={top}
+      right={right}
+      bottom={bottom}
+      left={left}
+      compact={compact}
+    >
       <ul
-        className="framed buttons"
+        className={`framed buttons ${compact ? "compact" : ""}`}
         style={{ width: "100%", paddingRight: padding || "0" }}
       >
         {(noSelect || noExit
@@ -139,13 +193,13 @@ const Menu = ({
           return (
             <li key={item.label}>
               <Button
-                className={
+                className={`${
                   noSelect
                     ? "no-select-button"
                     : activeIndex === index
                     ? "active-button"
                     : ""
-                }
+                } ${item.pokemon ? "pokemon" : ""}`}
               >
                 {item.label}
                 {item.value !== undefined && <Bold>{item.value}</Bold>}

@@ -55,9 +55,6 @@ const EncounterHandler = () => {
       if (encounter) {
         const pokemon = getPokemon(map.encounters.walk.pokemon);
         if (pokemon) {
-          // TODO Enter battle
-          console.log("Encounted Pokemon");
-          console.log(pokemon);
           dispatch(encounterPokemon(pokemon));
         }
       }

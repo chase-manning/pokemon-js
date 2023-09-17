@@ -15,6 +15,17 @@ import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 
+import playerBack from "../assets/battle/player-back.png";
+
+import ball1 from "../assets/battle/ball-open-1.png";
+import ball2 from "../assets/battle/ball-open-2.png";
+import ball3 from "../assets/battle/ball-open-3.png";
+import ball4 from "../assets/battle/ball-open-4.png";
+import ball5 from "../assets/battle/ball-open-5.png";
+
+const MOVEMENT_ANIMATION = 1300;
+const FRAME_DURATION = 100;
+
 const StyledPokemonEncounter = styled.div`
   position: absolute;
   top: 0;
@@ -109,8 +120,26 @@ const ImageContainer = styled.div`
   justify-content: center;
 `;
 
-const Image = styled.img`
+const inFromLeft = keyframes`
+  from {
+    transform: translateX(-400%);
+  }
+  to {
+    transform: translateX(0%);
+  }
+`;
+
+const LeftImage = styled.img`
   height: 100%;
+
+  transition: transform ${`${MOVEMENT_ANIMATION}ms`} linear;
+`;
+
+const RightImage = styled.img`
+  height: 100%;
+
+  transform: translate(-400%);
+  animation: ${inFromLeft} ${`${MOVEMENT_ANIMATION}ms`} linear forwards;
 `;
 
 const Corner = styled.img`
@@ -286,46 +315,108 @@ const PokemonEncounter = () => {
   const activeMetadata = usePokemonMetadata(active?.id || null);
   const activeStats = usePokemonStats(active?.id || 1, active?.level || 1);
 
-  const [animationDone, setAnimationDone] = useState(false);
-  const [animationStarted, setAnimationStarted] = useState(false);
+  // 0 = intro animation started
+  // 1 = intro animation finished
+  // 2 = showing pokemon
+  // 3 = player out
+  // 4 = go pokemon
+  // 5 = ball open 1
+  // 6 = ball open 2
+  // 7 = ball open 3
+  // 8 = ball open 4
+  // 9 = ball open 5
+  // 10 = show pokemon
+  // 11 = in battle
+  const [stage, setStage] = useState(-1);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
 
   useEffect(() => {
     if (isInBattle) {
-      setAnimationStarted(true);
+      setStage(0);
       setTimeout(() => {
-        setAnimationDone(true);
+        setStage(1);
       }, 2000);
+      setTimeout(() => {
+        setStage(2);
+      }, 3300);
     }
 
     if (!isInBattle) {
-      setAnimationDone(false);
-      setAnimationStarted(false);
+      setStage(-1);
     }
   }, [isInBattle]);
 
   // TEMP
   useEvent(Event.B, () => {
-    if (!animationDone) return;
+    if (!isInBattle) return;
+    if (stage === 0) return;
     dispatch(endEncounter());
+  });
+
+  useEvent(Event.A, () => {
+    if (stage === 2) {
+      setStage(3);
+      setTimeout(() => {
+        setStage(4);
+      }, MOVEMENT_ANIMATION);
+      setTimeout(() => {
+        setStage(5);
+      }, MOVEMENT_ANIMATION * 2);
+      setTimeout(() => {
+        setStage(6);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION);
+      setTimeout(() => {
+        setStage(7);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 2);
+      setTimeout(() => {
+        setStage(8);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 3);
+      setTimeout(() => {
+        setStage(9);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 4);
+      setTimeout(() => {
+        setStage(10);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5);
+      setTimeout(() => {
+        setStage(11);
+      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
+    }
   });
 
   if (!isInBattle) return null;
 
+  const text = () => {
+    if (stage === 2)
+      return `Wild ${enemyMetadata.name.toUpperCase()} appeared!`;
+    if (stage >= 4 && stage < 10)
+      return `Go! ${activeMetadata.name.toUpperCase()}!`;
+    return "";
+  };
+
+  const leftImage = () => {
+    if (stage <= 3) return playerBack;
+    if (stage === 5) return ball1;
+    if (stage === 6) return ball2;
+    if (stage === 7) return ball3;
+    if (stage === 8) return ball4;
+    if (stage === 9) return ball5;
+    if (stage >= 10) return activeMetadata.images.back;
+  };
+
   return (
     <>
-      {animationStarted && !animationDone && (
+      {stage === 0 && (
         <>
           <RightSide />
           <LevtSide />
         </>
       )}
-      {animationDone && (
+      {stage >= 1 && (
         <>
           <StyledPokemonEncounter>
             <Row>
-              <LeftInfoSection>
+              <LeftInfoSection style={{ opacity: stage >= 3 ? "1" : "0" }}>
                 <Name>{enemyMetadata.name}</Name>
                 <Level>{`:L${enemy.level}`}</Level>
                 <HealthBarContainer>
@@ -338,14 +429,27 @@ const PokemonEncounter = () => {
                 <Corner src={corner} />
               </LeftInfoSection>
               <ImageContainer>
-                <Image src={enemyMetadata.images.front} />
+                <RightImage src={enemyMetadata.images.front} />
               </ImageContainer>
             </Row>
             <Row>
               <ImageContainer>
-                <Image src={activeMetadata.images.back} />
+                <LeftImage
+                  src={leftImage()}
+                  style={{
+                    transform:
+                      stage === -1
+                        ? "translateX(400%)"
+                        : stage < 3
+                        ? "translateX(0%)"
+                        : stage === 3
+                        ? "translateX(-400%)"
+                        : "translateX(0%)",
+                    opacity: stage === 4 ? "0" : "1",
+                  }}
+                />
               </ImageContainer>
-              <RightInfoSection>
+              <RightInfoSection style={{ opacity: stage >= 11 ? "1" : "0" }}>
                 <Name>{activeMetadata.name}</Name>
                 <Level>{`:L${active.level}`}</Level>
                 <HealthBarContainer>
@@ -363,8 +467,8 @@ const PokemonEncounter = () => {
             </Row>
           </StyledPokemonEncounter>
           <TextContainer>
-            <Frame wide tall>
-              meow
+            <Frame wide tall flashing={stage === 2}>
+              {text()}
             </Frame>
           </TextContainer>
         </>

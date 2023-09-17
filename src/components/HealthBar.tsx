@@ -5,6 +5,41 @@ import PixelImage from "../styles/PixelImage";
 
 const StyledHealthBar = styled.div`
   position: relative;
+  height: auto;
+`;
+
+const HealthContainer = styled.div`
+  position: absolute;
+  top: 23.3%;
+  right: 1.5%;
+  width: 75.2%;
+  height: 46%;
+
+  @media (max-width: 768px) {
+    height: 30%;
+    top: 40%;
+  }
+`;
+
+interface HealthProps {
+  percent: number;
+}
+
+const HealthFill = styled.div<HealthProps>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: ${(props) => props.percent}%;
+  height: 100%;
+  background: ${(Props) => {
+    if (Props.percent > 50) {
+      return "var(--green)";
+    } else if (Props.percent > 25) {
+      return "var(--yellow)";
+    } else {
+      return "var(--red)";
+    }
+  }};
 `;
 
 interface ImageProps {
@@ -12,6 +47,7 @@ interface ImageProps {
 }
 
 const Image = styled(PixelImage)<ImageProps>`
+  position: relative;
   height: ${(props) => (props.big ? "6px" : "5px")};
 
   @media (min-width: 769px) {
@@ -30,6 +66,9 @@ const HealthBar = ({ maxHealth, currentHealth, big }: Props) => {
 
   return (
     <StyledHealthBar>
+      <HealthContainer>
+        <HealthFill percent={(currentHealth / maxHealth) * 100} />
+      </HealthContainer>
       <Image src={image} big={big} />
     </StyledHealthBar>
   );

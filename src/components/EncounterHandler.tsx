@@ -1,26 +1,47 @@
-import { useSelector } from "react-redux";
-import { selectMap, selectPos } from "../state/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  PokemonEncounter,
+  encounterPokemon,
+  selectMap,
+  selectPos,
+} from "../state/gameSlice";
 import { useEffect } from "react";
 import { PokemonEncounterData } from "../maps/map-types";
+import { getPokemonStats } from "../app/use-pokemon-stats";
 
 const shouldEncounter = (rate: number) => {
   const random = Math.random() * 100;
   return random < rate;
 };
 
-const getPokemon = (options: PokemonEncounterData[]) => {
+// Inclusive
+const randBetween = (min: number, max: number) => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+const getPokemon = (
+  options: PokemonEncounterData[]
+): PokemonEncounter | null => {
   if (options.length === 0) return null;
   const totalChance = options.reduce((acc, cur) => acc + cur.chance, 0);
   const random = Math.random() * totalChance;
   let current = 0;
   for (const option of options) {
     current += option.chance;
-    if (random < current) return option;
+    if (random < current) {
+      const level = randBetween(option.minLevel, option.maxLevel);
+      return {
+        id: option.id,
+        level,
+        hp: getPokemonStats(option.id, level).hp,
+      };
+    }
   }
   return null;
 };
 
 const EncounterHandler = () => {
+  const dispatch = useDispatch();
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);
 
@@ -37,10 +58,11 @@ const EncounterHandler = () => {
           // TODO Enter battle
           console.log("Encounted Pokemon");
           console.log(pokemon);
+          dispatch(encounterPokemon(pokemon));
         }
       }
     }
-  }, [pos, map.grass, map.encounters]);
+  }, [pos, map.grass, map.encounters, dispatch]);
 
   return null;
 };

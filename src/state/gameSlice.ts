@@ -33,6 +33,12 @@ export interface PokemonInstance {
   hp: number;
 }
 
+export interface PokemonEncounter {
+  id: number;
+  level: number;
+  hp: number;
+}
+
 export interface GameState {
   pos: PosType;
   moving: boolean;
@@ -41,6 +47,8 @@ export interface GameState {
   inventory: InventoryItemType[];
   name: string;
   pokemon: PokemonInstance[];
+  activePokemonIndex: number;
+  pokemonEncounter?: PokemonEncounter;
 }
 
 const initialState: GameState = {
@@ -97,6 +105,7 @@ const initialState: GameState = {
       hp: 20,
     },
   ],
+  activePokemonIndex: 0,
 };
 
 export const gameSlice = createSlice({
@@ -193,12 +202,17 @@ export const gameSlice = createSlice({
       state.map = savedGameState.map;
       state.inventory = savedGameState.inventory;
       state.name = savedGameState.name;
+      state.pokemon = savedGameState.pokemon;
+      state.pokemonEncounter = savedGameState.pokemonEncounter;
     },
     swapPokemonPositions: (state, action: PayloadAction<number[]>) => {
       const [index1, index2] = action.payload;
       const temp = state.pokemon[index1];
       state.pokemon[index1] = state.pokemon[index2];
       state.pokemon[index2] = temp;
+    },
+    encounterPokemon: (state, action: PayloadAction<PokemonEncounter>) => {
+      state.pokemonEncounter = action.payload;
     },
   },
 });
@@ -218,6 +232,7 @@ export const {
   save,
   load,
   swapPokemonPositions,
+  encounterPokemon,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -241,5 +256,11 @@ export const selectName = (state: RootState) => state.game.name;
 export const selectHasSave = () => localStorage.getItem("game") !== null;
 
 export const selectPokemon = (state: RootState) => state.game.pokemon;
+
+export const selectPokemonEncounter = (state: RootState) =>
+  state.game.pokemonEncounter;
+
+export const selectActivePokemon = (state: RootState) =>
+  state.game.pokemon[state.game.activePokemonIndex];
 
 export default gameSlice.reducer;

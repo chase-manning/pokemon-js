@@ -36,9 +36,10 @@ const Container = styled.div`
 
 interface Props {
   close: () => void;
+  switchAction?: (index: number) => void;
 }
 
-const PokemonList = ({ close }: Props) => {
+const PokemonList = ({ close, switchAction }: Props) => {
   const dispatch = useDispatch();
   const pokemon = useSelector(selectPokemon);
   const [active, setActive] = useState(0);
@@ -105,7 +106,8 @@ const PokemonList = ({ close }: Props) => {
             label: "Switch",
             action: () => {
               setSelected(false);
-              setSwitching(active);
+              if (switchAction) switchAction(active);
+              else setSwitching(active);
             },
           },
         ]}

@@ -82,7 +82,7 @@ const ColorOverlay = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = true; // TODO
+  const showGrid = false; // TODO
 
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);

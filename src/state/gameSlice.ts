@@ -214,6 +214,9 @@ export const gameSlice = createSlice({
     encounterPokemon: (state, action: PayloadAction<PokemonEncounter>) => {
       state.pokemonEncounter = action.payload;
     },
+    endEncounter: (state) => {
+      state.pokemonEncounter = undefined;
+    },
   },
 });
 
@@ -233,6 +236,7 @@ export const {
   load,
   swapPokemonPositions,
   encounterPokemon,
+  endEncounter,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

@@ -5,6 +5,7 @@ export enum MapId {
   PalletTownHouseA1F = "pallet-town-house-a-1f",
   PalletTownHouseA2F = "pallet-town-house-a-2f",
   PalletTownHouseB = "pallet-town-house-b",
+  Route1 = "route-1",
   PalletTownLab = "pallet-town-lab",
 }
 

@@ -66,6 +66,7 @@ const Item = styled.div`
   border: solid 1px red;
   font-size: 3rem;
   font-weight: bold;
+  color: red;
 `;
 
 const ColorOverlay = styled.div`
@@ -80,7 +81,7 @@ const ColorOverlay = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = false; // TODO
+  const showGrid = true; // TODO
 
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);

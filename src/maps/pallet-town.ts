@@ -13,6 +13,10 @@ const palletTown: MapType = {
     y: 13,
   },
   walls: {
+    0: {
+      9: true,
+      12: true,
+    },
     1: {
       0: true,
       1: true,
@@ -24,8 +28,6 @@ const palletTown: MapType = {
       7: true,
       8: true,
       9: true,
-      10: true,
-      11: true,
       12: true,
       13: true,
       14: true,
@@ -240,6 +242,10 @@ const palletTown: MapType = {
     },
     11: {
       12: MapId.PalletTownLab,
+    },
+    0: {
+      10: MapId.Route1,
+      11: MapId.Route1,
     },
   },
   exits: {},

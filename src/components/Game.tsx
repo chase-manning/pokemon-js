@@ -17,6 +17,7 @@ import LoadScreen from "./LoadScreen";
 import SoundHandler from "./SoundHandler";
 import GameboyMenu from "./GameboyMenu";
 import EncounterHandler from "./EncounterHandler";
+import PokemonEncounter from "./PokemonEncounter";
 
 const Container = styled.div`
   position: absolute;
@@ -132,6 +133,7 @@ const Game = () => {
         )}
       </StyledGame>
       <ColorOverlay />
+      <PokemonEncounter />
       <Text />
       <StartMenu />
       <ItemsMenu />

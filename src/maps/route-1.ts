@@ -1,0 +1,326 @@
+import route1Image from "../assets/map/route-1.png";
+import { MapId, MapType } from "./map-types";
+
+import music from "../assets/music/maps/route-1.mp3";
+
+const route1: MapType = {
+  name: "Route 1",
+  image: route1Image,
+  height: 36,
+  width: 20,
+  start: {
+    x: 11,
+    y: 34,
+  },
+  walls: {
+    0: {
+      9: true,
+      12: true,
+    },
+    1: {
+      3: true,
+      4: true,
+      5: true,
+      6: true,
+      7: true,
+      8: true,
+      9: true,
+      12: true,
+      13: true,
+      14: true,
+      15: true,
+      16: true,
+      17: true,
+      18: true,
+    },
+    2: {
+      3: true,
+      18: true,
+    },
+    3: {
+      3: true,
+      18: true,
+    },
+    4: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    5: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    6: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    7: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    8: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    9: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    10: {
+      3: true,
+      18: true,
+    },
+    11: {
+      3: true,
+      18: true,
+    },
+    12: {
+      3: true,
+      18: true,
+    },
+    13: {
+      3: true,
+      4: true,
+      5: true,
+      10: true,
+      11: true,
+      12: true,
+      13: true,
+      18: true,
+    },
+    14: {
+      3: true,
+      18: true,
+    },
+    15: {
+      3: true,
+      18: true,
+    },
+    16: {
+      3: true,
+      18: true,
+    },
+    17: {
+      3: true,
+      18: true,
+    },
+    18: {
+      3: true,
+      18: true,
+    },
+    19: {
+      3: true,
+      18: true,
+    },
+    20: {
+      3: true,
+      18: true,
+    },
+    21: {
+      3: true,
+      18: true,
+    },
+    22: {
+      3: true,
+      18: true,
+    },
+    23: {
+      3: true,
+      4: true,
+      5: true,
+      6: true,
+      7: true,
+      8: true,
+      9: true,
+      10: true,
+      11: true,
+      18: true,
+    },
+    24: {
+      3: true,
+      18: true,
+    },
+    25: {
+      3: true,
+      18: true,
+    },
+    26: {
+      3: true,
+      18: true,
+    },
+    27: {
+      3: true,
+      9: true,
+      18: true,
+    },
+    28: {
+      3: true,
+      18: true,
+    },
+    29: {
+      3: true,
+      18: true,
+    },
+    30: {
+      3: true,
+      18: true,
+    },
+    31: {
+      3: true,
+      18: true,
+    },
+    32: {
+      3: true,
+      4: true,
+      5: true,
+      6: true,
+      7: true,
+      8: true,
+      9: true,
+      12: true,
+      13: true,
+      14: true,
+      15: true,
+      16: true,
+      17: true,
+      18: true,
+    },
+    33: {
+      9: true,
+      12: true,
+    },
+    34: {
+      9: true,
+      12: true,
+    },
+    35: {
+      9: true,
+      12: true,
+    },
+  },
+  text: {
+    27: {
+      9: [
+        "Lorem ipsum dolor sit amet, consectetur",
+        "adipiscing elit, sed do eiusmod tempor",
+        "incididunt ut labore et dolore magna aliqua.",
+      ],
+    },
+  },
+  maps: {},
+  exits: {
+    35: {
+      10: true,
+      11: true,
+    },
+  },
+  exitReturnPos: {
+    x: 10,
+    y: 2,
+  },
+  exitReturnMap: MapId.PalletTown,
+  music,
+  encounters: {
+    walk: {
+      rate: 21,
+      pokemon: [
+        {
+          id: 16,
+          chance: 20,
+          conditionValues: [],
+          maxLevel: 3,
+          minLevel: 3,
+        },
+        {
+          id: 16,
+          chance: 10,
+          conditionValues: [],
+          maxLevel: 2,
+          minLevel: 2,
+        },
+        {
+          id: 16,
+          chance: 10,
+          conditionValues: [],
+          maxLevel: 3,
+          minLevel: 3,
+        },
+        {
+          id: 16,
+          chance: 5,
+          conditionValues: [],
+          maxLevel: 3,
+          minLevel: 3,
+        },
+        {
+          id: 16,
+          chance: 4,
+          conditionValues: [],
+          maxLevel: 4,
+          minLevel: 4,
+        },
+        {
+          id: 16,
+          chance: 1,
+          conditionValues: [],
+          maxLevel: 5,
+          minLevel: 5,
+        },
+        {
+          id: 19,
+          chance: 20,
+          conditionValues: [],
+          maxLevel: 3,
+          minLevel: 3,
+        },
+        {
+          id: 19,
+          chance: 15,
+          conditionValues: [],
+          maxLevel: 3,
+          minLevel: 3,
+        },
+        {
+          id: 19,
+          chance: 10,
+          conditionValues: [],
+          maxLevel: 2,
+          minLevel: 2,
+        },
+        {
+          id: 19,
+          chance: 5,
+          conditionValues: [],
+          maxLevel: 4,
+          minLevel: 4,
+        },
+      ],
+    },
+    oldRod: { rate: 0, pokemon: [] },
+    goodRod: { rate: 0, pokemon: [] },
+    superRod: { rate: 0, pokemon: [] },
+    surf: { rate: 0, pokemon: [] },
+    rockSmash: { rate: 0, pokemon: [] },
+    headbutt: { rate: 0, pokemon: [] },
+    darkGrass: { rate: 0, pokemon: [] },
+    grassSpots: { rate: 0, pokemon: [] },
+    caveSpots: { rate: 0, pokemon: [] },
+    bridgeSpots: { rate: 0, pokemon: [] },
+    superRodSpots: { rate: 0, pokemon: [] },
+    surfSpots: { rate: 0, pokemon: [] },
+    yellowFlowers: { rate: 0, pokemon: [] },
+    purpleFlowers: { rate: 0, pokemon: [] },
+    redFlowers: { rate: 0, pokemon: [] },
+    roughTerrain: { rate: 0, pokemon: [] },
+    gift: { rate: 0, pokemon: [] },
+    giftEgg: { rate: 0, pokemon: [] },
+    onlyOne: { rate: 0, pokemon: [] },
+  },
+};
+
+export default route1;

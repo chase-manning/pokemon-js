@@ -98,7 +98,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.playerMenu ||
   state.ui.titleMenu ||
   state.ui.loadMenu ||
-  state.ui.gameboyMenu;
+  state.ui.gameboyMenu ||
+  state.game.pokemonEncounter !== null;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;

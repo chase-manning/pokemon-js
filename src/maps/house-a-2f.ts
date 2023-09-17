@@ -68,6 +68,7 @@ const houseA2f: MapType = {
     y: 2,
   },
   exitReturnMap: MapId.PalletTownHouseA1F,
+  grass: {},
 };
 
 export default houseA2f;

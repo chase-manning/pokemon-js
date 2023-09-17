@@ -372,6 +372,7 @@ const palletTown: MapType = {
     giftEgg: { rate: 0, pokemon: [] },
     onlyOne: { rate: 0, pokemon: [] },
   },
+  grass: {},
 };
 
 export default palletTown;

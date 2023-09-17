@@ -83,6 +83,7 @@ const lab: MapType = {
   },
   exitReturnMap: MapId.PalletTown,
   music,
+  grass: {},
 };
 
 export default lab;

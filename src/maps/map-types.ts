@@ -59,4 +59,5 @@ export interface MapType {
   exitReturnPos?: PosType;
   music?: string;
   encounters?: EncountersType;
+  grass: Record<number, Record<number, boolean>>;
 }

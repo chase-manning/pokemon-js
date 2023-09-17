@@ -1,3 +1,9 @@
+- Go through TODOs and move them here
+- Add ability to use items
+- Change arrow when it's disabled
+- Battle music starts slowly, trim start (maybe trim all songs)
+- Can move encounter menu while start menu is open
+
 ===========
 
 - Add pokemon battles (break down)

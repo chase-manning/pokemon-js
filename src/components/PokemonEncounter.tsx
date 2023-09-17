@@ -25,6 +25,7 @@ import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
 import Menu from "./Menu";
 import PokemonList from "./PokemonList";
+import { selectItemsMenu, showItemsMenu } from "../state/uiSlice";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -317,6 +318,7 @@ const PokemonEncounter = () => {
   const active = useSelector(selectActivePokemon);
   const activeMetadata = usePokemonMetadata(active?.id || null);
   const activeStats = usePokemonStats(active?.id || 1, active?.level || 1);
+  const itemMenuOpen = useSelector(selectItemsMenu);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -482,6 +484,7 @@ const PokemonEncounter = () => {
           <Menu
             compact
             show={stage === 11}
+            disabled={itemMenuOpen}
             menuItems={[
               {
                 label: "Fight",
@@ -494,7 +497,7 @@ const PokemonEncounter = () => {
               },
               {
                 label: "Item",
-                action: () => console.log("Item"),
+                action: () => dispatch(showItemsMenu()),
               },
               {
                 label: "Run",

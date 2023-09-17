@@ -31,6 +31,7 @@ export interface PokemonInstance {
   level: number;
   experience: number;
   hp: number;
+  moves: string[];
 }
 
 export interface PokemonEncounter {
@@ -73,36 +74,42 @@ const initialState: GameState = {
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["tackle", "growl"],
     },
     {
       id: 4,
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["scratch", "growl"],
     },
     {
       id: 7,
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["tackle", "tail-whip"],
     },
     {
       id: 1,
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["tackle", "growl"],
     },
     {
       id: 4,
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["scratch", "growl"],
     },
     {
       id: 7,
       level: 5,
       experience: 0,
       hp: 20,
+      moves: ["tackle", "tail-whip"],
     },
   ],
   activePokemonIndex: 0,

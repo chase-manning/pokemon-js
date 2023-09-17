@@ -23,7 +23,7 @@
       "hp": 45,
       "attack": 49,
       "defense": 49,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 65,
       "speed": 45
     },
@@ -54,7 +54,7 @@
       "hp": 60,
       "attack": 62,
       "defense": 63,
-      "special": 80,
+      "specialAttack": 80,
       "specialDefense": 80,
       "speed": 60
     },
@@ -85,7 +85,7 @@
       "hp": 80,
       "attack": 82,
       "defense": 83,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 100,
       "speed": 80
     },
@@ -114,7 +114,7 @@
       "hp": 39,
       "attack": 52,
       "defense": 43,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 50,
       "speed": 65
     },
@@ -144,7 +144,7 @@
       "hp": 58,
       "attack": 64,
       "defense": 58,
-      "special": 80,
+      "specialAttack": 80,
       "specialDefense": 65,
       "speed": 80
     },
@@ -174,7 +174,7 @@
       "hp": 78,
       "attack": 84,
       "defense": 78,
-      "special": 109,
+      "specialAttack": 109,
       "specialDefense": 85,
       "speed": 100
     },
@@ -203,7 +203,7 @@
       "hp": 44,
       "attack": 48,
       "defense": 65,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 64,
       "speed": 43
     },
@@ -233,7 +233,7 @@
       "hp": 59,
       "attack": 63,
       "defense": 80,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 80,
       "speed": 58
     },
@@ -263,7 +263,7 @@
       "hp": 79,
       "attack": 83,
       "defense": 100,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 105,
       "speed": 78
     },
@@ -286,7 +286,7 @@
       "hp": 45,
       "attack": 30,
       "defense": 35,
-      "special": 20,
+      "specialAttack": 20,
       "specialDefense": 20,
       "speed": 45
     },
@@ -307,7 +307,7 @@
       "hp": 50,
       "attack": 20,
       "defense": 55,
-      "special": 25,
+      "specialAttack": 25,
       "specialDefense": 25,
       "speed": 30
     },
@@ -336,7 +336,7 @@
       "hp": 60,
       "attack": 45,
       "defense": 50,
-      "special": 90,
+      "specialAttack": 90,
       "specialDefense": 80,
       "speed": 70
     },
@@ -359,7 +359,7 @@
       "hp": 40,
       "attack": 35,
       "defense": 30,
-      "special": 20,
+      "specialAttack": 20,
       "specialDefense": 20,
       "speed": 50
     },
@@ -380,7 +380,7 @@
       "hp": 45,
       "attack": 25,
       "defense": 50,
-      "special": 25,
+      "specialAttack": 25,
       "specialDefense": 25,
       "speed": 35
     },
@@ -408,7 +408,7 @@
       "hp": 65,
       "attack": 90,
       "defense": 40,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 80,
       "speed": 75
     },
@@ -436,7 +436,7 @@
       "hp": 40,
       "attack": 45,
       "defense": 40,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 35,
       "speed": 56
     },
@@ -465,7 +465,7 @@
       "hp": 63,
       "attack": 60,
       "defense": 55,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 50,
       "speed": 71
     },
@@ -494,7 +494,7 @@
       "hp": 83,
       "attack": 80,
       "defense": 75,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 70,
       "speed": 101
     },
@@ -521,7 +521,7 @@
       "hp": 30,
       "attack": 56,
       "defense": 35,
-      "special": 25,
+      "specialAttack": 25,
       "specialDefense": 35,
       "speed": 72
     },
@@ -549,7 +549,7 @@
       "hp": 55,
       "attack": 81,
       "defense": 60,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 70,
       "speed": 97
     },
@@ -577,7 +577,7 @@
       "hp": 40,
       "attack": 60,
       "defense": 30,
-      "special": 31,
+      "specialAttack": 31,
       "specialDefense": 31,
       "speed": 70
     },
@@ -606,7 +606,7 @@
       "hp": 65,
       "attack": 90,
       "defense": 65,
-      "special": 61,
+      "specialAttack": 61,
       "specialDefense": 61,
       "speed": 100
     },
@@ -634,7 +634,7 @@
       "hp": 35,
       "attack": 60,
       "defense": 44,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 54,
       "speed": 55
     },
@@ -663,7 +663,7 @@
       "hp": 60,
       "attack": 95,
       "defense": 69,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 79,
       "speed": 80
     },
@@ -691,7 +691,7 @@
       "hp": 35,
       "attack": 55,
       "defense": 40,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 50,
       "speed": 90
     },
@@ -715,7 +715,7 @@
       "hp": 60,
       "attack": 90,
       "defense": 55,
-      "special": 90,
+      "specialAttack": 90,
       "specialDefense": 80,
       "speed": 110
     },
@@ -742,7 +742,7 @@
       "hp": 50,
       "attack": 75,
       "defense": 85,
-      "special": 20,
+      "specialAttack": 20,
       "specialDefense": 30,
       "speed": 40
     },
@@ -770,7 +770,7 @@
       "hp": 75,
       "attack": 100,
       "defense": 110,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 55,
       "speed": 65
     },
@@ -799,7 +799,7 @@
       "hp": 55,
       "attack": 47,
       "defense": 52,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 40,
       "speed": 41
     },
@@ -829,7 +829,7 @@
       "hp": 70,
       "attack": 62,
       "defense": 67,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 55,
       "speed": 56
     },
@@ -855,7 +855,7 @@
       "hp": 90,
       "attack": 92,
       "defense": 87,
-      "special": 75,
+      "specialAttack": 75,
       "specialDefense": 85,
       "speed": 76
     },
@@ -884,7 +884,7 @@
       "hp": 46,
       "attack": 57,
       "defense": 40,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 40,
       "speed": 50
     },
@@ -914,7 +914,7 @@
       "hp": 61,
       "attack": 72,
       "defense": 57,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 55,
       "speed": 65
     },
@@ -939,7 +939,7 @@
       "hp": 81,
       "attack": 102,
       "defense": 77,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 75,
       "speed": 85
     },
@@ -968,7 +968,7 @@
       "hp": 70,
       "attack": 45,
       "defense": 48,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 65,
       "speed": 35
     },
@@ -993,7 +993,7 @@
       "hp": 95,
       "attack": 70,
       "defense": 73,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 90,
       "speed": 60
     },
@@ -1021,7 +1021,7 @@
       "hp": 38,
       "attack": 41,
       "defense": 40,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 65,
       "speed": 65
     },
@@ -1046,7 +1046,7 @@
       "hp": 73,
       "attack": 76,
       "defense": 75,
-      "special": 81,
+      "specialAttack": 81,
       "specialDefense": 100,
       "speed": 100
     },
@@ -1075,7 +1075,7 @@
       "hp": 115,
       "attack": 45,
       "defense": 20,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 25,
       "speed": 20
     },
@@ -1100,7 +1100,7 @@
       "hp": 140,
       "attack": 70,
       "defense": 45,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 50,
       "speed": 45
     },
@@ -1127,7 +1127,7 @@
       "hp": 40,
       "attack": 45,
       "defense": 35,
-      "special": 30,
+      "specialAttack": 30,
       "specialDefense": 40,
       "speed": 55
     },
@@ -1156,7 +1156,7 @@
       "hp": 75,
       "attack": 80,
       "defense": 70,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 75,
       "speed": 90
     },
@@ -1184,7 +1184,7 @@
       "hp": 45,
       "attack": 50,
       "defense": 55,
-      "special": 75,
+      "specialAttack": 75,
       "specialDefense": 65,
       "speed": 30
     },
@@ -1213,7 +1213,7 @@
       "hp": 60,
       "attack": 65,
       "defense": 70,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 75,
       "speed": 40
     },
@@ -1239,7 +1239,7 @@
       "hp": 75,
       "attack": 80,
       "defense": 85,
-      "special": 110,
+      "specialAttack": 110,
       "specialDefense": 90,
       "speed": 50
     },
@@ -1266,7 +1266,7 @@
       "hp": 35,
       "attack": 70,
       "defense": 55,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 55,
       "speed": 25
     },
@@ -1294,7 +1294,7 @@
       "hp": 60,
       "attack": 95,
       "defense": 80,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 80,
       "speed": 30
     },
@@ -1323,7 +1323,7 @@
       "hp": 60,
       "attack": 55,
       "defense": 50,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 55,
       "speed": 45
     },
@@ -1353,7 +1353,7 @@
       "hp": 70,
       "attack": 65,
       "defense": 60,
-      "special": 90,
+      "specialAttack": 90,
       "specialDefense": 75,
       "speed": 90
     },
@@ -1380,7 +1380,7 @@
       "hp": 10,
       "attack": 55,
       "defense": 25,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 45,
       "speed": 95
     },
@@ -1408,7 +1408,7 @@
       "hp": 35,
       "attack": 100,
       "defense": 50,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 70,
       "speed": 120
     },
@@ -1436,7 +1436,7 @@
       "hp": 40,
       "attack": 45,
       "defense": 35,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 40,
       "speed": 90
     },
@@ -1465,7 +1465,7 @@
       "hp": 65,
       "attack": 70,
       "defense": 60,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 65,
       "speed": 115
     },
@@ -1492,7 +1492,7 @@
       "hp": 50,
       "attack": 52,
       "defense": 48,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 50,
       "speed": 55
     },
@@ -1520,7 +1520,7 @@
       "hp": 80,
       "attack": 82,
       "defense": 78,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 80,
       "speed": 85
     },
@@ -1548,7 +1548,7 @@
       "hp": 40,
       "attack": 80,
       "defense": 35,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 45,
       "speed": 70
     },
@@ -1577,7 +1577,7 @@
       "hp": 65,
       "attack": 105,
       "defense": 60,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 70,
       "speed": 95
     },
@@ -1605,7 +1605,7 @@
       "hp": 55,
       "attack": 70,
       "defense": 45,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 50,
       "speed": 60
     },
@@ -1630,7 +1630,7 @@
       "hp": 90,
       "attack": 110,
       "defense": 80,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 80,
       "speed": 95
     },
@@ -1658,7 +1658,7 @@
       "hp": 40,
       "attack": 50,
       "defense": 40,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 40,
       "speed": 90
     },
@@ -1687,7 +1687,7 @@
       "hp": 65,
       "attack": 65,
       "defense": 65,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 50,
       "speed": 90
     },
@@ -1712,7 +1712,7 @@
       "hp": 90,
       "attack": 95,
       "defense": 95,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 90,
       "speed": 70
     },
@@ -1732,7 +1732,7 @@
       "hp": 25,
       "attack": 20,
       "defense": 15,
-      "special": 105,
+      "specialAttack": 105,
       "specialDefense": 55,
       "speed": 90
     },
@@ -1761,7 +1761,7 @@
       "hp": 40,
       "attack": 35,
       "defense": 30,
-      "special": 120,
+      "specialAttack": 120,
       "specialDefense": 70,
       "speed": 105
     },
@@ -1789,7 +1789,7 @@
       "hp": 55,
       "attack": 50,
       "defense": 45,
-      "special": 135,
+      "specialAttack": 135,
       "specialDefense": 95,
       "speed": 120
     },
@@ -1816,7 +1816,7 @@
       "hp": 70,
       "attack": 80,
       "defense": 50,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 35,
       "speed": 35
     },
@@ -1844,7 +1844,7 @@
       "hp": 80,
       "attack": 100,
       "defense": 70,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 60,
       "speed": 45
     },
@@ -1871,7 +1871,7 @@
       "hp": 90,
       "attack": 130,
       "defense": 80,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 85,
       "speed": 55
     },
@@ -1901,7 +1901,7 @@
       "hp": 50,
       "attack": 75,
       "defense": 35,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 30,
       "speed": 40
     },
@@ -1932,7 +1932,7 @@
       "hp": 65,
       "attack": 90,
       "defense": 50,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 45,
       "speed": 55
     },
@@ -1959,7 +1959,7 @@
       "hp": 80,
       "attack": 105,
       "defense": 65,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 70,
       "speed": 70
     },
@@ -1989,7 +1989,7 @@
       "hp": 40,
       "attack": 40,
       "defense": 35,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 100,
       "speed": 70
     },
@@ -2020,7 +2020,7 @@
       "hp": 80,
       "attack": 70,
       "defense": 65,
-      "special": 80,
+      "specialAttack": 80,
       "specialDefense": 120,
       "speed": 100
     },
@@ -2048,7 +2048,7 @@
       "hp": 40,
       "attack": 80,
       "defense": 100,
-      "special": 30,
+      "specialAttack": 30,
       "specialDefense": 30,
       "speed": 20
     },
@@ -2077,7 +2077,7 @@
       "hp": 55,
       "attack": 95,
       "defense": 115,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 45,
       "speed": 35
     },
@@ -2105,7 +2105,7 @@
       "hp": 80,
       "attack": 120,
       "defense": 130,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 65,
       "speed": 45
     },
@@ -2133,7 +2133,7 @@
       "hp": 50,
       "attack": 85,
       "defense": 55,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 65,
       "speed": 90
     },
@@ -2162,7 +2162,7 @@
       "hp": 65,
       "attack": 100,
       "defense": 70,
-      "special": 80,
+      "specialAttack": 80,
       "specialDefense": 80,
       "speed": 105
     },
@@ -2190,7 +2190,7 @@
       "hp": 90,
       "attack": 65,
       "defense": 65,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 40,
       "speed": 15
     },
@@ -2220,7 +2220,7 @@
       "hp": 95,
       "attack": 75,
       "defense": 110,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 80,
       "speed": 30
     },
@@ -2248,7 +2248,7 @@
       "hp": 25,
       "attack": 35,
       "defense": 70,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 55,
       "speed": 45
     },
@@ -2277,7 +2277,7 @@
       "hp": 50,
       "attack": 60,
       "defense": 95,
-      "special": 120,
+      "specialAttack": 120,
       "specialDefense": 70,
       "speed": 70
     },
@@ -2305,7 +2305,7 @@
       "hp": 52,
       "attack": 90,
       "defense": 55,
-      "special": 58,
+      "specialAttack": 58,
       "specialDefense": 62,
       "speed": 60
     },
@@ -2333,7 +2333,7 @@
       "hp": 35,
       "attack": 85,
       "defense": 45,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 35,
       "speed": 75
     },
@@ -2362,7 +2362,7 @@
       "hp": 60,
       "attack": 110,
       "defense": 70,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 60,
       "speed": 110
     },
@@ -2389,7 +2389,7 @@
       "hp": 65,
       "attack": 45,
       "defense": 55,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 70,
       "speed": 45
     },
@@ -2417,7 +2417,7 @@
       "hp": 90,
       "attack": 70,
       "defense": 80,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 95,
       "speed": 70
     },
@@ -2446,7 +2446,7 @@
       "hp": 80,
       "attack": 80,
       "defense": 50,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 50,
       "speed": 25
     },
@@ -2476,7 +2476,7 @@
       "hp": 105,
       "attack": 105,
       "defense": 75,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 100,
       "speed": 50
     },
@@ -2504,7 +2504,7 @@
       "hp": 30,
       "attack": 65,
       "defense": 100,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 25,
       "speed": 40
     },
@@ -2530,7 +2530,7 @@
       "hp": 50,
       "attack": 95,
       "defense": 180,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 45,
       "speed": 70
     },
@@ -2556,7 +2556,7 @@
       "hp": 30,
       "attack": 35,
       "defense": 30,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 35,
       "speed": 80
     },
@@ -2583,7 +2583,7 @@
       "hp": 45,
       "attack": 50,
       "defense": 45,
-      "special": 115,
+      "specialAttack": 115,
       "specialDefense": 55,
       "speed": 95
     },
@@ -2609,7 +2609,7 @@
       "hp": 60,
       "attack": 65,
       "defense": 60,
-      "special": 130,
+      "specialAttack": 130,
       "specialDefense": 75,
       "speed": 110
     },
@@ -2637,7 +2637,7 @@
       "hp": 35,
       "attack": 45,
       "defense": 160,
-      "special": 30,
+      "specialAttack": 30,
       "specialDefense": 45,
       "speed": 70
     },
@@ -2666,7 +2666,7 @@
       "hp": 60,
       "attack": 48,
       "defense": 45,
-      "special": 43,
+      "specialAttack": 43,
       "specialDefense": 90,
       "speed": 42
     },
@@ -2696,7 +2696,7 @@
       "hp": 85,
       "attack": 73,
       "defense": 70,
-      "special": 73,
+      "specialAttack": 73,
       "specialDefense": 115,
       "speed": 67
     },
@@ -2724,7 +2724,7 @@
       "hp": 30,
       "attack": 105,
       "defense": 90,
-      "special": 25,
+      "specialAttack": 25,
       "specialDefense": 25,
       "speed": 50
     },
@@ -2753,7 +2753,7 @@
       "hp": 55,
       "attack": 130,
       "defense": 115,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 50,
       "speed": 75
     },
@@ -2781,7 +2781,7 @@
       "hp": 40,
       "attack": 30,
       "defense": 50,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 55,
       "speed": 100
     },
@@ -2810,7 +2810,7 @@
       "hp": 60,
       "attack": 50,
       "defense": 70,
-      "special": 80,
+      "specialAttack": 80,
       "specialDefense": 80,
       "speed": 150
     },
@@ -2839,7 +2839,7 @@
       "hp": 60,
       "attack": 40,
       "defense": 80,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 45,
       "speed": 40
     },
@@ -2863,7 +2863,7 @@
       "hp": 95,
       "attack": 95,
       "defense": 85,
-      "special": 125,
+      "specialAttack": 125,
       "specialDefense": 75,
       "speed": 55
     },
@@ -2891,7 +2891,7 @@
       "hp": 50,
       "attack": 50,
       "defense": 95,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 50,
       "speed": 35
     },
@@ -2920,7 +2920,7 @@
       "hp": 60,
       "attack": 80,
       "defense": 110,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 80,
       "speed": 45
     },
@@ -2948,7 +2948,7 @@
       "hp": 50,
       "attack": 120,
       "defense": 53,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 110,
       "speed": 87
     },
@@ -2976,7 +2976,7 @@
       "hp": 50,
       "attack": 105,
       "defense": 79,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 110,
       "speed": 76
     },
@@ -3004,7 +3004,7 @@
       "hp": 90,
       "attack": 55,
       "defense": 75,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 75,
       "speed": 30
     },
@@ -3032,7 +3032,7 @@
       "hp": 40,
       "attack": 65,
       "defense": 95,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 45,
       "speed": 35
     },
@@ -3061,7 +3061,7 @@
       "hp": 65,
       "attack": 90,
       "defense": 120,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 70,
       "speed": 60
     },
@@ -3089,7 +3089,7 @@
       "hp": 80,
       "attack": 85,
       "defense": 95,
-      "special": 30,
+      "specialAttack": 30,
       "specialDefense": 30,
       "speed": 25
     },
@@ -3118,7 +3118,7 @@
       "hp": 105,
       "attack": 130,
       "defense": 120,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 45,
       "speed": 40
     },
@@ -3147,7 +3147,7 @@
       "hp": 250,
       "attack": 5,
       "defense": 5,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 105,
       "speed": 50
     },
@@ -3176,7 +3176,7 @@
       "hp": 65,
       "attack": 55,
       "defense": 115,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 40,
       "speed": 60
     },
@@ -3204,7 +3204,7 @@
       "hp": 105,
       "attack": 95,
       "defense": 80,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 80,
       "speed": 90
     },
@@ -3231,7 +3231,7 @@
       "hp": 30,
       "attack": 40,
       "defense": 70,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 25,
       "speed": 60
     },
@@ -3259,7 +3259,7 @@
       "hp": 55,
       "attack": 65,
       "defense": 95,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 45,
       "speed": 85
     },
@@ -3288,7 +3288,7 @@
       "hp": 45,
       "attack": 67,
       "defense": 60,
-      "special": 35,
+      "specialAttack": 35,
       "specialDefense": 50,
       "speed": 63
     },
@@ -3318,7 +3318,7 @@
       "hp": 80,
       "attack": 92,
       "defense": 65,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 80,
       "speed": 68
     },
@@ -3347,7 +3347,7 @@
       "hp": 30,
       "attack": 45,
       "defense": 55,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 55,
       "speed": 85
     },
@@ -3371,7 +3371,7 @@
       "hp": 60,
       "attack": 75,
       "defense": 85,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 85,
       "speed": 115
     },
@@ -3398,7 +3398,7 @@
       "hp": 40,
       "attack": 45,
       "defense": 65,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 120,
       "speed": 90
     },
@@ -3426,7 +3426,7 @@
       "hp": 70,
       "attack": 110,
       "defense": 80,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 80,
       "speed": 105
     },
@@ -3455,7 +3455,7 @@
       "hp": 65,
       "attack": 50,
       "defense": 35,
-      "special": 115,
+      "specialAttack": 115,
       "specialDefense": 95,
       "speed": 95
     },
@@ -3483,7 +3483,7 @@
       "hp": 65,
       "attack": 83,
       "defense": 57,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 85,
       "speed": 105
     },
@@ -3511,7 +3511,7 @@
       "hp": 65,
       "attack": 95,
       "defense": 57,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 85,
       "speed": 93
     },
@@ -3539,7 +3539,7 @@
       "hp": 65,
       "attack": 125,
       "defense": 100,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 70,
       "speed": 85
     },
@@ -3566,7 +3566,7 @@
       "hp": 75,
       "attack": 100,
       "defense": 95,
-      "special": 40,
+      "specialAttack": 40,
       "specialDefense": 70,
       "speed": 110
     },
@@ -3589,7 +3589,7 @@
       "hp": 20,
       "attack": 10,
       "defense": 55,
-      "special": 15,
+      "specialAttack": 15,
       "specialDefense": 20,
       "speed": 80
     },
@@ -3616,7 +3616,7 @@
       "hp": 95,
       "attack": 125,
       "defense": 79,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 100,
       "speed": 81
     },
@@ -3645,7 +3645,7 @@
       "hp": 130,
       "attack": 85,
       "defense": 80,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 95,
       "speed": 60
     },
@@ -3665,7 +3665,7 @@
       "hp": 48,
       "attack": 48,
       "defense": 48,
-      "special": 48,
+      "specialAttack": 48,
       "specialDefense": 48,
       "speed": 48
     },
@@ -3692,7 +3692,7 @@
       "hp": 55,
       "attack": 55,
       "defense": 50,
-      "special": 45,
+      "specialAttack": 45,
       "specialDefense": 65,
       "speed": 55
     },
@@ -3723,7 +3723,7 @@
       "hp": 130,
       "attack": 65,
       "defense": 60,
-      "special": 110,
+      "specialAttack": 110,
       "specialDefense": 95,
       "speed": 65
     },
@@ -3754,7 +3754,7 @@
       "hp": 65,
       "attack": 65,
       "defense": 60,
-      "special": 110,
+      "specialAttack": 110,
       "specialDefense": 95,
       "speed": 130
     },
@@ -3785,7 +3785,7 @@
       "hp": 65,
       "attack": 130,
       "defense": 60,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 110,
       "speed": 65
     },
@@ -3813,7 +3813,7 @@
       "hp": 65,
       "attack": 60,
       "defense": 70,
-      "special": 85,
+      "specialAttack": 85,
       "specialDefense": 75,
       "speed": 40
     },
@@ -3840,7 +3840,7 @@
       "hp": 35,
       "attack": 40,
       "defense": 100,
-      "special": 90,
+      "specialAttack": 90,
       "specialDefense": 55,
       "speed": 35
     },
@@ -3868,7 +3868,7 @@
       "hp": 70,
       "attack": 60,
       "defense": 125,
-      "special": 115,
+      "specialAttack": 115,
       "specialDefense": 70,
       "speed": 55
     },
@@ -3895,7 +3895,7 @@
       "hp": 30,
       "attack": 80,
       "defense": 90,
-      "special": 55,
+      "specialAttack": 55,
       "specialDefense": 45,
       "speed": 55
     },
@@ -3923,7 +3923,7 @@
       "hp": 60,
       "attack": 115,
       "defense": 105,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 70,
       "speed": 80
     },
@@ -3950,7 +3950,7 @@
       "hp": 80,
       "attack": 105,
       "defense": 65,
-      "special": 60,
+      "specialAttack": 60,
       "specialDefense": 75,
       "speed": 130
     },
@@ -3978,7 +3978,7 @@
       "hp": 160,
       "attack": 110,
       "defense": 65,
-      "special": 65,
+      "specialAttack": 65,
       "specialDefense": 110,
       "speed": 30
     },
@@ -4004,7 +4004,7 @@
       "hp": 90,
       "attack": 85,
       "defense": 100,
-      "special": 95,
+      "specialAttack": 95,
       "specialDefense": 125,
       "speed": 85
     },
@@ -4030,7 +4030,7 @@
       "hp": 90,
       "attack": 90,
       "defense": 85,
-      "special": 125,
+      "specialAttack": 125,
       "specialDefense": 90,
       "speed": 100
     },
@@ -4056,7 +4056,7 @@
       "hp": 90,
       "attack": 100,
       "defense": 90,
-      "special": 125,
+      "specialAttack": 125,
       "specialDefense": 85,
       "speed": 90
     },
@@ -4084,7 +4084,7 @@
       "hp": 41,
       "attack": 64,
       "defense": 45,
-      "special": 50,
+      "specialAttack": 50,
       "specialDefense": 50,
       "speed": 50
     },
@@ -4113,7 +4113,7 @@
       "hp": 61,
       "attack": 84,
       "defense": 65,
-      "special": 70,
+      "specialAttack": 70,
       "specialDefense": 70,
       "speed": 70
     },
@@ -4142,7 +4142,7 @@
       "hp": 91,
       "attack": 134,
       "defense": 95,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 100,
       "speed": 80
     },
@@ -4171,7 +4171,7 @@
       "hp": 106,
       "attack": 110,
       "defense": 90,
-      "special": 154,
+      "specialAttack": 154,
       "specialDefense": 90,
       "speed": 130
     },
@@ -4197,7 +4197,7 @@
       "hp": 100,
       "attack": 100,
       "defense": 100,
-      "special": 100,
+      "specialAttack": 100,
       "specialDefense": 100,
       "speed": 100
     },

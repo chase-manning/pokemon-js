@@ -43,7 +43,7 @@ const downloadData = async () => {
           .base_stat,
         defense: data.stats.filter((stat) => stat.stat.name === "defense")[0]
           .base_stat,
-        special: data.stats.filter(
+        specialAttack: data.stats.filter(
           (stat) => stat.stat.name === "special-attack"
         )[0].base_stat,
         specialDefense: data.stats.filter(

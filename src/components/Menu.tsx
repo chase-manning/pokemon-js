@@ -215,7 +215,7 @@ const Menu = ({
             ]
         ).map((item: MenuItemType, index: number) => {
           return (
-            <li key={item.label}>
+            <li key={index}>
               <Button
                 className={`${
                   noSelect

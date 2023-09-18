@@ -35,11 +35,13 @@ const HealthFill = styled.div<HealthProps>`
     if (Props.percent > 50) {
       return "var(--green)";
     } else if (Props.percent > 25) {
-      return "var(--yellow)";
+      return "var(--orange)";
     } else {
       return "var(--red)";
     }
   }};
+
+  transition: width 1s ease-out;
 `;
 
 interface ImageProps {
@@ -65,7 +67,7 @@ const HealthBar = ({ maxHealth, currentHealth, big }: Props) => {
   return (
     <StyledHealthBar>
       <HealthContainer>
-        <HealthFill percent={(currentHealth / maxHealth) * 100} />
+        <HealthFill percent={Math.round((currentHealth / maxHealth) * 100)} />
       </HealthContainer>
       <Image src={image} big={big} />
     </StyledHealthBar>

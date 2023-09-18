@@ -18,22 +18,22 @@ const PlayerMenu = () => {
       menuItems={[
         {
           label: `Player ${name}`,
-          action: () => console.log("TODO"),
+          action: () => {},
         },
         {
           label: "Badges",
           value: 0,
-          action: () => console.log("TODO"),
+          action: () => {},
         },
-        {
-          label: "Pokédex",
-          value: 0, // TODO
-          action: () => console.log("TODO"),
-        },
+        // {
+        //   label: "Pokédex",
+        //   value: 0, // TODO
+        //   action: () => {},
+        // },
         {
           label: "Time",
           value: dateformat(new Date(), "hh:MM"),
-          action: () => console.log("TODO"),
+          action: () => {},
         },
       ]}
     />

@@ -1,21 +1,35 @@
-- Go through TODOs and move them here
+===========
+
+- Get move data
+- Add battle of giving and taking damage
+- Add support for your pokemon fainting
+- Add support for healing your pokemon at healing place
+- Support PP for moves of your pokemon, and use it when Pokemon uses move
 - Add ability to use items
-- Change arrow when it's disabled
+- Add support for catching Pokemon
+- Add animation for switching Pokemon
+- bug: Can move encounter menu while start menu is open
+- Implement one way walls (and add to route 1)
+- Change Menu to use new Arrow component
 - Battle music starts slowly, trim start (maybe trim all songs)
-- Can move encounter menu while start menu is open
+- Make it a PWA
+- Test with no internet after download
+- Remove the green background, and add something better for the loading state
+- Add more maps
 
 ===========
 
-- Add pokemon battles (break down)
-- Implement one way walls (and add to route 1)
-- Add Pokemon Stats
-- Make it a PWA
-- Test with no internet after download
-- Add more maps
-- Add Option Menu
-- Add Pokedex Menu
+- Add animation to pokemon row while pokemon is active
+- Add Pokemon Stats to PokemonList
+- Change arrow when it's disabled
+- Simplify the `Character` useEffect
+- Change the movement handler to not have a hard coded movement speed there
 - Make music a seamless infinite loop
+- Pallet town colors don't mate Route 1
 - Make RPCs walk
+- Add Option Menu
 - Animate water
 - Animate flowers
 - Implement Map
+- Add a probability for running away
+- Add Pokedex Menu

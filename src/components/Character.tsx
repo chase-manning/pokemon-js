@@ -52,7 +52,6 @@ const Character = () => {
       return;
     }
 
-    // TODO we can probably remove this duplication
     if (direction === Direction.Down) {
       if (image === frontWalk1) {
         setTimeout(() => {

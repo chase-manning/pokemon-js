@@ -34,7 +34,7 @@ const getPokemon = (
       const metadata = getPokemonMetadata(option.id);
       const moves = metadata.moves
         .filter((move) => move.levelLearnedAt <= level)
-        .sort((a, b) => a.levelLearnedAt - b.levelLearnedAt)
+        .sort((a, b) => b.levelLearnedAt - a.levelLearnedAt)
         .slice(0, 4)
         .map((move) => move.name);
       return {

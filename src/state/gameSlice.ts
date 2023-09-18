@@ -38,6 +38,7 @@ export interface PokemonEncounter {
   id: number;
   level: number;
   hp: number;
+  moves: string[];
 }
 
 export interface GameState {

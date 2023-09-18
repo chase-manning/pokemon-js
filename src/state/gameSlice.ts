@@ -34,7 +34,7 @@ export interface PokemonInstance {
   moves: string[];
 }
 
-export interface PokemonEncounter {
+export interface PokemonEncounterType {
   id: number;
   level: number;
   hp: number;
@@ -50,7 +50,7 @@ export interface GameState {
   name: string;
   pokemon: PokemonInstance[];
   activePokemonIndex: number;
-  pokemonEncounter?: PokemonEncounter;
+  pokemonEncounter?: PokemonEncounterType;
 }
 
 const initialState: GameState = {
@@ -219,7 +219,7 @@ export const gameSlice = createSlice({
       state.pokemon[index1] = state.pokemon[index2];
       state.pokemon[index2] = temp;
     },
-    encounterPokemon: (state, action: PayloadAction<PokemonEncounter>) => {
+    encounterPokemon: (state, action: PayloadAction<PokemonEncounterType>) => {
       state.pokemonEncounter = action.payload;
     },
     endEncounter: (state) => {
@@ -227,6 +227,16 @@ export const gameSlice = createSlice({
     },
     setActivePokemon: (state, action: PayloadAction<number>) => {
       state.activePokemonIndex = action.payload;
+    },
+    updatePokemonEncounter: (
+      state,
+      action: PayloadAction<PokemonEncounterType>
+    ) => {
+      if (!state.pokemonEncounter) return;
+      state.pokemonEncounter.hp = action.payload.hp;
+    },
+    updatePokemon: (state, action: PayloadAction<PokemonInstance>) => {
+      state.pokemon[state.activePokemonIndex] = action.payload;
     },
   },
 });
@@ -249,6 +259,8 @@ export const {
   encounterPokemon,
   endEncounter,
   setActivePokemon,
+  updatePokemonEncounter,
+  updatePokemon,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

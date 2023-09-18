@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import {
-  PokemonEncounter,
+  PokemonEncounterType,
   encounterPokemon,
   selectMap,
   selectPos,
@@ -22,7 +22,7 @@ const randBetween = (min: number, max: number) => {
 
 const getPokemon = (
   options: PokemonEncounterData[]
-): PokemonEncounter | null => {
+): PokemonEncounterType | null => {
   if (options.length === 0) return null;
   const totalChance = options.reduce((acc, cur) => acc + cur.chance, 0);
   const random = Math.random() * totalChance;

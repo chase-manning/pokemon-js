@@ -1,10 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import {
+  PokemonEncounterType,
+  PokemonInstance,
   endEncounter,
   selectActivePokemon,
   selectPokemonEncounter,
   setActivePokemon,
+  updatePokemon,
+  updatePokemonEncounter,
 } from "../state/gameSlice";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import Frame from "./Frame";
@@ -27,9 +31,13 @@ import Menu, { MenuItemType } from "./Menu";
 import PokemonList from "./PokemonList";
 import { selectItemsMenu, showItemsMenu } from "../state/uiSlice";
 import useIsMobile from "../app/use-is-mobile";
+import { getMoveMetadata } from "../app/use-move-metadata";
+import { MoveMetadata } from "../app/move-metadata";
+import processMove, { MoveResult } from "../app/move-helper";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
+const ATTACK_ANIMATION = 600;
 
 const StyledPokemonEncounter = styled.div`
   position: absolute;
@@ -117,12 +125,58 @@ const Health = styled.div`
   }
 `;
 
-const ImageContainer = styled.div`
+const flashing = keyframes`
+  0% {
+    opacity: 1;
+  }
+  10% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  30% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  70% {
+    opacity: 0;
+  }
+  80% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+interface ImageContainerProps {
+  flashing?: boolean;
+}
+
+const ImageContainer = styled.div<ImageContainerProps>`
   height: 100%;
   flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${(props: ImageContainerProps) =>
+    props.flashing &&
+    css`
+      animation: ${flashing} 500ms linear forwards;
+    `};
 `;
 
 const inFromLeft = keyframes`
@@ -145,6 +199,54 @@ const RightImage = styled.img`
 
   transform: translate(-400%);
   animation: ${inFromLeft} ${`${MOVEMENT_ANIMATION}ms`} linear forwards;
+`;
+
+const attackRight = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
+
+interface AttackingProps {
+  attacking?: boolean;
+}
+
+const AttackRight = styled.div<AttackingProps>`
+  height: 100%;
+  transform: translateX(0%);
+  ${(props: AttackingProps) =>
+    props.attacking &&
+    css`
+      animation: ${attackRight} ${ATTACK_ANIMATION}ms linear forwards;
+    `};
+`;
+
+const attackLeft = keyframes`
+  0% {
+    transform: translateX(0%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+`;
+
+const AttackLeft = styled.div<AttackingProps>`
+  height: 100%;
+  transform: translateX(0%);
+  ${(props: AttackingProps) =>
+    props.attacking &&
+    css`
+      animation: ${attackLeft} ${ATTACK_ANIMATION}ms linear forwards;
+    `};
 `;
 
 const Corner = styled.img`
@@ -337,6 +439,10 @@ const PokemonEncounter = () => {
   // 12 = running
   // 13 = pokemon list
   // 14 = moves
+  // 15 = us prepare attack
+  // 17 = us damage
+  // 18 = them prepare attack
+  // 19 = them damage
   const [stage, setStage] = useState(-1);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
@@ -407,6 +513,76 @@ const PokemonEncounter = () => {
     return "";
   };
 
+  const getRandomEnemyMove = () => {
+    return enemy.moves[Math.floor(Math.random() * enemy.moves.length)];
+  };
+
+  const getActiveMovesFirst = (
+    activeMove: MoveMetadata,
+    enemyMove: MoveMetadata
+  ) => {
+    if (activeMove.priority > enemyMove.priority) return true;
+    if (activeMove.priority < enemyMove.priority) return false;
+    return activeStats.speed > enemyStats.speed;
+  };
+
+  console.log(stage);
+
+  const processMoveResult = (
+    move: MoveResult,
+    isAttacking: boolean
+  ): { us: PokemonInstance; them: PokemonEncounterType } => {
+    const { us, them, missed, superEffective } = move;
+    if (isAttacking) {
+      setStage(15);
+      setTimeout(() => {
+        dispatch(updatePokemonEncounter(them));
+        dispatch(updatePokemon(us));
+        setStage(17);
+      }, ATTACK_ANIMATION);
+    }
+
+    if (!isAttacking) {
+      setStage(18);
+      setTimeout(() => {
+        dispatch(updatePokemonEncounter(them));
+        dispatch(updatePokemon(us));
+        setStage(19);
+      }, ATTACK_ANIMATION);
+    }
+
+    return { us, them };
+  };
+
+  const processBattle = (attackId: string) => {
+    const activeMove = getMoveMetadata(attackId);
+    const enemyMove = getMoveMetadata(getRandomEnemyMove());
+
+    const activeMovesFirst = getActiveMovesFirst(activeMove, enemyMove);
+
+    if (activeMovesFirst) {
+      const { us, them } = processMoveResult(
+        processMove(active, enemy, attackId, true),
+        true
+      );
+      setTimeout(() => {
+        processMoveResult(processMove(us, them, enemyMove.id, false), false);
+      }, ATTACK_ANIMATION + 1000);
+    } else {
+      const { us, them } = processMoveResult(
+        processMove(active, enemy, enemyMove.id, false),
+        false
+      );
+      setTimeout(() => {
+        processMoveResult(processMove(us, them, attackId, true), true);
+      }, ATTACK_ANIMATION + 1000);
+    }
+
+    setTimeout(() => {
+      setStage(11);
+    }, (ATTACK_ANIMATION + 1000) * 2);
+  };
+
   const leftImage = () => {
     if (stage <= 3) return playerBack;
     if (stage === 5) return ball1;
@@ -441,26 +617,30 @@ const PokemonEncounter = () => {
                 </HealthBarContainer>
                 <Corner src={corner} />
               </LeftInfoSection>
-              <ImageContainer>
-                <RightImage src={enemyMetadata.images.front} />
+              <ImageContainer flashing={stage === 17}>
+                <AttackRight attacking={stage === 18}>
+                  <RightImage src={enemyMetadata.images.front} />
+                </AttackRight>
               </ImageContainer>
             </Row>
             <Row>
-              <ImageContainer>
-                <LeftImage
-                  src={leftImage()}
-                  style={{
-                    transform:
-                      stage === -1
-                        ? "translateX(400%)"
-                        : stage < 3
-                        ? "translateX(0%)"
-                        : stage === 3
-                        ? "translateX(-400%)"
-                        : "translateX(0%)",
-                    opacity: stage === 4 ? "0" : "1",
-                  }}
-                />
+              <ImageContainer flashing={stage === 19}>
+                <AttackLeft attacking={stage === 16}>
+                  <LeftImage
+                    src={leftImage()}
+                    style={{
+                      transform:
+                        stage === -1
+                          ? "translateX(400%)"
+                          : stage < 3
+                          ? "translateX(0%)"
+                          : stage === 3
+                          ? "translateX(-400%)"
+                          : "translateX(0%)",
+                      opacity: stage === 4 ? "0" : "1",
+                    }}
+                  />
+                </AttackLeft>
               </ImageContainer>
               <RightInfoSection style={{ opacity: stage >= 11 ? "1" : "0" }}>
                 <Name>{activeMetadata.name}</Name>
@@ -530,7 +710,7 @@ const PokemonEncounter = () => {
             menuItems={active.moves.map((m) => {
               const item: MenuItemType = {
                 label: m,
-                action: () => console.log("TODO"),
+                action: () => processBattle(m),
               };
               return item;
             })}

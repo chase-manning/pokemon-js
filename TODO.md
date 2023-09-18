@@ -1,7 +1,12 @@
+- Abstract all the maths stuff out into a separate folder for easier contributions
+- Attack sounds
+- Active pokemon health is off
+- Man not animating in in battle
+
 ===========
 
-- Get move data
 - Add battle of giving and taking damage
+- Split out Pokemon Encounter into separate components or handlers
 - Add support for your pokemon fainting
 - Add support for healing your pokemon at healing place
 - Support PP for moves of your pokemon, and use it when Pokemon uses move
@@ -9,6 +14,7 @@
 - Add support for catching Pokemon
 - Add animation for switching Pokemon
 - bug: Can move encounter menu while start menu is open
+- Encounter frequency seems off
 - Implement one way walls (and add to route 1)
 - Change Menu to use new Arrow component
 - Battle music starts slowly, trim start (maybe trim all songs)

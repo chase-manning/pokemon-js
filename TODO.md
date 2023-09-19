@@ -1,6 +1,5 @@
 - Abstract all the maths stuff out into a separate folder for easier contributions
 - Attack sounds
-- Active pokemon health is off
 - Man not animating in in battle
 - Add support for moves that aren't attacks (Buffs and debuffs)
 

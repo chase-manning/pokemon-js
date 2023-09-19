@@ -11,6 +11,7 @@ export interface MoveResult {
   them: PokemonEncounterType;
   missed: boolean;
   superEffective: boolean;
+  notVeryEffective: boolean;
   critical: boolean;
   isBuff: boolean;
   isDebuff: boolean;
@@ -34,6 +35,7 @@ const processMove = (
     them,
     missed: true,
     superEffective: false,
+    notVeryEffective: false,
     critical: false,
     isBuff: false,
     isDebuff: false,
@@ -46,7 +48,7 @@ const processMove = (
 
   // Our attack
   if (isAttacking) {
-    // TODO
+    // TODO - handle moves with no power
     if (!moveMetadata.power) {
       return {
         ...defaultReturn,
@@ -62,7 +64,6 @@ const processMove = (
       moveMetadata.damageClass === "physical"
         ? theirStats.defense
         : theirStats.specialDefense;
-    // TODO - handle moves with no power
     if (!moveMetadata.power) throw new Error("No power for move");
     const critical =
       Math.random() < CRITICAL_HIT_PERCENTAGE ? CRITICAL_HIT_MULTIPLIER : 1;
@@ -72,6 +73,7 @@ const processMove = (
       theirMetadata.types
     );
     const superEffective = typeEffectiveness > 1;
+    const notVeryEffective = typeEffectiveness < 1;
     const damage = Math.round(
       ((((2 * us.level * critical) / 5 + 2) *
         moveMetadata.power *
@@ -89,12 +91,13 @@ const processMove = (
         hp: Math.max(0, them.hp - damage),
       },
       superEffective,
+      notVeryEffective,
       critical: critical > 1,
     };
   }
 
   // Enemy attack
-  // TODO
+  // TODO - handle moves with no power
   if (!moveMetadata.power) {
     return {
       ...defaultReturn,
@@ -119,6 +122,7 @@ const processMove = (
     ourMetadata.types
   );
   const superEffective = typeEffectiveness > 1;
+  const notVeryEffective = typeEffectiveness < 1;
   const damage = Math.round(
     ((((2 * them.level * critical) / 5 + 2) *
       moveMetadata.power *
@@ -135,6 +139,7 @@ const processMove = (
       ...us,
       hp: Math.max(0, us.hp - damage),
     },
+    notVeryEffective,
     superEffective,
     critical: critical > 1,
   };

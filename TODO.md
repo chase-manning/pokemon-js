@@ -3,8 +3,6 @@
 - Active pokemon health is off
 - Man not animating in in battle
 - Add support for moves that aren't attacks (Buffs and debuffs)
-- Handle animation for missed attack
-- Handle animation for super effective
 
 ===========
 

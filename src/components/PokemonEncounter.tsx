@@ -533,7 +533,15 @@ const PokemonEncounter = () => {
     result: MoveResult,
     isAttacking: boolean
   ): { us: PokemonInstance; them: PokemonEncounterType } => {
-    const { us, them, missed, superEffective, moveName } = result;
+    const {
+      us,
+      them,
+      missed,
+      superEffective,
+      moveName,
+      critical,
+      notVeryEffective,
+    } = result;
     if (isAttacking) {
       setAlertText(
         `${activeMetadata.name.toUpperCase()} used ${moveName.toUpperCase()}!`
@@ -542,7 +550,21 @@ const PokemonEncounter = () => {
       setTimeout(() => {
         dispatch(updatePokemonEncounter(them));
         dispatch(updatePokemon(us));
-        setStage(17);
+
+        if (missed) {
+          setAlertText(`${activeMetadata.name.toUpperCase()}'s attack missed!`);
+        } else if (critical) {
+          setAlertText(`A critical hit!`);
+          setStage(17);
+        } else if (superEffective) {
+          setAlertText(`It's super effective!`);
+          setStage(17);
+        } else if (notVeryEffective) {
+          setAlertText(`It's not very effective...`);
+          setStage(17);
+        } else {
+          setStage(17);
+        }
       }, ATTACK_ANIMATION);
     }
 
@@ -555,7 +577,21 @@ const PokemonEncounter = () => {
       setTimeout(() => {
         dispatch(updatePokemonEncounter(them));
         dispatch(updatePokemon(us));
-        setStage(19);
+
+        if (missed) {
+          setAlertText(`${enemyMetadata.name.toUpperCase()}'s attack missed!`);
+        } else if (critical) {
+          setAlertText(`A critical hit!`);
+          setStage(19);
+        } else if (superEffective) {
+          setAlertText(`It's super effective!`);
+          setStage(19);
+        } else if (notVeryEffective) {
+          setAlertText(`It's not very effective...`);
+          setStage(19);
+        } else {
+          setStage(19);
+        }
       }, ATTACK_ANIMATION);
     }
 

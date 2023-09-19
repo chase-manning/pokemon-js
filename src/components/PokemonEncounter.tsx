@@ -445,6 +445,8 @@ const PokemonEncounter = () => {
   // 19 = them damage
   const [stage, setStage] = useState(-1);
 
+  const [alertText, setAlertText] = useState<string | null>(null);
+
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
 
   const endEncounter_ = () => {
@@ -505,6 +507,7 @@ const PokemonEncounter = () => {
   if (!isInBattle) return null;
 
   const text = () => {
+    if (alertText) return alertText;
     if (stage === 2)
       return `Wild ${enemyMetadata.name.toUpperCase()} appeared!`;
     if (stage >= 4 && stage < 10)
@@ -526,14 +529,15 @@ const PokemonEncounter = () => {
     return activeStats.speed > enemyStats.speed;
   };
 
-  console.log(stage);
-
   const processMoveResult = (
-    move: MoveResult,
+    result: MoveResult,
     isAttacking: boolean
   ): { us: PokemonInstance; them: PokemonEncounterType } => {
-    const { us, them, missed, superEffective } = move;
+    const { us, them, missed, superEffective, moveName } = result;
     if (isAttacking) {
+      setAlertText(
+        `${activeMetadata.name.toUpperCase()} used ${moveName.toUpperCase()}!`
+      );
       setStage(15);
       setTimeout(() => {
         dispatch(updatePokemonEncounter(them));
@@ -543,6 +547,10 @@ const PokemonEncounter = () => {
     }
 
     if (!isAttacking) {
+      setAlertText(
+        `Enemy ${enemyMetadata.name.toUpperCase()} used ${moveName.toUpperCase()}!`
+      );
+
       setStage(18);
       setTimeout(() => {
         dispatch(updatePokemonEncounter(them));
@@ -550,6 +558,10 @@ const PokemonEncounter = () => {
         setStage(19);
       }, ATTACK_ANIMATION);
     }
+
+    setTimeout(() => {
+      setAlertText(null);
+    }, ATTACK_ANIMATION + 500);
 
     return { us, them };
   };

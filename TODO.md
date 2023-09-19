@@ -1,7 +1,8 @@
 - Abstract all the maths stuff out into a separate folder for easier contributions
 - Attack sounds
-- Man not animating in in battle
 - Add support for moves that aren't attacks (Buffs and debuffs)
+- Attacks always missing.
+- Status messages play too fast
 
 ===========
 

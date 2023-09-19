@@ -179,9 +179,46 @@ const ImageContainer = styled.div<ImageContainerProps>`
     `};
 `;
 
-const inFromLeft = keyframes`
-  from {
+const changePokemon = keyframes`
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  50% {
     transform: translateX(-400%);
+    opacity: 1;
+  }
+  51% {
+    transform: translateX(-400%);
+    opacity: 0;
+  }
+  99% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+`;
+
+interface ChangePokemonProps {
+  changing: boolean;
+}
+
+const ChangePokemon = styled.div<ChangePokemonProps>`
+  height: 100%;
+
+  ${(props: ChangePokemonProps) =>
+    props.changing &&
+    css`
+      animation: ${changePokemon} ${MOVEMENT_ANIMATION * 2}ms linear forwards;
+    `};
+`;
+
+const inFromRight = keyframes`
+  from {
+    transform: translateX(400%);
   }
   to {
     transform: translateX(0%);
@@ -191,7 +228,17 @@ const inFromLeft = keyframes`
 const LeftImage = styled.img`
   height: 100%;
 
-  transition: transform ${`${MOVEMENT_ANIMATION}ms`} linear;
+  transform: translate(400%);
+  animation: ${inFromRight} ${`${MOVEMENT_ANIMATION}ms`} linear forwards;
+`;
+
+const inFromLeft = keyframes`
+  from {
+    transform: translateX(-400%);
+  }
+  to {
+    transform: translateX(0%);
+  }
 `;
 
 const RightImage = styled.img`
@@ -674,20 +721,9 @@ const PokemonEncounter = () => {
             <Row>
               <ImageContainer flashing={stage === 19}>
                 <AttackLeft attacking={stage === 16}>
-                  <LeftImage
-                    src={leftImage()}
-                    style={{
-                      transform:
-                        stage === -1
-                          ? "translateX(400%)"
-                          : stage < 3
-                          ? "translateX(0%)"
-                          : stage === 3
-                          ? "translateX(-400%)"
-                          : "translateX(0%)",
-                      opacity: stage === 4 ? "0" : "1",
-                    }}
-                  />
+                  <ChangePokemon changing={stage === 3}>
+                    <LeftImage src={leftImage()} />
+                  </ChangePokemon>
                 </AttackLeft>
               </ImageContainer>
               <RightInfoSection style={{ opacity: stage >= 11 ? "1" : "0" }}>

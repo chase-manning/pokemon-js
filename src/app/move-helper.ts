@@ -33,7 +33,7 @@ const processMove = (
     moveName: moveMetadata.name,
     us,
     them,
-    missed: true,
+    missed: false,
     superEffective: false,
     notVeryEffective: false,
     critical: false,
@@ -43,7 +43,10 @@ const processMove = (
 
   // Attack misses
   if (moveMetadata.accuracy && moveMetadata.accuracy < Math.random() * 100) {
-    return defaultReturn;
+    return {
+      ...defaultReturn,
+      missed: true,
+    };
   }
 
   // Our attack

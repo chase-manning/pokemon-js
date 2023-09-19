@@ -3,6 +3,7 @@
 - Add support for moves that aren't attacks (Buffs and debuffs)
 - Attacks always missing.
 - Status messages play too fast
+- These early returns in the move helper don't account for loss of PP
 
 ===========
 

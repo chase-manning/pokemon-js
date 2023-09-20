@@ -29,7 +29,7 @@ export interface PosType {
 export interface PokemonInstance {
   id: number;
   level: number;
-  experience: number;
+  xp: number;
   hp: number;
   moves: string[];
 }
@@ -73,42 +73,42 @@ const initialState: GameState = {
     {
       id: 1,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["tackle", "growl"],
     },
     {
       id: 4,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["scratch", "growl"],
     },
     {
       id: 7,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["tackle", "tail-whip"],
     },
     {
       id: 1,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["tackle", "growl"],
     },
     {
       id: 4,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["scratch", "growl"],
     },
     {
       id: 7,
       level: 5,
-      experience: 0,
+      xp: 0,
       hp: 19,
       moves: ["tackle", "tail-whip"],
     },

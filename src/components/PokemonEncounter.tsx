@@ -34,6 +34,7 @@ import useIsMobile from "../app/use-is-mobile";
 import { getMoveMetadata } from "../app/use-move-metadata";
 import { MoveMetadata } from "../app/move-metadata";
 import processMove, { MoveResult } from "../app/move-helper";
+import getXp from "../app/xp-helper";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -554,12 +555,22 @@ const PokemonEncounter = () => {
 
     if (stage === 20) {
       setStage(21);
+      if (enemy) {
+        dispatch(
+          updatePokemon({
+            ...active,
+            xp: active.xp + getXp(enemy.id, enemy.level),
+          })
+        );
+      }
     }
 
     if (stage === 21) {
       dispatch(endEncounter());
     }
   });
+
+  console.log("XP", active.xp);
 
   if (!isInBattle) return null;
 
@@ -572,9 +583,11 @@ const PokemonEncounter = () => {
     if (stage === 12) return "Got away safely!";
     if (stage === 20)
       return `Enemy ${enemyMetadata.name.toUpperCase()} fainted!`;
-    // TODO Calc xp
     if (stage === 21)
-      return `${activeMetadata.name.toUpperCase()} gained ${21} EXP. points!`;
+      return `${activeMetadata.name.toUpperCase()} gained ${getXp(
+        enemy.id,
+        enemy.level
+      )} EXP. points!`;
     return "";
   };
 

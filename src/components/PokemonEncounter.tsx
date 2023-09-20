@@ -35,6 +35,7 @@ import { getMoveMetadata } from "../app/use-move-metadata";
 import { MoveMetadata } from "../app/move-metadata";
 import processMove, { MoveResult } from "../app/move-helper";
 import getXp from "../app/xp-helper";
+import getLevelData from "../app/level-helper";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -493,6 +494,7 @@ const PokemonEncounter = () => {
   // 19 = them damage
   // 20 = they fainted
   // 21 = gained xp
+  // 22 = leveled up
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -566,11 +568,28 @@ const PokemonEncounter = () => {
     }
 
     if (stage === 21) {
+      const { level, leveledUp, remainingXp } = getLevelData(
+        active.level,
+        active.xp
+      );
+      if (leveledUp) {
+        dispatch(
+          updatePokemon({
+            ...active,
+            level,
+            xp: remainingXp,
+          })
+        );
+        setStage(22);
+      } else {
+        dispatch(endEncounter());
+      }
+    }
+
+    if (stage === 22) {
       dispatch(endEncounter());
     }
   });
-
-  console.log("XP", active.xp);
 
   if (!isInBattle) return null;
 
@@ -588,6 +607,10 @@ const PokemonEncounter = () => {
         enemy.id,
         enemy.level
       )} EXP. points!`;
+    if (stage === 22)
+      return `${activeMetadata.name.toUpperCase()} grew to level ${
+        getLevelData(active.level, active.xp).level
+      }!`;
     return "";
   };
 
@@ -737,7 +760,7 @@ const PokemonEncounter = () => {
       {stage >= 1 && (
         <>
           <StyledPokemonEncounter>
-            <Row style={{ opacity: [20, 21].includes(stage) ? "0" : "1" }}>
+            <Row style={{ opacity: [20, 21, 22].includes(stage) ? "0" : "1" }}>
               <LeftInfoSection style={{ opacity: stage >= 3 ? "1" : "0" }}>
                 <Name>{enemyMetadata.name}</Name>
                 <Level>{`:L${enemy.level}`}</Level>
@@ -782,7 +805,7 @@ const PokemonEncounter = () => {
             </Row>
           </StyledPokemonEncounter>
           <TextContainer>
-            <Frame wide tall flashing={[2, 20, 21].includes(stage)}>
+            <Frame wide tall flashing={[2, 20, 21, 22].includes(stage)}>
               {text()}
             </Frame>
           </TextContainer>

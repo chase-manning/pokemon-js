@@ -1,6 +1,5 @@
-- Add XP increase when defeating pokemon
-- Add Level up
 - Add evolving
+- Active pokemon not attacking
 
 ===========
 

@@ -406,7 +406,7 @@ const RightSide = styled.div`
   animation: ${moveLeft} 1500ms linear forwards;
 `;
 
-const LevtSide = styled.div`
+const LeftSide = styled.div`
   position: absolute;
   top: 0;
   left: 0;
@@ -718,7 +718,7 @@ const PokemonEncounter = () => {
       {stage === 0 && (
         <>
           <RightSide />
-          <LevtSide />
+          <LeftSide />
         </>
       )}
       {stage >= 1 && (

@@ -490,6 +490,8 @@ const PokemonEncounter = () => {
   // 17 = us damage
   // 18 = them prepare attack
   // 19 = them damage
+  // 20 = they fainted
+  // 21 = gained xp
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -549,6 +551,14 @@ const PokemonEncounter = () => {
     if (stage === 12) {
       endEncounter_();
     }
+
+    if (stage === 20) {
+      setStage(21);
+    }
+
+    if (stage === 21) {
+      dispatch(endEncounter());
+    }
   });
 
   if (!isInBattle) return null;
@@ -560,6 +570,11 @@ const PokemonEncounter = () => {
     if (stage >= 4 && stage < 10)
       return `Go! ${activeMetadata.name.toUpperCase()}!`;
     if (stage === 12) return "Got away safely!";
+    if (stage === 20)
+      return `Enemy ${enemyMetadata.name.toUpperCase()} fainted!`;
+    // TODO Calc xp
+    if (stage === 21)
+      return `${activeMetadata.name.toUpperCase()} gained ${21} EXP. points!`;
     return "";
   };
 
@@ -660,8 +675,19 @@ const PokemonEncounter = () => {
         processMove(active, enemy, attackId, true),
         true
       );
+
       setTimeout(() => {
-        processMoveResult(processMove(us, them, enemyMove.id, false), false);
+        // Enemy fainted
+        if (them.hp <= 0) {
+          setStage(20);
+        }
+        // Enemy attacking
+        else {
+          processMoveResult(processMove(us, them, enemyMove.id, false), false);
+          setTimeout(() => {
+            setStage(11);
+          }, ATTACK_ANIMATION + 1000);
+        }
       }, ATTACK_ANIMATION + 1000);
     } else {
       const { us, them } = processMoveResult(
@@ -670,12 +696,11 @@ const PokemonEncounter = () => {
       );
       setTimeout(() => {
         processMoveResult(processMove(us, them, attackId, true), true);
+        setTimeout(() => {
+          setStage(11);
+        }, ATTACK_ANIMATION + 1000);
       }, ATTACK_ANIMATION + 1000);
     }
-
-    setTimeout(() => {
-      setStage(11);
-    }, (ATTACK_ANIMATION + 1000) * 2);
   };
 
   const leftImage = () => {
@@ -699,7 +724,7 @@ const PokemonEncounter = () => {
       {stage >= 1 && (
         <>
           <StyledPokemonEncounter>
-            <Row>
+            <Row style={{ opacity: [20, 21].includes(stage) ? "0" : "1" }}>
               <LeftInfoSection style={{ opacity: stage >= 3 ? "1" : "0" }}>
                 <Name>{enemyMetadata.name}</Name>
                 <Level>{`:L${enemy.level}`}</Level>
@@ -744,7 +769,7 @@ const PokemonEncounter = () => {
             </Row>
           </StyledPokemonEncounter>
           <TextContainer>
-            <Frame wide tall flashing={stage === 2}>
+            <Frame wide tall flashing={[2, 20, 21].includes(stage)}>
               {text()}
             </Frame>
           </TextContainer>

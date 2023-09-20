@@ -1,9 +1,8 @@
 - Abstract all the maths stuff out into a separate folder for easier contributions
 - Attack sounds
 - Add support for moves that aren't attacks (Buffs and debuffs)
-- Attacks always missing.
-- Status messages play too fast
 - These early returns in the move helper don't account for loss of PP
+- Fix these boolean props console errors, add `$`
 
 ===========
 

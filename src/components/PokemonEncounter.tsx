@@ -644,7 +644,7 @@ const PokemonEncounter = () => {
 
     setTimeout(() => {
       setAlertText(null);
-    }, ATTACK_ANIMATION + 500);
+    }, ATTACK_ANIMATION + 1000);
 
     return { us, them };
   };

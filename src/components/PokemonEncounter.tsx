@@ -781,7 +781,7 @@ const PokemonEncounter = () => {
             </Row>
             <Row>
               <ImageContainer flashing={stage === 19}>
-                <AttackLeft attacking={stage === 16}>
+                <AttackLeft attacking={stage === 15}>
                   <ChangePokemon changing={stage === 3}>
                     <LeftImage src={leftImage()} />
                   </ChangePokemon>

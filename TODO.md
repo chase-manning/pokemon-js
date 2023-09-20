@@ -1,9 +1,6 @@
-- Add evolving
-- Active pokemon not attacking
-
 ===========
 
-- Add EX calculation
+- Add evolving
 - Add support for your pokemon fainting
 - Split out Pokemon Encounter into separate components or handlers
 - Add support for healing your pokemon at healing place

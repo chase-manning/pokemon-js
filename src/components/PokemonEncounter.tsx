@@ -36,6 +36,7 @@ import { MoveMetadata } from "../app/move-metadata";
 import processMove, { MoveResult } from "../app/move-helper";
 import getXp from "../app/xp-helper";
 import getLevelData from "../app/level-helper";
+import Evolution from "./Evolution";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -495,6 +496,7 @@ const PokemonEncounter = () => {
   // 20 = they fainted
   // 21 = gained xp
   // 22 = leveled up
+  // 23 = Evolving
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -587,7 +589,15 @@ const PokemonEncounter = () => {
     }
 
     if (stage === 22) {
-      dispatch(endEncounter());
+      if (
+        activeMetadata &&
+        activeMetadata.evolution &&
+        active.level >= activeMetadata.evolution.level
+      ) {
+        setStage(23);
+      } else {
+        dispatch(endEncounter());
+      }
     }
   });
 
@@ -862,6 +872,20 @@ const PokemonEncounter = () => {
             close={() => setStage(11)}
             bottom="0"
             right="0"
+          />
+          <Evolution
+            pokemonId={active.id}
+            show={stage === 23}
+            close={() => {
+              if (!activeMetadata.evolution) throw new Error("No evolution");
+              dispatch(
+                updatePokemon({
+                  ...active,
+                  id: activeMetadata.evolution.pokemon,
+                })
+              );
+              dispatch(endEncounter());
+            }}
           />
         </>
       )}

@@ -1,6 +1,7 @@
+- Learning new moves on level up
+
 ===========
 
-- Add evolving
 - Add support for your pokemon fainting
 - Split out Pokemon Encounter into separate components or handlers
 - Add support for healing your pokemon at healing place

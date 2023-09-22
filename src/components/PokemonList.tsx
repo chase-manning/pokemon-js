@@ -37,9 +37,10 @@ const Container = styled.div`
 interface Props {
   close: () => void;
   switchAction?: (index: number) => void;
+  text?: string;
 }
 
-const PokemonList = ({ close, switchAction }: Props) => {
+const PokemonList = ({ close, switchAction, text }: Props) => {
   const dispatch = useDispatch();
   const pokemon = useSelector(selectPokemon);
   const [active, setActive] = useState(0);
@@ -89,7 +90,11 @@ const PokemonList = ({ close, switchAction }: Props) => {
       </StyledPokemonList>
       <Container>
         <Frame wide tall>
-          {switching ? "Move POKéMON where?" : "Choose a POKéMON."}
+          {text
+            ? text
+            : switching
+            ? "Move POKéMON where?"
+            : "Choose a POKéMON."}
         </Frame>
       </Container>
       <Menu

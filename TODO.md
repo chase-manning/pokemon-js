@@ -1,8 +1,10 @@
-- Learning new moves on level up
-
 ===========
 
-- Add support for your pokemon fainting
+- Add animation for switching Pokemon
+- Add support for all pokemon fainting
+- Should reset active pokemon to first slot after battle
+- If first pokemon is fainted, don't set that one as active by default
+- Learning new moves on level up
 - Split out Pokemon Encounter into separate components or handlers
 - Add support for healing your pokemon at healing place
 - Add support for moves that aren't attacks (Buffs and debuffs)
@@ -11,7 +13,7 @@
 - Add ability to use items
 - Add support for catching Pokemon
 - Fix these boolean props console errors, add `$`
-- Add animation for switching Pokemon
+- Give enemy attack when switching pokemon
 - bug: Can move encounter menu while start menu is open
 - Attack sounds
 - Encounter frequency seems off
@@ -26,6 +28,7 @@
 ===========
 
 - Add animation to pokemon row while pokemon is active
+- Show grass in front of the player when in grass
 - Add Pokemon Stats to PokemonList
 - Change arrow when it's disabled
 - Simplify the `Character` useEffect

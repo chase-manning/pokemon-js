@@ -5,6 +5,7 @@ import {
   PokemonInstance,
   endEncounter,
   selectActivePokemon,
+  selectPokemon,
   selectPokemonEncounter,
   setActivePokemon,
   updatePokemon,
@@ -473,6 +474,7 @@ const PokemonEncounter = () => {
   const activeStats = usePokemonStats(active?.id || 1, active?.level || 1);
   const itemMenuOpen = useSelector(selectItemsMenu);
   const isMobile = useIsMobile();
+  const pokemon = useSelector(selectPokemon);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -497,6 +499,9 @@ const PokemonEncounter = () => {
   // 21 = gained xp
   // 22 = leveled up
   // 23 = Evolving
+  // 24 = active fainted
+  // 25 = select new pokemon
+  // 26 = out of pokemon
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -524,33 +529,37 @@ const PokemonEncounter = () => {
     }
   }, [isInBattle]);
 
+  const throwPokeball = () => {
+    setTimeout(() => {
+      setStage(4);
+    }, MOVEMENT_ANIMATION);
+    setTimeout(() => {
+      setStage(5);
+    }, MOVEMENT_ANIMATION * 2);
+    setTimeout(() => {
+      setStage(6);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION);
+    setTimeout(() => {
+      setStage(7);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 2);
+    setTimeout(() => {
+      setStage(8);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 3);
+    setTimeout(() => {
+      setStage(9);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 4);
+    setTimeout(() => {
+      setStage(10);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5);
+    setTimeout(() => {
+      setStage(11);
+    }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
+  };
+
   useEvent(Event.A, () => {
     if (stage === 2) {
       setStage(3);
-      setTimeout(() => {
-        setStage(4);
-      }, MOVEMENT_ANIMATION);
-      setTimeout(() => {
-        setStage(5);
-      }, MOVEMENT_ANIMATION * 2);
-      setTimeout(() => {
-        setStage(6);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION);
-      setTimeout(() => {
-        setStage(7);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 2);
-      setTimeout(() => {
-        setStage(8);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 3);
-      setTimeout(() => {
-        setStage(9);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 4);
-      setTimeout(() => {
-        setStage(10);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5);
-      setTimeout(() => {
-        setStage(11);
-      }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
+      throwPokeball();
     }
 
     if (stage === 12) {
@@ -599,6 +608,15 @@ const PokemonEncounter = () => {
         dispatch(endEncounter());
       }
     }
+
+    if (stage === 24) {
+      const hasOtherPokemon = pokemon.some((p) => p.hp > 0);
+      if (hasOtherPokemon) {
+        setStage(25);
+      } else {
+        // TODO
+      }
+    }
   });
 
   if (!isInBattle) return null;
@@ -621,6 +639,7 @@ const PokemonEncounter = () => {
       return `${activeMetadata.name.toUpperCase()} grew to level ${
         getLevelData(active.level, active.xp).level
       }!`;
+    if (stage === 24) return `${activeMetadata.name.toUpperCase()} fainted!`;
     return "";
   };
 
@@ -716,36 +735,76 @@ const PokemonEncounter = () => {
 
     const activeMovesFirst = getActiveMovesFirst(activeMove, enemyMove);
 
+    // We are moving first
     if (activeMovesFirst) {
+      // We are attacking
       const { us, them } = processMoveResult(
         processMove(active, enemy, attackId, true),
         true
       );
 
       setTimeout(() => {
-        // Enemy fainted
+        // If enemy fainted
         if (them.hp <= 0) {
           setStage(20);
         }
+
         // Enemy attacking
         else {
-          processMoveResult(processMove(us, them, enemyMove.id, false), false);
+          const { us: usNew } = processMoveResult(
+            processMove(us, them, enemyMove.id, false),
+            false
+          );
+
           setTimeout(() => {
-            setStage(11);
+            // We fainted
+            if (usNew.hp <= 0) {
+              setStage(24);
+            }
+
+            // Ending battle
+            else {
+              setStage(11);
+            }
           }, ATTACK_ANIMATION + 1000);
         }
       }, ATTACK_ANIMATION + 1000);
-    } else {
+    }
+
+    // Enemy moving first
+    else {
+      // Enemy attacking
       const { us, them } = processMoveResult(
         processMove(active, enemy, enemyMove.id, false),
         false
       );
-      setTimeout(() => {
-        processMoveResult(processMove(us, them, attackId, true), true);
+
+      // We fainted
+      if (us.hp <= 0) {
+        setStage(24);
+      }
+
+      // We are attacking
+      else {
         setTimeout(() => {
-          setStage(11);
+          const { them: themAfterAttack } = processMoveResult(
+            processMove(us, them, attackId, true),
+            true
+          );
+
+          setTimeout(() => {
+            // If enemy fainted
+            if (themAfterAttack.hp <= 0) {
+              setStage(20);
+            }
+
+            // Ending battle
+            else {
+              setStage(11);
+            }
+          }, ATTACK_ANIMATION + 1000);
         }, ATTACK_ANIMATION + 1000);
-      }, ATTACK_ANIMATION + 1000);
+      }
     }
   };
 
@@ -789,10 +848,10 @@ const PokemonEncounter = () => {
                 </AttackRight>
               </ImageContainer>
             </Row>
-            <Row>
+            <Row style={{ opacity: [24].includes(stage) ? "0" : "1" }}>
               <ImageContainer flashing={stage === 19}>
                 <AttackLeft attacking={stage === 15}>
-                  <ChangePokemon changing={stage === 3}>
+                  <ChangePokemon changing={[3, 25].includes(stage)}>
                     <LeftImage src={leftImage()} />
                   </ChangePokemon>
                 </AttackLeft>
@@ -815,7 +874,7 @@ const PokemonEncounter = () => {
             </Row>
           </StyledPokemonEncounter>
           <TextContainer>
-            <Frame wide tall flashing={[2, 20, 21, 22].includes(stage)}>
+            <Frame wide tall flashing={[2, 20, 21, 22, 24].includes(stage)}>
               {text()}
             </Frame>
           </TextContainer>
@@ -887,6 +946,17 @@ const PokemonEncounter = () => {
               dispatch(endEncounter());
             }}
           />
+          {stage === 25 && (
+            <PokemonList
+              text="Pring out which POKéMON?"
+              close={() => {}}
+              switchAction={(index) => {
+                if (pokemon[index].hp <= 0) return;
+                dispatch(setActivePokemon(index));
+                throwPokeball();
+              }}
+            />
+          )}
         </>
       )}
     </>

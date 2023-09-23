@@ -1,6 +1,5 @@
 ===========
 
-- Remove "Enter door" loggign (and maybe others)
 - Split out Pokemon Encounter into separate components or handlers
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Support PP for moves of your pokemon, and use it when Pokemon uses move

@@ -56,7 +56,6 @@ const SoundHandler = () => {
 
   useEvent(Event.EnterDoor, () => {
     playUiSound(enterDoor);
-    console.log("Enter door");
   });
 
   return (

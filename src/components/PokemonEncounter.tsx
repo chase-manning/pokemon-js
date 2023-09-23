@@ -33,7 +33,11 @@ import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
 import Menu, { MenuItemType } from "./Menu";
 import PokemonList from "./PokemonList";
-import { selectItemsMenu, showItemsMenu } from "../state/uiSlice";
+import {
+  selectItemsMenu,
+  selectStartMenu,
+  showItemsMenu,
+} from "../state/uiSlice";
 import useIsMobile from "../app/use-is-mobile";
 import { getMoveMetadata } from "../app/use-move-metadata";
 import { MoveMetadata } from "../app/move-metadata";
@@ -489,6 +493,7 @@ const PokemonEncounter = () => {
   const isMobile = useIsMobile();
   const pokemon = useSelector(selectPokemon);
   const name = useSelector(selectName);
+  const startMenuOpen = useSelector(selectStartMenu);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -573,6 +578,8 @@ const PokemonEncounter = () => {
   };
 
   useEvent(Event.A, () => {
+    if (startMenuOpen) return;
+
     if (stage === 2) {
       setStage(3);
       throwPokeball();
@@ -915,7 +922,7 @@ const PokemonEncounter = () => {
           <Menu
             compact
             show={stage === 11}
-            disabled={itemMenuOpen}
+            disabled={itemMenuOpen || startMenuOpen}
             menuItems={[
               {
                 label: "Fight",
@@ -952,6 +959,7 @@ const PokemonEncounter = () => {
           <Menu
             tight
             noExitOption
+            disabled={startMenuOpen}
             padd={4}
             padding={isMobile ? "100px" : "40vw"}
             show={stage === 14}

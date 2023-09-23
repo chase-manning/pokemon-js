@@ -1,7 +1,5 @@
 ===========
 
-- reset pp when healing
-
 - These early returns in the move helper don't account for loss of PP
 - Add ability to use items
 - Add support for catching Pokemon

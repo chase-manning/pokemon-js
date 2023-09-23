@@ -4,6 +4,7 @@ import { MapId } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
+import { getMoveMetadata } from "../app/use-move-metadata";
 
 export enum ItemType {
   Potion = "Potion",
@@ -269,6 +270,10 @@ export const gameSlice = createSlice({
           state.pokemon[i].id,
           state.pokemon[i].level
         ).hp;
+        for (let j = 0; j < state.pokemon[i].moves.length; j++) {
+          state.pokemon[i].moves[j].pp =
+            getMoveMetadata(state.pokemon[i].moves[j].name).pp || 0;
+        }
       }
 
       // Move

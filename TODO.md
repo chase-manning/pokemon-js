@@ -1,6 +1,5 @@
 ===========
 
-- Pokemon hp is off in list
 - If first pokemon is fainted, don't set that one as active by default
 - Learning new moves on level up
 - Split out Pokemon Encounter into separate components or handlers

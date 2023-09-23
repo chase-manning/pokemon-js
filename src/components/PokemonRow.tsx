@@ -25,6 +25,7 @@ import grassA from "../assets/pokemon/simple/grass-a.png";
 import grassB from "../assets/pokemon/simple/grass-b.png";
 import ballA from "../assets/pokemon/simple/ball-a.png";
 import ballB from "../assets/pokemon/simple/ball-b.png";
+import usePokemonStats from "../app/use-pokemon-stats";
 
 const getIcons = (metadata: PokemonMetadata): { a: string; b: string } => {
   // Is Voltorb or Electrode
@@ -181,6 +182,7 @@ interface Props {
 
 const PokemonRow = ({ pokemon, active }: Props) => {
   const metadata = usePokemonMetadata(pokemon.id);
+  const stats = usePokemonStats(pokemon.id, pokemon.level);
 
   if (!metadata) return null;
 
@@ -198,15 +200,12 @@ const PokemonRow = ({ pokemon, active }: Props) => {
       <InfoContainer>
         <Name>{metadata.name}</Name>
         <HealthBarContainer>
-          <HealthBar
-            maxHealth={metadata.baseStats.hp}
-            currentHealth={pokemon.hp}
-          />
+          <HealthBar maxHealth={stats.hp} currentHealth={pokemon.hp} />
         </HealthBarContainer>
       </InfoContainer>
       <StatsContainer>
         <Level>{`:L${pokemon.level}`}</Level>
-        <Health>{`${pokemon.hp}/${metadata.baseStats.hp}`}</Health>
+        <Health>{`${pokemon.hp}/${stats.hp}`}</Health>
       </StatsContainer>
     </StyledPokemonRow>
   );

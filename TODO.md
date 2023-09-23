@@ -1,15 +1,16 @@
 ===========
 
-- Learning new moves on level up
+- Remove "Enter door" loggign (and maybe others)
 - Split out Pokemon Encounter into separate components or handlers
-- Add support for healing your pokemon at healing place
-- Add support for moves that aren't attacks (Buffs and debuffs)
+- Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Support PP for moves of your pokemon, and use it when Pokemon uses move
 - These early returns in the move helper don't account for loss of PP
 - Add ability to use items
 - Add support for catching Pokemon
 - Fix these boolean props console errors, add `$`
 - Give enemy attack when switching pokemon
+- Add more maps
+- Add support for healing your pokemon at healing place
 - battle sounds
 - Encounter frequency seems off
 - Implement one way walls (and add to route 1)
@@ -18,7 +19,6 @@
 - Make it a PWA
 - Test with no internet after download
 - Remove the green background, and add something better for the loading state
-- Add more maps
 
 ===========
 
@@ -36,5 +36,6 @@
 - Abstract all the maths stuff out into a separate folder for easier contributions
 - Animate flowers
 - Implement Map
+- If you skip a level (with a double level up) then you miss that levels move learn
 - Add a probability for running away
 - Add Pokedex Menu

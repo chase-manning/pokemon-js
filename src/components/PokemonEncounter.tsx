@@ -43,7 +43,7 @@ import { getMoveMetadata } from "../app/use-move-metadata";
 import { MoveMetadata } from "../app/move-metadata";
 import processMove, { MoveResult } from "../app/move-helper";
 import getXp from "../app/xp-helper";
-import getLevelData from "../app/level-helper";
+import getLevelData, { getLearnedMove } from "../app/level-helper";
 import Evolution from "./Evolution";
 
 const MOVEMENT_ANIMATION = 1300;
@@ -523,6 +523,11 @@ const PokemonEncounter = () => {
   // 26 = out of pokemon
   // 27 = player fainted
   // 28 = black screen
+  // 29 = new move
+  // 30 = trying to learn new move
+  // 31 = but cannot learn more than 4 moves
+  // 32 = select move to forget
+  // 33 = forgot move
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -620,12 +625,19 @@ const PokemonEncounter = () => {
       }
     }
 
+    const isEvolving =
+      activeMetadata &&
+      activeMetadata.evolution &&
+      active.level >= activeMetadata.evolution.level;
+
     if (stage === 22) {
-      if (
-        activeMetadata &&
-        activeMetadata.evolution &&
-        active.level >= activeMetadata.evolution.level
-      ) {
+      const move = getLearnedMove(active);
+      const hasFourMoves = active.moves.length === 4;
+      if (move && !hasFourMoves) {
+        setStage(29);
+      } else if (move && hasFourMoves) {
+        setStage(30);
+      } else if (isEvolving) {
         setStage(23);
       } else {
         endEncounter_();
@@ -654,6 +666,35 @@ const PokemonEncounter = () => {
         endEncounter_();
       }, 1000 + 500);
     }
+
+    if (stage === 29) {
+      const move = getLearnedMove(active);
+      if (!move) throw new Error("No move found");
+      dispatch(
+        updatePokemon({
+          ...active,
+          moves: [...active.moves, move],
+        })
+      );
+
+      if (isEvolving) {
+        setStage(23);
+      } else {
+        endEncounter_();
+      }
+    }
+
+    if (stage === 30) {
+      setStage(31);
+    }
+
+    if (stage === 31) {
+      setStage(32);
+    }
+
+    if (stage === 32) {
+      setStage(33);
+    }
   });
 
   if (!isInBattle) return null;
@@ -679,6 +720,16 @@ const PokemonEncounter = () => {
     if (stage === 24) return `${activeMetadata.name.toUpperCase()} fainted!`;
     if (stage === 26) return `${name} is out of usable POKéMON!`;
     if (stage === 27) return `${name} blacked out!`;
+    if (stage === 29)
+      return `${activeMetadata.name.toUpperCase()} learned ${getLearnedMove(
+        active
+      )}!`;
+    if (stage === 30)
+      return `${activeMetadata.name.toUpperCase()} is trying to learn ${getLearnedMove(
+        active
+      )}.`;
+    if (stage === 31) return `But it cannot learn more than 4 moves`;
+    if (stage === 32) return `Choose a move you would like to forget`;
     return "";
   };
 
@@ -999,6 +1050,73 @@ const PokemonEncounter = () => {
               }}
             />
           )}
+          <Menu
+            noExitOption
+            disabled={startMenuOpen}
+            padding={isMobile ? "100px" : "40vw"}
+            show={stage === 33}
+            menuItems={[
+              ...active.moves.map((m) => {
+                const newMove = getLearnedMove(active);
+                if (!newMove)
+                  return {
+                    label: "Error",
+                    action: () => {},
+                  };
+                const item: MenuItemType = {
+                  label: m,
+                  action: () => {
+                    const isEvolving =
+                      activeMetadata &&
+                      activeMetadata.evolution &&
+                      active.level >= activeMetadata.evolution.level;
+                    if (isEvolving) {
+                      setStage(23);
+                    } else {
+                      endEncounter_();
+                    }
+                    dispatch(
+                      updatePokemon({
+                        ...active,
+                        moves: [
+                          ...active.moves.filter((move) => move !== m),
+                          newMove,
+                        ],
+                      })
+                    );
+                  },
+                };
+                return item;
+              }),
+              {
+                label: getLearnedMove(active) || "Error",
+                action: () => {
+                  const isEvolving =
+                    activeMetadata &&
+                    activeMetadata.evolution &&
+                    active.level >= activeMetadata.evolution.level;
+                  if (isEvolving) {
+                    setStage(23);
+                  } else {
+                    endEncounter_();
+                  }
+                },
+              },
+            ]}
+            close={() => {
+              const isEvolving =
+                activeMetadata &&
+                activeMetadata.evolution &&
+                active.level >= activeMetadata.evolution.level;
+              if (isEvolving) {
+                setStage(23);
+              } else {
+                endEncounter_();
+              }
+            }}
+            bottom="0"
+            right="0"
+          />
           <BlackOverlay style={{ opacity: stage === 28 ? "1" : "0" }} />
         </>
       )}

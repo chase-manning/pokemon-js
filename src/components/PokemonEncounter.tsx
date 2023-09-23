@@ -608,7 +608,7 @@ const PokemonEncounter = () => {
         );
         setStage(22);
       } else {
-        dispatch(endEncounter());
+        endEncounter_();
       }
     }
 
@@ -620,7 +620,7 @@ const PokemonEncounter = () => {
       ) {
         setStage(23);
       } else {
-        dispatch(endEncounter());
+        endEncounter_();
       }
     }
 
@@ -976,7 +976,7 @@ const PokemonEncounter = () => {
                   id: activeMetadata.evolution.pokemon,
                 })
               );
-              dispatch(endEncounter());
+              endEncounter_();
             }}
           />
           {stage === 25 && (

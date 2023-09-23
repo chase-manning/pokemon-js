@@ -911,7 +911,7 @@ const PokemonEncounter = () => {
               close={() => setStage(11)}
               switchAction={(index) => {
                 dispatch(setActivePokemon(index));
-                setStage(11);
+                throwPokeball();
               }}
             />
           )}

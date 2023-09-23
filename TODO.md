@@ -1,6 +1,5 @@
 ===========
 
-- Add animation for switching Pokemon
 - Add support for all pokemon fainting
 - Should reset active pokemon to first slot after battle
 - If first pokemon is fainted, don't set that one as active by default

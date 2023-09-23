@@ -4,7 +4,9 @@ import {
   PokemonEncounterType,
   PokemonInstance,
   endEncounter,
+  recoverFromFainting,
   selectActivePokemon,
+  selectName,
   selectPokemon,
   selectPokemonEncounter,
   setActivePokemon,
@@ -464,6 +466,16 @@ const LeftSide = styled.div`
   animation: ${moveRight} 1500ms linear forwards;
 `;
 
+const BlackOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 100;
+`;
+
 const PokemonEncounter = () => {
   const dispatch = useDispatch();
   const enemy = useSelector(selectPokemonEncounter);
@@ -475,6 +487,7 @@ const PokemonEncounter = () => {
   const itemMenuOpen = useSelector(selectItemsMenu);
   const isMobile = useIsMobile();
   const pokemon = useSelector(selectPokemon);
+  const name = useSelector(selectName);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -502,6 +515,8 @@ const PokemonEncounter = () => {
   // 24 = active fainted
   // 25 = select new pokemon
   // 26 = out of pokemon
+  // 27 = player fainted
+  // 28 = black screen
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -614,8 +629,22 @@ const PokemonEncounter = () => {
       if (hasOtherPokemon) {
         setStage(25);
       } else {
-        // TODO
+        setStage(26);
       }
+    }
+
+    if (stage === 26) {
+      setStage(27);
+    }
+
+    if (stage === 27) {
+      setStage(28);
+      setTimeout(() => {
+        dispatch(recoverFromFainting());
+      }, 1000);
+      setTimeout(() => {
+        endEncounter_();
+      }, 1000 + 500);
     }
   });
 
@@ -640,6 +669,8 @@ const PokemonEncounter = () => {
         getLevelData(active.level, active.xp).level
       }!`;
     if (stage === 24) return `${activeMetadata.name.toUpperCase()} fainted!`;
+    if (stage === 26) return `${name} is out of usable POKéMON!`;
+    if (stage === 27) return `${name} blacked out!`;
     return "";
   };
 
@@ -848,7 +879,9 @@ const PokemonEncounter = () => {
                 </AttackRight>
               </ImageContainer>
             </Row>
-            <Row style={{ opacity: [24].includes(stage) ? "0" : "1" }}>
+            <Row
+              style={{ opacity: [24, 26, 27, 28].includes(stage) ? "0" : "1" }}
+            >
               <ImageContainer flashing={stage === 19}>
                 <AttackLeft attacking={stage === 15}>
                   <ChangePokemon changing={[3, 25].includes(stage)}>
@@ -957,6 +990,7 @@ const PokemonEncounter = () => {
               }}
             />
           )}
+          <BlackOverlay style={{ opacity: stage === 28 ? "1" : "0" }} />
         </>
       )}
     </>

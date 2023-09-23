@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { MapId } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
+import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
 
 export enum ItemType {
@@ -238,6 +239,28 @@ export const gameSlice = createSlice({
     updatePokemon: (state, action: PayloadAction<PokemonInstance>) => {
       state.pokemon[state.activePokemonIndex] = action.payload;
     },
+    recoverFromFainting: (state) => {
+      // Heal
+      for (let i = 0; i < state.pokemon.length; i++) {
+        state.pokemon[i].hp = getPokemonStats(
+          state.pokemon[i].id,
+          state.pokemon[i].level
+        ).hp;
+      }
+
+      // Move
+      const getRecoverLocation = (map: MapId): { map: MapId; pos: PosType } => {
+        const mapData_ = mapData[map];
+        if (mapData_.recoverLocation) {
+          return { map, pos: mapData_.recoverLocation };
+        }
+        if (!mapData_.exitReturnMap) throw new Error("No exit return map");
+        return getRecoverLocation(mapData_.exitReturnMap);
+      };
+      const { map, pos } = getRecoverLocation(state.map);
+      state.map = map;
+      state.pos = pos;
+    },
   },
 });
 
@@ -261,6 +284,7 @@ export const {
   setActivePokemon,
   updatePokemonEncounter,
   updatePokemon,
+  recoverFromFainting,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

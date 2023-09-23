@@ -373,6 +373,7 @@ const palletTown: MapType = {
     onlyOne: { rate: 0, pokemon: [] },
   },
   grass: {},
+  recoverLocation: { x: 5, y: 6 },
 };
 
 export default palletTown;

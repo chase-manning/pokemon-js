@@ -206,13 +206,13 @@ export const gameSlice = createSlice({
       if (!savedGame) return;
       const savedGameState = JSON.parse(savedGame) as GameState;
       state.pos = savedGameState.pos;
-      state.moving = savedGameState.moving;
       state.direction = savedGameState.direction;
       state.map = savedGameState.map;
       state.inventory = savedGameState.inventory;
       state.name = savedGameState.name;
       state.pokemon = savedGameState.pokemon;
       state.pokemonEncounter = savedGameState.pokemonEncounter;
+      state.activePokemonIndex = savedGameState.activePokemonIndex;
     },
     swapPokemonPositions: (state, action: PayloadAction<number[]>) => {
       const [index1, index2] = action.payload;

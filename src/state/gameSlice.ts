@@ -261,6 +261,16 @@ export const gameSlice = createSlice({
       state.map = map;
       state.pos = pos;
     },
+    resetActivePokemon: (state) => {
+      let fistIndexWithHp = 0;
+      for (let i = 0; i < state.pokemon.length; i++) {
+        if (state.pokemon[i].hp > 0) {
+          fistIndexWithHp = i;
+          break;
+        }
+      }
+      state.activePokemonIndex = fistIndexWithHp;
+    },
   },
 });
 
@@ -285,6 +295,7 @@ export const {
   updatePokemonEncounter,
   updatePokemon,
   recoverFromFainting,
+  resetActivePokemon,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

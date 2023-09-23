@@ -5,6 +5,7 @@ import {
   PokemonInstance,
   endEncounter,
   recoverFromFainting,
+  resetActivePokemon,
   selectActivePokemon,
   selectName,
   selectPokemon,
@@ -525,7 +526,7 @@ const PokemonEncounter = () => {
 
   const endEncounter_ = () => {
     dispatch(endEncounter());
-    dispatch(setActivePokemon(0));
+    dispatch(resetActivePokemon());
   };
 
   useEffect(() => {

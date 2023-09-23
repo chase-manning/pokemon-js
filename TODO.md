@@ -1,6 +1,6 @@
 ===========
 
-- If first pokemon is fainted, don't set that one as active by default
+- What happens if user saves within battle
 - Learning new moves on level up
 - Split out Pokemon Encounter into separate components or handlers
 - Add support for healing your pokemon at healing place
@@ -12,7 +12,7 @@
 - Fix these boolean props console errors, add `$`
 - Give enemy attack when switching pokemon
 - bug: Can move encounter menu while start menu is open
-- Attack sounds
+- battle sounds
 - Encounter frequency seems off
 - Implement one way walls (and add to route 1)
 - Change Menu to use new Arrow component

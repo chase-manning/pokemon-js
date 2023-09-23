@@ -1,8 +1,7 @@
 ===========
 
-- Split out Pokemon Encounter into separate components or handlers
-- Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
-- Support PP for moves of your pokemon, and use it when Pokemon uses move
+- reset pp when healing
+
 - These early returns in the move helper don't account for loss of PP
 - Add ability to use items
 - Add support for catching Pokemon
@@ -21,6 +20,7 @@
 
 ===========
 
+- Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass
 - Add Pokemon Stats to PokemonList

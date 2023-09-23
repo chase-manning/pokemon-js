@@ -45,6 +45,7 @@ import processMove, { MoveResult } from "../app/move-helper";
 import getXp from "../app/xp-helper";
 import getLevelData, { getLearnedMove } from "../app/level-helper";
 import Evolution from "./Evolution";
+import MoveSelect from "./MoveSelect";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -1007,23 +1008,10 @@ const PokemonEncounter = () => {
               }}
             />
           )}
-          <Menu
-            tight
-            noExitOption
-            disabled={startMenuOpen}
-            padd={4}
-            padding={isMobile ? "100px" : "40vw"}
+          <MoveSelect
             show={stage === 14}
-            menuItems={active.moves.map((m) => {
-              const item: MenuItemType = {
-                label: m,
-                action: () => processBattle(m),
-              };
-              return item;
-            })}
+            select={(move: string) => processBattle(move)}
             close={() => setStage(11)}
-            bottom="0"
-            right="0"
           />
           <Evolution
             pokemonId={active.id}
@@ -1064,7 +1052,7 @@ const PokemonEncounter = () => {
                     action: () => {},
                   };
                 const item: MenuItemType = {
-                  label: m,
+                  label: m.name,
                   action: () => {
                     const isEvolving =
                       activeMetadata &&
@@ -1079,7 +1067,9 @@ const PokemonEncounter = () => {
                       updatePokemon({
                         ...active,
                         moves: [
-                          ...active.moves.filter((move) => move !== m),
+                          ...active.moves.filter(
+                            (move) => move.name !== m.name
+                          ),
                           newMove,
                         ],
                       })
@@ -1089,7 +1079,7 @@ const PokemonEncounter = () => {
                 return item;
               }),
               {
-                label: getLearnedMove(active) || "Error",
+                label: getLearnedMove(active)?.name || "Error",
                 action: () => {
                   const isEvolving =
                     activeMetadata &&

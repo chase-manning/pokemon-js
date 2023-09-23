@@ -27,12 +27,17 @@ export interface PosType {
   y: number;
 }
 
+export interface MoveState {
+  name: string;
+  pp: number;
+}
+
 export interface PokemonInstance {
   id: number;
   level: number;
   xp: number;
   hp: number;
-  moves: string[];
+  moves: MoveState[];
 }
 
 export interface PokemonEncounterType {
@@ -76,42 +81,60 @@ const initialState: GameState = {
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["tackle", "growl"],
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
     },
     {
       id: 4,
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["scratch", "growl"],
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
     },
     {
       id: 7,
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["tackle", "tail-whip"],
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
     },
     {
       id: 1,
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["tackle", "growl"],
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
     },
     {
       id: 4,
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["scratch", "growl"],
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
     },
     {
       id: 7,
       level: 5,
       xp: 0,
       hp: 19,
-      moves: ["tackle", "tail-whip"],
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
     },
   ],
   activePokemonIndex: 0,

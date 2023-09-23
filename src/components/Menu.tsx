@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
@@ -72,6 +72,7 @@ interface Props {
   compact?: boolean;
   padd?: number;
   tight?: boolean;
+  setHovered?: (index: number) => void;
 }
 
 const Menu = ({
@@ -90,10 +91,15 @@ const Menu = ({
   compact,
   padd,
   tight,
+  setHovered,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   // TODO Change to use Arrow component
+
+  useEffect(() => {
+    if (setHovered) setHovered(activeIndex);
+  }, [activeIndex, setHovered]);
 
   useEvent(Event.Up, () => {
     if (disabled) return;
@@ -128,10 +134,8 @@ const Menu = ({
     }
 
     setActiveIndex((prev) => {
-      if (noExit) {
+      if (noExit || noExitOption) {
         if (prev === menuItems.length - 1) return prev;
-      } else if (padd) {
-        if (prev === padd - 1) return prev;
       } else {
         if (prev === menuItems.length) return prev;
       }

@@ -17,6 +17,21 @@ export interface MoveResult {
   isDebuff: boolean;
 }
 
+const getUs = (us: PokemonInstance, isAttacking: boolean, move: string) => {
+  if (!isAttacking) return us;
+  const newUs = {
+    ...us,
+    moves: us.moves.map((m) => {
+      if (m.name !== move) return m;
+      return {
+        ...m,
+        pp: Math.max(0, m.pp - 1),
+      };
+    }),
+  };
+  return newUs;
+};
+
 const processMove = (
   us: PokemonInstance,
   them: PokemonEncounterType,
@@ -31,7 +46,7 @@ const processMove = (
 
   const defaultReturn = {
     moveName: moveMetadata.name,
-    us,
+    us: getUs(us, isAttacking, move),
     them,
     missed: false,
     superEffective: false,
@@ -139,7 +154,7 @@ const processMove = (
   return {
     ...defaultReturn,
     us: {
-      ...us,
+      ...defaultReturn.us,
       hp: Math.max(0, us.hp - damage),
     },
     notVeryEffective,

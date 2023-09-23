@@ -1,4 +1,5 @@
-import { PokemonInstance } from "../state/gameSlice";
+import { MoveState, PokemonInstance } from "../state/gameSlice";
+import { getMoveMetadata } from "./use-move-metadata";
 import { getPokemonMetadata } from "./use-pokemon-metadata";
 
 const getLevelData = (
@@ -20,11 +21,14 @@ const getLevelData = (
 
 export default getLevelData;
 
-export const getLearnedMove = (pokemon: PokemonInstance): string | null => {
+export const getLearnedMove = (pokemon: PokemonInstance): MoveState | null => {
   const pokemonMetadata = getPokemonMetadata(pokemon.id);
   const moves = pokemonMetadata.moves;
   const move = moves.find((move) => move.levelLearnedAt === pokemon.level);
   if (!move) return null;
-  if (pokemon.moves.includes(move.name)) return null;
-  return move.name;
+  if (pokemon.moves.some((m) => m.name === move.name)) return null;
+  return {
+    name: move.name,
+    pp: getMoveMetadata(move.name).pp || 0,
+  };
 };

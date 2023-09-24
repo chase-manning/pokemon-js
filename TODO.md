@@ -1,12 +1,10 @@
 ===========
 
-- Give enemy attack when switching pokemon, using item, and catch attempt
 - Add more maps
 - Add support for healing your pokemon at healing place
 - Handle getting pokemon more than 6 (send to PC)
 - battle sounds
 - Encounter frequency seems off
-- Implement one way walls (and add to route 1)
 - Change Menu to use new Arrow component
 - Battle music starts slowly, trim start (maybe trim all songs)
 - Make it a PWA
@@ -34,6 +32,7 @@
 - Abstract all the maths stuff out into a separate folder for easier contributions
 - Animate flowers
 - Implement Map
+- Give enemy attack when switching pokemon, using item, and catch attempt
 - If you skip a level (with a double level up) then you miss that levels move learn
 - Add a probability for running away
 - Add Pokedex Menu

@@ -16,25 +16,59 @@ import backStill from "../assets/character/back-still.png";
 import backWalk1 from "../assets/character/back-walk-1.png";
 import backWalk2 from "../assets/character/back-walk-2.png";
 import backWalk3 from "../assets/character/back-walk-3.png";
-import { useSelector } from "react-redux";
-import { Direction, selectDirection, selectMoving } from "../state/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  Direction,
+  moveDown,
+  selectDirection,
+  selectJumping,
+  selectMoving,
+  stopJumping,
+} from "../state/gameSlice";
 import { useEffect, useState } from "react";
-import { WALK_SPEED } from "../app/constants";
+import { MOVE_SPEED, WALK_SPEED } from "../app/constants";
 import PixelImage from "../styles/PixelImage";
 
-const StyledCharacter = styled(PixelImage)`
+const Container = styled.div`
   position: absolute;
   top: calc((-16vw / 2.34) / 5);
   left: 0;
   width: calc(16vw / 2.34);
 `;
 
+const JumpContainer = styled.div`
+  width: 100%;
+  transform: translateY(0);
+
+  transition: transform ${MOVE_SPEED}ms linear;
+`;
+
+const StyledCharacter = styled(PixelImage)`
+  width: 100%;
+`;
+
 const Character = () => {
-  const [image, setImage] = useState(frontStill);
+  const dispatch = useDispatch();
 
   const direction = useSelector(selectDirection);
-
   const moving = useSelector(selectMoving);
+  const jumping = useSelector(selectJumping);
+
+  const [image, setImage] = useState(frontStill);
+  const [animateJumping, setAnimateJumping] = useState(false);
+
+  useEffect(() => {
+    if (jumping) {
+      setAnimateJumping(true);
+      setTimeout(() => {
+        dispatch(moveDown());
+        setAnimateJumping(false);
+      }, MOVE_SPEED * 0.9);
+      setTimeout(() => {
+        dispatch(stopJumping());
+      }, MOVE_SPEED * 2);
+    }
+  }, [jumping, dispatch]);
 
   useEffect(() => {
     if (!moving) {
@@ -125,7 +159,17 @@ const Character = () => {
     }
   }, [image, moving, direction]);
 
-  return <StyledCharacter src={image} alt="Character" />;
+  return (
+    <Container>
+      <JumpContainer
+        style={{
+          transform: animateJumping ? "translateY(-80%)" : "translateY(0)",
+        }}
+      >
+        <StyledCharacter src={image} alt="Character" />;
+      </JumpContainer>
+    </Container>
+  );
 };
 
 export default Character;

@@ -7,14 +7,14 @@ import {
   moveLeft,
   moveRight,
   moveUp,
+  selectJumping,
   setMoving,
 } from "../state/gameSlice";
 import { useEffect, useRef, useState } from "react";
 import { selectMenuOpen } from "../state/uiSlice";
+import { MOVE_SPEED } from "../app/constants";
 
 const MovementHandler = () => {
-  const moveSpeed = 250; // TODO
-
   const dispatch = useDispatch();
   const [pressingLeft, setPressingLeft] = useState(false);
   const [pressingRight, setPressingRight] = useState(false);
@@ -23,6 +23,7 @@ const MovementHandler = () => {
   const tickIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [cooldown, setCooldown] = useState(false);
   const menuOpen = useSelector(selectMenuOpen);
+  const jumping = useSelector(selectJumping);
 
   const pressingButton =
     pressingLeft || pressingRight || pressingUp || pressingDown;
@@ -58,7 +59,7 @@ const MovementHandler = () => {
     };
 
     // If moving, move the character immediately
-    if (pressingButton && !cooldown && !menuOpen) {
+    if (pressingButton && !cooldown && !menuOpen && !jumping) {
       move(direction);
       setCooldown(true);
 
@@ -70,9 +71,9 @@ const MovementHandler = () => {
       // Set up a new interval
       tickIntervalRef.current = setInterval(() => {
         move(direction);
-      }, moveSpeed);
+      }, MOVE_SPEED);
 
-      setTimeout(() => setCooldown(false), moveSpeed);
+      setTimeout(() => setCooldown(false), MOVE_SPEED);
     } else if (!pressingButton && tickIntervalRef.current) {
       // Clear the interval if the user stopped moving
       clearInterval(tickIntervalRef.current);
@@ -85,7 +86,7 @@ const MovementHandler = () => {
         clearInterval(tickIntervalRef.current);
       }
     };
-  }, [pressingButton, direction, dispatch, cooldown, menuOpen]);
+  }, [pressingButton, direction, dispatch, cooldown, menuOpen, jumping]);
 
   useEvent(Event.StartDown, () => {
     setPressingDown(true);

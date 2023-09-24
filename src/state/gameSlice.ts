@@ -6,6 +6,7 @@ import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
 import { getMoveMetadata } from "../app/use-move-metadata";
 import { ItemType } from "../app/use-item-data";
+import { isFence, isWall } from "../app/map-helper";
 
 export interface InventoryItemType {
   item: ItemType;
@@ -46,6 +47,7 @@ export interface PokemonEncounterType {
 
 export interface GameState {
   pos: PosType;
+  jumping: boolean;
   moving: boolean;
   direction: Direction;
   map: MapId;
@@ -58,6 +60,7 @@ export interface GameState {
 
 const initialState: GameState = {
   pos: palletTown.start,
+  jumping: false,
   moving: false,
   direction: Direction.Down,
   map: MapId.PalletTown,
@@ -145,32 +148,34 @@ export const gameSlice = createSlice({
       state.direction = Direction.Left;
       if (state.pos.x === 0) return;
       const map = mapData[state.map];
-      if (map.walls[state.pos.y] && map.walls[state.pos.y][state.pos.x - 1])
-        return;
+      if (isWall(map, state.pos.x - 1, state.pos.y)) return;
+      if (isFence(map, state.pos.x - 1, state.pos.y)) return;
       state.pos.x -= 1;
     },
     moveRight: (state) => {
       state.direction = Direction.Right;
       const map = mapData[state.map];
       if (state.pos.x === map.width - 1) return;
-      if (map.walls[state.pos.y] && map.walls[state.pos.y][state.pos.x + 1])
-        return;
+      if (isWall(map, state.pos.x + 1, state.pos.y)) return;
+      if (isFence(map, state.pos.x + 1, state.pos.y)) return;
       state.pos.x += 1;
     },
     moveUp: (state) => {
       state.direction = Direction.Up;
       if (state.pos.y === 0) return;
       const map = mapData[state.map];
-      if (map.walls[state.pos.y - 1] && map.walls[state.pos.y - 1][state.pos.x])
-        return;
+      if (isWall(map, state.pos.x, state.pos.y - 1)) return;
+      if (isFence(map, state.pos.x, state.pos.y - 1)) return;
       state.pos.y -= 1;
     },
     moveDown: (state) => {
       state.direction = Direction.Down;
       const map = mapData[state.map];
       if (state.pos.y === map.height - 1) return;
-      if (map.walls[state.pos.y + 1] && map.walls[state.pos.y + 1][state.pos.x])
-        return;
+      if (isWall(map, state.pos.x, state.pos.y + 1)) return;
+      if (isFence(map, state.pos.x, state.pos.y + 1)) {
+        state.jumping = true;
+      }
       state.pos.y += 1;
     },
     setPos: (state, action: PayloadAction<PosType>) => {
@@ -309,6 +314,9 @@ export const gameSlice = createSlice({
     addPokemon: (state, action: PayloadAction<PokemonInstance>) => {
       state.pokemon.push(action.payload);
     },
+    stopJumping: (state) => {
+      state.jumping = false;
+    },
   },
 });
 
@@ -337,6 +345,7 @@ export const {
   recoverFromFainting,
   resetActivePokemon,
   addPokemon,
+  stopJumping,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -366,5 +375,7 @@ export const selectPokemonEncounter = (state: RootState) =>
 
 export const selectActivePokemon = (state: RootState) =>
   state.game.pokemon[state.game.activePokemonIndex];
+
+export const selectJumping = (state: RootState) => state.game.jumping;
 
 export default gameSlice.reducer;

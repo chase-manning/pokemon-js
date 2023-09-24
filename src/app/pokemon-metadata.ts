@@ -322,6 +322,7 @@ export interface PokemonMetadata {
   };
   types: string[];
   evolution?: { pokemon: number; level: number };
+  baseCatchRate: number;
 }
 
 const pokemonMetadata: Record<number, PokemonMetadata> = {
@@ -355,6 +356,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["grass", "poison"],
     evolution: { pokemon: 2, level: 16 },
+    baseCatchRate: 45,
   },
   "2": {
     baseExperience: 142,
@@ -386,6 +388,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["grass", "poison"],
     evolution: { pokemon: 3, level: 32 },
+    baseCatchRate: 45,
   },
   "3": {
     baseExperience: 263,
@@ -416,6 +419,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 80,
     },
     types: ["grass", "poison"],
+    baseCatchRate: 45,
   },
   "4": {
     baseExperience: 62,
@@ -446,6 +450,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["fire"],
     evolution: { pokemon: 5, level: 16 },
+    baseCatchRate: 45,
   },
   "5": {
     baseExperience: 142,
@@ -476,6 +481,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["fire"],
     evolution: { pokemon: 6, level: 36 },
+    baseCatchRate: 45,
   },
   "6": {
     baseExperience: 267,
@@ -505,6 +511,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["fire", "flying"],
+    baseCatchRate: 45,
   },
   "7": {
     baseExperience: 63,
@@ -535,6 +542,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 8, level: 16 },
+    baseCatchRate: 45,
   },
   "8": {
     baseExperience: 142,
@@ -565,6 +573,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 9, level: 36 },
+    baseCatchRate: 45,
   },
   "9": {
     baseExperience: 265,
@@ -594,6 +603,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 78,
     },
     types: ["water"],
+    baseCatchRate: 45,
   },
   "10": {
     baseExperience: 39,
@@ -618,6 +628,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug"],
     evolution: { pokemon: 11, level: 7 },
+    baseCatchRate: 255,
   },
   "11": {
     baseExperience: 72,
@@ -639,6 +650,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug"],
     evolution: { pokemon: 12, level: 10 },
+    baseCatchRate: 120,
   },
   "12": {
     baseExperience: 198,
@@ -667,6 +679,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["bug", "flying"],
+    baseCatchRate: 45,
   },
   "13": {
     baseExperience: 39,
@@ -691,6 +704,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug", "poison"],
     evolution: { pokemon: 14, level: 7 },
+    baseCatchRate: 255,
   },
   "14": {
     baseExperience: 72,
@@ -712,6 +726,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug", "poison"],
     evolution: { pokemon: 15, level: 10 },
+    baseCatchRate: 120,
   },
   "15": {
     baseExperience: 178,
@@ -739,6 +754,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 75,
     },
     types: ["bug", "poison"],
+    baseCatchRate: 45,
   },
   "16": {
     baseExperience: 50,
@@ -768,6 +784,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal", "flying"],
     evolution: { pokemon: 17, level: 18 },
+    baseCatchRate: 255,
   },
   "17": {
     baseExperience: 122,
@@ -797,6 +814,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal", "flying"],
     evolution: { pokemon: 18, level: 36 },
+    baseCatchRate: 120,
   },
   "18": {
     baseExperience: 216,
@@ -825,6 +843,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 101,
     },
     types: ["normal", "flying"],
+    baseCatchRate: 45,
   },
   "19": {
     baseExperience: 51,
@@ -853,6 +872,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal"],
     evolution: { pokemon: 20, level: 20 },
+    baseCatchRate: 255,
   },
   "20": {
     baseExperience: 145,
@@ -880,6 +900,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 97,
     },
     types: ["normal"],
+    baseCatchRate: 127,
   },
   "21": {
     baseExperience: 52,
@@ -909,6 +930,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal", "flying"],
     evolution: { pokemon: 22, level: 20 },
+    baseCatchRate: 255,
   },
   "22": {
     baseExperience: 155,
@@ -937,6 +959,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["normal", "flying"],
+    baseCatchRate: 90,
   },
   "23": {
     baseExperience: 58,
@@ -966,6 +989,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison"],
     evolution: { pokemon: 24, level: 22 },
+    baseCatchRate: 255,
   },
   "24": {
     baseExperience: 157,
@@ -994,6 +1018,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 80,
     },
     types: ["poison"],
+    baseCatchRate: 90,
   },
   "25": {
     baseExperience: 112,
@@ -1022,6 +1047,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["electric"],
+    baseCatchRate: 190,
   },
   "26": {
     baseExperience: 243,
@@ -1046,6 +1072,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 110,
     },
     types: ["electric"],
+    baseCatchRate: 75,
   },
   "27": {
     baseExperience: 60,
@@ -1074,6 +1101,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["ground"],
     evolution: { pokemon: 28, level: 22 },
+    baseCatchRate: 255,
   },
   "28": {
     baseExperience: 158,
@@ -1101,6 +1129,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 65,
     },
     types: ["ground"],
+    baseCatchRate: 90,
   },
   "29": {
     baseExperience: 55,
@@ -1131,6 +1160,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison"],
     evolution: { pokemon: 30, level: 16 },
+    baseCatchRate: 235,
   },
   "30": {
     baseExperience: 128,
@@ -1160,6 +1190,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 56,
     },
     types: ["poison"],
+    baseCatchRate: 120,
   },
   "31": {
     baseExperience: 253,
@@ -1186,6 +1217,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 76,
     },
     types: ["poison", "ground"],
+    baseCatchRate: 45,
   },
   "32": {
     baseExperience: 55,
@@ -1216,6 +1248,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison"],
     evolution: { pokemon: 33, level: 16 },
+    baseCatchRate: 235,
   },
   "33": {
     baseExperience: 128,
@@ -1245,6 +1278,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 65,
     },
     types: ["poison"],
+    baseCatchRate: 120,
   },
   "34": {
     baseExperience: 253,
@@ -1270,6 +1304,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["poison", "ground"],
+    baseCatchRate: 45,
   },
   "35": {
     baseExperience: 113,
@@ -1299,6 +1334,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 35,
     },
     types: ["fairy"],
+    baseCatchRate: 150,
   },
   "36": {
     baseExperience: 242,
@@ -1324,6 +1360,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["fairy"],
+    baseCatchRate: 25,
   },
   "37": {
     baseExperience: 60,
@@ -1352,6 +1389,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 65,
     },
     types: ["fire"],
+    baseCatchRate: 190,
   },
   "38": {
     baseExperience: 177,
@@ -1377,6 +1415,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["fire"],
+    baseCatchRate: 75,
   },
   "39": {
     baseExperience: 95,
@@ -1406,6 +1445,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 20,
     },
     types: ["normal", "fairy"],
+    baseCatchRate: 170,
   },
   "40": {
     baseExperience: 218,
@@ -1431,6 +1471,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 45,
     },
     types: ["normal", "fairy"],
+    baseCatchRate: 50,
   },
   "41": {
     baseExperience: 49,
@@ -1459,6 +1500,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison", "flying"],
     evolution: { pokemon: 42, level: 22 },
+    baseCatchRate: 255,
   },
   "42": {
     baseExperience: 159,
@@ -1487,6 +1529,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["poison", "flying"],
+    baseCatchRate: 90,
   },
   "43": {
     baseExperience: 64,
@@ -1516,6 +1559,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["grass", "poison"],
     evolution: { pokemon: 44, level: 21 },
+    baseCatchRate: 255,
   },
   "44": {
     baseExperience: 138,
@@ -1544,6 +1588,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 40,
     },
     types: ["grass", "poison"],
+    baseCatchRate: 120,
   },
   "45": {
     baseExperience: 245,
@@ -1570,6 +1615,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 50,
     },
     types: ["grass", "poison"],
+    baseCatchRate: 45,
   },
   "46": {
     baseExperience: 57,
@@ -1598,6 +1644,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug", "grass"],
     evolution: { pokemon: 47, level: 24 },
+    baseCatchRate: 190,
   },
   "47": {
     baseExperience: 142,
@@ -1625,6 +1672,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 30,
     },
     types: ["bug", "grass"],
+    baseCatchRate: 75,
   },
   "48": {
     baseExperience: 61,
@@ -1655,6 +1703,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["bug", "poison"],
     evolution: { pokemon: 49, level: 31 },
+    baseCatchRate: 190,
   },
   "49": {
     baseExperience: 158,
@@ -1684,6 +1733,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["bug", "poison"],
+    baseCatchRate: 75,
   },
   "50": {
     baseExperience: 53,
@@ -1712,6 +1762,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["ground"],
     evolution: { pokemon: 51, level: 26 },
+    baseCatchRate: 255,
   },
   "51": {
     baseExperience: 149,
@@ -1739,6 +1790,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 120,
     },
     types: ["ground"],
+    baseCatchRate: 50,
   },
   "52": {
     baseExperience: 58,
@@ -1768,6 +1820,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal"],
     evolution: { pokemon: 53, level: 28 },
+    baseCatchRate: 255,
   },
   "53": {
     baseExperience: 154,
@@ -1796,6 +1849,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 115,
     },
     types: ["normal"],
+    baseCatchRate: 90,
   },
   "54": {
     baseExperience: 64,
@@ -1824,6 +1878,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 55, level: 33 },
+    baseCatchRate: 190,
   },
   "55": {
     baseExperience: 175,
@@ -1851,6 +1906,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["water"],
+    baseCatchRate: 75,
   },
   "56": {
     baseExperience: 61,
@@ -1880,6 +1936,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["fighting"],
     evolution: { pokemon: 57, level: 28 },
+    baseCatchRate: 190,
   },
   "57": {
     baseExperience: 159,
@@ -1908,6 +1965,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 95,
     },
     types: ["fighting"],
+    baseCatchRate: 75,
   },
   "58": {
     baseExperience: 70,
@@ -1936,6 +1994,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["fire"],
+    baseCatchRate: 190,
   },
   "59": {
     baseExperience: 194,
@@ -1961,6 +2020,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 95,
     },
     types: ["fire"],
+    baseCatchRate: 75,
   },
   "60": {
     baseExperience: 60,
@@ -1990,6 +2050,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 61, level: 25 },
+    baseCatchRate: 255,
   },
   "61": {
     baseExperience: 135,
@@ -2018,6 +2079,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["water"],
+    baseCatchRate: 120,
   },
   "62": {
     baseExperience: 255,
@@ -2043,6 +2105,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["water", "fighting"],
+    baseCatchRate: 45,
   },
   "63": {
     baseExperience: 62,
@@ -2064,6 +2127,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["psychic"],
     evolution: { pokemon: 64, level: 16 },
+    baseCatchRate: 200,
   },
   "64": {
     baseExperience: 140,
@@ -2092,6 +2156,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 105,
     },
     types: ["psychic"],
+    baseCatchRate: 100,
   },
   "65": {
     baseExperience: 250,
@@ -2120,6 +2185,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 120,
     },
     types: ["psychic"],
+    baseCatchRate: 50,
   },
   "66": {
     baseExperience: 61,
@@ -2148,6 +2214,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["fighting"],
     evolution: { pokemon: 67, level: 28 },
+    baseCatchRate: 180,
   },
   "67": {
     baseExperience: 142,
@@ -2175,6 +2242,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 45,
     },
     types: ["fighting"],
+    baseCatchRate: 90,
   },
   "68": {
     baseExperience: 253,
@@ -2202,6 +2270,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 55,
     },
     types: ["fighting"],
+    baseCatchRate: 45,
   },
   "69": {
     baseExperience: 60,
@@ -2233,6 +2302,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["grass", "poison"],
     evolution: { pokemon: 70, level: 21 },
+    baseCatchRate: 255,
   },
   "70": {
     baseExperience: 137,
@@ -2263,6 +2333,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 55,
     },
     types: ["grass", "poison"],
+    baseCatchRate: 120,
   },
   "71": {
     baseExperience: 221,
@@ -2290,6 +2361,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["grass", "poison"],
+    baseCatchRate: 45,
   },
   "72": {
     baseExperience: 67,
@@ -2321,6 +2393,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water", "poison"],
     evolution: { pokemon: 73, level: 30 },
+    baseCatchRate: 190,
   },
   "73": {
     baseExperience: 180,
@@ -2351,6 +2424,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["water", "poison"],
+    baseCatchRate: 60,
   },
   "74": {
     baseExperience: 60,
@@ -2380,6 +2454,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["rock", "ground"],
     evolution: { pokemon: 75, level: 25 },
+    baseCatchRate: 255,
   },
   "75": {
     baseExperience: 137,
@@ -2408,6 +2483,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 35,
     },
     types: ["rock", "ground"],
+    baseCatchRate: 120,
   },
   "76": {
     baseExperience: 223,
@@ -2436,6 +2512,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 45,
     },
     types: ["rock", "ground"],
+    baseCatchRate: 45,
   },
   "77": {
     baseExperience: 82,
@@ -2465,6 +2542,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["fire"],
     evolution: { pokemon: 78, level: 40 },
+    baseCatchRate: 190,
   },
   "78": {
     baseExperience: 175,
@@ -2493,6 +2571,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 105,
     },
     types: ["fire"],
+    baseCatchRate: 60,
   },
   "79": {
     baseExperience: 63,
@@ -2522,6 +2601,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water", "psychic"],
     evolution: { pokemon: 80, level: 37 },
+    baseCatchRate: 190,
   },
   "80": {
     baseExperience: 172,
@@ -2551,6 +2631,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 30,
     },
     types: ["water", "psychic"],
+    baseCatchRate: 75,
   },
   "81": {
     baseExperience: 65,
@@ -2580,6 +2661,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["electric", "steel"],
     evolution: { pokemon: 82, level: 30 },
+    baseCatchRate: 190,
   },
   "82": {
     baseExperience: 163,
@@ -2608,6 +2690,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["electric", "steel"],
+    baseCatchRate: 60,
   },
   "83": {
     baseExperience: 132,
@@ -2636,6 +2719,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["normal", "flying"],
+    baseCatchRate: 45,
   },
   "84": {
     baseExperience: 62,
@@ -2665,6 +2749,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["normal", "flying"],
     evolution: { pokemon: 85, level: 31 },
+    baseCatchRate: 190,
   },
   "85": {
     baseExperience: 165,
@@ -2693,6 +2778,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 110,
     },
     types: ["normal", "flying"],
+    baseCatchRate: 45,
   },
   "86": {
     baseExperience: 65,
@@ -2721,6 +2807,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 87, level: 34 },
+    baseCatchRate: 190,
   },
   "87": {
     baseExperience: 166,
@@ -2748,6 +2835,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["water", "ice"],
+    baseCatchRate: 75,
   },
   "88": {
     baseExperience: 65,
@@ -2778,6 +2866,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison"],
     evolution: { pokemon: 89, level: 38 },
+    baseCatchRate: 190,
   },
   "89": {
     baseExperience: 175,
@@ -2807,6 +2896,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 50,
     },
     types: ["poison"],
+    baseCatchRate: 75,
   },
   "90": {
     baseExperience: 61,
@@ -2835,6 +2925,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 40,
     },
     types: ["water"],
+    baseCatchRate: 190,
   },
   "91": {
     baseExperience: 184,
@@ -2861,6 +2952,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["water", "ice"],
+    baseCatchRate: 60,
   },
   "92": {
     baseExperience: 62,
@@ -2888,6 +2980,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["ghost", "poison"],
     evolution: { pokemon: 93, level: 25 },
+    baseCatchRate: 190,
   },
   "93": {
     baseExperience: 142,
@@ -2914,6 +3007,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 95,
     },
     types: ["ghost", "poison"],
+    baseCatchRate: 90,
   },
   "94": {
     baseExperience: 250,
@@ -2940,6 +3034,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 110,
     },
     types: ["ghost", "poison"],
+    baseCatchRate: 45,
   },
   "95": {
     baseExperience: 77,
@@ -2968,6 +3063,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 70,
     },
     types: ["rock", "ground"],
+    baseCatchRate: 45,
   },
   "96": {
     baseExperience: 66,
@@ -2998,6 +3094,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["psychic"],
     evolution: { pokemon: 97, level: 26 },
+    baseCatchRate: 190,
   },
   "97": {
     baseExperience: 169,
@@ -3027,6 +3124,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 67,
     },
     types: ["psychic"],
+    baseCatchRate: 75,
   },
   "98": {
     baseExperience: 65,
@@ -3056,6 +3154,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 99, level: 28 },
+    baseCatchRate: 225,
   },
   "99": {
     baseExperience: 166,
@@ -3084,6 +3183,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 75,
     },
     types: ["water"],
+    baseCatchRate: 60,
   },
   "100": {
     baseExperience: 66,
@@ -3113,6 +3213,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["electric"],
     evolution: { pokemon: 101, level: 30 },
+    baseCatchRate: 190,
   },
   "101": {
     baseExperience: 172,
@@ -3141,6 +3242,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 150,
     },
     types: ["electric"],
+    baseCatchRate: 60,
   },
   "102": {
     baseExperience: 65,
@@ -3170,6 +3272,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 40,
     },
     types: ["grass", "psychic"],
+    baseCatchRate: 90,
   },
   "103": {
     baseExperience: 186,
@@ -3194,6 +3297,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 55,
     },
     types: ["grass", "psychic"],
+    baseCatchRate: 45,
   },
   "104": {
     baseExperience: 64,
@@ -3223,6 +3327,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["ground"],
     evolution: { pokemon: 105, level: 28 },
+    baseCatchRate: 190,
   },
   "105": {
     baseExperience: 149,
@@ -3251,6 +3356,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 45,
     },
     types: ["ground"],
+    baseCatchRate: 75,
   },
   "106": {
     baseExperience: 159,
@@ -3279,6 +3385,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 87,
     },
     types: ["fighting"],
+    baseCatchRate: 45,
   },
   "107": {
     baseExperience: 159,
@@ -3307,6 +3414,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 76,
     },
     types: ["fighting"],
+    baseCatchRate: 45,
   },
   "108": {
     baseExperience: 77,
@@ -3335,6 +3443,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 30,
     },
     types: ["normal"],
+    baseCatchRate: 45,
   },
   "109": {
     baseExperience: 68,
@@ -3364,6 +3473,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["poison"],
     evolution: { pokemon: 110, level: 35 },
+    baseCatchRate: 190,
   },
   "110": {
     baseExperience: 172,
@@ -3392,6 +3502,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["poison"],
+    baseCatchRate: 60,
   },
   "111": {
     baseExperience: 69,
@@ -3421,6 +3532,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["ground", "rock"],
     evolution: { pokemon: 112, level: 42 },
+    baseCatchRate: 120,
   },
   "112": {
     baseExperience: 170,
@@ -3449,6 +3561,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 40,
     },
     types: ["ground", "rock"],
+    baseCatchRate: 60,
   },
   "113": {
     baseExperience: 395,
@@ -3478,6 +3591,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 50,
     },
     types: ["normal"],
+    baseCatchRate: 30,
   },
   "114": {
     baseExperience: 87,
@@ -3507,6 +3621,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["grass"],
+    baseCatchRate: 45,
   },
   "115": {
     baseExperience: 172,
@@ -3535,6 +3650,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["normal"],
+    baseCatchRate: 45,
   },
   "116": {
     baseExperience: 59,
@@ -3563,6 +3679,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 117, level: 32 },
+    baseCatchRate: 225,
   },
   "117": {
     baseExperience: 154,
@@ -3590,6 +3707,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["water"],
+    baseCatchRate: 75,
   },
   "118": {
     baseExperience: 64,
@@ -3620,6 +3738,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 119, level: 33 },
+    baseCatchRate: 225,
   },
   "119": {
     baseExperience: 158,
@@ -3649,6 +3768,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 68,
     },
     types: ["water"],
+    baseCatchRate: 60,
   },
   "120": {
     baseExperience: 68,
@@ -3678,6 +3798,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["water"],
+    baseCatchRate: 225,
   },
   "121": {
     baseExperience: 182,
@@ -3702,6 +3823,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 115,
     },
     types: ["water", "psychic"],
+    baseCatchRate: 60,
   },
   "122": {
     baseExperience: 161,
@@ -3729,6 +3851,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["psychic", "fairy"],
+    baseCatchRate: 45,
   },
   "123": {
     baseExperience: 100,
@@ -3757,6 +3880,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 105,
     },
     types: ["bug", "flying"],
+    baseCatchRate: 45,
   },
   "124": {
     baseExperience: 159,
@@ -3786,6 +3910,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 95,
     },
     types: ["ice", "psychic"],
+    baseCatchRate: 45,
   },
   "125": {
     baseExperience: 172,
@@ -3814,6 +3939,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 105,
     },
     types: ["electric"],
+    baseCatchRate: 45,
   },
   "126": {
     baseExperience: 173,
@@ -3842,6 +3968,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 93,
     },
     types: ["fire"],
+    baseCatchRate: 45,
   },
   "127": {
     baseExperience: 175,
@@ -3870,6 +3997,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["bug"],
+    baseCatchRate: 45,
   },
   "128": {
     baseExperience: 172,
@@ -3897,6 +4025,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 110,
     },
     types: ["normal"],
+    baseCatchRate: 45,
   },
   "129": {
     baseExperience: 40,
@@ -3921,6 +4050,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["water"],
     evolution: { pokemon: 130, level: 20 },
+    baseCatchRate: 255,
   },
   "130": {
     baseExperience: 189,
@@ -3947,6 +4077,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 81,
     },
     types: ["water", "flying"],
+    baseCatchRate: 45,
   },
   "131": {
     baseExperience: 187,
@@ -3976,6 +4107,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 60,
     },
     types: ["water", "ice"],
+    baseCatchRate: 45,
   },
   "132": {
     baseExperience: 101,
@@ -3996,6 +4128,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 48,
     },
     types: ["normal"],
+    baseCatchRate: 35,
   },
   "133": {
     baseExperience: 65,
@@ -4023,6 +4156,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 55,
     },
     types: ["normal"],
+    baseCatchRate: 45,
   },
   "134": {
     baseExperience: 184,
@@ -4054,6 +4188,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 65,
     },
     types: ["water"],
+    baseCatchRate: 45,
   },
   "135": {
     baseExperience: 184,
@@ -4085,6 +4220,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 130,
     },
     types: ["electric"],
+    baseCatchRate: 45,
   },
   "136": {
     baseExperience: 184,
@@ -4116,6 +4252,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 65,
     },
     types: ["fire"],
+    baseCatchRate: 45,
   },
   "137": {
     baseExperience: 79,
@@ -4144,6 +4281,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 40,
     },
     types: ["normal"],
+    baseCatchRate: 45,
   },
   "138": {
     baseExperience: 71,
@@ -4172,6 +4310,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["rock", "water"],
     evolution: { pokemon: 139, level: 40 },
+    baseCatchRate: 45,
   },
   "139": {
     baseExperience: 173,
@@ -4199,6 +4338,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 55,
     },
     types: ["rock", "water"],
+    baseCatchRate: 45,
   },
   "140": {
     baseExperience: 71,
@@ -4227,6 +4367,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["rock", "water"],
     evolution: { pokemon: 141, level: 40 },
+    baseCatchRate: 45,
   },
   "141": {
     baseExperience: 173,
@@ -4254,6 +4395,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 80,
     },
     types: ["rock", "water"],
+    baseCatchRate: 45,
   },
   "142": {
     baseExperience: 180,
@@ -4281,6 +4423,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 130,
     },
     types: ["rock", "flying"],
+    baseCatchRate: 45,
   },
   "143": {
     baseExperience: 189,
@@ -4309,6 +4452,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 30,
     },
     types: ["normal"],
+    baseCatchRate: 25,
   },
   "144": {
     baseExperience: 290,
@@ -4335,6 +4479,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 85,
     },
     types: ["ice", "flying"],
+    baseCatchRate: 3,
   },
   "145": {
     baseExperience: 290,
@@ -4361,6 +4506,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["electric", "flying"],
+    baseCatchRate: 3,
   },
   "146": {
     baseExperience: 290,
@@ -4387,6 +4533,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 90,
     },
     types: ["fire", "flying"],
+    baseCatchRate: 3,
   },
   "147": {
     baseExperience: 60,
@@ -4416,6 +4563,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["dragon"],
     evolution: { pokemon: 148, level: 30 },
+    baseCatchRate: 45,
   },
   "148": {
     baseExperience: 147,
@@ -4445,6 +4593,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
     },
     types: ["dragon"],
     evolution: { pokemon: 149, level: 55 },
+    baseCatchRate: 45,
   },
   "149": {
     baseExperience: 300,
@@ -4473,6 +4622,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 80,
     },
     types: ["dragon", "flying"],
+    baseCatchRate: 45,
   },
   "150": {
     baseExperience: 340,
@@ -4502,6 +4652,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 130,
     },
     types: ["psychic"],
+    baseCatchRate: 3,
   },
   "151": {
     baseExperience: 300,
@@ -4528,6 +4679,7 @@ const pokemonMetadata: Record<number, PokemonMetadata> = {
       speed: 100,
     },
     types: ["psychic"],
+    baseCatchRate: 45,
   },
 };
 

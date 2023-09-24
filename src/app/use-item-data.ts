@@ -5,14 +5,18 @@ import {
   updateSpecificPokemon,
 } from "../state/gameSlice";
 import { getPokemonStats } from "./use-pokemon-stats";
-import { showActionOnPokemon } from "../state/uiSlice";
+import {
+  hideItemsMenu,
+  showActionOnPokemon,
+  throwPokeball,
+} from "../state/uiSlice";
 import { getMoveMetadata } from "./use-move-metadata";
 
 export enum ItemType {
-  MasterBall = "master-ball",
-  UltraBall = "ultra-ball",
-  GreatBall = "great-ball",
-  PokeBall = "poke-ball",
+  MasterBall = "master-ball", // DONE
+  UltraBall = "ultra-ball", // DONE
+  GreatBall = "great-ball", // DONE
+  PokeBall = "poke-ball", // DONE
   TownMap = "town-map",
   Bicycle = "bicycle",
   SafariBall = "safari-ball",
@@ -591,6 +595,66 @@ const useItemData = () => {
           })
         );
         dispatch(consumeItem(ItemType.MaxElixer));
+      },
+    },
+    [ItemType.MasterBall]: {
+      type: ItemType.MasterBall,
+      name: "Master Ball",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: true,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(hideItemsMenu());
+        dispatch(throwPokeball(ItemType.MasterBall));
+        dispatch(consumeItem(ItemType.MasterBall));
+      },
+    },
+    [ItemType.UltraBall]: {
+      type: ItemType.UltraBall,
+      name: "Ultra Ball",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: true,
+      cost: 1200,
+      sellPrice: 600,
+      action: () => {
+        dispatch(hideItemsMenu());
+        dispatch(throwPokeball(ItemType.UltraBall));
+        dispatch(consumeItem(ItemType.UltraBall));
+      },
+    },
+    [ItemType.GreatBall]: {
+      type: ItemType.GreatBall,
+      name: "Great Ball",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: true,
+      cost: 600,
+      sellPrice: 300,
+      action: () => {
+        dispatch(hideItemsMenu());
+        dispatch(throwPokeball(ItemType.GreatBall));
+        dispatch(consumeItem(ItemType.GreatBall));
+      },
+    },
+    [ItemType.PokeBall]: {
+      type: ItemType.PokeBall,
+      name: "Poke Ball",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: true,
+      cost: 200,
+      sellPrice: 100,
+      action: () => {
+        dispatch(hideItemsMenu());
+        dispatch(throwPokeball(ItemType.PokeBall));
+        dispatch(consumeItem(ItemType.PokeBall));
       },
     },
   };

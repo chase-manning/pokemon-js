@@ -4,7 +4,11 @@ import { useSelector } from "react-redux";
 import { selectPos, selectMap } from "../state/gameSlice";
 import Character from "./Character";
 import Text from "./Text";
-import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
+import {
+  BLOCK_PIXEL_HEIGHT,
+  BLOCK_PIXEL_WIDTH,
+  DEBUG_MODE,
+} from "../app/constants";
 import MapChangeHandler from "./MapChangeHandler";
 import StartMenu from "./StartMenu";
 import KeyboardHandler from "./KeyboardHandler";
@@ -84,7 +88,7 @@ const ColorOverlay = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = false; // TODO
+  const showGrid = DEBUG_MODE;
 
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);

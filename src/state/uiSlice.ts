@@ -9,6 +9,7 @@ interface UiState {
   titleMenu: boolean;
   loadMenu: boolean;
   gameboyMenu: boolean;
+  actionOnPokemon: ((index: number) => void) | null;
 }
 
 const initialState: UiState = {
@@ -19,6 +20,7 @@ const initialState: UiState = {
   titleMenu: true,
   loadMenu: true,
   gameboyMenu: true,
+  actionOnPokemon: null,
 };
 
 export const uiSlice = createSlice({
@@ -58,6 +60,15 @@ export const uiSlice = createSlice({
     hideText: (state) => {
       state.text = null;
     },
+    showActionOnPokemon: (
+      state,
+      action: PayloadAction<(index: number) => void>
+    ) => {
+      state.actionOnPokemon = action.payload;
+    },
+    hideActionOnPokemon: (state) => {
+      state.actionOnPokemon = null;
+    },
   },
 });
 
@@ -73,6 +84,8 @@ export const {
   hideGameboyMenu,
   showText,
   hideText,
+  showActionOnPokemon,
+  hideActionOnPokemon,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -90,6 +103,9 @@ export const selectTitleMenu = (state: RootState) => state.ui.titleMenu;
 export const selectLoadMenu = (state: RootState) => state.ui.loadMenu;
 
 export const selectGameboyMenu = (state: RootState) => state.ui.gameboyMenu;
+
+export const selectActionOnPokemon = (state: RootState) =>
+  state.ui.actionOnPokemon;
 
 export const selectMenuOpen = (state: RootState) =>
   state.ui.startMenu ||

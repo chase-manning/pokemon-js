@@ -6,6 +6,7 @@ import {
 } from "../state/gameSlice";
 import { getPokemonStats } from "./use-pokemon-stats";
 import { showActionOnPokemon } from "../state/uiSlice";
+import { getMoveMetadata } from "./use-move-metadata";
 
 export enum ItemType {
   MasterBall = "master-ball",
@@ -24,9 +25,9 @@ export enum ItemType {
   ParlyzHeal = "parlyz-heal",
   FullRestore = "full-restore",
   MaxPotion = "max-potion", // DONE
-  HyperPotion = "hyper-potion",
-  SuperPotion = "super-potion",
-  Potion = "potion",
+  HyperPotion = "hyper-potion", // DONE
+  SuperPotion = "super-potion", // DONE
+  Potion = "potion", // DONE
   BoulderBadge = "boulder-badge",
   CascadeBadge = "cascade-badge",
   ThunderBadge = "thunder-badge",
@@ -54,20 +55,20 @@ export enum ItemType {
   XAccuracy = "x-accuracy",
   LeafStone = "leaf-stone",
   CardKey = "card-key",
-  Nugget = "nugget",
-  PpUp = "pp-up",
+  Nugget = "nugget", // DONE
+  PpUp = "pp-up", // DONE
   PokeDoll = "poke-doll",
   FullHeal = "full-heal",
-  Revive = "revive",
-  MaxRevive = "max-revive",
+  Revive = "revive", // DONE
+  MaxRevive = "max-revive", // DONE
   GuardSpec = "guard-spec",
   SuperRepel = "super-repel",
   MaxRepel = "max-repel",
   DireHit = "dire-hit",
   Coin = "coin",
-  FreshWater = "fresh-water",
-  SodaPop = "soda-pop",
-  Lemondade = "lemonade",
+  FreshWater = "fresh-water", // DONE
+  SodaPop = "soda-pop", // DONE
+  Lemondade = "lemonade", // DONE
   SSTicket = "ss-ticket",
   GoldTeeth = "gold-teeth",
   XAttack = "x-attack",
@@ -84,10 +85,10 @@ export enum ItemType {
   OldRod = "old-rod",
   GoodRod = "good-rod",
   SuperRod = "super-rod",
-  Ether = "ether",
-  MaxEther = "max-ether",
-  Elixer = "elixer",
-  MaxElixer = "max-elixer",
+  Ether = "ether", // DONE
+  MaxEther = "max-ether", // DONE
+  Elixer = "elixer", // DONE
+  MaxElixer = "max-elixer", // DONE
   Hm01 = "hm01",
   Hm02 = "hm02",
   Hm03 = "hm03",
@@ -157,7 +158,7 @@ export interface ItemData {
   consumable: boolean;
   usableInBattle: boolean;
   pokeball: boolean;
-  cost: number;
+  cost: number | null;
   sellPrice: number;
   action: () => void;
 }
@@ -192,6 +193,404 @@ const useItemData = () => {
             dispatch(consumeItem(ItemType.MaxPotion));
           })
         );
+      },
+    },
+    [ItemType.HyperPotion]: {
+      type: ItemType.HyperPotion,
+      name: "Hyper Potion",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 1500,
+      sellPrice: 750,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 200
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.HyperPotion));
+          })
+        );
+      },
+    },
+    [ItemType.SuperPotion]: {
+      type: ItemType.SuperPotion,
+      name: "Super Potion",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 700,
+      sellPrice: 350,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 50
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.SuperPotion));
+          })
+        );
+      },
+    },
+    [ItemType.Potion]: {
+      type: ItemType.Potion,
+      name: "Potion",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 300,
+      sellPrice: 150,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 20
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.Potion));
+          })
+        );
+      },
+    },
+    [ItemType.Nugget]: {
+      type: ItemType.Nugget,
+      name: "Nugget",
+      countable: true,
+      consumable: false,
+      usableInBattle: false,
+      pokeball: false,
+      cost: null,
+      sellPrice: 5000,
+      action: () => {},
+    },
+    [ItemType.PpUp]: {
+      type: ItemType.PpUp,
+      name: "PP Up",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  moves: pokemon[index].moves.map((move) => ({
+                    ...move,
+                    pp: Math.min(
+                      getMoveMetadata(move.name).pp || 0,
+                      Math.round(
+                        move.pp + (getMoveMetadata(move.name).pp || 0) * 0.2
+                      )
+                    ),
+                  })),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.PpUp));
+          })
+        );
+      },
+    },
+    [ItemType.Revive]: {
+      type: ItemType.Revive,
+      name: "Revive",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 1500,
+      sellPrice: 750,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.round(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level)
+                      .hp * 0.5
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.Revive));
+          })
+        );
+      },
+    },
+    [ItemType.MaxRevive]: {
+      type: ItemType.MaxRevive,
+      name: "Max Revive",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 2000,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.round(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.MaxRevive));
+          })
+        );
+      },
+    },
+    [ItemType.FreshWater]: {
+      type: ItemType.FreshWater,
+      name: "Fresh Water",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 200,
+      sellPrice: 100,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 50
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.FreshWater));
+          })
+        );
+      },
+    },
+    [ItemType.SodaPop]: {
+      type: ItemType.SodaPop,
+      name: "Soda Pop",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 300,
+      sellPrice: 150,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 60
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.SodaPop));
+          })
+        );
+      },
+    },
+    [ItemType.Lemondade]: {
+      type: ItemType.Lemondade,
+      name: "Lemondade",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: 350,
+      sellPrice: 175,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  hp: Math.min(
+                    getPokemonStats(pokemon[index].id, pokemon[index].level).hp,
+                    pokemon[index].hp + 80
+                  ),
+                },
+              })
+            );
+            dispatch(consumeItem(ItemType.Lemondade));
+          })
+        );
+      },
+    },
+    [ItemType.Ether]: {
+      type: ItemType.Ether,
+      name: "Ether",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  moves: pokemon[index].moves.map((move) => ({
+                    ...move,
+                    pp: Math.min(
+                      getMoveMetadata(move.name).pp || 0,
+                      Math.round(move.pp + 10)
+                    ),
+                  })),
+                },
+              })
+            );
+          })
+        );
+        dispatch(consumeItem(ItemType.Ether));
+      },
+    },
+    [ItemType.MaxEther]: {
+      type: ItemType.MaxEther,
+      name: "Max Ether",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  moves: pokemon[index].moves.map((move) => ({
+                    ...move,
+                    pp: getMoveMetadata(move.name).pp || 0,
+                  })),
+                },
+              })
+            );
+          })
+        );
+        dispatch(consumeItem(ItemType.MaxEther));
+      },
+    },
+    [ItemType.Elixer]: {
+      type: ItemType.Elixer,
+      name: "Elixer",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  moves: pokemon[index].moves.map((move) => ({
+                    ...move,
+                    pp: Math.min(
+                      getMoveMetadata(move.name).pp || 0,
+                      Math.round(move.pp + 10)
+                    ),
+                  })),
+                },
+              })
+            );
+          })
+        );
+        dispatch(consumeItem(ItemType.Elixer));
+      },
+    },
+    [ItemType.MaxElixer]: {
+      type: ItemType.MaxElixer,
+      name: "Max Elixer",
+      countable: true,
+      consumable: true,
+      usableInBattle: true,
+      pokeball: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            dispatch(
+              updateSpecificPokemon({
+                index,
+                pokemon: {
+                  ...pokemon[index],
+                  moves: pokemon[index].moves.map((move) => ({
+                    ...move,
+                    pp: getMoveMetadata(move.name).pp || 0,
+                  })),
+                },
+              })
+            );
+          })
+        );
+        dispatch(consumeItem(ItemType.MaxElixer));
       },
     },
   };

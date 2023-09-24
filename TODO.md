@@ -1,6 +1,5 @@
 ===========
 
-- Add many items
 - Should pidgey give a super effective attack?
 - Add support for catching Pokemon
 - Fix these boolean props console errors, add `$`

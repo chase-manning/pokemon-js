@@ -1,8 +1,6 @@
 ===========
 
-- Fix these boolean props console errors, add `$`
-- Fix errors about state including a function
-- Give enemy attack when switching pokemon
+- Give enemy attack when switching pokemon, using item, and catch attempt
 - Add more maps
 - Add support for healing your pokemon at healing place
 - Handle getting pokemon more than 6 (send to PC)

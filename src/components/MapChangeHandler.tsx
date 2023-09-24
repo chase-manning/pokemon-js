@@ -6,7 +6,7 @@ import { MapId } from "../maps/map-types";
 import emitter, { Event } from "../app/emitter";
 
 interface OverlayProps {
-  show: boolean;
+  $show: boolean;
 }
 
 const Overlay = styled.div<OverlayProps>`
@@ -16,7 +16,7 @@ const Overlay = styled.div<OverlayProps>`
   width: 100%;
   height: 100%;
   background: black;
-  opacity: ${(props) => (props.show ? 1 : 0)};
+  opacity: ${(props) => (props.$show ? 1 : 0)};
 
   transition: opacity 0.3s steps(3, end);
 `;
@@ -55,7 +55,7 @@ const MapChangeHandler = () => {
     }
   }, [pos, map.maps, dispatch, map.exits]);
 
-  return <Overlay show={dark} />;
+  return <Overlay $show={dark} />;
 };
 
 export default MapChangeHandler;

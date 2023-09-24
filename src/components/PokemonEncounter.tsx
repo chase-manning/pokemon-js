@@ -182,7 +182,7 @@ const flashing = keyframes`
 `;
 
 interface ImageContainerProps {
-  flashing?: boolean;
+  $flashing?: boolean;
 }
 
 const ImageContainer = styled.div<ImageContainerProps>`
@@ -193,7 +193,7 @@ const ImageContainer = styled.div<ImageContainerProps>`
   justify-content: center;
 
   ${(props: ImageContainerProps) =>
-    props.flashing &&
+    props.$flashing &&
     css`
       animation: ${flashing} 500ms linear forwards;
     `};
@@ -223,14 +223,14 @@ const changePokemon = keyframes`
 `;
 
 interface ChangePokemonProps {
-  changing: boolean;
+  $changing: boolean;
 }
 
 const ChangePokemon = styled.div<ChangePokemonProps>`
   height: 100%;
 
   ${(props: ChangePokemonProps) =>
-    props.changing &&
+    props.$changing &&
     css`
       animation: ${changePokemon} ${MOVEMENT_ANIMATION * 2}ms linear forwards;
     `};
@@ -281,14 +281,14 @@ const attackRight = keyframes`
 `;
 
 interface AttackingProps {
-  attacking?: boolean;
+  $attacking?: boolean;
 }
 
 const AttackRight = styled.div<AttackingProps>`
   height: 100%;
   transform: translateX(0%);
   ${(props: AttackingProps) =>
-    props.attacking &&
+    props.$attacking &&
     css`
       animation: ${attackRight} ${ATTACK_ANIMATION}ms linear forwards;
     `};
@@ -310,7 +310,7 @@ const AttackLeft = styled.div<AttackingProps>`
   height: 100%;
   transform: translateX(0%);
   ${(props: AttackingProps) =>
-    props.attacking &&
+    props.$attacking &&
     css`
       animation: ${attackLeft} ${ATTACK_ANIMATION}ms linear forwards;
     `};
@@ -1079,8 +1079,8 @@ const PokemonEncounter = () => {
                 </HealthBarContainer>
                 <Corner src={corner} />
               </LeftInfoSection>
-              <ImageContainer flashing={stage === 17}>
-                <AttackRight attacking={stage === 18}>
+              <ImageContainer $flashing={stage === 17}>
+                <AttackRight $attacking={stage === 18}>
                   <RightImage src={rightImage()} />
                 </AttackRight>
               </ImageContainer>
@@ -1088,9 +1088,9 @@ const PokemonEncounter = () => {
             <Row
               style={{ opacity: [24, 26, 27, 28].includes(stage) ? "0" : "1" }}
             >
-              <ImageContainer flashing={stage === 19}>
-                <AttackLeft attacking={stage === 15}>
-                  <ChangePokemon changing={[3, 25].includes(stage)}>
+              <ImageContainer $flashing={stage === 19}>
+                <AttackLeft $attacking={stage === 15}>
+                  <ChangePokemon $changing={[3, 25].includes(stage)}>
                     <LeftImage src={leftImage()} />
                   </ChangePokemon>
                 </AttackLeft>

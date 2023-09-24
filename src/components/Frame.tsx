@@ -1,9 +1,9 @@
 import styled, { keyframes } from "styled-components";
 
 interface FrameProps {
-  wide?: boolean;
-  tall?: boolean;
-  flashing?: boolean;
+  $wide?: boolean;
+  $tall?: boolean;
+  $flashing?: boolean;
 }
 
 const animation = keyframes`
@@ -22,8 +22,8 @@ const StyledFrame = styled.div<FrameProps>`
   position: relative;
   background: var(--bg);
 
-  width: ${(props: FrameProps) => (props.wide ? "100%" : "auto")};
-  height: ${(props: FrameProps) => (props.tall ? "100%" : "auto")};
+  width: ${(props: FrameProps) => (props.$wide ? "100%" : "auto")};
+  height: ${(props: FrameProps) => (props.$tall ? "100%" : "auto")};
 
   h1 {
     color: black;
@@ -38,7 +38,7 @@ const StyledFrame = styled.div<FrameProps>`
   ::after {
     content: "";
     position: absolute;
-    bottom: ${(props) => (props.flashing ? "25px" : "-100px")};
+    bottom: ${(props) => (props.$flashing ? "25px" : "-100px")};
     right: 20px;
     width: 3px;
     height: 3px;
@@ -54,7 +54,7 @@ const StyledFrame = styled.div<FrameProps>`
     animation: ${animation} 1s infinite;
 
     @media (max-width: 768px) {
-      bottom: ${(props) => (props.flashing ? "13px" : "-100px")};
+      bottom: ${(props) => (props.$flashing ? "13px" : "-100px")};
       right: 10px;
       width: 1.3px;
       height: 1.3px;
@@ -75,9 +75,9 @@ const Frame = ({ children, wide, tall, flashing }: Props) => {
     return (
       <StyledFrame
         className="framed"
-        wide={wide}
-        tall={tall}
-        flashing={flashing}
+        $wide={wide}
+        $tall={tall}
+        $flashing={flashing}
       >
         <h1>{children}</h1>
       </StyledFrame>
@@ -85,7 +85,12 @@ const Frame = ({ children, wide, tall, flashing }: Props) => {
   }
 
   return (
-    <StyledFrame className="framed" wide={wide} tall={tall} flashing={flashing}>
+    <StyledFrame
+      className="framed"
+      $wide={wide}
+      $tall={tall}
+      $flashing={flashing}
+    >
       {children}
     </StyledFrame>
   );

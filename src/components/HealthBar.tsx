@@ -22,19 +22,19 @@ const HealthContainer = styled.div`
 `;
 
 interface HealthProps {
-  percent: number;
+  $percent: number;
 }
 
 const HealthFill = styled.div<HealthProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: ${(props) => props.percent}%;
+  width: ${(props) => props.$percent}%;
   height: 100%;
   background: ${(Props) => {
-    if (Props.percent > 50) {
+    if (Props.$percent > 50) {
       return "var(--green)";
-    } else if (Props.percent > 25) {
+    } else if (Props.$percent > 25) {
       return "var(--orange)";
     } else {
       return "var(--red)";
@@ -45,12 +45,12 @@ const HealthFill = styled.div<HealthProps>`
 `;
 
 interface ImageProps {
-  big?: boolean;
+  $big?: boolean;
 }
 
 const Image = styled(PixelImage)<ImageProps>`
   position: relative;
-  height: ${(props) => (props.big ? "6px" : "5px")};
+  height: ${(props) => (props.$big ? "6px" : "5px")};
 
   @media (min-width: 769px) {
     height: 2.5vh;
@@ -67,9 +67,9 @@ const HealthBar = ({ maxHealth, currentHealth, big }: Props) => {
   return (
     <StyledHealthBar>
       <HealthContainer>
-        <HealthFill percent={Math.round((currentHealth / maxHealth) * 100)} />
+        <HealthFill $percent={Math.round((currentHealth / maxHealth) * 100)} />
       </HealthContainer>
-      <Image src={image} big={big} />
+      <Image src={image} $big={big} />
     </StyledHealthBar>
   );
 };

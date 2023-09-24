@@ -17,7 +17,7 @@ import {
 } from "../state/uiSlice";
 
 interface TextProps {
-  done: boolean;
+  $done: boolean;
 }
 
 // Flashing animation
@@ -59,7 +59,7 @@ const StyledText = styled.div<TextProps>`
   ::after {
     content: "";
     position: absolute;
-    bottom: ${(props) => (props.done ? "25px" : "-100px")};
+    bottom: ${(props) => (props.$done ? "25px" : "-100px")};
     right: 20px;
     width: 3px;
     height: 3px;
@@ -75,7 +75,7 @@ const StyledText = styled.div<TextProps>`
     animation: ${flashing} 1s infinite;
 
     @media (max-width: 768px) {
-      bottom: ${(props) => (props.done ? "13px" : "-100px")};
+      bottom: ${(props) => (props.$done ? "13px" : "-100px")};
       right: 10px;
       width: 1.3px;
       height: 1.3px;
@@ -146,7 +146,7 @@ const Text = () => {
   if (!text) return null;
 
   return (
-    <StyledText className="framed no-hd" done={liveIndex > text.length}>
+    <StyledText className="framed no-hd" $done={liveIndex > text.length}>
       <h1>{text[textIndex].substring(0, liveIndex)}</h1>
     </StyledText>
   );

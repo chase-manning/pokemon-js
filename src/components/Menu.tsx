@@ -4,11 +4,11 @@ import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 
 interface MenuProps {
-  top?: string;
-  right?: string;
-  bottom?: string;
-  left?: string;
-  compact?: boolean;
+  $top?: string;
+  $right?: string;
+  $bottom?: string;
+  $left?: string;
+  $compact?: boolean;
 }
 
 const StyledMenu = styled.div<MenuProps>`
@@ -16,16 +16,17 @@ const StyledMenu = styled.div<MenuProps>`
   z-index: 100;
   background: var(--bg);
 
-  right: ${(props) => (props.right ? props.right : props.left ? "auto" : "0")};
-  top: ${(props) => (props.top ? props.top : props.bottom ? "auto" : "50%")};
-  left: ${(props) => (props.left ? props.left : "auto")};
-  bottom: ${(props) => (props.bottom ? props.bottom : "auto")};
+  right: ${(props) =>
+    props.$right ? props.$right : props.$left ? "auto" : "0"};
+  top: ${(props) => (props.$top ? props.$top : props.$bottom ? "auto" : "50%")};
+  left: ${(props) => (props.$left ? props.$left : "auto")};
+  bottom: ${(props) => (props.$bottom ? props.$bottom : "auto")};
   transform: ${(props) =>
-    props.bottom || props.top ? "none" : "translateY(-50%)"};
-  width: ${(props) => (props.compact ? "410px" : "auto")};
+    props.$bottom || props.$top ? "none" : "translateY(-50%)"};
+  width: ${(props) => (props.$compact ? "410px" : "auto")};
 
   @media (max-width: 768px) {
-    width: ${(props) => (props.compact ? "130px" : "auto")};
+    width: ${(props) => (props.$compact ? "130px" : "auto")};
   }
 `;
 
@@ -186,11 +187,11 @@ const Menu = ({
 
   return (
     <StyledMenu
-      top={top}
-      right={right}
-      bottom={bottom}
-      left={left}
-      compact={compact}
+      $top={top}
+      $right={right}
+      $bottom={bottom}
+      $left={left}
+      $compact={compact}
     >
       <ul
         className={`framed buttons ${compact ? "compact" : ""}`}

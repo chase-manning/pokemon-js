@@ -57,7 +57,11 @@ const ItemsMenu = () => {
               label: "Use",
               action: () => {
                 // Can't use
-                if ((inBattle && !item.usableInBattle) || !item.consumable) {
+                if (
+                  (inBattle && !item.usableInBattle) ||
+                  !item.consumable ||
+                  (item.pokeball && !inBattle)
+                ) {
                   dispatch(
                     showText([
                       `OAK: ${name}! This isn't the`,

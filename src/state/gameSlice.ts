@@ -5,11 +5,7 @@ import palletTown from "../maps/pallet-town";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
 import { getMoveMetadata } from "../app/use-move-metadata";
-
-export enum ItemType {
-  Potion = "Potion",
-  PokeBall = "Poké ball",
-}
+import { ItemType } from "../app/use-item-data";
 
 export interface InventoryItemType {
   item: ItemType;
@@ -67,12 +63,8 @@ const initialState: GameState = {
   map: MapId.PalletTown,
   inventory: [
     {
-      item: ItemType.Potion,
-      amount: 2,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 1,
+      item: ItemType.MaxPotion,
+      amount: 3,
     },
   ],
   name: "Blue",
@@ -81,7 +73,7 @@ const initialState: GameState = {
       id: 1,
       level: 5,
       xp: 0,
-      hp: 19,
+      hp: 10,
       moves: [
         { name: "tackle", pp: 35 },
         { name: "growl", pp: 40 },
@@ -219,6 +211,11 @@ export const gameSlice = createSlice({
         state.inventory[i].amount -= action.payload.amount;
       }
     },
+    consumeItem: (state, action: PayloadAction<ItemType>) => {
+      const item = state.inventory.find((i) => i.item === action.payload);
+      if (!item) return;
+      item.amount -= 1;
+    },
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
@@ -262,6 +259,12 @@ export const gameSlice = createSlice({
     },
     updatePokemon: (state, action: PayloadAction<PokemonInstance>) => {
       state.pokemon[state.activePokemonIndex] = action.payload;
+    },
+    updateSpecificPokemon: (
+      state,
+      action: PayloadAction<{ index: number; pokemon: PokemonInstance }>
+    ) => {
+      state.pokemon[action.payload.index] = action.payload.pokemon;
     },
     recoverFromFainting: (state) => {
       // Heal
@@ -313,6 +316,7 @@ export const {
   setMoving,
   addInventory,
   removeInventory,
+  consumeItem,
   setName,
   save,
   load,
@@ -322,6 +326,7 @@ export const {
   setActivePokemon,
   updatePokemonEncounter,
   updatePokemon,
+  updateSpecificPokemon,
   recoverFromFainting,
   resetActivePokemon,
 } = gameSlice.actions;

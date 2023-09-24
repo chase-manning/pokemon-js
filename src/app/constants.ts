@@ -1,5 +1,8 @@
+export const DEBUG_MODE = true;
+
 export const BLOCK_PIXEL_WIDTH = 16;
 export const BLOCK_PIXEL_HEIGHT = 16;
-export const WALK_SPEED = 150;
+export const MOVE_SPEED = 250; // How fast we actually walk
+export const WALK_SPEED = 150; // How fast the walk animation plays
 export const CRITICAL_HIT_PERCENTAGE = 0.1;
 export const CRITICAL_HIT_MULTIPLIER = 2;

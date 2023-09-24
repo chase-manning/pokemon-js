@@ -1,7 +1,7 @@
 ===========
 
-- These early returns in the move helper don't account for loss of PP
-- Add ability to use items
+- Add many items
+- Should pidgey give a super effective attack?
 - Add support for catching Pokemon
 - Fix these boolean props console errors, add `$`
 - Give enemy attack when switching pokemon

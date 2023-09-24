@@ -18,6 +18,7 @@ import SoundHandler from "./SoundHandler";
 import GameboyMenu from "./GameboyMenu";
 import EncounterHandler from "./EncounterHandler";
 import PokemonEncounter from "./PokemonEncounter";
+import ActionOnPokemon from "./ActionOnPokemon";
 
 const Container = styled.div`
   position: absolute;
@@ -141,6 +142,7 @@ const Game = () => {
       <LoadScreen />
       <TitleScreen />
       <GameboyMenu />
+      <ActionOnPokemon />
 
       {/* Handlers */}
       <MapChangeHandler />

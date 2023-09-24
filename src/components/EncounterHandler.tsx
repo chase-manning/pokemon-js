@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { PokemonEncounterData } from "../maps/map-types";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import { getPokemonMetadata } from "../app/use-pokemon-metadata";
+import { DEBUG_MODE } from "../app/constants";
 
 const shouldEncounter = (rate: number) => {
   const random = Math.random() * 100;
@@ -54,7 +55,7 @@ const EncounterHandler = () => {
   const map = useSelector(selectMap);
 
   useEffect(() => {
-    if (!map.encounters) return;
+    if (!map.encounters || DEBUG_MODE) return;
 
     // Handling walk encounters
     const isWalk = map.grass[pos.y] ? map.grass[pos.y][pos.x] : false;

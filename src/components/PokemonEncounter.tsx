@@ -3,6 +3,7 @@ import styled, { css, keyframes } from "styled-components";
 import {
   PokemonEncounterType,
   PokemonInstance,
+  addPokemon,
   endEncounter,
   recoverFromFainting,
   resetActivePokemon,
@@ -31,12 +32,17 @@ import ball2 from "../assets/battle/ball-open-2.png";
 import ball3 from "../assets/battle/ball-open-3.png";
 import ball4 from "../assets/battle/ball-open-4.png";
 import ball5 from "../assets/battle/ball-open-5.png";
+import ballIdle from "../assets/battle/ball-idle.png";
+import ballLeft from "../assets/battle/ball-left.png";
+import ballRight from "../assets/battle/ball-right.png";
 import Menu, { MenuItemType } from "./Menu";
 import PokemonList from "./PokemonList";
 import {
   selectItemsMenu,
+  selectPokeballThrowing,
   selectStartMenu,
   showItemsMenu,
+  stopThrowingPokeball,
 } from "../state/uiSlice";
 import useIsMobile from "../app/use-is-mobile";
 import { getMoveMetadata } from "../app/use-move-metadata";
@@ -46,10 +52,12 @@ import getXp from "../app/xp-helper";
 import getLevelData, { getLearnedMove } from "../app/level-helper";
 import Evolution from "./Evolution";
 import MoveSelect from "./MoveSelect";
+import catchesPokemon from "../app/pokeball-helper";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
 const ATTACK_ANIMATION = 600;
+const IDLE_BALL_DURATION = 1000;
 
 const StyledPokemonEncounter = styled.div`
   position: absolute;
@@ -495,6 +503,7 @@ const PokemonEncounter = () => {
   const pokemon = useSelector(selectPokemon);
   const name = useSelector(selectName);
   const startMenuOpen = useSelector(selectStartMenu);
+  const pokeballThrowing = useSelector(selectPokeballThrowing);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -529,6 +538,18 @@ const PokemonEncounter = () => {
   // 31 = but cannot learn more than 4 moves
   // 32 = select move to forget
   // 33 = forgot move
+  // 34 = enemy ball open 1
+  // 35 = enemy ball open 2
+  // 36 = enemy ball open 3
+  // 37 = enemy ball open 4
+  // 38 = enemy ball open 5
+  // 39 = ball idle
+  // 40 = ball left
+  // 41 = ball right
+  // 42 = Darn! The POKéMON broke free!
+  // 43 = Aww! It appeared to be caught!
+  // 44 = Shoot! It was so close too!
+  // 45 = You caught a wild POKéMON!
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
@@ -582,6 +603,88 @@ const PokemonEncounter = () => {
       setStage(11);
     }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
   };
+
+  const throwPokeballAtEnemy = () => {
+    setStage(34);
+    setTimeout(() => {
+      setStage(35);
+    }, FRAME_DURATION);
+    setTimeout(() => {
+      setStage(36);
+    }, FRAME_DURATION * 2);
+    setTimeout(() => {
+      setStage(37);
+    }, FRAME_DURATION * 3);
+    setTimeout(() => {
+      setStage(38);
+    }, FRAME_DURATION * 4);
+    setTimeout(() => {
+      setStage(39);
+    }, FRAME_DURATION * 5);
+  };
+
+  useEffect(() => {
+    if (pokeballThrowing && enemy) {
+      const shakePokeball = (
+        times: number,
+        caught: boolean,
+        startTimes?: number
+      ) => {
+        setStage(39);
+        setTimeout(() => {
+          setStage(40);
+        }, IDLE_BALL_DURATION);
+        setTimeout(() => {
+          setStage(39);
+        }, IDLE_BALL_DURATION + FRAME_DURATION);
+        setTimeout(() => {
+          setStage(41);
+        }, IDLE_BALL_DURATION + FRAME_DURATION * 2);
+        setTimeout(() => {
+          setStage(39);
+        }, IDLE_BALL_DURATION + FRAME_DURATION * 3);
+
+        if (times > 1) {
+          setTimeout(() => {
+            shakePokeball(times - 1, caught, startTimes || times);
+          }, IDLE_BALL_DURATION + FRAME_DURATION * 4);
+        }
+        if (times === 1) {
+          setTimeout(() => {
+            if (caught) {
+              setStage(45);
+            } else {
+              throwPokeballAtEnemy();
+              setTimeout(() => {
+                if (startTimes === 1) {
+                  setStage(42);
+                } else if (startTimes === 2) {
+                  setStage(43);
+                } else if (startTimes === 3) {
+                  setStage(44);
+                } else {
+                  throw new Error("Invalid start times");
+                }
+              }, FRAME_DURATION * 6);
+            }
+          }, IDLE_BALL_DURATION + FRAME_DURATION * 4);
+        }
+      };
+
+      throwPokeballAtEnemy();
+      const caught = catchesPokemon(enemy, pokeballThrowing);
+      setTimeout(() => {
+        if (caught) {
+          shakePokeball(3, caught);
+        } else {
+          // 1, 2 or 3 shakes
+          const shakes = Math.floor(Math.random() * 3) + 1;
+          shakePokeball(shakes, caught);
+        }
+      }, FRAME_DURATION * 6);
+      dispatch(stopThrowingPokeball());
+    }
+  }, [pokeballThrowing, enemy, dispatch]);
 
   useEvent(Event.A, () => {
     if (startMenuOpen) return;
@@ -696,6 +799,30 @@ const PokemonEncounter = () => {
     if (stage === 32) {
       setStage(33);
     }
+
+    if ([42, 43, 44].includes(stage)) {
+      setStage(11);
+    }
+
+    if (stage === 45) {
+      if (!enemy) throw new Error("No enemy found");
+      if (!enemyMetadata) throw new Error("No enemy metadata found");
+      dispatch(
+        addPokemon({
+          id: enemy.id,
+          level: enemy.level,
+          xp: 0,
+          moves: enemy.moves.map((move) => {
+            return {
+              name: move,
+              pp: getMoveMetadata(move).pp || 0,
+            };
+          }),
+          hp: enemyStats.hp,
+        })
+      );
+      endEncounter_();
+    }
   });
 
   if (!isInBattle) return null;
@@ -731,6 +858,12 @@ const PokemonEncounter = () => {
       )}.`;
     if (stage === 31) return `But it cannot learn more than 4 moves`;
     if (stage === 32) return `Choose a move you would like to forget`;
+    if (stage === 42) return `Darn! The POKéMON broke free!`;
+    if (stage === 43) return `Aww! It appeared to be caught!`;
+    if (stage === 44) return `Shoot! It was so close too!`;
+    if (stage === 45)
+      return `All right! ${enemyMetadata.name.toUpperCase()} was caught!`;
+
     return "";
   };
 
@@ -909,6 +1042,19 @@ const PokemonEncounter = () => {
     if (stage >= 10) return activeMetadata.images.back;
   };
 
+  const rightImage = () => {
+    if (stage === 34) return ball1;
+    if (stage === 35) return ball2;
+    if (stage === 36) return ball3;
+    if (stage === 37) return ball4;
+    if (stage === 38) return ball5;
+    if (stage === 39) return ballIdle;
+    if (stage === 40) return ballLeft;
+    if (stage === 41) return ballRight;
+    if (stage === 45) return ballRight;
+    return enemyMetadata.images.front;
+  };
+
   return (
     <>
       {stage === 0 && (
@@ -935,7 +1081,7 @@ const PokemonEncounter = () => {
               </LeftInfoSection>
               <ImageContainer flashing={stage === 17}>
                 <AttackRight attacking={stage === 18}>
-                  <RightImage src={enemyMetadata.images.front} />
+                  <RightImage src={rightImage()} />
                 </AttackRight>
               </ImageContainer>
             </Row>
@@ -967,7 +1113,13 @@ const PokemonEncounter = () => {
             </Row>
           </StyledPokemonEncounter>
           <TextContainer>
-            <Frame wide tall flashing={[2, 20, 21, 22, 24].includes(stage)}>
+            <Frame
+              wide
+              tall
+              flashing={[
+                2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45,
+              ].includes(stage)}
+            >
               {text()}
             </Frame>
           </TextContainer>

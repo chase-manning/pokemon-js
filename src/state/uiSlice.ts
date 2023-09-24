@@ -1,5 +1,6 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
+import { ItemType } from "../app/use-item-data";
 
 interface UiState {
   text: string[] | null;
@@ -10,6 +11,7 @@ interface UiState {
   loadMenu: boolean;
   gameboyMenu: boolean;
   actionOnPokemon: ((index: number) => void) | null;
+  pokeballThrowing?: ItemType | null;
 }
 
 const initialState: UiState = {
@@ -21,6 +23,7 @@ const initialState: UiState = {
   loadMenu: true,
   gameboyMenu: true,
   actionOnPokemon: null,
+  pokeballThrowing: null,
 };
 
 export const uiSlice = createSlice({
@@ -69,6 +72,12 @@ export const uiSlice = createSlice({
     hideActionOnPokemon: (state) => {
       state.actionOnPokemon = null;
     },
+    throwPokeball: (state, action: PayloadAction<ItemType>) => {
+      state.pokeballThrowing = action.payload;
+    },
+    stopThrowingPokeball: (state) => {
+      state.pokeballThrowing = null;
+    },
   },
 });
 
@@ -86,6 +95,8 @@ export const {
   hideText,
   showActionOnPokemon,
   hideActionOnPokemon,
+  throwPokeball,
+  stopThrowingPokeball,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -119,5 +130,8 @@ export const selectMenuOpen = (state: RootState) =>
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;
+
+export const selectPokeballThrowing = (state: RootState) =>
+  state.ui.pokeballThrowing;
 
 export default uiSlice.reducer;

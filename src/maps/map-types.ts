@@ -61,4 +61,5 @@ export interface MapType {
   encounters?: EncountersType;
   grass: Record<number, Record<number, boolean>>;
   recoverLocation?: PosType;
+  fences?: Record<number, Record<number, boolean>>;
 }

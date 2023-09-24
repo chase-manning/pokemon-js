@@ -66,6 +66,10 @@ const initialState: GameState = {
       item: ItemType.MaxPotion,
       amount: 3,
     },
+    {
+      item: ItemType.PokeBall,
+      amount: 100,
+    },
   ],
   name: "Blue",
   pokemon: [
@@ -302,6 +306,9 @@ export const gameSlice = createSlice({
       }
       state.activePokemonIndex = fistIndexWithHp;
     },
+    addPokemon: (state, action: PayloadAction<PokemonInstance>) => {
+      state.pokemon.push(action.payload);
+    },
   },
 });
 
@@ -329,6 +336,7 @@ export const {
   updateSpecificPokemon,
   recoverFromFainting,
   resetActivePokemon,
+  addPokemon,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;

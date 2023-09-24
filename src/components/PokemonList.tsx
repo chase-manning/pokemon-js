@@ -37,10 +37,11 @@ const Container = styled.div`
 interface Props {
   close: () => void;
   switchAction?: (index: number) => void;
+  clickPokemon?: (index: number) => void;
   text?: string;
 }
 
-const PokemonList = ({ close, switchAction, text }: Props) => {
+const PokemonList = ({ close, switchAction, text, clickPokemon }: Props) => {
   const dispatch = useDispatch();
   const pokemon = useSelector(selectPokemon);
   const [active, setActive] = useState(0);
@@ -69,6 +70,12 @@ const PokemonList = ({ close, switchAction, text }: Props) => {
 
   useEvent(Event.A, () => {
     if (selected) return;
+
+    if (clickPokemon) {
+      clickPokemon(active);
+      close();
+      return;
+    }
 
     if (switching !== null) {
       dispatch(swapPokemonPositions([active, switching]));

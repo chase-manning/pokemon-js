@@ -7,6 +7,12 @@ export enum MapId {
   PalletTownHouseB = "pallet-town-house-b",
   Route1 = "route-1",
   PalletTownLab = "pallet-town-lab",
+  ViridianCity = "viridian-city",
+  ViridianCityGym = "viridian-city-gym",
+  ViridianCityPokeMart = "viridian-city-poke-mart",
+  ViridianCityPokemonCenter = "viridian-city-pokemon-center",
+  ViridianCityPokemonAcadamy = "viridian-city-pokemon-acadamy",
+  VeridianCityNpcHouse = "veridian-city-npc-house",
 }
 
 export interface PokemonEncounterData {

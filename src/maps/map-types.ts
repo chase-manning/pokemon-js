@@ -69,4 +69,5 @@ export interface MapType {
   recoverLocation?: PosType;
   fences?: Record<number, number[]>;
   pokemonCenter?: PosType;
+  pc?: PosType;
 }

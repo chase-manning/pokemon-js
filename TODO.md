@@ -1,3 +1,6 @@
+- add man to store
+- Lots of items in inventory too long (when selling and in items menu)
+
 ===========
 
 - Add more maps

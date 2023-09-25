@@ -275,6 +275,19 @@ export const gameSlice = createSlice({
     ) => {
       state.pokemon[action.payload.index] = action.payload.pokemon;
     },
+    healPokemon: (state) => {
+      // Heal
+      for (let i = 0; i < state.pokemon.length; i++) {
+        state.pokemon[i].hp = getPokemonStats(
+          state.pokemon[i].id,
+          state.pokemon[i].level
+        ).hp;
+        for (let j = 0; j < state.pokemon[i].moves.length; j++) {
+          state.pokemon[i].moves[j].pp =
+            getMoveMetadata(state.pokemon[i].moves[j].name).pp || 0;
+        }
+      }
+    },
     recoverFromFainting: (state) => {
       // Heal
       for (let i = 0; i < state.pokemon.length; i++) {
@@ -330,6 +343,7 @@ export const {
   exitMap,
   setMoving,
   addInventory,
+  healPokemon,
   removeInventory,
   consumeItem,
   setName,

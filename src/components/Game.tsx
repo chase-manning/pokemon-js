@@ -23,6 +23,7 @@ import GameboyMenu from "./GameboyMenu";
 import EncounterHandler from "./EncounterHandler";
 import PokemonEncounter from "./PokemonEncounter";
 import ActionOnPokemon from "./ActionOnPokemon";
+import PokemonCenter from "./PokemonCenter";
 
 const Container = styled.div`
   position: absolute;
@@ -140,13 +141,14 @@ const Game = () => {
       <ColorOverlay />
       <PokemonEncounter />
       <Text />
+      <PokemonCenter />
       <StartMenu />
       <ItemsMenu />
       <PlayerMenu />
+      <ActionOnPokemon />
       <LoadScreen />
       <TitleScreen />
       <GameboyMenu />
-      <ActionOnPokemon />
 
       {/* Handlers */}
       <MapChangeHandler />

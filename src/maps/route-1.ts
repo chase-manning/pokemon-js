@@ -212,7 +212,12 @@ const route1: MapType = {
       ],
     },
   },
-  maps: {},
+  maps: {
+    0: {
+      10: MapId.ViridianCity,
+      11: MapId.ViridianCity,
+    },
+  },
   exits: {
     35: {
       10: true,

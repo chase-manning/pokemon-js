@@ -5,6 +5,7 @@ import lab from "./lab";
 import { MapId, MapType } from "./map-types";
 import palletTown from "./pallet-town";
 import route1 from "./route-1";
+import viridianCity from "./viridian-city";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -13,6 +14,7 @@ const mapData: Record<string, MapType> = {
   [MapId.PalletTownHouseB]: houseB,
   [MapId.PalletTownLab]: lab,
   [MapId.Route1]: route1,
+  [MapId.ViridianCity]: viridianCity,
 };
 
 export default mapData;

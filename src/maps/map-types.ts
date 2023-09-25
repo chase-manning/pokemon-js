@@ -68,4 +68,5 @@ export interface MapType {
   grass: Record<number, number[]>;
   recoverLocation?: PosType;
   fences?: Record<number, number[]>;
+  pokemonCenter?: PosType;
 }

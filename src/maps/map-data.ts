@@ -6,6 +6,7 @@ import { MapId, MapType } from "./map-types";
 import palletTown from "./pallet-town";
 import route1 from "./route-1";
 import viridianCity from "./viridian-city";
+import viridianCityPokemonCenter from "./viridian-city-pokemon-center";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -15,6 +16,7 @@ const mapData: Record<string, MapType> = {
   [MapId.PalletTownLab]: lab,
   [MapId.Route1]: route1,
   [MapId.ViridianCity]: viridianCity,
+  [MapId.ViridianCityPokemonCenter]: viridianCityPokemonCenter,
 };
 
 export default mapData;

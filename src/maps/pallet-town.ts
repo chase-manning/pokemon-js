@@ -2,6 +2,7 @@ import palletTownImage from "../assets/map/pallet-town.png";
 import { MapId, MapType } from "./map-types";
 
 import music from "../assets/music/maps/pallet-town.mp3";
+import getEncounterData from "./get-location-data";
 
 const palletTown: MapType = {
   name: "Pallet Town",
@@ -90,128 +91,7 @@ const palletTown: MapType = {
   },
   exits: {},
   music,
-  encounters: {
-    walk: { rate: 0, pokemon: [] },
-    oldRod: {
-      rate: 10,
-      pokemon: [
-        {
-          id: 129,
-          chance: 100,
-          conditionValues: [],
-          maxLevel: 5,
-          minLevel: 5,
-        },
-      ],
-    },
-    goodRod: {
-      rate: 10,
-      pokemon: [
-        {
-          id: 60,
-          chance: 50,
-          conditionValues: [],
-          maxLevel: 10,
-          minLevel: 10,
-        },
-        {
-          id: 118,
-          chance: 50,
-          conditionValues: [],
-          maxLevel: 10,
-          minLevel: 10,
-        },
-      ],
-    },
-    superRod: {
-      rate: 10,
-      pokemon: [
-        {
-          id: 60,
-          chance: 17,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-        {
-          id: 60,
-          chance: 8,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-        {
-          id: 60,
-          chance: 25,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-        {
-          id: 72,
-          chance: 25,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-        {
-          id: 72,
-          chance: 8,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-        {
-          id: 72,
-          chance: 17,
-          conditionValues: [],
-          maxLevel: 15,
-          minLevel: 15,
-        },
-      ],
-    },
-    surf: { rate: 1, pokemon: [] },
-    rockSmash: { rate: 0, pokemon: [] },
-    headbutt: { rate: 0, pokemon: [] },
-    darkGrass: { rate: 0, pokemon: [] },
-    grassSpots: { rate: 0, pokemon: [] },
-    caveSpots: { rate: 0, pokemon: [] },
-    bridgeSpots: { rate: 0, pokemon: [] },
-    superRodSpots: { rate: 0, pokemon: [] },
-    surfSpots: { rate: 0, pokemon: [] },
-    yellowFlowers: { rate: 0, pokemon: [] },
-    purpleFlowers: { rate: 0, pokemon: [] },
-    redFlowers: { rate: 0, pokemon: [] },
-    roughTerrain: { rate: 0, pokemon: [] },
-    gift: {
-      rate: 0,
-      pokemon: [
-        {
-          id: 1,
-          chance: 100,
-          conditionValues: [],
-          maxLevel: 5,
-          minLevel: 5,
-        },
-        {
-          id: 4,
-          chance: 100,
-          conditionValues: [],
-          maxLevel: 5,
-          minLevel: 5,
-        },
-        {
-          id: 7,
-          chance: 100,
-          conditionValues: [],
-          maxLevel: 5,
-          minLevel: 5,
-        },
-      ],
-    },
-    giftEgg: { rate: 0, pokemon: [] },
-    onlyOne: { rate: 0, pokemon: [] },
-  },
+  encounters: getEncounterData("pallet-town-area"),
   grass: {},
   recoverLocation: { x: 5, y: 6 },
 };

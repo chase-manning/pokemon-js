@@ -1,6 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { selectPokemon, swapPokemonPositions } from "../state/gameSlice";
+import {
+  PokemonInstance,
+  selectPokemon,
+  swapPokemonPositions,
+} from "../state/gameSlice";
 import PokemonRow from "./PokemonRow";
 import { useState } from "react";
 import useEvent from "../app/use-event";
@@ -39,14 +43,23 @@ interface Props {
   switchAction?: (index: number) => void;
   clickPokemon?: (index: number) => void;
   text?: string;
+  customPokemon?: PokemonInstance[];
 }
 
-const PokemonList = ({ close, switchAction, text, clickPokemon }: Props) => {
+const PokemonList = ({
+  close,
+  switchAction,
+  text,
+  clickPokemon,
+  customPokemon,
+}: Props) => {
   const dispatch = useDispatch();
-  const pokemon = useSelector(selectPokemon);
+  const pokemon_ = useSelector(selectPokemon);
   const [active, setActive] = useState(0);
   const [selected, setSelected] = useState(false);
   const [switching, setSwitching] = useState<number | null>(null);
+
+  const pokemon = customPokemon ?? pokemon_;
 
   useEvent(Event.Up, () => {
     if (selected) return;
@@ -73,7 +86,6 @@ const PokemonList = ({ close, switchAction, text, clickPokemon }: Props) => {
 
     if (clickPokemon) {
       clickPokemon(active);
-      close();
       return;
     }
 

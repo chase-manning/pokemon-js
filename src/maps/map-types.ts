@@ -1,3 +1,4 @@
+import { ItemType } from "../app/use-item-data";
 import { PosType } from "../state/gameSlice";
 
 export enum MapId {
@@ -70,4 +71,6 @@ export interface MapType {
   fences?: Record<number, number[]>;
   pokemonCenter?: PosType;
   pc?: PosType;
+  store?: PosType;
+  storeItems?: ItemType[];
 }

@@ -80,6 +80,14 @@ const Pc = () => {
     }
   });
 
+  useEvent(Event.B, () => {
+    if (startMenuOpen) return;
+
+    if ([5, 6].includes(stage)) setStage(4);
+    if (stage === 4) setStage(1);
+    if (stage === 1) close();
+  });
+
   if (!show) return null;
 
   const text = () => {
@@ -149,7 +157,6 @@ const Pc = () => {
           },
         ]}
       />
-      {/* TODO What if there are more tha 6 pokemon */}
       {stage === 5 && (
         <PokemonList
           close={() => setStage(4)}

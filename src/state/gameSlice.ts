@@ -139,6 +139,126 @@ const initialState: GameState = {
         { name: "tail-whip", pp: 30 },
       ],
     },
+    {
+      id: 1,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 4,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 7,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
+    },
+    {
+      id: 1,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 4,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 7,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
+    },
+    {
+      id: 1,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 4,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 7,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
+    },
+    {
+      id: 1,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 4,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "scratch", pp: 35 },
+        { name: "growl", pp: 40 },
+      ],
+    },
+    {
+      id: 7,
+      level: 5,
+      xp: 0,
+      hp: 19,
+      moves: [
+        { name: "tackle", pp: 35 },
+        { name: "tail-whip", pp: 30 },
+      ],
+    },
   ],
   activePokemonIndex: 0,
 };

@@ -58,6 +58,7 @@ const PokemonList = ({
   const [active, setActive] = useState(0);
   const [selected, setSelected] = useState(false);
   const [switching, setSwitching] = useState<number | null>(null);
+  const [scroll, setScroll] = useState(0);
 
   const pokemon = customPokemon ?? pokemon_;
 
@@ -65,14 +66,19 @@ const PokemonList = ({
     if (selected) return;
 
     if (active === 0) return;
-    setActive((prev) => prev - 1);
+
+    if (pokemon.length > 6 && scroll > 0) setScroll((prev) => prev - 1);
+    else setActive((prev) => prev - 1);
   });
 
   useEvent(Event.Down, () => {
     if (selected) return;
 
     if (active === pokemon.length - 1) return;
-    setActive((prev) => prev + 1);
+    if (scroll === pokemon.length - 5) return;
+
+    if (pokemon.length > 6 && active === 4) setScroll((prev) => prev + 1);
+    else setActive((prev) => prev + 1);
   });
 
   useEvent(Event.B, () => {
@@ -85,7 +91,7 @@ const PokemonList = ({
     if (selected) return;
 
     if (clickPokemon) {
-      clickPokemon(active);
+      clickPokemon(active + scroll);
       return;
     }
 
@@ -103,7 +109,7 @@ const PokemonList = ({
   return (
     <>
       <StyledPokemonList>
-        {pokemon.map((p, i) => {
+        {pokemon.slice(scroll, scroll + 6).map((p, i) => {
           return <PokemonRow key={i} pokemon={p} active={active === i} />;
         })}
       </StyledPokemonList>

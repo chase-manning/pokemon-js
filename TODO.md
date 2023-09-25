@@ -1,6 +1,3 @@
-- Stop player from twitching when menus are open
-- Handle more than 6 pokemon in pc during withdrawal
-
 ===========
 
 - Add more maps
@@ -28,6 +25,7 @@
 - Pallet town colors don't mate Route 1
 - Make RPCs walk
 - Don't show number for non-countable items
+- Stop player from twitching when menus are open
 - Add Option Menu
 - Animate water
 - Abstract all the maths stuff out into a separate folder for easier contributions

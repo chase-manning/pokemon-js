@@ -11,37 +11,12 @@ const houseB: MapType = {
     y: 6,
   },
   walls: {
-    0: {
-      0: true,
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true,
-      6: true,
-      7: true,
-    },
-    1: {
-      0: true,
-      1: true,
-      7: true,
-    },
-    3: {
-      3: true,
-      4: true,
-    },
-    4: {
-      3: true,
-      4: true,
-    },
-    6: {
-      0: true,
-      7: true,
-    },
-    7: {
-      0: true,
-      7: true,
-    },
+    0: [0, 1, 2, 3, 4, 5, 6, 7],
+    1: [0, 1, 7],
+    3: [3, 4],
+    4: [3, 4],
+    6: [0, 7],
+    7: [0, 7],
   },
   text: {
     0: {
@@ -54,10 +29,7 @@ const houseB: MapType = {
   },
   maps: {},
   exits: {
-    7: {
-      2: true,
-      3: true,
-    },
+    7: [2, 3],
   },
   exitReturnPos: {
     x: 13,

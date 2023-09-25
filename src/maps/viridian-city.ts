@@ -59,10 +59,7 @@ const viridianCity: MapType = {
   },
   maps: {},
   exits: {
-    35: {
-      20: true,
-      21: true,
-    },
+    35: [20, 21],
   },
   music,
   encounters: {

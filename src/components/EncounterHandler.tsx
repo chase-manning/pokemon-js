@@ -10,6 +10,7 @@ import { PokemonEncounterData } from "../maps/map-types";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import { getPokemonMetadata } from "../app/use-pokemon-metadata";
 import { DEBUG_MODE } from "../app/constants";
+import { isGrass } from "../app/map-helper";
 
 const shouldEncounter = (rate: number) => {
   const random = Math.random() * 100;
@@ -58,7 +59,7 @@ const EncounterHandler = () => {
     if (!map.encounters || DEBUG_MODE) return;
 
     // Handling walk encounters
-    const isWalk = map.grass[pos.y] ? map.grass[pos.y][pos.x] : false;
+    const isWalk = isGrass(map.grass, pos.x, pos.y);
     if (isWalk) {
       const encounter = shouldEncounter(map.encounters.walk.rate);
       if (encounter) {

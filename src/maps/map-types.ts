@@ -57,15 +57,15 @@ export interface MapType {
   height: number;
   width: number;
   start: PosType;
-  walls: Record<number, Record<number, boolean>>;
+  walls: Record<number, number[]>;
   text: Record<number, Record<number, string[]>>;
   maps: Record<number, Record<number, MapId>>;
-  exits: Record<number, Record<number, boolean>>;
+  exits: Record<number, number[]>;
   exitReturnMap?: MapId;
   exitReturnPos?: PosType;
   music?: string;
   encounters?: EncountersType;
-  grass: Record<number, Record<number, boolean>>;
+  grass: Record<number, number[]>;
   recoverLocation?: PosType;
-  fences?: Record<number, Record<number, boolean>>;
+  fences?: Record<number, number[]>;
 }

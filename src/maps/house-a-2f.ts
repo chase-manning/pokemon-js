@@ -11,35 +11,12 @@ const houseA2f: MapType = {
     y: 2,
   },
   walls: {
-    0: {
-      0: true,
-      1: true,
-      2: true,
-      3: true,
-      4: true,
-      5: true,
-      6: true,
-      7: true,
-    },
-    1: {
-      0: true,
-      1: true,
-      2: true,
-    },
-    4: {
-      3: true,
-    },
-    5: {
-      3: true,
-    },
-    6: {
-      0: true,
-      6: true,
-    },
-    7: {
-      0: true,
-      6: true,
-    },
+    0: [0, 1, 2, 3, 4, 5, 6, 7],
+    1: [0, 1, 2],
+    4: [3],
+    5: [3],
+    6: [0, 6],
+    7: [0, 6],
   },
   text: {
     5: {
@@ -59,9 +36,7 @@ const houseA2f: MapType = {
   },
   maps: {},
   exits: {
-    1: {
-      7: true,
-    },
+    1: [7],
   },
   exitReturnPos: {
     x: 6,

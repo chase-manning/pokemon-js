@@ -4,6 +4,7 @@ import { exitMap, selectPos, selectMap, setMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import { MapId } from "../maps/map-types";
 import emitter, { Event } from "../app/emitter";
+import { isExit } from "../app/map-helper";
 
 interface OverlayProps {
   $show: boolean;
@@ -29,7 +30,7 @@ const MapChangeHandler = () => {
 
   useEffect(() => {
     const nextMap = map.maps[pos.y] ? map.maps[pos.y][pos.x] : null;
-    const exit = map.exits[pos.y] ? map.exits[pos.y][pos.x] : null;
+    const exit = isExit(map.exits, pos.x, pos.y);
 
     if (!nextMap && !exit) return;
 

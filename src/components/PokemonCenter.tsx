@@ -46,7 +46,14 @@ const PokemonCenter = () => {
 
   const [stage, setStage] = useState<number>(0);
 
+  const exit = () => {
+    dispatch(hidePokemonCenterMenu());
+    setStage(0);
+  };
+
   useEvent(Event.A, () => {
+    if (startMenuOpen) return;
+
     if (!show) {
       if (
         map.pokemonCenter &&
@@ -61,10 +68,7 @@ const PokemonCenter = () => {
       else if (stage === 2) return;
       else if (stage === 3) return;
       else if (stage === 4) setStage(5);
-      else if (stage === 5) {
-        dispatch(hidePokemonCenterMenu());
-        setStage(0);
-      }
+      else if (stage === 5) exit();
     }
   });
 
@@ -82,7 +86,7 @@ const PokemonCenter = () => {
   return (
     <StyledPokemonCenter>
       <TextContainer>
-        <Frame wide tall flashing={[0, 1].includes(stage)}>
+        <Frame wide tall flashing={[0, 1, 4, 5].includes(stage)}>
           {text()}
         </Frame>
       </TextContainer>
@@ -92,10 +96,7 @@ const PokemonCenter = () => {
         right="0"
         bottom={isMobile ? "30%" : "20%"}
         noExit
-        close={() => {
-          dispatch(hidePokemonCenterMenu());
-          setStage(0);
-        }}
+        close={() => exit()}
         menuItems={[
           {
             label: "HEAL",
@@ -110,10 +111,7 @@ const PokemonCenter = () => {
           },
           {
             label: "CANCEL",
-            action: () => {
-              dispatch(hidePokemonCenterMenu());
-              setStage(0);
-            },
+            action: () => exit(),
           },
         ]}
       />

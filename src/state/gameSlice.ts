@@ -54,6 +54,7 @@ export interface GameState {
   inventory: InventoryItemType[];
   name: string;
   pokemon: PokemonInstance[];
+  pc: PokemonInstance[];
   activePokemonIndex: number;
   pokemonEncounter?: PokemonEncounterType;
 }
@@ -106,6 +107,8 @@ const initialState: GameState = {
         { name: "tail-whip", pp: 30 },
       ],
     },
+  ],
+  pc: [
     {
       id: 1,
       level: 5,
@@ -325,10 +328,23 @@ export const gameSlice = createSlice({
       state.activePokemonIndex = fistIndexWithHp;
     },
     addPokemon: (state, action: PayloadAction<PokemonInstance>) => {
+      if (state.pokemon.length === 6) {
+        state.pc.push(action.payload);
+        return;
+      }
       state.pokemon.push(action.payload);
     },
     stopJumping: (state) => {
       state.jumping = false;
+    },
+    depositPokemonToPc: (state, action: PayloadAction<number>) => {
+      const pokemon = state.pokemon.splice(action.payload, 1);
+      state.pc.push(pokemon[0]);
+    },
+    withdrawPokemonFromPc: (state, action: PayloadAction<number>) => {
+      if (state.pokemon.length === 6) throw new Error("No space in party");
+      const pokemon = state.pc.splice(action.payload, 1);
+      state.pokemon.push(pokemon[0]);
     },
   },
 });
@@ -360,6 +376,8 @@ export const {
   resetActivePokemon,
   addPokemon,
   stopJumping,
+  depositPokemonToPc,
+  withdrawPokemonFromPc,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -391,5 +409,7 @@ export const selectActivePokemon = (state: RootState) =>
   state.game.pokemon[state.game.activePokemonIndex];
 
 export const selectJumping = (state: RootState) => state.game.jumping;
+
+export const selectPc = (state: RootState) => state.game.pc;
 
 export default gameSlice.reducer;

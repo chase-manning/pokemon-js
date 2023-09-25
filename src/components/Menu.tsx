@@ -9,6 +9,7 @@ interface MenuProps {
   $bottom?: string;
   $left?: string;
   $compact?: boolean;
+  $wide?: boolean;
 }
 
 const StyledMenu = styled.div<MenuProps>`
@@ -23,10 +24,12 @@ const StyledMenu = styled.div<MenuProps>`
   bottom: ${(props) => (props.$bottom ? props.$bottom : "auto")};
   transform: ${(props) =>
     props.$bottom || props.$top ? "none" : "translateY(-50%)"};
-  width: ${(props) => (props.$compact ? "410px" : "auto")};
+  width: ${(props) =>
+    props.$compact ? "410px" : props.$wide ? "100%" : "auto"};
 
   @media (max-width: 768px) {
-    width: ${(props) => (props.$compact ? "130px" : "auto")};
+    width: ${(props) =>
+      props.$compact ? "130px" : props.$wide ? "100%" : "auto"};
   }
 `;
 
@@ -73,6 +76,7 @@ interface Props {
   compact?: boolean;
   padd?: number;
   tight?: boolean;
+  wide?: boolean;
   setHovered?: (index: number) => void;
 }
 
@@ -92,6 +96,7 @@ const Menu = ({
   compact,
   padd,
   tight,
+  wide,
   setHovered,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -192,6 +197,7 @@ const Menu = ({
       $bottom={bottom}
       $left={left}
       $compact={compact}
+      $wide={wide}
     >
       <ul
         className={`framed buttons ${compact ? "compact" : ""}`}

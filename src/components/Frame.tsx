@@ -38,7 +38,7 @@ const StyledFrame = styled.div<FrameProps>`
   ::after {
     content: "";
     position: absolute;
-    bottom: ${(props) => (props.$flashing ? "25px" : "-100px")};
+    bottom: ${(props) => (props.$flashing ? "25px" : "-1000px")};
     right: 20px;
     width: 3px;
     height: 3px;
@@ -54,7 +54,7 @@ const StyledFrame = styled.div<FrameProps>`
     animation: ${animation} 1s infinite;
 
     @media (max-width: 768px) {
-      bottom: ${(props) => (props.$flashing ? "13px" : "-100px")};
+      bottom: ${(props) => (props.$flashing ? "13px" : "-1000px")};
       right: 10px;
       width: 1.3px;
       height: 1.3px;
@@ -68,9 +68,10 @@ interface Props {
   wide?: boolean;
   tall?: boolean;
   flashing?: boolean;
+  rightText?: boolean;
 }
 
-const Frame = ({ children, wide, tall, flashing }: Props) => {
+const Frame = ({ children, wide, tall, flashing, rightText }: Props) => {
   if (typeof children === "string") {
     return (
       <StyledFrame
@@ -79,7 +80,7 @@ const Frame = ({ children, wide, tall, flashing }: Props) => {
         $tall={tall}
         $flashing={flashing}
       >
-        <h1>{children}</h1>
+        <h1 style={{ textAlign: rightText ? "right" : "left" }}>{children}</h1>
       </StyledFrame>
     );
   }

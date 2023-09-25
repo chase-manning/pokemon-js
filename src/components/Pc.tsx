@@ -20,7 +20,6 @@ import {
 } from "../state/uiSlice";
 import Frame from "./Frame";
 import Menu from "./Menu";
-import useIsMobile from "../app/use-is-mobile";
 import PokemonList from "./PokemonList";
 import { getPokemonMetadata } from "../app/use-pokemon-metadata";
 
@@ -55,8 +54,6 @@ const Pc = () => {
   const name = useSelector(selectName);
   const pokemon = useSelector(selectPokemon);
   const pcPokemon = useSelector(selectPc);
-
-  const isMobile = useIsMobile();
 
   const [stage, setStage] = useState<number>(0);
 

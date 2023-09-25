@@ -24,6 +24,7 @@ import EncounterHandler from "./EncounterHandler";
 import PokemonEncounter from "./PokemonEncounter";
 import ActionOnPokemon from "./ActionOnPokemon";
 import PokemonCenter from "./PokemonCenter";
+import Pc from "./Pc";
 
 const Container = styled.div`
   position: absolute;
@@ -142,6 +143,7 @@ const Game = () => {
       <PokemonEncounter />
       <Text />
       <PokemonCenter />
+      <Pc />
       <StartMenu />
       <ItemsMenu />
       <PlayerMenu />

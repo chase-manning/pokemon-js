@@ -1,8 +1,9 @@
+- Stop player from twitching when menus are open
+- Handle more than 6 pokemon in pc during withdrawal
+
 ===========
 
 - Add more maps
-- Add support for healing your pokemon at healing place
-- Handle getting pokemon more than 6 (send to PC)
 - battle sounds
 - Encounter frequency seems off
 - Change Menu to use new Arrow component

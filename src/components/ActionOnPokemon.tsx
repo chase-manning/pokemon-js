@@ -11,7 +11,10 @@ const ActionOnPokemon = () => {
   return (
     <PokemonList
       close={() => dispatch(hideActionOnPokemon())}
-      clickPokemon={(index) => action(index)}
+      clickPokemon={(index) => {
+        action(index);
+        dispatch(hideActionOnPokemon());
+      }}
       text="Choose a Pokémon."
     />
   );

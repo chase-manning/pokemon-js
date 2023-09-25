@@ -57,6 +57,7 @@ export interface GameState {
   pc: PokemonInstance[];
   activePokemonIndex: number;
   pokemonEncounter?: PokemonEncounterType;
+  money: number;
 }
 
 const initialState: GameState = {
@@ -65,6 +66,7 @@ const initialState: GameState = {
   moving: false,
   direction: Direction.Down,
   map: MapId.PalletTown,
+  money: 400,
   inventory: [
     {
       item: ItemType.MaxPotion,
@@ -466,6 +468,12 @@ export const gameSlice = createSlice({
       const pokemon = state.pc.splice(action.payload, 1);
       state.pokemon.push(pokemon[0]);
     },
+    gainMoney: (state, action: PayloadAction<number>) => {
+      state.money += action.payload;
+    },
+    takeMoney: (state, action: PayloadAction<number>) => {
+      state.money -= action.payload;
+    },
   },
 });
 
@@ -498,6 +506,8 @@ export const {
   stopJumping,
   depositPokemonToPc,
   withdrawPokemonFromPc,
+  gainMoney,
+  takeMoney,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -509,6 +519,8 @@ export const selectDirection = (state: RootState) => state.game.direction;
 export const selectMoving = (state: RootState) => state.game.moving;
 
 export const selectInventory = (state: RootState) => state.game.inventory;
+
+export const selectMoney = (state: RootState) => state.game.money;
 
 export const selectPreviousMap = (state: RootState) => {
   const returnMap = mapData[state.game.map].exitReturnMap;

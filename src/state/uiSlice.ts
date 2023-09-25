@@ -11,6 +11,7 @@ interface UiState {
   loadMenu: boolean;
   gameboyMenu: boolean;
   pokemonCenterMenu: boolean;
+  pcMenu: boolean;
   actionOnPokemon: ((index: number) => void) | null;
   pokeballThrowing?: ItemType | null;
 }
@@ -26,6 +27,7 @@ const initialState: UiState = {
   actionOnPokemon: null,
   pokeballThrowing: null,
   pokemonCenterMenu: false,
+  pcMenu: false,
 };
 
 export const uiSlice = createSlice({
@@ -86,6 +88,12 @@ export const uiSlice = createSlice({
     hidePokemonCenterMenu: (state) => {
       state.pokemonCenterMenu = false;
     },
+    showPcMenu: (state) => {
+      state.pcMenu = true;
+    },
+    hidePcMenu: (state) => {
+      state.pcMenu = false;
+    },
   },
 });
 
@@ -107,6 +115,8 @@ export const {
   stopThrowingPokeball,
   showPokemonCenterMenu,
   hidePokemonCenterMenu,
+  showPcMenu,
+  hidePcMenu,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -125,6 +135,8 @@ export const selectLoadMenu = (state: RootState) => state.ui.loadMenu;
 
 export const selectGameboyMenu = (state: RootState) => state.ui.gameboyMenu;
 
+export const selectPcMenu = (state: RootState) => state.ui.pcMenu;
+
 export const selectPokemonCenterMenu = (state: RootState) =>
   state.ui.pokemonCenterMenu;
 
@@ -140,7 +152,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.loadMenu ||
   state.ui.gameboyMenu ||
   state.game.pokemonEncounter !== undefined ||
-  state.ui.pokemonCenterMenu;
+  state.ui.pokemonCenterMenu ||
+  state.ui.pcMenu;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;

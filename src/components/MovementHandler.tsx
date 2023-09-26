@@ -87,6 +87,7 @@ const MovementHandler = () => {
         clearInterval(tickIntervalRef.current);
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pressingButton, direction, dispatch, cooldown, menuOpen, jumping]);
 
   useEvent(Event.StartDown, () => {

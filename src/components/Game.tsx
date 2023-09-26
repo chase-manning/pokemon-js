@@ -26,6 +26,7 @@ import ActionOnPokemon from "./ActionOnPokemon";
 import PokemonCenter from "./PokemonCenter";
 import Pc from "./Pc";
 import PokeMart from "./PokeMart";
+import SpinningHandler from "./SpinningHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -160,6 +161,7 @@ const Game = () => {
       <MovementHandler />
       <SoundHandler />
       <EncounterHandler />
+      <SpinningHandler />
     </Container>
   );
 };

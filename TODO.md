@@ -12,21 +12,17 @@
 
 ===========
 
-- Store in state which trainers we have beaten
-- Ability to find items in the world
-- Go through and use thsi `xToPx` everywhere we can
-
-===========
-
-- Add more maps
 - Add some way for the app to update iteself if it can (remove manifest change)
 
 ===========
 
 - Encounter frequency seems off
 - Add support for trainer battles
+- Store in state which trainers we have beaten
 - battle sounds
 - Lots of items in inventory too long (when selling and in items menu)
+- Add more maps
+- Ability to find items in the world
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass

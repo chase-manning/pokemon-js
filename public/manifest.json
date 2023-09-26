@@ -1,7 +1,6 @@
 {
   "short_name": "Pokemon",
-  "name": "Pokemon",
-  "version": "0.1.0",
+  "name": "Pokemon 0.1.0",
   "icons": [
     {
       "src": "favicon.ico",

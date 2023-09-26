@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
+import Arrow from "./Arrow";
 
 interface MenuProps {
   $top?: string;
@@ -50,6 +51,18 @@ const Bold = styled.div`
     font-size: 1rem;
     line-height: 1;
     margin-left: 15px;
+  }
+`;
+
+const ArrowContainer = styled.div`
+  position: absolute;
+  left: 0;
+  top: -1px;
+
+  @media (max-width: 768px) {
+    top: auto;
+    bottom: -1px;
+    left: 1px;
   }
 `;
 
@@ -228,17 +241,20 @@ const Menu = ({
           return (
             <li key={index}>
               <Button
-                className={`${
-                  noSelect
-                    ? "no-select-button"
-                    : activeIndex === index
-                    ? "active-button"
-                    : ""
-                } ${item.pokemon ? "pokemon" : ""}`}
+                className={`${noSelect ? "no-select-button" : ""} ${
+                  item.pokemon ? "pokemon" : ""
+                }`}
                 style={{ margin: tight ? "1px 0" : "" }}
               >
                 {item.label}
                 {item.value !== undefined && <Bold>{item.value}</Bold>}
+                <ArrowContainer>
+                  <Arrow
+                    disabled={disabled}
+                    menu
+                    show={activeIndex === index}
+                  />
+                </ArrowContainer>
               </Button>
             </li>
           );

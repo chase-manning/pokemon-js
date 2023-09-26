@@ -21,7 +21,7 @@ const viridianCity: MapType = {
     4: [5, 14, 28, 29, 30, 31, 32, 33, 36],
     5: [5, 8, 9, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31, 32, 33, 36],
     6: [5, 7, 16, 20, 28, 29, 30, 31, 32, 33, 36],
-    7: [5, 7, 16, 20, 27, 28, 29, 30, 31, 32, 33, 36],
+    7: [5, 7, 16, 20, 27, 28, 29, 30, 31, 33, 36],
     8: [5, 7, 16, 20, 21, 22, 23, 36],
     9: [5, 7, 16, 20, 22, 23, 36],
     10: [5, 7, 16, 36],
@@ -109,8 +109,11 @@ const viridianCity: MapType = {
     },
   },
   maps: {
-    25: {
-      23: MapId.ViridianCityPokemonCenter,
+    7: {
+      32: MapId.ViridianCityGym,
+    },
+    9: {
+      21: MapId.ViridianCityNpcHouse,
     },
     15: {
       21: MapId.ViridianCityPokemonAcadamy,
@@ -118,8 +121,8 @@ const viridianCity: MapType = {
     19: {
       29: MapId.ViridianCityPokeMart,
     },
-    9: {
-      21: MapId.ViridianCityNpcHouse,
+    25: {
+      23: MapId.ViridianCityPokemonCenter,
     },
   },
   exits: {

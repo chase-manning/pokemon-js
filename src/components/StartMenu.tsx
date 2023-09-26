@@ -14,6 +14,7 @@ import { useState } from "react";
 import ConfirmationMenu from "./ConfirmationMenu";
 import { save, selectName } from "../state/gameSlice";
 import PokemonList from "./PokemonList";
+import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
@@ -55,6 +56,15 @@ const StartMenu = () => {
           {
             label: "Save",
             action: () => setSaving(true),
+          },
+          {
+            label: "Update",
+            action: () => {
+              // Our app is a PWA, the service worker caches the site.
+              // This action should remove the cache and load it again
+              serviceWorkerRegistration.unregister();
+              window.location.reload();
+            },
           },
           // {
           //   label: "Option",

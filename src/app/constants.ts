@@ -1,6 +1,4 @@
-export const VERSION = "0.1.1";
-
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
 
 export const BLOCK_PIXEL_WIDTH = 16;
 export const BLOCK_PIXEL_HEIGHT = 16;

@@ -32,7 +32,7 @@ const viridianCity: MapType = {
       32, 33, 34, 35, 36,
     ],
     14: [7, 16, 20, 21, 22, 23, 36],
-    15: [7, 16, 20, 21, 22, 23, 36],
+    15: [7, 16, 20, 22, 23, 36],
     16: [8, 9, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31, 36],
     17: [17, 20, 21, 22, 23, 28, 29, 30, 31, 36],
     18: [0, 1, 2, 3, 28, 29, 30, 31, 36],
@@ -111,6 +111,9 @@ const viridianCity: MapType = {
   maps: {
     25: {
       23: MapId.ViridianCityPokemonCenter,
+    },
+    15: {
+      21: MapId.ViridianCityPokemonAcadamy,
     },
     19: {
       29: MapId.ViridianCityPokeMart,

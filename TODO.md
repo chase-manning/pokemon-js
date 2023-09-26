@@ -1,6 +1,3 @@
-- add man to store
-- Lots of items in inventory too long (when selling and in items menu)
-
 ===========
 
 - Add more maps
@@ -14,6 +11,7 @@
 
 ===========
 
+- Lots of items in inventory too long (when selling and in items menu)
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass
@@ -38,3 +36,4 @@
 - If you skip a level (with a double level up) then you miss that levels move learn
 - Add a probability for running away
 - Add Pokedex Menu
+- Add Poke Center animation when healing

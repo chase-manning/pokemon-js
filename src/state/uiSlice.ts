@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "./store";
 import { ItemType } from "../app/use-item-data";
+import { Direction } from "./state-types";
 
 interface UiState {
   text: string[] | null;
@@ -15,6 +16,7 @@ interface UiState {
   pokeMartMenu: boolean;
   actionOnPokemon: ((index: number) => void) | null;
   pokeballThrowing?: ItemType | null;
+  spinning: Direction | null;
 }
 
 const initialState: UiState = {
@@ -30,6 +32,7 @@ const initialState: UiState = {
   pokemonCenterMenu: false,
   pcMenu: false,
   pokeMartMenu: false,
+  spinning: null,
 };
 
 export const uiSlice = createSlice({
@@ -102,6 +105,12 @@ export const uiSlice = createSlice({
     hidePokeMartMenu: (state) => {
       state.pokeMartMenu = false;
     },
+    startSpinning: (stage, action: PayloadAction<Direction>) => {
+      stage.spinning = action.payload;
+    },
+    stopSpinning: (stage) => {
+      stage.spinning = null;
+    },
   },
 });
 
@@ -127,6 +136,8 @@ export const {
   hidePcMenu,
   showPokeMartMenu,
   hidePokeMartMenu,
+  startSpinning,
+  stopSpinning,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -173,5 +184,7 @@ export const selectStartMenuSubOpen = (state: RootState) =>
 
 export const selectPokeballThrowing = (state: RootState) =>
   state.ui.pokeballThrowing;
+
+export const selectSpinning = (state: RootState) => state.ui.spinning;
 
 export default uiSlice.reducer;

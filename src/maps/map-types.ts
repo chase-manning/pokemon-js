@@ -1,5 +1,5 @@
 import { ItemType } from "../app/use-item-data";
-import { Direction, PosType } from "../state/state-types";
+import { Direction, PokemonEncounterType, PosType } from "../state/state-types";
 
 export enum MapId {
   PalletTown = "pallet-town",
@@ -52,6 +52,21 @@ export interface EncountersType {
   onlyOne: EncounterData;
 }
 
+export interface TrainerType {
+  id: string;
+  name: string;
+  sprites: {
+    small: string;
+    large: string;
+  };
+  pokemon: PokemonEncounterType[];
+  facing: Direction;
+  intro: string[];
+  outtro: string[];
+  money: number;
+  pos: PosType;
+}
+
 export interface MapType {
   name: string;
   image: string;
@@ -75,4 +90,5 @@ export interface MapType {
   storeItems?: ItemType[];
   spinners?: Record<number, Record<number, Direction>>;
   stoppers?: Record<number, number[]>;
+  trainers?: TrainerType[];
 }

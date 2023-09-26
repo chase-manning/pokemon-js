@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { TrainerType } from "../maps/map-types";
-import { BLOCK_PIXEL_WIDTH } from "../app/constants";
 import PixelImage from "../styles/PixelImage";
 import { xToPx, yToPx } from "../app/position-helper";
 
@@ -17,7 +16,7 @@ const StyledTrainer = styled.div<TrainerProps>`
 `;
 
 const Sprite = styled(PixelImage)`
-  width: calc(${BLOCK_PIXEL_WIDTH}vw / 2.34);
+  width: ${xToPx(1)};
 `;
 
 interface Props {

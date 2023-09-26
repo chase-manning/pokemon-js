@@ -1,11 +1,8 @@
 import styled from "styled-components";
-import {
-  BLOCK_PIXEL_HEIGHT,
-  BLOCK_PIXEL_WIDTH,
-  DEBUG_MODE,
-} from "../app/constants";
+import { DEBUG_MODE } from "../app/constants";
 import { useSelector } from "react-redux";
 import { selectMap } from "../state/gameSlice";
+import { xToPx } from "../app/position-helper";
 
 interface BackgroundProps {
   width: number;
@@ -16,8 +13,8 @@ const StyledDebugOverlay = styled.div<BackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
-  height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
+  width: ${(props) => xToPx(props.width)};
+  height: ${(props) => xToPx(props.height)};
   transition: transform 0.2s steps(5, end);
   display: grid;
   grid-template-columns: repeat(${(props) => props.width}, 1fr);

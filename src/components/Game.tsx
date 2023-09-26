@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { selectPos, selectMap } from "../state/gameSlice";
 import Character from "./Character";
 import Text from "./Text";
-import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
 import MapChangeHandler from "./MapChangeHandler";
 import StartMenu from "./StartMenu";
 import KeyboardHandler from "./KeyboardHandler";
@@ -41,8 +40,8 @@ const StyledGame = styled.div`
   width: 100%;
   position: relative;
   transform: translate(
-    calc(50% - (16vw / 2.34) / 2),
-    calc(50% - (16vw / 2.34) / 2)
+    calc(50% - ${xToPx(1)} / 2),
+    calc(50% - ${yToPx(1)} / 2)
   );
 `;
 
@@ -63,8 +62,8 @@ const Background = styled(PixelImage)<BackgroundProps>`
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
-  height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
+  width: ${(props) => xToPx(props.width)};
+  height: ${(props) => yToPx(props.height)};
 `;
 
 const ColorOverlay = styled.div`

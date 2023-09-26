@@ -29,12 +29,14 @@ import { MOVE_SPEED, WALK_SPEED } from "../app/constants";
 import PixelImage from "../styles/PixelImage";
 import { selectSpinning } from "../state/uiSlice";
 import { Direction } from "../state/state-types";
+import { xToPx } from "../app/position-helper";
 
 const Container = styled.div`
   position: absolute;
-  top: calc((-16vw / 2.34) / 5);
+  top: 0;
   left: 0;
-  width: calc(16vw / 2.34);
+  width: ${xToPx(1)};
+  transform: translateY(-20%);
 `;
 
 const JumpContainer = styled.div`

@@ -27,6 +27,9 @@ import PokemonCenter from "./PokemonCenter";
 import Pc from "./Pc";
 import PokeMart from "./PokeMart";
 import SpinningHandler from "./SpinningHandler";
+import { TrainerType } from "../maps/map-types";
+import Trainer from "./Trainer";
+import { xToPx, yToPx } from "../app/position-helper";
 
 const Container = styled.div`
   position: absolute;
@@ -46,6 +49,14 @@ const StyledGame = styled.div`
   );
 `;
 
+const BackgroundContainer = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transition: transform 0.2s steps(5, end);
+`;
+
 interface BackgroundProps {
   width: number;
   height: number;
@@ -57,8 +68,6 @@ const Background = styled(PixelImage)<BackgroundProps>`
   left: 0;
   width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
   height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
-
-  transition: transform 0.2s steps(5, end);
 `;
 
 const Overlay = styled.div<BackgroundProps>`
@@ -97,38 +106,25 @@ const Game = () => {
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);
 
-  const translateX = `calc(
-    (
-      (
-        ${map.width * BLOCK_PIXEL_WIDTH}vw / 2.34
-      ) / ${map.width}
-    ) * ${-pos.x}
-  )`;
-
-  const translateY = `calc(
-    (
-      (
-        ${map.height * BLOCK_PIXEL_HEIGHT}vw / 2.34
-      ) / ${map.height}
-    ) * ${-pos.y}
-  )`;
-
   return (
     <Container>
       <StyledGame>
-        <Background
+        <BackgroundContainer
           style={{
-            transform: `translate(${translateX}, ${translateY})`,
+            transform: `translate(${xToPx(-pos.x)}, ${yToPx(-pos.y)})`,
           }}
-          src={map.image}
-          width={map.width}
-          height={map.height}
-        />
+        >
+          <Background src={map.image} width={map.width} height={map.height} />
+          {map.trainers &&
+            map.trainers.map((trainer: TrainerType) => (
+              <Trainer key={trainer.id} trainer={trainer} />
+            ))}
+        </BackgroundContainer>
         <Character />
         {showGrid && (
           <Overlay
             style={{
-              transform: `translate(${translateX}, ${translateY})`,
+              transform: `translate(${xToPx(-pos.x)}, ${yToPx(-pos.y)})`,
             }}
             width={map.width}
             height={map.height}

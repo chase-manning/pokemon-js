@@ -1,7 +1,25 @@
+- Start of encounter:
+  - Exclamation mark over head
+  - Walk towards us
+  - Opening phrase
+  - Battle intro animation
+  - Fight screen `NAME wants to fight!` (showing enemy, showing pokemon count)
+  - `NAME sent out WEEDLE` thowing their pokemon (then we do ours)
+  - `enemy WEEDLE fainted!`
+  - XP, level up ext
+  - After battle, (show the trainer again, but without the pokemon count, shwo some exit message)
+  - Money for winning
+
+===========
+
+- Store in state which trainers we have beaten
+- Ability to find items in the world
+- Remove the duplicate transform in Game.tsx by moving the overlay into the background container
+
 ===========
 
 - Add more maps
-- Add some way for the app to update iteself if it can
+- Add some way for the app to update iteself if it can (remove manifest change)
 
 ===========
 

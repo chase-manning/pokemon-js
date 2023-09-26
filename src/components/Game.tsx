@@ -4,11 +4,7 @@ import { useSelector } from "react-redux";
 import { selectPos, selectMap } from "../state/gameSlice";
 import Character from "./Character";
 import Text from "./Text";
-import {
-  BLOCK_PIXEL_HEIGHT,
-  BLOCK_PIXEL_WIDTH,
-  DEBUG_MODE,
-} from "../app/constants";
+import { BLOCK_PIXEL_HEIGHT, BLOCK_PIXEL_WIDTH } from "../app/constants";
 import MapChangeHandler from "./MapChangeHandler";
 import StartMenu from "./StartMenu";
 import KeyboardHandler from "./KeyboardHandler";
@@ -30,6 +26,7 @@ import SpinningHandler from "./SpinningHandler";
 import { TrainerType } from "../maps/map-types";
 import Trainer from "./Trainer";
 import { xToPx, yToPx } from "../app/position-helper";
+import DebugOverlay from "./DebugOverlay";
 
 const Container = styled.div`
   position: absolute;
@@ -70,25 +67,6 @@ const Background = styled(PixelImage)<BackgroundProps>`
   height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
 `;
 
-const Overlay = styled.div<BackgroundProps>`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: calc(${(props) => props.width * BLOCK_PIXEL_WIDTH}vw / 2.34);
-  height: calc(${(props) => props.height * BLOCK_PIXEL_HEIGHT}vw / 2.34);
-  transition: transform 0.2s steps(5, end);
-  display: grid;
-  grid-template-columns: repeat(${(props) => props.width}, 1fr);
-  grid-template-rows: repeat(${(props) => props.height}, 1fr);
-`;
-
-const Item = styled.div`
-  border: solid 1px red;
-  font-size: 3rem;
-  font-weight: bold;
-  color: red;
-`;
-
 const ColorOverlay = styled.div`
   position: absolute;
   top: 0;
@@ -101,8 +79,6 @@ const ColorOverlay = styled.div`
 `;
 
 const Game = () => {
-  const showGrid = DEBUG_MODE;
-
   const pos = useSelector(selectPos);
   const map = useSelector(selectMap);
 
@@ -120,23 +96,10 @@ const Game = () => {
               <Trainer key={trainer.id} trainer={trainer} />
             ))}
         </BackgroundContainer>
+        <DebugOverlay />
         <Character />
-        {showGrid && (
-          <Overlay
-            style={{
-              transform: `translate(${xToPx(-pos.x)}, ${yToPx(-pos.y)})`,
-            }}
-            width={map.width}
-            height={map.height}
-          >
-            {Array.from(Array(map.width * map.height).keys()).map((i) => {
-              const x = i % map.width;
-              const y = Math.floor(i / map.width);
-              return <Item key={i}>{`${y}, ${x}`}</Item>;
-            })}
-          </Overlay>
-        )}
       </StyledGame>
+
       <ColorOverlay />
       <PokemonEncounter />
       <Text />

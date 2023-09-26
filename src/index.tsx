@@ -5,6 +5,8 @@ import { store } from "./state/store";
 import App from "./App";
 import GlobalStyles from "./styles/GlobalStyles";
 
+import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
+
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 
@@ -16,3 +18,5 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
+
+serviceWorkerRegistration.register();

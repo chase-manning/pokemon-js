@@ -13,7 +13,7 @@ export enum MapId {
   ViridianCityPokeMart = "viridian-city-poke-mart",
   ViridianCityPokemonCenter = "viridian-city-pokemon-center",
   ViridianCityPokemonAcadamy = "viridian-city-pokemon-acadamy",
-  VeridianCityNpcHouse = "veridian-city-npc-house",
+  ViridianCityNpcHouse = "veridian-city-npc-house",
 }
 
 export interface PokemonEncounterData {

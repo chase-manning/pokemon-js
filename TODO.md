@@ -1,21 +1,20 @@
 ===========
 
 - Add more maps
-- battle sounds
-- Encounter frequency seems off
-- Battle music starts slowly, trim start (maybe trim all songs)
 - Make it a PWA
 - Test with no internet after download
-- Remove the green background, and add something better for the loading state
 
 ===========
 
+- Encounter frequency seems off
 - Add support for trainer battles
+- battle sounds
 - Lots of items in inventory too long (when selling and in items menu)
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass
 - Add Pokemon Stats to PokemonList
+- Battle music starts slowly, trim start (maybe trim all songs)
 - Make sure you can't catch trainers pokemon "The trainer blocked the BALL! Don't be a thief!"
 - Add trainer encounters to maps
 - Simplify the `Character` useEffect

@@ -12,8 +12,6 @@
 
 ===========
 
-- Add some way for the app to update iteself if it can (remove manifest change)
-
 ===========
 
 - Encounter frequency seems off

@@ -1,8 +1,7 @@
 ===========
 
 - Add more maps
-- Make it a PWA
-- Test with no internet after download
+- Add some way for the app to update iteself if it can
 
 ===========
 

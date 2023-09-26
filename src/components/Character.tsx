@@ -191,7 +191,7 @@ const Character = () => {
           transform: animateJumping ? "translateY(-80%)" : "translateY(0)",
         }}
       >
-        <StyledCharacter src={image} alt="Character" />;
+        <StyledCharacter src={image} alt="Character" />
       </JumpContainer>
     </Container>
   );

@@ -1,4 +1,4 @@
-import { PokemonEncounterType } from "../state/gameSlice";
+import { PokemonEncounterType } from "../state/state-types";
 import { ItemType } from "./use-item-data";
 import { getPokemonMetadata } from "./use-pokemon-metadata";
 import { getPokemonStats } from "./use-pokemon-stats";

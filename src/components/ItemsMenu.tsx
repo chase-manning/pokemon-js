@@ -7,7 +7,6 @@ import {
   showText,
 } from "../state/uiSlice";
 import {
-  InventoryItemType,
   consumeItem,
   selectInventory,
   selectName,
@@ -16,6 +15,7 @@ import {
 import { useState } from "react";
 import ConfirmationMenu from "./ConfirmationMenu";
 import useItemData from "../app/use-item-data";
+import { InventoryItemType } from "../state/state-types";
 
 const ItemsMenu = () => {
   const dispatch = useDispatch();

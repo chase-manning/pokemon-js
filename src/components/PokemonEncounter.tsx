@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css, keyframes } from "styled-components";
 import {
-  PokemonEncounterType,
-  PokemonInstance,
   addPokemon,
   endEncounter,
   recoverFromFainting,
@@ -53,6 +51,7 @@ import getLevelData, { getLearnedMove } from "../app/level-helper";
 import Evolution from "./Evolution";
 import MoveSelect from "./MoveSelect";
 import catchesPokemon from "../app/pokeball-helper";
+import { PokemonEncounterType, PokemonInstance } from "../state/state-types";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;

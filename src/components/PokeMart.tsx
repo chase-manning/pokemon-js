@@ -4,7 +4,6 @@ import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  InventoryItemType,
   addInventory,
   consumeItem,
   gainMoney,
@@ -23,6 +22,7 @@ import {
 import Frame from "./Frame";
 import Menu from "./Menu";
 import useItemData, { ItemType } from "../app/use-item-data";
+import { InventoryItemType } from "../state/state-types";
 
 const StyledPokeMart = styled.div`
   position: absolute;

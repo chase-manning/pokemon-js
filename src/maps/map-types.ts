@@ -1,5 +1,5 @@
 import { ItemType } from "../app/use-item-data";
-import { PosType } from "../state/gameSlice";
+import { Direction, PosType } from "../state/state-types";
 
 export enum MapId {
   PalletTown = "pallet-town",
@@ -73,4 +73,6 @@ export interface MapType {
   pc?: PosType;
   store?: PosType;
   storeItems?: ItemType[];
+  spinners?: Record<number, Record<number, Direction>>;
+  stoppers?: Record<number, number[]>;
 }

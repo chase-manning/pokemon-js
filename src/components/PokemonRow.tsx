@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { PokemonInstance } from "../state/gameSlice";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import { PokemonMetadata } from "../app/pokemon-metadata";
 import HealthBar from "./HealthBar";
@@ -26,6 +25,7 @@ import grassB from "../assets/pokemon/simple/grass-b.png";
 import ballA from "../assets/pokemon/simple/ball-a.png";
 import ballB from "../assets/pokemon/simple/ball-b.png";
 import usePokemonStats from "../app/use-pokemon-stats";
+import { PokemonInstance } from "../state/state-types";
 
 const getIcons = (metadata: PokemonMetadata): { a: string; b: string } => {
   // Is Voltorb or Electrode

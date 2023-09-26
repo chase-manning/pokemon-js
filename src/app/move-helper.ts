@@ -1,4 +1,4 @@
-import { PokemonEncounterType, PokemonInstance } from "../state/gameSlice";
+import { PokemonEncounterType, PokemonInstance } from "../state/state-types";
 import { CRITICAL_HIT_MULTIPLIER, CRITICAL_HIT_PERCENTAGE } from "./constants";
 import getTypeEffectiveness from "./type-effectiveness";
 import { getMoveMetadata } from "./use-move-metadata";

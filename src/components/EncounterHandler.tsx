@@ -1,16 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  PokemonEncounterType,
-  encounterPokemon,
-  selectMap,
-  selectPos,
-} from "../state/gameSlice";
+import { encounterPokemon, selectMap, selectPos } from "../state/gameSlice";
 import { useEffect } from "react";
 import { PokemonEncounterData } from "../maps/map-types";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import { getPokemonMetadata } from "../app/use-pokemon-metadata";
 import { DEBUG_MODE } from "../app/constants";
 import { isGrass } from "../app/map-helper";
+import { PokemonEncounterType } from "../state/state-types";
 
 const shouldEncounter = (rate: number) => {
   const random = Math.random() * 100;

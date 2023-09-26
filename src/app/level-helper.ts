@@ -1,4 +1,4 @@
-import { MoveState, PokemonInstance } from "../state/gameSlice";
+import { MoveState, PokemonInstance } from "../state/state-types";
 import { getMoveMetadata } from "./use-move-metadata";
 import { getPokemonMetadata } from "./use-pokemon-metadata";
 

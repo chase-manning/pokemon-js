@@ -1,4 +1,5 @@
 import image from "../assets/map/viridian-city-gym.png";
+import { Direction } from "../state/state-types";
 import { MapId, MapType } from "./map-types";
 
 const viridianCityGym: MapType = {
@@ -51,6 +52,52 @@ const viridianCityGym: MapType = {
   exitReturnPos: {
     x: 32,
     y: 8,
+  },
+  spinners: {
+    1: {
+      19: Direction.Left,
+    },
+    2: {
+      11: Direction.Right,
+      18: Direction.Down,
+    },
+    6: {
+      4: Direction.Down,
+    },
+    10: {
+      16: Direction.Down,
+    },
+    11: {
+      19: Direction.Up,
+    },
+    13: {
+      5: Direction.Right,
+    },
+    14: {
+      4: Direction.Right,
+    },
+    15: {
+      0: Direction.Up,
+      1: Direction.Up,
+    },
+    16: {
+      13: Direction.Left,
+    },
+    17: {
+      13: Direction.Left,
+    },
+  },
+  stoppers: {
+    1: [11],
+    2: [17, 19],
+    7: [0],
+    9: [1],
+    11: [18],
+    12: [16],
+    13: [4, 13],
+    14: [13],
+    16: [7],
+    17: [1],
   },
 };
 

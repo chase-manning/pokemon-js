@@ -1,16 +1,13 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import {
-  PokemonInstance,
-  selectPokemon,
-  swapPokemonPositions,
-} from "../state/gameSlice";
+import { selectPokemon, swapPokemonPositions } from "../state/gameSlice";
 import PokemonRow from "./PokemonRow";
 import { useState } from "react";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import Menu from "./Menu";
 import Frame from "./Frame";
+import { PokemonInstance } from "../state/state-types";
 
 const StyledPokemonList = styled.div`
   position: absolute;

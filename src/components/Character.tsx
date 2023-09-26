@@ -18,7 +18,6 @@ import backWalk2 from "../assets/character/back-walk-2.png";
 import backWalk3 from "../assets/character/back-walk-3.png";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  Direction,
   moveDown,
   selectDirection,
   selectJumping,
@@ -28,6 +27,8 @@ import {
 import { useEffect, useState } from "react";
 import { MOVE_SPEED, WALK_SPEED } from "../app/constants";
 import PixelImage from "../styles/PixelImage";
+import { selectSpinning } from "../state/uiSlice";
+import { Direction } from "../state/state-types";
 
 const Container = styled.div`
   position: absolute;
@@ -53,6 +54,7 @@ const Character = () => {
   const direction = useSelector(selectDirection);
   const moving = useSelector(selectMoving);
   const jumping = useSelector(selectJumping);
+  const spinning = useSelector(selectSpinning);
 
   const [image, setImage] = useState(frontStill);
   const [animateJumping, setAnimateJumping] = useState(false);
@@ -71,6 +73,29 @@ const Character = () => {
   }, [jumping, dispatch]);
 
   useEffect(() => {
+    if (spinning) {
+      if (image === frontStill) {
+        setTimeout(() => {
+          setImage(leftStill);
+        }, WALK_SPEED);
+      } else if (image === leftStill) {
+        setTimeout(() => {
+          setImage(backStill);
+        }, WALK_SPEED);
+      } else if (image === backStill) {
+        setTimeout(() => {
+          setImage(rightStill);
+        }, WALK_SPEED);
+      } else if (image === rightStill) {
+        setTimeout(() => {
+          setImage(frontStill);
+        }, WALK_SPEED);
+      } else {
+        setImage(frontStill);
+      }
+      return;
+    }
+
     if (!moving) {
       if (direction === Direction.Down) {
         setImage(frontStill);
@@ -157,7 +182,7 @@ const Character = () => {
         setImage(rightWalk1);
       }
     }
-  }, [image, moving, direction]);
+  }, [image, moving, direction, spinning]);
 
   return (
     <Container>

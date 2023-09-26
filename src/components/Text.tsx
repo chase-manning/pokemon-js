@@ -1,11 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
-import {
-  Direction,
-  selectDirection,
-  selectPos,
-  selectMap,
-} from "../state/gameSlice";
+import { selectDirection, selectPos, selectMap } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
@@ -15,6 +10,7 @@ import {
   selectText,
   showText,
 } from "../state/uiSlice";
+import { Direction } from "../state/state-types";
 
 interface TextProps {
   $done: boolean;

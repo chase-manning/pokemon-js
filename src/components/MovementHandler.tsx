@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 import {
-  Direction,
   moveDown,
   moveLeft,
   moveRight,
@@ -11,8 +10,9 @@ import {
   setMoving,
 } from "../state/gameSlice";
 import { useEffect, useRef, useState } from "react";
-import { selectMenuOpen } from "../state/uiSlice";
+import { selectMenuOpen, selectSpinning } from "../state/uiSlice";
 import { MOVE_SPEED } from "../app/constants";
+import { Direction } from "../state/state-types";
 
 const MovementHandler = () => {
   const dispatch = useDispatch();
@@ -24,6 +24,7 @@ const MovementHandler = () => {
   const [cooldown, setCooldown] = useState(false);
   const menuOpen = useSelector(selectMenuOpen);
   const jumping = useSelector(selectJumping);
+  const spinning = useSelector(selectSpinning);
 
   const pressingButton =
     pressingLeft || pressingRight || pressingUp || pressingDown;
@@ -42,7 +43,7 @@ const MovementHandler = () => {
 
   useEffect(() => {
     const move = (direction: Direction) => {
-      switch (direction) {
+      switch (spinning ?? direction) {
         case Direction.Down:
           dispatch(moveDown());
           break;
@@ -59,7 +60,7 @@ const MovementHandler = () => {
     };
 
     // If moving, move the character immediately
-    if (pressingButton && !cooldown && !menuOpen && !jumping) {
+    if ((pressingButton || spinning) && !cooldown && !menuOpen && !jumping) {
       move(direction);
       setCooldown(true);
 

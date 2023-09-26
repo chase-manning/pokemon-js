@@ -5,8 +5,7 @@ import {
   DEBUG_MODE,
 } from "../app/constants";
 import { useSelector } from "react-redux";
-import { selectMap, selectPos } from "../state/gameSlice";
-import { xToPx, yToPx } from "../app/position-helper";
+import { selectMap } from "../state/gameSlice";
 
 interface BackgroundProps {
   width: number;
@@ -34,18 +33,11 @@ const Item = styled.div`
 
 const DebugOverlay = () => {
   const map = useSelector(selectMap);
-  const pos = useSelector(selectPos);
 
   if (!DEBUG_MODE) return null;
 
   return (
-    <StyledDebugOverlay
-      style={{
-        transform: `translate(${xToPx(-pos.x)}, ${yToPx(-pos.y)})`,
-      }}
-      width={map.width}
-      height={map.height}
-    >
+    <StyledDebugOverlay width={map.width} height={map.height}>
       {Array.from(Array(map.width * map.height).keys()).map((i) => {
         const x = i % map.width;
         const y = Math.floor(i / map.width);

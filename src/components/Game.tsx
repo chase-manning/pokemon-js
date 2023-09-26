@@ -95,8 +95,8 @@ const Game = () => {
             map.trainers.map((trainer: TrainerType) => (
               <Trainer key={trainer.id} trainer={trainer} />
             ))}
+          <DebugOverlay />
         </BackgroundContainer>
-        <DebugOverlay />
         <Character />
       </StyledGame>
 

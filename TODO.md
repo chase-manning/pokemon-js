@@ -14,7 +14,7 @@
 
 - Store in state which trainers we have beaten
 - Ability to find items in the world
-- Remove the duplicate transform in Game.tsx by moving the overlay into the background container
+- Go through and use thsi `xToPx` everywhere we can
 
 ===========
 

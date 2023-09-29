@@ -6,11 +6,10 @@ import {
   moveLeft,
   moveRight,
   moveUp,
-  selectJumping,
   setMoving,
 } from "../state/gameSlice";
 import { useEffect, useRef, useState } from "react";
-import { selectMenuOpen, selectSpinning } from "../state/uiSlice";
+import { selectFrozen, selectSpinning } from "../state/uiSlice";
 import { MOVE_SPEED } from "../app/constants";
 import { Direction } from "../state/state-types";
 
@@ -22,9 +21,8 @@ const MovementHandler = () => {
   const [pressingDown, setPressingDown] = useState(false);
   const tickIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const [cooldown, setCooldown] = useState(false);
-  const menuOpen = useSelector(selectMenuOpen);
-  const jumping = useSelector(selectJumping);
   const spinning = useSelector(selectSpinning);
+  const frozen = useSelector(selectFrozen);
 
   const pressingButton =
     pressingLeft || pressingRight || pressingUp || pressingDown;
@@ -60,7 +58,7 @@ const MovementHandler = () => {
     };
 
     // If moving, move the character immediately
-    if ((pressingButton || spinning) && !cooldown && !menuOpen && !jumping) {
+    if ((pressingButton || spinning) && !cooldown && !frozen) {
       move(direction);
       setCooldown(true);
 
@@ -88,7 +86,7 @@ const MovementHandler = () => {
       }
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pressingButton, direction, dispatch, cooldown, menuOpen, jumping]);
+  }, [pressingButton, direction, dispatch, cooldown, frozen]);
 
   useEvent(Event.StartDown, () => {
     setPressingDown(true);

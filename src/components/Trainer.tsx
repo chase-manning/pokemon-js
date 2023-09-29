@@ -24,7 +24,6 @@ interface Props {
 }
 
 const Trainer = ({ trainer }: Props) => {
-  console.log(trainer.pos);
   return (
     <StyledTrainer x={trainer.pos.x} y={trainer.pos.y}>
       <Sprite src={trainer.sprites.small} />

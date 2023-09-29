@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { MapId } from "../maps/map-types";
+import { MapId, TrainerType } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
@@ -219,6 +219,7 @@ const initialState: GameState = {
     },
   ],
   activePokemonIndex: 0,
+  trainerEncounter: undefined,
 };
 
 export const gameSlice = createSlice({
@@ -430,6 +431,15 @@ export const gameSlice = createSlice({
     takeMoney: (state, action: PayloadAction<number>) => {
       state.money -= action.payload;
     },
+    encounterTrainer: (state, action: PayloadAction<TrainerType>) => {
+      state.trainerEncounter = action.payload;
+    },
+    defeatTrainer: (state) => {
+      state.trainerEncounter = undefined;
+    },
+    faintToTrainer: (state) => {
+      state.trainerEncounter = undefined;
+    },
   },
 });
 
@@ -464,6 +474,9 @@ export const {
   withdrawPokemonFromPc,
   gainMoney,
   takeMoney,
+  encounterTrainer,
+  defeatTrainer,
+  faintToTrainer,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -499,5 +512,8 @@ export const selectActivePokemon = (state: RootState) =>
 export const selectJumping = (state: RootState) => state.game.jumping;
 
 export const selectPc = (state: RootState) => state.game.pc;
+
+export const selectTrainerEncounter = (state: RootState) =>
+  state.game.trainerEncounter;
 
 export default gameSlice.reducer;

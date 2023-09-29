@@ -27,7 +27,7 @@ import {
 import { useEffect, useState } from "react";
 import { MOVE_SPEED, WALK_SPEED } from "../app/constants";
 import PixelImage from "../styles/PixelImage";
-import { selectSpinning } from "../state/uiSlice";
+import { selectFrozen, selectSpinning } from "../state/uiSlice";
 import { Direction } from "../state/state-types";
 import { xToPx } from "../app/position-helper";
 
@@ -57,6 +57,7 @@ const Character = () => {
   const moving = useSelector(selectMoving);
   const jumping = useSelector(selectJumping);
   const spinning = useSelector(selectSpinning);
+  const frozen = useSelector(selectFrozen);
 
   const [image, setImage] = useState(frontStill);
   const [animateJumping, setAnimateJumping] = useState(false);
@@ -98,7 +99,7 @@ const Character = () => {
       return;
     }
 
-    if (!moving) {
+    if (!moving || frozen) {
       if (direction === Direction.Down) {
         setImage(frontStill);
       } else if (direction === Direction.Left) {
@@ -184,7 +185,7 @@ const Character = () => {
         setImage(rightWalk1);
       }
     }
-  }, [image, moving, direction, spinning]);
+  }, [image, moving, direction, spinning, frozen]);
 
   return (
     <Container>

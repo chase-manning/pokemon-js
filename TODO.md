@@ -1,6 +1,4 @@
 - Start of encounter:
-  - Exclamation mark over head
-  - Walk towards us
   - Opening phrase
   - Battle intro animation
   - Fight screen `NAME wants to fight!` (showing enemy, showing pokemon count)
@@ -12,13 +10,14 @@
 
 ===========
 
-- Make sure we can't walk into trainers
+- Trainers should walk towards player before encounter
 
 ===========
 
-- Encounter frequency seems off
 - Add support for trainer battles
+- Make sure we can't walk into trainers
 - Store in state which trainers we have beaten
+- Encounter frequency seems off
 - battle sounds
 - Lots of items in inventory too long (when selling and in items menu)
 - Add more maps
@@ -36,7 +35,6 @@
 - Pallet town colors don't mate Route 1
 - Make RPCs walk
 - Don't show number for non-countable items
-- Stop player from twitching when menus are open
 - Add Option Menu
 - Animate water
 - Abstract all the maths stuff out into a separate folder for easier contributions

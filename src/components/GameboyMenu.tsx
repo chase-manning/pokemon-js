@@ -13,7 +13,6 @@ const StyledGameboyMenu = styled.div`
   width: 100%;
   height: 100%;
   background: var(--bg);
-  background: green; // TEMP
   z-index: 1000;
   display: flex;
   flex-direction: column;

@@ -229,32 +229,32 @@ export const gameSlice = createSlice({
       state.direction = Direction.Left;
       if (state.pos.x === 0) return;
       const map = mapData[state.map];
-      if (isWall(map, state.pos.x - 1, state.pos.y)) return;
-      if (isFence(map, state.pos.x - 1, state.pos.y)) return;
+      if (isWall(map.walls, state.pos.x - 1, state.pos.y)) return;
+      if (isFence(map.fences, state.pos.x - 1, state.pos.y)) return;
       state.pos.x -= 1;
     },
     moveRight: (state) => {
       state.direction = Direction.Right;
       const map = mapData[state.map];
       if (state.pos.x === map.width - 1) return;
-      if (isWall(map, state.pos.x + 1, state.pos.y)) return;
-      if (isFence(map, state.pos.x + 1, state.pos.y)) return;
+      if (isWall(map.walls, state.pos.x + 1, state.pos.y)) return;
+      if (isFence(map.fences, state.pos.x + 1, state.pos.y)) return;
       state.pos.x += 1;
     },
     moveUp: (state) => {
       state.direction = Direction.Up;
       if (state.pos.y === 0) return;
       const map = mapData[state.map];
-      if (isWall(map, state.pos.x, state.pos.y - 1)) return;
-      if (isFence(map, state.pos.x, state.pos.y - 1)) return;
+      if (isWall(map.walls, state.pos.x, state.pos.y - 1)) return;
+      if (isFence(map.fences, state.pos.x, state.pos.y - 1)) return;
       state.pos.y -= 1;
     },
     moveDown: (state) => {
       state.direction = Direction.Down;
       const map = mapData[state.map];
       if (state.pos.y === map.height - 1) return;
-      if (isWall(map, state.pos.x, state.pos.y + 1)) return;
-      if (isFence(map, state.pos.x, state.pos.y + 1)) {
+      if (isWall(map.walls, state.pos.x, state.pos.y + 1)) return;
+      if (isFence(map.fences, state.pos.x, state.pos.y + 1)) {
         state.jumping = true;
       }
       state.pos.y += 1;

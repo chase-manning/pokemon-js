@@ -1,5 +1,5 @@
 import { ItemType } from "../app/use-item-data";
-import { MapId } from "../maps/map-types";
+import { MapId, TrainerType } from "../maps/map-types";
 
 export interface InventoryItemType {
   item: ItemType;
@@ -49,6 +49,7 @@ export interface GameState {
   pokemon: PokemonInstance[];
   pc: PokemonInstance[];
   activePokemonIndex: number;
+  trainerEncounter?: TrainerType;
   pokemonEncounter?: PokemonEncounterType;
   money: number;
 }

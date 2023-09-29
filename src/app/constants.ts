@@ -6,3 +6,4 @@ export const MOVE_SPEED = 250 / (DEBUG_MODE ? 2 : 1); // How fast we actually wa
 export const WALK_SPEED = 150 / (DEBUG_MODE ? 2 : 1); // How fast the walk animation plays
 export const CRITICAL_HIT_PERCENTAGE = 0.1;
 export const CRITICAL_HIT_MULTIPLIER = 2;
+export const TRAINER_VISION = 10; // How far trainers can see

@@ -12,6 +12,8 @@
 
 ===========
 
+- Make sure we can't walk into trainers
+
 ===========
 
 - Encounter frequency seems off

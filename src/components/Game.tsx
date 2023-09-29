@@ -26,6 +26,7 @@ import { TrainerType } from "../maps/map-types";
 import Trainer from "./Trainer";
 import { xToPx, yToPx } from "../app/position-helper";
 import DebugOverlay from "./DebugOverlay";
+import TrainerEncounter from "./TrainerEncounter";
 
 const Container = styled.div`
   position: absolute;
@@ -100,6 +101,7 @@ const Game = () => {
       </StyledGame>
 
       <ColorOverlay />
+      <TrainerEncounter />
       <PokemonEncounter />
       <Text />
       <PokemonCenter />

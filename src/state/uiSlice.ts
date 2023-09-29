@@ -187,4 +187,7 @@ export const selectPokeballThrowing = (state: RootState) =>
 
 export const selectSpinning = (state: RootState) => state.ui.spinning;
 
+export const selectFrozen = (state: RootState) =>
+  selectMenuOpen(state) || state.game.jumping || !!state.game.trainerEncounter;
+
 export default uiSlice.reducer;

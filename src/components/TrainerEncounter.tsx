@@ -1,9 +1,10 @@
-import { useSelector } from "react-redux";
-import { selectMap, selectPos } from "../state/gameSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { encounterTrainer, selectMap, selectPos } from "../state/gameSlice";
 import { useEffect } from "react";
 import { isTrainerEncounter } from "../app/map-helper";
 
 const TrainerEncounter = () => {
+  const dispatch = useDispatch();
   const map = useSelector(selectMap);
   const pos = useSelector(selectPos);
 
@@ -16,8 +17,8 @@ const TrainerEncounter = () => {
 
     if (!encouner) return;
 
-    console.log("encounter", encouner.name);
-  }, [trainers, walls, fences, pos]);
+    dispatch(encounterTrainer(encouner));
+  }, [trainers, walls, fences, pos, dispatch]);
 
   return null;
 };

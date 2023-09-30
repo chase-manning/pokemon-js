@@ -1,4 +1,4 @@
-import { MapType, TrainerType } from "../maps/map-types";
+import { TrainerType } from "../maps/map-types";
 import { Direction, PosType } from "../state/state-types";
 import { TRAINER_VISION } from "./constants";
 

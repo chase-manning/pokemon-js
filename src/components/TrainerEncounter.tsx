@@ -4,6 +4,7 @@ import {
   encounterPokemon,
   encounterTrainer,
   selectMap,
+  selectPokemonEncounter,
   selectPos,
   selectTrainerEncounter,
 } from "../state/gameSlice";
@@ -31,6 +32,7 @@ const TrainerEncounter = () => {
   const map = useSelector(selectMap);
   const pos = useSelector(selectPos);
   const encounter = useSelector(selectTrainerEncounter);
+  const pokemonEncounter = useSelector(selectPokemonEncounter);
 
   const [introIndex, setIntroIndex] = useState(-1);
 
@@ -43,14 +45,14 @@ const TrainerEncounter = () => {
 
     if (!encounter_) return;
 
+    dispatch(encounterTrainer(encounter_));
     setTimeout(() => {
       setIntroIndex(0);
     }, 500);
-    dispatch(encounterTrainer(encounter_));
   }, [trainers, walls, fences, pos, dispatch]);
 
   useEvent(Event.A, () => {
-    if (!encounter) return;
+    if (!encounter || !!pokemonEncounter) return;
 
     if (introIndex === encounter.intro.length - 1) {
       setIntroIndex(-1);

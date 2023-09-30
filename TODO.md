@@ -6,7 +6,6 @@
 
 ===========
 
-- Fix issue with enemy pokemon gaining health
 - Trainers should walk towards player before encounter
 - Don't allow throwing pokeballs at trainers pokemon
 - Don't allow running from trainer

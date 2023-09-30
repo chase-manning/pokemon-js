@@ -1,6 +1,4 @@
 - Start of encounter:
-  - Fight screen `NAME wants to fight!` (showing enemy, showing pokemon count)
-  - `NAME sent out WEEDLE` thowing their pokemon (then we do ours)
   - `enemy WEEDLE fainted!`
   - XP, level up ext
   - After battle, (show the trainer again, but without the pokemon count, shwo some exit message)
@@ -8,7 +6,10 @@
 
 ===========
 
+- Fix issue with enemy pokemon gaining health
 - Trainers should walk towards player before encounter
+- Don't allow throwing pokeballs at trainers pokemon
+- Don't allow running from trainer
 
 ===========
 

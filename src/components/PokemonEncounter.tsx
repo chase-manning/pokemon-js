@@ -9,6 +9,7 @@ import {
   selectName,
   selectPokemon,
   selectPokemonEncounter,
+  selectTrainerEncounter,
   setActivePokemon,
   updatePokemon,
   updatePokemonEncounter,
@@ -232,6 +233,40 @@ const ChangePokemon = styled.div<ChangePokemonProps>`
     props.$changing &&
     css`
       animation: ${changePokemon} ${MOVEMENT_ANIMATION * 2}ms linear forwards;
+    `};
+`;
+
+const changeEnemyPokemon = keyframes`
+  0% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(400%);
+    opacity: 1;
+  }
+  51% {
+    transform: translateX(400%);
+    opacity: 0;
+  }
+  99% {
+    transform: translateX(0%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+`;
+
+const ChangeEnemyPokemon = styled.div<ChangePokemonProps>`
+  height: 100%;
+
+  ${(props: ChangePokemonProps) =>
+    props.$changing &&
+    css`
+      animation: ${changeEnemyPokemon} ${MOVEMENT_ANIMATION * 2}ms linear
+        forwards;
     `};
 `;
 
@@ -503,6 +538,7 @@ const PokemonEncounter = () => {
   const name = useSelector(selectName);
   const startMenuOpen = useSelector(selectStartMenu);
   const pokeballThrowing = useSelector(selectPokeballThrowing);
+  const trainer = useSelector(selectTrainerEncounter);
 
   // 0 = intro animation started
   // 1 = intro animation finished
@@ -549,11 +585,17 @@ const PokemonEncounter = () => {
   // 43 = Aww! It appeared to be caught!
   // 44 = Shoot! It was so close too!
   // 45 = You caught a wild POKéMON!
+  // 46 = Enemy out
+  // 47 = Enemy go pokemon
+  // 48 = Enemy pokemon out
   const [stage, setStage] = useState(-1);
 
   const [alertText, setAlertText] = useState<string | null>(null);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
+
+  const isTrainer = !!trainer;
+  const isThrowingEnemyPokeball = stage >= 34 && stage <= 38 && isTrainer;
 
   const endEncounter_ = () => {
     dispatch(endEncounter());
@@ -603,7 +645,7 @@ const PokemonEncounter = () => {
     }, MOVEMENT_ANIMATION * 2 + FRAME_DURATION * 5 + 500);
   };
 
-  const throwPokeballAtEnemy = () => {
+  const throwPokeballAtEnemy = (end: number = 39) => {
     setStage(34);
     setTimeout(() => {
       setStage(35);
@@ -618,7 +660,7 @@ const PokemonEncounter = () => {
       setStage(38);
     }, FRAME_DURATION * 4);
     setTimeout(() => {
-      setStage(39);
+      setStage(end);
     }, FRAME_DURATION * 5);
   };
 
@@ -689,6 +731,18 @@ const PokemonEncounter = () => {
     if (startMenuOpen) return;
 
     if (stage === 2) {
+      if (isTrainer) {
+        setStage(46);
+        setTimeout(() => {
+          throwPokeballAtEnemy(48);
+        }, 1000);
+      } else {
+        setStage(3);
+        throwPokeball();
+      }
+    }
+
+    if (stage === 48) {
       setStage(3);
       throwPokeball();
     }
@@ -828,8 +882,12 @@ const PokemonEncounter = () => {
 
   const text = () => {
     if (alertText) return alertText;
-    if (stage === 2)
+    if (stage === 2) {
+      if (isTrainer) {
+        return `${trainer?.name.toUpperCase()} wants to fight!`;
+      }
       return `Wild ${enemyMetadata.name.toUpperCase()} appeared!`;
+    }
     if (stage >= 4 && stage < 10)
       return `Go! ${activeMetadata.name.toUpperCase()}!`;
     if (stage === 12) return "Got away safely!";
@@ -862,6 +920,9 @@ const PokemonEncounter = () => {
     if (stage === 44) return `Shoot! It was so close too!`;
     if (stage === 45)
       return `All right! ${enemyMetadata.name.toUpperCase()} was caught!`;
+    if (stage === 48) {
+      return `${trainer?.name.toUpperCase()} sent out ${enemyMetadata.name.toUpperCase()}!`;
+    }
 
     return "";
   };
@@ -1033,6 +1094,9 @@ const PokemonEncounter = () => {
 
   const leftImage = () => {
     if (stage <= 3) return playerBack;
+    if (stage === 46) return playerBack;
+    if (stage === 48) return playerBack;
+    if (isThrowingEnemyPokeball) return playerBack;
     if (stage === 5) return ball1;
     if (stage === 6) return ball2;
     if (stage === 7) return ball3;
@@ -1051,6 +1115,8 @@ const PokemonEncounter = () => {
     if (stage === 40) return ballLeft;
     if (stage === 41) return ballRight;
     if (stage === 45) return ballRight;
+    if (stage < 3 && isTrainer) return trainer?.sprites.large;
+    if (stage === 46) return trainer?.sprites.large;
     return enemyMetadata.images.front;
   };
 
@@ -1066,7 +1132,16 @@ const PokemonEncounter = () => {
         <>
           <StyledPokemonEncounter>
             <Row style={{ opacity: [20, 21, 22].includes(stage) ? "0" : "1" }}>
-              <LeftInfoSection style={{ opacity: stage >= 3 ? "1" : "0" }}>
+              <LeftInfoSection
+                style={{
+                  opacity:
+                    stage >= 3 &&
+                    ![46].includes(stage) &&
+                    !isThrowingEnemyPokeball
+                      ? "1"
+                      : "0",
+                }}
+              >
                 <Name>{enemyMetadata.name}</Name>
                 <Level>{`:L${enemy.level}`}</Level>
                 <HealthBarContainer>
@@ -1080,7 +1155,9 @@ const PokemonEncounter = () => {
               </LeftInfoSection>
               <ImageContainer $flashing={stage === 17}>
                 <AttackRight $attacking={stage === 18}>
-                  <RightImage src={rightImage()} />
+                  <ChangeEnemyPokemon $changing={[46].includes(stage)}>
+                    <RightImage src={rightImage()} />
+                  </ChangeEnemyPokemon>
                 </AttackRight>
               </ImageContainer>
             </Row>
@@ -1094,7 +1171,16 @@ const PokemonEncounter = () => {
                   </ChangePokemon>
                 </AttackLeft>
               </ImageContainer>
-              <RightInfoSection style={{ opacity: stage >= 11 ? "1" : "0" }}>
+              <RightInfoSection
+                style={{
+                  opacity:
+                    stage >= 11 &&
+                    ![46, 48].includes(stage) &&
+                    !isThrowingEnemyPokeball
+                      ? "1"
+                      : "0",
+                }}
+              >
                 <Name>{activeMetadata.name}</Name>
                 <Level>{`:L${active.level}`}</Level>
                 <HealthBarContainer>
@@ -1116,7 +1202,7 @@ const PokemonEncounter = () => {
               wide
               tall
               flashing={[
-                2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45,
+                2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45, 48,
               ].includes(stage)}
             >
               {text()}

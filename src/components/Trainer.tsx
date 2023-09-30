@@ -47,7 +47,9 @@ const Trainer = ({ trainer }: Props) => {
 
   useEffect(() => {
     if (encounter) {
-      setStage(1);
+      setTimeout(() => {
+        setStage(1);
+      }, 200);
     } else {
       setStage(0);
     }

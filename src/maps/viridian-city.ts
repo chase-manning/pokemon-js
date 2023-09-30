@@ -154,7 +154,13 @@ const viridianCity: MapType = {
         {
           id: 3,
           level: 3,
-          hp: 40,
+          hp: 20,
+          moves: ["tackle"],
+        },
+        {
+          id: 4,
+          level: 3,
+          hp: 20,
           moves: ["tackle"],
         },
       ],

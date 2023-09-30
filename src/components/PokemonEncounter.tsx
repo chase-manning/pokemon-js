@@ -1063,14 +1063,14 @@ const PokemonEncounter = () => {
         false
       );
 
-      // We fainted
-      if (us.hp <= 0) {
-        setStage(24);
-      }
+      setTimeout(() => {
+        // We fainted
+        if (us.hp <= 0) {
+          setStage(24);
+        }
 
-      // We are attacking
-      else {
-        setTimeout(() => {
+        // We are attacking
+        else {
           const { them: themAfterAttack } = processMoveResult(
             processMove(us, them, attackId, true),
             true
@@ -1087,8 +1087,8 @@ const PokemonEncounter = () => {
               setStage(11);
             }
           }, ATTACK_ANIMATION + 1000);
-        }, ATTACK_ANIMATION + 1000);
-      }
+        }
+      }, ATTACK_ANIMATION + 1000);
     }
   };
 
@@ -1266,7 +1266,7 @@ const PokemonEncounter = () => {
           />
           {stage === 25 && (
             <PokemonList
-              text="Pring out which POKéMON?"
+              text="Bring out which POKéMON?"
               close={() => {}}
               switchAction={(index) => {
                 if (pokemon[index].hp <= 0) return;

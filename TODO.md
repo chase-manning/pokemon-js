@@ -9,6 +9,8 @@
 - Trainers should walk towards player before encounter
 - Don't allow throwing pokeballs at trainers pokemon
 - Don't allow running from trainer
+- Add support for app refreshing when there is an update
+- Fix deployment pipeline
 
 ===========
 

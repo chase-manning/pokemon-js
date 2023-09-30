@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import styled, { css, keyframes } from "styled-components";
 import {
   addPokemon,
+  encounterPokemon,
   endEncounter,
   recoverFromFainting,
   resetActivePokemon,
@@ -588,7 +589,9 @@ const PokemonEncounter = () => {
   // 46 = Enemy out
   // 47 = Enemy go pokemon
   // 48 = Enemy pokemon out
+  // 49 = Enemy pokemon out (during battle)
   const [stage, setStage] = useState(-1);
+  const [trainerPokemonIndex, setTrainerPokemonIndex] = useState(0);
 
   const [alertText, setAlertText] = useState<string | null>(null);
 
@@ -598,6 +601,14 @@ const PokemonEncounter = () => {
   const isThrowingEnemyPokeball = stage >= 34 && stage <= 38 && isTrainer;
 
   const endEncounter_ = () => {
+    if (isTrainer && trainerPokemonIndex < trainer?.pokemon.length - 1) {
+      const newIndex = trainerPokemonIndex + 1;
+      dispatch(encounterPokemon(trainer?.pokemon[newIndex]));
+      setTrainerPokemonIndex(newIndex);
+      throwPokeballAtEnemy(49);
+      return;
+    }
+
     dispatch(endEncounter());
     dispatch(resetActivePokemon());
   };
@@ -745,6 +756,10 @@ const PokemonEncounter = () => {
     if (stage === 48) {
       setStage(3);
       throwPokeball();
+    }
+
+    if (stage === 49) {
+      setStage(11);
     }
 
     if (stage === 12) {
@@ -920,7 +935,7 @@ const PokemonEncounter = () => {
     if (stage === 44) return `Shoot! It was so close too!`;
     if (stage === 45)
       return `All right! ${enemyMetadata.name.toUpperCase()} was caught!`;
-    if (stage === 48) {
+    if (stage === 48 || stage === 49) {
       return `${trainer?.name.toUpperCase()} sent out ${enemyMetadata.name.toUpperCase()}!`;
     }
 
@@ -1096,7 +1111,7 @@ const PokemonEncounter = () => {
     if (stage <= 3) return playerBack;
     if (stage === 46) return playerBack;
     if (stage === 48) return playerBack;
-    if (isThrowingEnemyPokeball) return playerBack;
+    if (isThrowingEnemyPokeball && trainerPokemonIndex === 0) return playerBack;
     if (stage === 5) return ball1;
     if (stage === 6) return ball2;
     if (stage === 7) return ball3;
@@ -1203,6 +1218,7 @@ const PokemonEncounter = () => {
               tall
               flashing={[
                 2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45, 48,
+                49,
               ].includes(stage)}
             >
               {text()}

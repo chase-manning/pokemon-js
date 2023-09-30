@@ -1,6 +1,4 @@
 - Start of encounter:
-  - Opening phrase
-  - Battle intro animation
   - Fight screen `NAME wants to fight!` (showing enemy, showing pokemon count)
   - `NAME sent out WEEDLE` thowing their pokemon (then we do ours)
   - `enemy WEEDLE fainted!`

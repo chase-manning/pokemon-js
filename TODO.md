@@ -1,16 +1,9 @@
-- Start of encounter:
-  - `enemy WEEDLE fainted!`
-  - XP, level up ext
-  - After battle, (show the trainer again, but without the pokemon count, shwo some exit message)
-  - Money for winning
-
-===========
-
 - Trainers should walk towards player before encounter
 - Don't allow throwing pokeballs at trainers pokemon
 - Don't allow running from trainer
 - Add support for app refreshing when there is an update
 - Fix deployment pipeline
+- Remove encounter status after killing
 
 ===========
 

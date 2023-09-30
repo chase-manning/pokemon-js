@@ -4,6 +4,7 @@ import {
   addPokemon,
   encounterPokemon,
   endEncounter,
+  gainMoney,
   recoverFromFainting,
   resetActivePokemon,
   selectActivePokemon,
@@ -590,8 +591,12 @@ const PokemonEncounter = () => {
   // 47 = Enemy go pokemon
   // 48 = Enemy pokemon out
   // 49 = Enemy pokemon out (during battle)
+  // 50 = defeated trainer
+  // 51 = battle outro
+  // 52 = receiving money
   const [stage, setStage] = useState(-1);
   const [trainerPokemonIndex, setTrainerPokemonIndex] = useState(0);
+  const [outroIndex, setOutroIndex] = useState(0);
 
   const [alertText, setAlertText] = useState<string | null>(null);
 
@@ -609,6 +614,13 @@ const PokemonEncounter = () => {
       return;
     }
 
+    if (isTrainer && trainerPokemonIndex === trainer?.pokemon.length - 1) {
+      setStage(50);
+      setTrainerPokemonIndex(10);
+      return;
+    }
+
+    setTrainerPokemonIndex(0);
     dispatch(endEncounter());
     dispatch(resetActivePokemon());
   };
@@ -891,6 +903,25 @@ const PokemonEncounter = () => {
       );
       endEncounter_();
     }
+
+    if (stage === 50) {
+      setStage(51);
+    }
+
+    if (stage === 51) {
+      if (!trainer) throw new Error("No trainer found");
+      if (trainer.outtro.length - 1 > outroIndex) {
+        setOutroIndex(outroIndex + 1);
+      } else {
+        setStage(52);
+      }
+    }
+
+    if (stage === 52) {
+      if (!trainer) throw new Error("No trainer found");
+      dispatch(gainMoney(trainer.money || 0));
+      endEncounter_();
+    }
   });
 
   if (!isInBattle) return null;
@@ -938,6 +969,13 @@ const PokemonEncounter = () => {
     if (stage === 48 || stage === 49) {
       return `${trainer?.name.toUpperCase()} sent out ${enemyMetadata.name.toUpperCase()}!`;
     }
+    if (stage === 50)
+      return `${name.toUpperCase()} defeated ${trainer?.name.toUpperCase()}!`;
+    if (stage === 51) {
+      return trainer?.outtro[outroIndex] || "";
+    }
+    if (stage === 52)
+      return `${name.toUpperCase()} got $${trainer?.money} for winning!`;
 
     return "";
   };
@@ -1132,6 +1170,8 @@ const PokemonEncounter = () => {
     if (stage === 45) return ballRight;
     if (stage < 3 && isTrainer) return trainer?.sprites.large;
     if (stage === 46) return trainer?.sprites.large;
+    if (stage === 51) return trainer?.sprites.large;
+    if (stage === 52) return trainer?.sprites.large;
     return enemyMetadata.images.front;
   };
 
@@ -1146,12 +1186,14 @@ const PokemonEncounter = () => {
       {stage >= 1 && (
         <>
           <StyledPokemonEncounter>
-            <Row style={{ opacity: [20, 21, 22].includes(stage) ? "0" : "1" }}>
+            <Row
+              style={{ opacity: [20, 21, 22, 50].includes(stage) ? "0" : "1" }}
+            >
               <LeftInfoSection
                 style={{
                   opacity:
                     stage >= 3 &&
-                    ![46].includes(stage) &&
+                    ![46, 51, 52].includes(stage) &&
                     !isThrowingEnemyPokeball
                       ? "1"
                       : "0",
@@ -1218,7 +1260,7 @@ const PokemonEncounter = () => {
               tall
               flashing={[
                 2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45, 48,
-                49,
+                49, 50, 51, 52,
               ].includes(stage)}
             >
               {text()}

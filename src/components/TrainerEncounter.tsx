@@ -4,13 +4,18 @@ import {
   encounterPokemon,
   encounterTrainer,
   selectDefeatedTrainers,
+  selectDirection,
   selectMap,
   selectPokemonEncounter,
   selectPos,
   selectTrainerEncounter,
 } from "../state/gameSlice";
 import { useEffect, useState } from "react";
-import { isTrainerEncounter } from "../app/map-helper";
+import {
+  directionModifier,
+  isTrainer,
+  isTrainerEncounter,
+} from "../app/map-helper";
 import Frame from "./Frame";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
@@ -35,6 +40,7 @@ const TrainerEncounter = () => {
   const encounter = useSelector(selectTrainerEncounter);
   const pokemonEncounter = useSelector(selectPokemonEncounter);
   const defeatedTrainers = useSelector(selectDefeatedTrainers);
+  const direction = useSelector(selectDirection);
 
   const [introIndex, setIntroIndex] = useState(-1);
 
@@ -52,7 +58,6 @@ const TrainerEncounter = () => {
     );
 
     if (!encounter_) return;
-
     dispatch(encounterTrainer(encounter_));
     setTimeout(() => {
       setIntroIndex(0);
@@ -60,6 +65,24 @@ const TrainerEncounter = () => {
   }, [trainers, walls, fences, pos, dispatch, defeatedTrainers]);
 
   useEvent(Event.A, () => {
+    const facingPos = directionModifier(direction);
+    if (
+      map.trainers &&
+      isTrainer(map.trainers, pos.x + facingPos.x, pos.y + facingPos.y) &&
+      !encounter
+    ) {
+      const trainer = map.trainers.find(
+        (trainer) =>
+          trainer.pos.x === pos.x + facingPos.x &&
+          trainer.pos.y === pos.y + facingPos.y
+      );
+      if (!trainer) throw new Error("Trainer not found");
+      dispatch(encounterTrainer(trainer));
+      setTimeout(() => {
+        setIntroIndex(0);
+      }, 500);
+    }
+
     if (!encounter || !!pokemonEncounter) return;
 
     if (introIndex === encounter.intro.length - 1) {

@@ -42,7 +42,7 @@ export const isTrainer = (
   return trainers.some((trainer) => trainer.pos.x === x && trainer.pos.y === y);
 };
 
-const directionModifier = (direction: Direction): PosType => {
+export const directionModifier = (direction: Direction): PosType => {
   if (direction === Direction.Down) return { x: 0, y: 1 };
   if (direction === Direction.Up) return { x: 0, y: -1 };
   if (direction === Direction.Left) return { x: -1, y: 0 };

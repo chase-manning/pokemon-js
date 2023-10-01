@@ -1,6 +1,6 @@
 ===========
 
-- Don't allow running from trainer
+- Selection indicator not showing for pokemon button
 - Don't allow throwing pokeballs at trainers pokemon
 - Remove encounter status after killing
 - Store in state which trainers we have beaten

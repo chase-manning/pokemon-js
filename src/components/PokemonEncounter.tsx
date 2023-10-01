@@ -599,6 +599,7 @@ const PokemonEncounter = () => {
   const [outroIndex, setOutroIndex] = useState(0);
 
   const [alertText, setAlertText] = useState<string | null>(null);
+  const [clickableNotice, setClickableNotice] = useState<string | null>(null);
 
   const isInBattle = !!enemy && !!active && !!enemyMetadata && !!activeMetadata;
 
@@ -752,6 +753,10 @@ const PokemonEncounter = () => {
 
   useEvent(Event.A, () => {
     if (startMenuOpen) return;
+
+    if (clickableNotice) {
+      setClickableNotice(null);
+    }
 
     if (stage === 2) {
       if (isTrainer) {
@@ -927,6 +932,7 @@ const PokemonEncounter = () => {
   if (!isInBattle) return null;
 
   const text = () => {
+    if (clickableNotice) return clickableNotice;
     if (alertText) return alertText;
     if (stage === 2) {
       if (isTrainer) {
@@ -1258,17 +1264,19 @@ const PokemonEncounter = () => {
             <Frame
               wide
               tall
-              flashing={[
-                2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45, 48,
-                49, 50, 51, 52,
-              ].includes(stage)}
+              flashing={
+                [
+                  2, 20, 21, 22, 24, 26, 27, 29, 30, 31, 32, 42, 43, 44, 45, 48,
+                  49, 50, 51, 52,
+                ].includes(stage) || !!clickableNotice
+              }
             >
               {text()}
             </Frame>
           </TextContainer>
           <Menu
             compact
-            show={stage === 11}
+            show={stage === 11 && !clickableNotice}
             disabled={itemMenuOpen || startMenuOpen}
             menuItems={[
               {
@@ -1286,7 +1294,13 @@ const PokemonEncounter = () => {
               },
               {
                 label: "Run",
-                action: () => setStage(12),
+                action: () => {
+                  if (isTrainer) {
+                    setClickableNotice("No running from trainer battle.");
+                  } else {
+                    setStage(12);
+                  }
+                },
               },
             ]}
             noExit

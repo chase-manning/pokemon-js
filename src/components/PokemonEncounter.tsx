@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import styled, { css, keyframes } from "styled-components";
 import {
   addPokemon,
+  defeatTrainer,
   encounterPokemon,
   endEncounter,
+  faintToTrainer,
   gainMoney,
   recoverFromFainting,
   resetActivePokemon,
@@ -624,6 +626,18 @@ const PokemonEncounter = () => {
     setTrainerPokemonIndex(0);
     dispatch(endEncounter());
     dispatch(resetActivePokemon());
+
+    if (isTrainer) {
+      // Defeated trainer
+      if (trainerPokemonIndex === 10) {
+        dispatch(defeatTrainer());
+      }
+
+      // Fainted
+      else {
+        dispatch(faintToTrainer());
+      }
+    }
   };
 
   useEffect(() => {

@@ -220,6 +220,7 @@ const initialState: GameState = {
   ],
   activePokemonIndex: 0,
   trainerEncounter: undefined,
+  defeatedTrainers: [],
 };
 
 export const gameSlice = createSlice({
@@ -337,7 +338,6 @@ export const gameSlice = createSlice({
     },
     endEncounter: (state) => {
       state.pokemonEncounter = undefined;
-      state.trainerEncounter = undefined;
     },
     setActivePokemon: (state, action: PayloadAction<number>) => {
       state.activePokemonIndex = action.payload;
@@ -436,6 +436,8 @@ export const gameSlice = createSlice({
       state.trainerEncounter = action.payload;
     },
     defeatTrainer: (state) => {
+      if (!state.trainerEncounter) throw new Error("No trainer encounter");
+      state.defeatedTrainers.push(state.trainerEncounter.id);
       state.trainerEncounter = undefined;
     },
     faintToTrainer: (state) => {
@@ -516,5 +518,8 @@ export const selectPc = (state: RootState) => state.game.pc;
 
 export const selectTrainerEncounter = (state: RootState) =>
   state.game.trainerEncounter;
+
+export const selectDefeatedTrainers = (state: RootState) =>
+  state.game.defeatedTrainers;
 
 export default gameSlice.reducer;

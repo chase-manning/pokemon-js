@@ -52,4 +52,5 @@ export interface GameState {
   trainerEncounter?: TrainerType;
   pokemonEncounter?: PokemonEncounterType;
   money: number;
+  defeatedTrainers: string[];
 }

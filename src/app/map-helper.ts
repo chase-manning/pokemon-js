@@ -55,8 +55,11 @@ const isEncounter = (
   walls: Record<number, number[]>,
   fences: Record<number, number[]> | undefined,
   trainers: TrainerType[],
-  pos: PosType
+  pos: PosType,
+  defeatedTrainers: string[]
 ): boolean => {
+  if (defeatedTrainers.includes(trainer.id)) return false;
+
   let { x: tX, y: tY } = trainer.pos;
   let { x: pX, y: pY } = pos;
 
@@ -77,10 +80,13 @@ export const isTrainerEncounter = (
   trainers: TrainerType[],
   walls: Record<number, number[]>,
   fences: Record<number, number[]> | undefined,
-  pos: PosType
+  pos: PosType,
+  defeatedTrainers: string[]
 ): TrainerType | null => {
   for (let i = 0; i < trainers.length; i++) {
-    if (isEncounter(trainers[i], walls, fences, trainers, pos))
+    if (
+      isEncounter(trainers[i], walls, fences, trainers, pos, defeatedTrainers)
+    )
       return trainers[i];
   }
   return null;

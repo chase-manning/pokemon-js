@@ -2,6 +2,8 @@
 
 - Store in state which trainers we have beaten
 - Make sure we can't walk into trainers
+- Add ability to engage trainers by talking to them
+- Add ability to talk to trainers after having beaten them
 - Add support for app refreshing when there is an update
 - Encounter frequency seems off
 - battle sounds

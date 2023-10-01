@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   encounterPokemon,
   encounterTrainer,
+  selectDefeatedTrainers,
   selectMap,
   selectPokemonEncounter,
   selectPos,
@@ -33,6 +34,7 @@ const TrainerEncounter = () => {
   const pos = useSelector(selectPos);
   const encounter = useSelector(selectTrainerEncounter);
   const pokemonEncounter = useSelector(selectPokemonEncounter);
+  const defeatedTrainers = useSelector(selectDefeatedTrainers);
 
   const [introIndex, setIntroIndex] = useState(-1);
 
@@ -41,7 +43,13 @@ const TrainerEncounter = () => {
   useEffect(() => {
     if (!trainers) return;
 
-    const encounter_ = isTrainerEncounter(trainers, walls, fences, pos);
+    const encounter_ = isTrainerEncounter(
+      trainers,
+      walls,
+      fences,
+      pos,
+      defeatedTrainers
+    );
 
     if (!encounter_) return;
 
@@ -49,7 +57,7 @@ const TrainerEncounter = () => {
     setTimeout(() => {
       setIntroIndex(0);
     }, 500);
-  }, [trainers, walls, fences, pos, dispatch]);
+  }, [trainers, walls, fences, pos, dispatch, defeatedTrainers]);
 
   useEvent(Event.A, () => {
     if (!encounter || !!pokemonEncounter) return;

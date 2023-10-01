@@ -690,6 +690,11 @@ const PokemonEncounter = () => {
 
   useEffect(() => {
     if (pokeballThrowing && enemy) {
+      if (isTrainer) {
+        setClickableNotice("The trainer blocked the ball!");
+        return;
+      }
+
       const shakePokeball = (
         times: number,
         caught: boolean,

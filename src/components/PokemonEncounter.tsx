@@ -754,7 +754,7 @@ const PokemonEncounter = () => {
       }, FRAME_DURATION * 6);
       dispatch(stopThrowingPokeball());
     }
-  }, [pokeballThrowing, enemy, dispatch]);
+  }, [pokeballThrowing, enemy, dispatch, isTrainer]);
 
   useEvent(Event.A, () => {
     if (startMenuOpen) return;

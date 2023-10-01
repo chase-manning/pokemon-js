@@ -57,7 +57,8 @@ const Bold = styled.div`
 const ArrowContainer = styled.div`
   position: absolute;
   left: 0;
-  top: -1px;
+  top: 50%;
+  transform: translateY(-50%);
 
   @media (max-width: 768px) {
     top: auto;
@@ -239,7 +240,7 @@ const Menu = ({
             ]
         ).map((item: MenuItemType, index: number) => {
           return (
-            <li key={index}>
+            <li key={index} style={{ position: "relative" }}>
               <Button
                 className={`${noSelect ? "no-select-button" : ""} ${
                   item.pokemon ? "pokemon" : ""
@@ -248,14 +249,10 @@ const Menu = ({
               >
                 {item.label}
                 {item.value !== undefined && <Bold>{item.value}</Bold>}
-                <ArrowContainer>
-                  <Arrow
-                    disabled={disabled}
-                    menu
-                    show={activeIndex === index}
-                  />
-                </ArrowContainer>
               </Button>
+              <ArrowContainer>
+                <Arrow disabled={disabled} menu show={activeIndex === index} />
+              </ArrowContainer>
             </li>
           );
         })}

@@ -1,7 +1,5 @@
 ===========
 
-- Selection indicator not showing for pokemon button
-- Remove encounter status after killing
 - Store in state which trainers we have beaten
 - Make sure we can't walk into trainers
 - Add support for app refreshing when there is an update

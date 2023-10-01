@@ -1,15 +1,11 @@
-- Trainers should walk towards player before encounter
-- Don't allow throwing pokeballs at trainers pokemon
-- Don't allow running from trainer
-- Add support for app refreshing when there is an update
-- Fix deployment pipeline
-- Remove encounter status after killing
-
 ===========
 
-- Add support for trainer battles
-- Make sure we can't walk into trainers
+- Don't allow running from trainer
+- Don't allow throwing pokeballs at trainers pokemon
+- Remove encounter status after killing
 - Store in state which trainers we have beaten
+- Make sure we can't walk into trainers
+- Add support for app refreshing when there is an update
 - Encounter frequency seems off
 - battle sounds
 - Lots of items in inventory too long (when selling and in items menu)
@@ -26,6 +22,7 @@
 - Change the movement handler to not have a hard coded movement speed there
 - Make music a seamless infinite loop
 - Pallet town colors don't mate Route 1
+- Trainers should walk towards player before encounter
 - Make RPCs walk
 - Don't show number for non-countable items
 - Add Option Menu

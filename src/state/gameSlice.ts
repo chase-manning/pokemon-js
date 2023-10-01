@@ -337,6 +337,7 @@ export const gameSlice = createSlice({
     },
     endEncounter: (state) => {
       state.pokemonEncounter = undefined;
+      state.trainerEncounter = undefined;
     },
     setActivePokemon: (state, action: PayloadAction<number>) => {
       state.activePokemonIndex = action.payload;

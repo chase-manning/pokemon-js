@@ -6,7 +6,7 @@ import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
 import { getMoveMetadata } from "../app/use-move-metadata";
 import { ItemType } from "../app/use-item-data";
-import { isFence, isWall } from "../app/map-helper";
+import { isFence, isTrainer, isWall } from "../app/map-helper";
 import {
   Direction,
   GameState,
@@ -233,6 +233,7 @@ export const gameSlice = createSlice({
       const map = mapData[state.map];
       if (isWall(map.walls, state.pos.x - 1, state.pos.y)) return;
       if (isFence(map.fences, state.pos.x - 1, state.pos.y)) return;
+      if (isTrainer(map.trainers ?? [], state.pos.x - 1, state.pos.y)) return;
       state.pos.x -= 1;
     },
     moveRight: (state) => {
@@ -241,6 +242,7 @@ export const gameSlice = createSlice({
       if (state.pos.x === map.width - 1) return;
       if (isWall(map.walls, state.pos.x + 1, state.pos.y)) return;
       if (isFence(map.fences, state.pos.x + 1, state.pos.y)) return;
+      if (isTrainer(map.trainers ?? [], state.pos.x + 1, state.pos.y)) return;
       state.pos.x += 1;
     },
     moveUp: (state) => {
@@ -249,6 +251,7 @@ export const gameSlice = createSlice({
       const map = mapData[state.map];
       if (isWall(map.walls, state.pos.x, state.pos.y - 1)) return;
       if (isFence(map.fences, state.pos.x, state.pos.y - 1)) return;
+      if (isTrainer(map.trainers ?? [], state.pos.x, state.pos.y - 1)) return;
       state.pos.y -= 1;
     },
     moveDown: (state) => {
@@ -259,6 +262,7 @@ export const gameSlice = createSlice({
       if (isFence(map.fences, state.pos.x, state.pos.y + 1)) {
         state.jumping = true;
       }
+      if (isTrainer(map.trainers ?? [], state.pos.x, state.pos.y + 1)) return;
       state.pos.y += 1;
     },
     setPos: (state, action: PayloadAction<PosType>) => {

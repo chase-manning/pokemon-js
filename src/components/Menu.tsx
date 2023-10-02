@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Event } from "../app/emitter";
 import useEvent from "../app/use-event";
 import Arrow from "./Arrow";
+import { MENU_MAX_HEIGHT } from "../app/constants";
 
 interface MenuProps {
   $top?: string;
@@ -114,8 +115,9 @@ const Menu = ({
   setHovered,
 }: Props) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [scrollIndex, setScrollIndex] = useState(0);
 
-  // TODO Change to use Arrow component
+  const requiresScrolling = menuItems.length > MENU_MAX_HEIGHT;
 
   useEffect(() => {
     if (setHovered) setHovered(activeIndex);
@@ -132,6 +134,13 @@ const Menu = ({
         return prev - 2;
       });
       return;
+    }
+
+    if (requiresScrolling) {
+      if (activeIndex === 2 && scrollIndex > 0) {
+        setScrollIndex((prev) => prev - 1);
+        return;
+      }
     }
 
     setActiveIndex((prev) => {
@@ -153,11 +162,21 @@ const Menu = ({
       return;
     }
 
+    if (requiresScrolling) {
+      if (
+        activeIndex === 2 &&
+        scrollIndex + MENU_MAX_HEIGHT <= menuItems.length
+      ) {
+        setScrollIndex((prev) => prev + 1);
+        return;
+      }
+    }
+
     setActiveIndex((prev) => {
       if (noExit || noExitOption) {
-        if (prev === menuItems.length - 1) return prev;
+        if (prev + scrollIndex === menuItems.length - 1) return prev;
       } else {
-        if (prev === menuItems.length) return prev;
+        if (prev + scrollIndex === menuItems.length) return prev;
       }
       return prev + 1;
     });
@@ -204,6 +223,27 @@ const Menu = ({
 
   if (!show) return null;
 
+  const items =
+    noSelect || noExit || noExitOption
+      ? padd
+        ? [
+            ...menuItems,
+            ...Array.from(Array(padd - menuItems.length).keys()).map((i) => {
+              return {
+                label: "-",
+                action: () => {},
+              };
+            }),
+          ]
+        : menuItems
+      : [
+          ...menuItems,
+          {
+            label: "Exit",
+            action: close,
+          },
+        ];
+
   return (
     <StyledMenu
       $top={top}
@@ -217,45 +257,30 @@ const Menu = ({
         className={`framed buttons ${compact ? "compact" : ""}`}
         style={{ width: "100%", paddingRight: padding || "0" }}
       >
-        {(noSelect || noExit || noExitOption
-          ? padd
-            ? [
-                ...menuItems,
-                ...Array.from(Array(padd - menuItems.length).keys()).map(
-                  (i) => {
-                    return {
-                      label: "-",
-                      action: () => {},
-                    };
-                  }
-                ),
-              ]
-            : menuItems
-          : [
-              ...menuItems,
-              {
-                label: "Exit",
-                action: close,
-              },
-            ]
-        ).map((item: MenuItemType, index: number) => {
-          return (
-            <li key={index} style={{ position: "relative" }}>
-              <Button
-                className={`${noSelect ? "no-select-button" : ""} ${
-                  item.pokemon ? "pokemon" : ""
-                }`}
-                style={{ margin: tight ? "1px 0" : "" }}
-              >
-                {item.label}
-                {item.value !== undefined && <Bold>{item.value}</Bold>}
-              </Button>
-              <ArrowContainer>
-                <Arrow disabled={disabled} menu show={activeIndex === index} />
-              </ArrowContainer>
-            </li>
-          );
-        })}
+        {items
+          .slice(scrollIndex, MENU_MAX_HEIGHT + scrollIndex)
+          .map((item: MenuItemType, index: number) => {
+            return (
+              <li key={index} style={{ position: "relative" }}>
+                <Button
+                  className={`${noSelect ? "no-select-button" : ""} ${
+                    item.pokemon ? "pokemon" : ""
+                  }`}
+                  style={{ margin: tight ? "1px 0" : "" }}
+                >
+                  {item.label}
+                  {item.value !== undefined && <Bold>{item.value}</Bold>}
+                </Button>
+                <ArrowContainer>
+                  <Arrow
+                    disabled={disabled}
+                    menu
+                    show={activeIndex === index}
+                  />
+                </ArrowContainer>
+              </li>
+            );
+          })}
       </ul>
     </StyledMenu>
   );

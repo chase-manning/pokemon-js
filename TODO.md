@@ -1,5 +1,8 @@
+- We still have an update menu
+
 ===========
 
+- Player menu has glitched arrows
 - Add support for app refreshing when there is an update
 - Encounter frequency seems off
 - battle sounds

@@ -109,6 +109,11 @@ const viridianCity: MapType = {
     },
   },
   maps: {
+    0: {
+      17: MapId.Route2,
+      18: MapId.Route2,
+      19: MapId.Route2,
+    },
     7: {
       32: MapId.ViridianCityGym,
     },

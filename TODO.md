@@ -33,3 +33,4 @@
 - Add Poke Center animation when healing
 - Update route 22 music
 - Rename all walk-sprite and portrait assets to be the correct name of the sprites
+- Add all the npcs in these areas

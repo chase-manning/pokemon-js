@@ -9,6 +9,7 @@ import route1 from "./route-1";
 import route2 from "./route-2";
 import route2Gate from "./route-2-gate";
 import route22 from "./route-22";
+import viridianForrest from "./viridian-forrest";
 import viridianCity from "./viridian-city";
 import viridianCityAcadamy from "./viridian-city-acadamy";
 import viridianCityGym from "./viridian-city-gym";
@@ -33,6 +34,7 @@ const mapData: Record<string, MapType> = {
   [MapId.GateHouse]: gateHouse,
   [MapId.Route2]: route2,
   [MapId.Route2Gate]: route2Gate,
+  [MapId.ViridianForrest]: viridianForrest,
 };
 
 export default mapData;

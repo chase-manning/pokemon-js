@@ -1,13 +1,10 @@
-- We still have an update menu
-
 ===========
 
-- Player menu has glitched arrows
+- Add more maps
 - Add support for app refreshing when there is an update
+- We still have an update menu
 - Encounter frequency seems off
 - battle sounds
-- Lots of items in inventory too long (when selling and in items menu)
-- Add more maps
 - Ability to find items in the world
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
@@ -34,3 +31,5 @@
 - Add a probability for running away
 - Add Pokedex Menu
 - Add Poke Center animation when healing
+- Update route 22 music
+- Rename all walk-sprite and portrait assets to be the correct name of the sprites

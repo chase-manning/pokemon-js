@@ -118,11 +118,7 @@ const route2: MapType = {
       ],
     },
     65: {
-      5: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      5: ["Route 2 VIRIDIAN CITY to PEWTER CITY"],
     },
   },
   maps: {

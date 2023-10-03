@@ -5,6 +5,7 @@ import lab from "./lab";
 import { MapId, MapType } from "./map-types";
 import palletTown from "./pallet-town";
 import route1 from "./route-1";
+import route22 from "./route-22";
 import viridianCity from "./viridian-city";
 import viridianCityAcadamy from "./viridian-city-acadamy";
 import viridianCityGym from "./viridian-city-gym";
@@ -25,6 +26,7 @@ const mapData: Record<string, MapType> = {
   [MapId.ViridianCityPokemonAcadamy]: viridianCityAcadamy,
   [MapId.ViridianCityNpcHouse]: viridianCityNpcHouse,
   [MapId.ViridianCityGym]: viridianCityGym,
+  [MapId.Route22]: route22,
 };
 
 export default mapData;

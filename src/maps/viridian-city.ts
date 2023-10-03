@@ -3,11 +3,6 @@ import { MapId, MapType } from "./map-types";
 
 import music from "../assets/music/maps/pewter-city.mp3";
 import getEncounterData from "./get-location-data";
-import { Direction } from "../state/state-types";
-
-// TODO Remove
-import trainer from "../assets/title-screen/player.png";
-import sprite from "../assets/character/front-still.png";
 
 const viridianCity: MapType = {
   name: "Viridian City",
@@ -120,8 +115,18 @@ const viridianCity: MapType = {
     9: {
       21: MapId.ViridianCityNpcHouse,
     },
+    14: {
+      0: MapId.Route22,
+    },
     15: {
+      0: MapId.Route22,
       21: MapId.ViridianCityPokemonAcadamy,
+    },
+    16: {
+      0: MapId.Route22,
+    },
+    17: {
+      0: MapId.Route22,
     },
     19: {
       29: MapId.ViridianCityPokeMart,
@@ -142,35 +147,7 @@ const viridianCity: MapType = {
     x: 11,
     y: 1,
   },
-  trainers: [
-    {
-      id: "test",
-      name: "Trainer Name",
-      sprites: {
-        small: sprite,
-        large: trainer,
-      },
-      pokemon: [
-        {
-          id: 3,
-          level: 3,
-          hp: 1,
-          moves: ["tackle"],
-        },
-        {
-          id: 4,
-          level: 3,
-          hp: 1,
-          moves: ["tackle"],
-        },
-      ],
-      facing: Direction.Down,
-      intro: ["INtro 1", "Intro 2"],
-      outtro: ["Outro 1", "Outro 2"],
-      money: 123,
-      pos: { x: 25, y: 5 },
-    },
-  ],
+  trainers: [],
 };
 
 export default viridianCity;

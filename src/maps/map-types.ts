@@ -18,6 +18,7 @@ export enum MapId {
   Route22 = "route-22",
   GateHouse = "gate-house",
   Route2 = "route-2",
+  Route2Gate = "route-2-gate",
 }
 
 export interface PokemonMinimalType {

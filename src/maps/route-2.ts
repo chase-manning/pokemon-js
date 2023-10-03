@@ -1,9 +1,11 @@
 import image from "../assets/map/route-2.png";
+import music from "../assets/music/maps/route-1.mp3";
 import { MapId, MapType } from "./map-types";
 
 const route2: MapType = {
   name: "Route 2",
   image,
+  music,
   height: 72,
   width: 20,
   start: {

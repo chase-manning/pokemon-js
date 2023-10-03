@@ -271,13 +271,15 @@ const Menu = ({
                   {item.label}
                   {item.value !== undefined && <Bold>{item.value}</Bold>}
                 </Button>
-                <ArrowContainer>
-                  <Arrow
-                    disabled={disabled}
-                    menu
-                    show={activeIndex === index}
-                  />
-                </ArrowContainer>
+                {!noSelect && (
+                  <ArrowContainer>
+                    <Arrow
+                      disabled={disabled}
+                      menu
+                      show={activeIndex === index}
+                    />
+                  </ArrowContainer>
+                )}
               </li>
             );
           })}

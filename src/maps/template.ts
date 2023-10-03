@@ -1,4 +1,4 @@
-import image from "../assets/map/XXX.png";
+import image from "../assets/map/pallet-town.png";
 import { MapId, MapType } from "./map-types";
 
 const XXX: MapType = {

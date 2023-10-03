@@ -501,7 +501,8 @@ export const gameSlice = createSlice({
     },
     defeatTrainer: (state) => {
       if (!state.trainerEncounter) throw new Error("No trainer encounter");
-      state.defeatedTrainers.push(state.trainerEncounter.id);
+      const id = `${state.map}-${state.trainerEncounter.pos.x}-${state.trainerEncounter.pos.y}`;
+      state.defeatedTrainers.push(id);
       state.trainerEncounter = undefined;
     },
     faintToTrainer: (state) => {
@@ -585,5 +586,7 @@ export const selectTrainerEncounter = (state: RootState) =>
 
 export const selectDefeatedTrainers = (state: RootState) =>
   state.game.defeatedTrainers;
+
+export const selectMapId = (state: RootState) => state.game.map;
 
 export default gameSlice.reducer;

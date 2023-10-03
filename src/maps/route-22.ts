@@ -74,7 +74,6 @@ const route22: MapType = {
   },
   trainers: [
     {
-      id: "rival",
       npc: rival,
       pokemon: [
         {

@@ -1,4 +1,4 @@
-import { TrainerType } from "../maps/map-types";
+import { MapId, TrainerType } from "../maps/map-types";
 import { Direction, PosType } from "../state/state-types";
 import { TRAINER_VISION } from "./constants";
 
@@ -56,9 +56,11 @@ const isEncounter = (
   fences: Record<number, number[]> | undefined,
   trainers: TrainerType[],
   pos: PosType,
-  defeatedTrainers: string[]
+  defeatedTrainers: string[],
+  mapId: MapId
 ): boolean => {
-  if (defeatedTrainers.includes(trainer.id)) return false;
+  const trainerId = `${mapId}-${trainer.pos.x}-${trainer.pos.y}`;
+  if (defeatedTrainers.includes(trainerId)) return false;
 
   let { x: tX, y: tY } = trainer.pos;
   let { x: pX, y: pY } = pos;
@@ -81,11 +83,20 @@ export const isTrainerEncounter = (
   walls: Record<number, number[]>,
   fences: Record<number, number[]> | undefined,
   pos: PosType,
-  defeatedTrainers: string[]
+  defeatedTrainers: string[],
+  mapId: MapId
 ): TrainerType | null => {
   for (let i = 0; i < trainers.length; i++) {
     if (
-      isEncounter(trainers[i], walls, fences, trainers, pos, defeatedTrainers)
+      isEncounter(
+        trainers[i],
+        walls,
+        fences,
+        trainers,
+        pos,
+        defeatedTrainers,
+        mapId
+      )
     )
       return trainers[i];
   }

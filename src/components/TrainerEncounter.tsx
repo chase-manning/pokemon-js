@@ -6,6 +6,7 @@ import {
   selectDefeatedTrainers,
   selectDirection,
   selectMap,
+  selectMapId,
   selectPokemonEncounter,
   selectPos,
   selectTrainerEncounter,
@@ -41,6 +42,7 @@ const TrainerEncounter = () => {
   const pokemonEncounter = useSelector(selectPokemonEncounter);
   const defeatedTrainers = useSelector(selectDefeatedTrainers);
   const direction = useSelector(selectDirection);
+  const mapId = useSelector(selectMapId);
 
   const [introIndex, setIntroIndex] = useState(-1);
 
@@ -54,7 +56,8 @@ const TrainerEncounter = () => {
       walls,
       fences,
       pos,
-      defeatedTrainers
+      defeatedTrainers,
+      mapId
     );
 
     if (!encounter_) return;
@@ -62,7 +65,7 @@ const TrainerEncounter = () => {
     setTimeout(() => {
       setIntroIndex(0);
     }, 500);
-  }, [trainers, walls, fences, pos, dispatch, defeatedTrainers]);
+  }, [trainers, walls, fences, pos, dispatch, defeatedTrainers, mapId]);
 
   useEvent(Event.A, () => {
     const facingPos = directionModifier(direction);

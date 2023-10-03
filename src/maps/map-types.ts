@@ -55,7 +55,6 @@ export interface EncountersType {
 }
 
 export interface TrainerType {
-  id: string;
   npc: NpcType;
   pokemon: PokemonEncounterType[];
   facing: Direction;

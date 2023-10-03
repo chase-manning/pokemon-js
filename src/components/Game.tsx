@@ -92,8 +92,8 @@ const Game = () => {
         >
           <Background src={map.image} width={map.width} height={map.height} />
           {map.trainers &&
-            map.trainers.map((trainer: TrainerType) => (
-              <Trainer key={trainer.id} trainer={trainer} />
+            map.trainers.map((trainer: TrainerType, index: number) => (
+              <Trainer key={index} trainer={trainer} />
             ))}
           <DebugOverlay />
         </BackgroundContainer>

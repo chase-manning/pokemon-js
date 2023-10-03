@@ -86,9 +86,15 @@ const route22: MapType = {
         },
       ],
       facing: Direction.Right,
-      intro: ["TODO", "TODO"],
-      outtro: ["TODO", "TODO"],
-      money: 100,
+      intro: [
+        "Hey!",
+        "You're going to POKEMON LEAGUE?",
+        "Forget it! You probably don't have any BADGEs!",
+        "The guard won't let you through!",
+        "By the way, did your POKEMON get any stronger?",
+      ],
+      outtro: ["Awww! You just lucked out!"],
+      money: 280,
       pos: {
         x: 25,
         y: 5,

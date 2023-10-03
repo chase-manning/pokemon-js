@@ -1,5 +1,3 @@
-- Change pokemon to not hve health and stuff for trainers, work thsi out dynamically
-
 ===========
 
 - Add more maps

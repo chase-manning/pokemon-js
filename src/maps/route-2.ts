@@ -1,5 +1,6 @@
 import image from "../assets/map/route-2.png";
 import music from "../assets/music/maps/route-1.mp3";
+import getEncounterData from "./get-location-data";
 import { MapId, MapType } from "./map-types";
 
 const route2: MapType = {
@@ -133,6 +134,7 @@ const route2: MapType = {
     x: 18,
     y: 1,
   },
+  encounters: getEncounterData("kanto-route-2-south-towards-viridian-city"),
   exitReturnMap: MapId.ViridianCity,
 };
 

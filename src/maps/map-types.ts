@@ -16,6 +16,7 @@ export enum MapId {
   ViridianCityPokemonAcadamy = "viridian-city-pokemon-acadamy",
   ViridianCityNpcHouse = "veridian-city-npc-house",
   Route22 = "route-22",
+  GateHouse = "gate-house",
 }
 
 export interface PokemonMinimalType {

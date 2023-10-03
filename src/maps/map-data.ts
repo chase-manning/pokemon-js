@@ -1,3 +1,4 @@
+import gateHouse from "./gate-house";
 import houseA1f from "./house-a-1f";
 import houseA2f from "./house-a-2f";
 import houseB from "./house-b";
@@ -27,6 +28,7 @@ const mapData: Record<string, MapType> = {
   [MapId.ViridianCityNpcHouse]: viridianCityNpcHouse,
   [MapId.ViridianCityGym]: viridianCityGym,
   [MapId.Route22]: route22,
+  [MapId.GateHouse]: gateHouse,
 };
 
 export default mapData;

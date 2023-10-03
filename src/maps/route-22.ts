@@ -77,10 +77,12 @@ const route22: MapType = {
       npc: rival,
       pokemon: [
         {
-          id: 1,
+          id: 16,
           level: 9,
-          hp: 20,
-          moves: ["tackle", "growl"],
+        },
+        {
+          id: 1,
+          level: 8,
         },
       ],
       facing: Direction.Right,

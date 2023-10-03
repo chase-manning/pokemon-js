@@ -20,6 +20,7 @@ import {
 import Frame from "./Frame";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
+import getPokemonEncounter from "../app/pokemon-encounter-helper";
 
 const StyledTrainerEncounter = styled.div`
   position: absolute;
@@ -90,7 +91,10 @@ const TrainerEncounter = () => {
 
     if (introIndex === encounter.intro.length - 1) {
       setIntroIndex(-1);
-      dispatch(encounterPokemon(encounter.pokemon[0]));
+      const pokemon_ = encounter.pokemon[0];
+      dispatch(
+        encounterPokemon(getPokemonEncounter(pokemon_.id, pokemon_.level))
+      );
     } else {
       setIntroIndex(introIndex + 1);
     }

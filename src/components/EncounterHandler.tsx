@@ -2,11 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { encounterPokemon, selectMap, selectPos } from "../state/gameSlice";
 import { useEffect } from "react";
 import { PokemonEncounterData } from "../maps/map-types";
-import { getPokemonStats } from "../app/use-pokemon-stats";
-import { getPokemonMetadata } from "../app/use-pokemon-metadata";
 import { DEBUG_MODE } from "../app/constants";
 import { isGrass } from "../app/map-helper";
 import { PokemonEncounterType } from "../state/state-types";
+import getPokemonEncounter from "../app/pokemon-encounter-helper";
 
 const shouldEncounter = (rate: number) => {
   const random = Math.random() * 100;
@@ -28,19 +27,10 @@ const getPokemon = (
   for (const option of options) {
     current += option.chance;
     if (random < current) {
-      const level = randBetween(option.minLevel, option.maxLevel);
-      const metadata = getPokemonMetadata(option.id);
-      const moves = metadata.moves
-        .filter((move) => move.levelLearnedAt <= level)
-        .sort((a, b) => b.levelLearnedAt - a.levelLearnedAt)
-        .slice(0, 4)
-        .map((move) => move.name);
-      return {
-        id: option.id,
-        level,
-        hp: getPokemonStats(option.id, level).hp,
-        moves,
-      };
+      return getPokemonEncounter(
+        option.id,
+        randBetween(option.minLevel, option.maxLevel)
+      );
     }
   }
   return null;

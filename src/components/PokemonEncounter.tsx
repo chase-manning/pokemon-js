@@ -57,6 +57,7 @@ import Evolution from "./Evolution";
 import MoveSelect from "./MoveSelect";
 import catchesPokemon from "../app/pokeball-helper";
 import { PokemonEncounterType, PokemonInstance } from "../state/state-types";
+import getPokemonEncounter from "../app/pokemon-encounter-helper";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -611,7 +612,10 @@ const PokemonEncounter = () => {
   const endEncounter_ = () => {
     if (isTrainer && trainerPokemonIndex < trainer?.pokemon.length - 1) {
       const newIndex = trainerPokemonIndex + 1;
-      dispatch(encounterPokemon(trainer?.pokemon[newIndex]));
+      const newPokemon = trainer?.pokemon[newIndex];
+      dispatch(
+        encounterPokemon(getPokemonEncounter(newPokemon.id, newPokemon.level))
+      );
       setTrainerPokemonIndex(newIndex);
       throwPokeballAtEnemy(49);
       return;

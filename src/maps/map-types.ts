@@ -1,6 +1,6 @@
 import { NpcType } from "../app/npcs";
 import { ItemType } from "../app/use-item-data";
-import { Direction, PokemonEncounterType, PosType } from "../state/state-types";
+import { Direction, PosType } from "../state/state-types";
 
 export enum MapId {
   PalletTown = "pallet-town",
@@ -16,6 +16,11 @@ export enum MapId {
   ViridianCityPokemonAcadamy = "viridian-city-pokemon-acadamy",
   ViridianCityNpcHouse = "veridian-city-npc-house",
   Route22 = "route-22",
+}
+
+export interface PokemonMinimalType {
+  id: number;
+  level: number;
 }
 
 export interface PokemonEncounterData {
@@ -56,7 +61,7 @@ export interface EncountersType {
 
 export interface TrainerType {
   npc: NpcType;
-  pokemon: PokemonEncounterType[];
+  pokemon: PokemonMinimalType[];
   facing: Direction;
   intro: string[];
   outtro: string[];

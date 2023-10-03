@@ -1,3 +1,5 @@
+- Add trainers and items to viridian forrest
+
 ===========
 
 - Add more maps

@@ -1,4 +1,6 @@
+import { bugCatcher } from "../app/npcs";
 import image from "../assets/map/viridian-forrest.png";
+import { Direction } from "../state/state-types";
 import getEncounterData from "./get-location-data";
 import { MapId, MapType } from "./map-types";
 
@@ -177,6 +179,71 @@ const viridianForrest: MapType = {
     y: 1,
   },
   exitReturnMap: MapId.Route2Gate,
+  trainers: [
+    {
+      npc: bugCatcher,
+      facing: Direction.Left,
+      pokemon: [
+        {
+          id: 13,
+          level: 9,
+        },
+      ],
+      intro: ["Lorem ipsum dolor sit amet, consectetur"],
+      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      money: 60,
+      pos: {
+        x: 2,
+        y: 18,
+      },
+    },
+    {
+      npc: bugCatcher,
+      facing: Direction.Left,
+      pokemon: [
+        {
+          id: 13,
+          level: 7,
+        },
+        {
+          id: 14,
+          level: 7,
+        },
+        {
+          id: 13,
+          level: 7,
+        },
+      ],
+      intro: ["Lorem ipsum dolor sit amet, consectetur"],
+      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      money: 70,
+      pos: {
+        x: 29,
+        y: 19,
+      },
+    },
+    {
+      npc: bugCatcher,
+      facing: Direction.Left,
+      pokemon: [
+        {
+          id: 13,
+          level: 6,
+        },
+        {
+          id: 10,
+          level: 6,
+        },
+      ],
+      intro: ["Lorem ipsum dolor sit amet, consectetur"],
+      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      money: 60,
+      pos: {
+        x: 30,
+        y: 33,
+      },
+    },
+  ],
 };
 
 export default viridianForrest;

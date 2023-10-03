@@ -295,7 +295,7 @@ import psychicUpWalk2 from "../assets/walk-sprites/f-up-2.png";
 import psychicLeft from "../assets/walk-sprites/f-left.png";
 import psychicLeftWalk1 from "../assets/walk-sprites/f-left-1.png";
 import psychicRight from "../assets/walk-sprites/f-right.png";
-import psychicRightWalk1 from "../gssets/walk-sprites/f-right-1.png";
+import psychicRightWalk1 from "../assets/walk-sprites/f-right-1.png";
 
 // Rocker
 import rockerPortrait from "../assets/portraits/rocker.png";

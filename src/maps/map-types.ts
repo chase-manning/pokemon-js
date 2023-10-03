@@ -1,3 +1,4 @@
+import { NpcType } from "../app/npcs";
 import { ItemType } from "../app/use-item-data";
 import { Direction, PokemonEncounterType, PosType } from "../state/state-types";
 
@@ -55,11 +56,7 @@ export interface EncountersType {
 
 export interface TrainerType {
   id: string;
-  name: string;
-  sprites: {
-    small: string;
-    large: string;
-  };
+  npc: NpcType;
   pokemon: PokemonEncounterType[];
   facing: Direction;
   intro: string[];

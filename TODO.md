@@ -1,3 +1,6 @@
+- Remove ID system for trainers, use map and coords instead
+- Change pokemon to not hve health and stuff for trainers, work thsi out dynamically
+
 ===========
 
 - Add more maps

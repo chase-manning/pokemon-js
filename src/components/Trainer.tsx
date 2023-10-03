@@ -7,6 +7,7 @@ import { selectTrainerEncounter } from "../state/gameSlice";
 import { useEffect, useState } from "react";
 
 import alert from "../assets/ui/alert.png";
+import { Direction } from "../state/state-types";
 
 interface TrainerProps {
   x: number;
@@ -55,10 +56,18 @@ const Trainer = ({ trainer }: Props) => {
     }
   }, [encounter]);
 
+  const sprite = () => {
+    if (trainer.facing === Direction.Left) return trainer.npc.sprites.left;
+    if (trainer.facing === Direction.Right) return trainer.npc.sprites.right;
+    if (trainer.facing === Direction.Up) return trainer.npc.sprites.up;
+    if (trainer.facing === Direction.Down) return trainer.npc.sprites.down;
+    throw new Error("Invalid direction");
+  };
+
   return (
     <StyledTrainer x={trainer.pos.x} y={trainer.pos.y}>
       <Alert src={alert} style={{ opacity: stage === 1 ? 1 : 0 }} />
-      <Sprite src={trainer.sprites.small} />
+      <Sprite src={sprite()} />
     </StyledTrainer>
   );
 };

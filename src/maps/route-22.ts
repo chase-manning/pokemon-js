@@ -2,6 +2,8 @@ import image from "../assets/map/route-22.png";
 import { MapId, MapType } from "./map-types";
 
 import getEncounterData from "./get-location-data";
+import { rival } from "../app/npcs";
+import { Direction } from "../state/state-types";
 
 const route22: MapType = {
   name: "Route 22",
@@ -70,7 +72,28 @@ const route22: MapType = {
     x: 1,
     y: 16,
   },
-  trainers: [],
+  trainers: [
+    {
+      id: "rival",
+      npc: rival,
+      pokemon: [
+        {
+          id: 1,
+          level: 9,
+          hp: 20,
+          moves: ["tackle", "growl"],
+        },
+      ],
+      facing: Direction.Right,
+      intro: ["TODO", "TODO"],
+      outtro: ["TODO", "TODO"],
+      money: 100,
+      pos: {
+        x: 25,
+        y: 5,
+      },
+    },
+  ],
 };
 
 export default route22;

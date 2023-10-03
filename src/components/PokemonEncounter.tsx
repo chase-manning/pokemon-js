@@ -955,7 +955,7 @@ const PokemonEncounter = () => {
     if (alertText) return alertText;
     if (stage === 2) {
       if (isTrainer) {
-        return `${trainer?.name.toUpperCase()} wants to fight!`;
+        return `${trainer?.npc.name.toUpperCase()} wants to fight!`;
       }
       return `Wild ${enemyMetadata.name.toUpperCase()} appeared!`;
     }
@@ -992,10 +992,10 @@ const PokemonEncounter = () => {
     if (stage === 45)
       return `All right! ${enemyMetadata.name.toUpperCase()} was caught!`;
     if (stage === 48 || stage === 49) {
-      return `${trainer?.name.toUpperCase()} sent out ${enemyMetadata.name.toUpperCase()}!`;
+      return `${trainer?.npc.name.toUpperCase()} sent out ${enemyMetadata.name.toUpperCase()}!`;
     }
     if (stage === 50)
-      return `${name.toUpperCase()} defeated ${trainer?.name.toUpperCase()}!`;
+      return `${name.toUpperCase()} defeated ${trainer?.npc.name.toUpperCase()}!`;
     if (stage === 51) {
       return trainer?.outtro[outroIndex] || "";
     }
@@ -1193,10 +1193,10 @@ const PokemonEncounter = () => {
     if (stage === 40) return ballLeft;
     if (stage === 41) return ballRight;
     if (stage === 45) return ballRight;
-    if (stage < 3 && isTrainer) return trainer?.sprites.large;
-    if (stage === 46) return trainer?.sprites.large;
-    if (stage === 51) return trainer?.sprites.large;
-    if (stage === 52) return trainer?.sprites.large;
+    if (stage < 3 && isTrainer) return trainer?.npc.portrait;
+    if (stage === 46) return trainer?.npc.portrait;
+    if (stage === 51) return trainer?.npc.portrait;
+    if (stage === 52) return trainer?.npc.portrait;
     return enemyMetadata.images.front;
   };
 

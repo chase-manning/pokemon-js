@@ -1,4 +1,5 @@
 import { brock, jrTrainerMale } from "../app/npcs";
+import { ItemType } from "../app/use-item-data";
 import image from "../assets/map/pewter-city-gym.png";
 import music from "../assets/music/maps/pokemon-gym.mp3";
 import { Direction } from "../state/state-types";
@@ -86,7 +87,7 @@ const pewterCityGym: MapType = {
       ],
       outtro: [
         "I took you for granted!",
-        "As proof of your victory, here's the BOULDERBADGE!",
+        "As proof of your victory, here's the BOULDER BADGE!",
         "That's an official POKEMON LEAGUE badge!",
         "Its bearer's POKEMON become more powerful!",
         "The technique FLASH can now be used any time!",
@@ -95,6 +96,19 @@ const pewterCityGym: MapType = {
       pos: {
         x: 4,
         y: 1,
+      },
+      postGame: {
+        message: [
+          "Wait! Take this with you!",
+          "A TM contains a technique that can be taught to POKEMON!",
+          "A TM is good only once!",
+          "So when you use one to teach a new technique,",
+          "pick the POKEMON carefully!",
+          "TM34 contains BIDE!",
+          "Your pokemon will absorb damage in battle",
+          "then pay it back double!",
+        ],
+        items: [ItemType.BoulderBadge, ItemType.Tm34],
       },
     },
   ],

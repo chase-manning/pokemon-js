@@ -1,10 +1,12 @@
 import image from "../assets/map/viridian-city-gym.png";
 import { Direction } from "../state/state-types";
 import { MapId, MapType } from "./map-types";
+import music from "../assets/music/maps/pokemon-gym.mp3";
 
 const viridianCityGym: MapType = {
   name: "Viridian City GYM",
   image,
+  music,
   height: 18,
   width: 20,
   start: {

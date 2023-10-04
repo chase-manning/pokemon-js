@@ -414,6 +414,110 @@ import bikerLeftWalk1 from "../assets/walk-sprites/ao-left-1.png";
 import bikerRight from "../assets/walk-sprites/ao-right.png";
 import bikerRightWalk1 from "../assets/walk-sprites/ao-right-1.png";
 
+// Brock
+import brockPortrait from "../assets/portraits/brock.png";
+import brockDown from "../assets/walk-sprites/q-down.png";
+import brockDownWalk1 from "../assets/walk-sprites/q-down-1.png";
+import brockDownWalk2 from "../assets/walk-sprites/q-down-2.png";
+import brockUp from "../assets/walk-sprites/q-up.png";
+import brockUpWalk1 from "../assets/walk-sprites/q-up-1.png";
+import brockUpWalk2 from "../assets/walk-sprites/q-up-2.png";
+import brockLeft from "../assets/walk-sprites/q-left.png";
+import brockLeftWalk1 from "../assets/walk-sprites/q-left-1.png";
+import brockRight from "../assets/walk-sprites/q-right.png";
+import brockRightWalk1 from "../assets/walk-sprites/q-right-1.png";
+
+// Misty
+import mistyPortrait from "../assets/portraits/misty.png";
+import mistyDown from "../assets/walk-sprites/k-down.png";
+import mistyDownWalk1 from "../assets/walk-sprites/k-down-1.png";
+import mistyDownWalk2 from "../assets/walk-sprites/k-down-2.png";
+import mistyUp from "../assets/walk-sprites/k-up.png";
+import mistyUpWalk1 from "../assets/walk-sprites/k-up-1.png";
+import mistyUpWalk2 from "../assets/walk-sprites/k-up-2.png";
+import mistyLeft from "../assets/walk-sprites/k-left.png";
+import mistyLeftWalk1 from "../assets/walk-sprites/k-left-1.png";
+import mistyRight from "../assets/walk-sprites/k-right.png";
+import mistyRightWalk1 from "../assets/walk-sprites/k-right-1.png";
+
+// Lt Surge
+import ltSurgePortrait from "../assets/portraits/lt-surge.png";
+import ltSurgeDown from "../assets/walk-sprites/ai-down.png";
+import ltSurgeDownWalk1 from "../assets/walk-sprites/ai-down-1.png";
+import ltSurgeDownWalk2 from "../assets/walk-sprites/ai-down-2.png";
+import ltSurgeUp from "../assets/walk-sprites/ai-up.png";
+import ltSurgeUpWalk1 from "../assets/walk-sprites/ai-up-1.png";
+import ltSurgeUpWalk2 from "../assets/walk-sprites/ai-up-2.png";
+import ltSurgeLeft from "../assets/walk-sprites/ai-left.png";
+import ltSurgeLeftWalk1 from "../assets/walk-sprites/ai-left-1.png";
+import ltSurgeRight from "../assets/walk-sprites/ai-right.png";
+import ltSurgeRightWalk1 from "../assets/walk-sprites/ai-right-1.png";
+
+// Erica
+import ericaPortrait from "../assets/portraits/erica.png";
+import ericaDown from "../assets/walk-sprites/am-down.png";
+import ericaDownWalk1 from "../assets/walk-sprites/am-down-1.png";
+import ericaDownWalk2 from "../assets/walk-sprites/am-down-2.png";
+import ericaUp from "../assets/walk-sprites/am-up.png";
+import ericaUpWalk1 from "../assets/walk-sprites/am-up-1.png";
+import ericaUpWalk2 from "../assets/walk-sprites/am-up-2.png";
+import ericaLeft from "../assets/walk-sprites/am-left.png";
+import ericaLeftWalk1 from "../assets/walk-sprites/am-left-1.png";
+import ericaRight from "../assets/walk-sprites/am-right.png";
+import ericaRightWalk1 from "../assets/walk-sprites/am-right-1.png";
+
+// Koga
+import kogaPortrait from "../assets/portraits/koga.png";
+import kogaDown from "../assets/walk-sprites/ap-down.png";
+import kogaDownWalk1 from "../assets/walk-sprites/ap-down-1.png";
+import kogaDownWalk2 from "../assets/walk-sprites/ap-down-2.png";
+import kogaUp from "../assets/walk-sprites/ap-up.png";
+import kogaUpWalk1 from "../assets/walk-sprites/ap-up-1.png";
+import kogaUpWalk2 from "../assets/walk-sprites/ap-up-2.png";
+import kogaLeft from "../assets/walk-sprites/ap-left.png";
+import kogaLeftWalk1 from "../assets/walk-sprites/ap-left-1.png";
+import kogaRight from "../assets/walk-sprites/ap-right.png";
+import kogaRightWalk1 from "../assets/walk-sprites/ap-right-1.png";
+
+// Sabrina
+import sabrinaPortrait from "../assets/portraits/sabrina.png";
+import sabrinaDown from "../assets/walk-sprites/c-down.png";
+import sabrinaDownWalk1 from "../assets/walk-sprites/c-down-1.png";
+import sabrinaDownWalk2 from "../assets/walk-sprites/c-down-2.png";
+import sabrinaUp from "../assets/walk-sprites/c-up.png";
+import sabrinaUpWalk1 from "../assets/walk-sprites/c-up-1.png";
+import sabrinaUpWalk2 from "../assets/walk-sprites/c-up-2.png";
+import sabrinaLeft from "../assets/walk-sprites/c-left.png";
+import sabrinaLeftWalk1 from "../assets/walk-sprites/c-left-1.png";
+import sabrinaRight from "../assets/walk-sprites/c-right.png";
+import sabrinaRightWalk1 from "../assets/walk-sprites/c-right-1.png";
+
+// Blaine
+import blainePortrait from "../assets/portraits/blaine.png";
+import blaineDown from "../assets/walk-sprites/r-down.png";
+import blaineDownWalk1 from "../assets/walk-sprites/r-down-1.png";
+import blaineDownWalk2 from "../assets/walk-sprites/r-down-2.png";
+import blaineUp from "../assets/walk-sprites/r-up.png";
+import blaineUpWalk1 from "../assets/walk-sprites/r-up-1.png";
+import blaineUpWalk2 from "../assets/walk-sprites/r-up-2.png";
+import blaineLeft from "../assets/walk-sprites/r-left.png";
+import blaineLeftWalk1 from "../assets/walk-sprites/r-left-1.png";
+import blaineRight from "../assets/walk-sprites/r-right.png";
+import blaineRightWalk1 from "../assets/walk-sprites/r-right-1.png";
+
+// Giovanni
+import giovanniPortrait from "../assets/portraits/giovanni.png";
+import giovanniDown from "../assets/walk-sprites/an-down.png";
+import giovanniDownWalk1 from "../assets/walk-sprites/an-down-1.png";
+import giovanniDownWalk2 from "../assets/walk-sprites/an-down-2.png";
+import giovanniUp from "../assets/walk-sprites/an-up.png";
+import giovanniUpWalk1 from "../assets/walk-sprites/an-up-1.png";
+import giovanniUpWalk2 from "../assets/walk-sprites/an-up-2.png";
+import giovanniLeft from "../assets/walk-sprites/an-left.png";
+import giovanniLeftWalk1 from "../assets/walk-sprites/an-left-1.png";
+import giovanniRight from "../assets/walk-sprites/an-right.png";
+import giovanniRightWalk1 from "../assets/walk-sprites/an-right-1.png";
+
 export interface NpcType {
   canBattle: boolean; // If we have a portrait, we can battle
   canWalk: boolean; // If we have walking sprites, we can walk
@@ -1040,5 +1144,157 @@ export const biker = {
     leftWalk1: bikerLeftWalk1,
     right: bikerRight,
     rightWalk1: bikerRightWalk1,
+  },
+};
+
+export const brock = {
+  canBattle: true,
+  canWalk: true,
+  name: "Brock",
+  portrait: brockPortrait,
+  sprites: {
+    down: brockDown,
+    downWalk1: brockDownWalk1,
+    downWalk2: brockDownWalk2,
+    up: brockUp,
+    upWalk1: brockUpWalk1,
+    upWalk2: brockUpWalk2,
+    left: brockLeft,
+    leftWalk1: brockLeftWalk1,
+    right: brockRight,
+    rightWalk1: brockRightWalk1,
+  },
+};
+
+export const misty = {
+  canBattle: true,
+  canWalk: true,
+  name: "Misty",
+  portrait: mistyPortrait,
+  sprites: {
+    down: mistyDown,
+    downWalk1: mistyDownWalk1,
+    downWalk2: mistyDownWalk2,
+    up: mistyUp,
+    upWalk1: mistyUpWalk1,
+    upWalk2: mistyUpWalk2,
+    left: mistyLeft,
+    leftWalk1: mistyLeftWalk1,
+    right: mistyRight,
+    rightWalk1: mistyRightWalk1,
+  },
+};
+
+export const ltSurge = {
+  canBattle: true,
+  canWalk: true,
+  name: "Lt Surge",
+  portrait: ltSurgePortrait,
+  sprites: {
+    down: ltSurgeDown,
+    downWalk1: ltSurgeDownWalk1,
+    downWalk2: ltSurgeDownWalk2,
+    up: ltSurgeUp,
+    upWalk1: ltSurgeUpWalk1,
+    upWalk2: ltSurgeUpWalk2,
+    left: ltSurgeLeft,
+    leftWalk1: ltSurgeLeftWalk1,
+    right: ltSurgeRight,
+    rightWalk1: ltSurgeRightWalk1,
+  },
+};
+
+export const erica = {
+  canBattle: true,
+  canWalk: true,
+  name: "Erica",
+  portrait: ericaPortrait,
+  sprites: {
+    down: ericaDown,
+    downWalk1: ericaDownWalk1,
+    downWalk2: ericaDownWalk2,
+    up: ericaUp,
+    upWalk1: ericaUpWalk1,
+    upWalk2: ericaUpWalk2,
+    left: ericaLeft,
+    leftWalk1: ericaLeftWalk1,
+    right: ericaRight,
+    rightWalk1: ericaRightWalk1,
+  },
+};
+
+export const koga = {
+  canBattle: true,
+  canWalk: true,
+  name: "Koga",
+  portrait: kogaPortrait,
+  sprites: {
+    down: kogaDown,
+    downWalk1: kogaDownWalk1,
+    downWalk2: kogaDownWalk2,
+    up: kogaUp,
+    upWalk1: kogaUpWalk1,
+    upWalk2: kogaUpWalk2,
+    left: kogaLeft,
+    leftWalk1: kogaLeftWalk1,
+    right: kogaRight,
+    rightWalk1: kogaRightWalk1,
+  },
+};
+
+export const sabrina = {
+  canBattle: true,
+  canWalk: true,
+  name: "Sabrina",
+  portrait: sabrinaPortrait,
+  sprites: {
+    down: sabrinaDown,
+    downWalk1: sabrinaDownWalk1,
+    downWalk2: sabrinaDownWalk2,
+    up: sabrinaUp,
+    upWalk1: sabrinaUpWalk1,
+    upWalk2: sabrinaUpWalk2,
+    left: sabrinaLeft,
+    leftWalk1: sabrinaLeftWalk1,
+    right: sabrinaRight,
+    rightWalk1: sabrinaRightWalk1,
+  },
+};
+
+export const blaine = {
+  canBattle: true,
+  canWalk: true,
+  name: "Blaine",
+  portrait: blainePortrait,
+  sprites: {
+    down: blaineDown,
+    downWalk1: blaineDownWalk1,
+    downWalk2: blaineDownWalk2,
+    up: blaineUp,
+    upWalk1: blaineUpWalk1,
+    upWalk2: blaineUpWalk2,
+    left: blaineLeft,
+    leftWalk1: blaineLeftWalk1,
+    right: blaineRight,
+    rightWalk1: blaineRightWalk1,
+  },
+};
+
+export const giovanni = {
+  canBattle: true,
+  canWalk: true,
+  name: "Giovanni",
+  portrait: giovanniPortrait,
+  sprites: {
+    down: giovanniDown,
+    downWalk1: giovanniDownWalk1,
+    downWalk2: giovanniDownWalk2,
+    up: giovanniUp,
+    upWalk1: giovanniUpWalk1,
+    upWalk2: giovanniUpWalk2,
+    left: giovanniLeft,
+    leftWalk1: giovanniLeftWalk1,
+    right: giovanniRight,
+    rightWalk1: giovanniRightWalk1,
   },
 };

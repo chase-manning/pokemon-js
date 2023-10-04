@@ -1,4 +1,5 @@
-import { MapId, TrainerType } from "../maps/map-types";
+import mapData from "../maps/map-data";
+import { MapId, MapItemType, TrainerType } from "../maps/map-types";
 import { Direction, PosType } from "../state/state-types";
 import { TRAINER_VISION } from "./constants";
 
@@ -35,11 +36,45 @@ export const isExit = (
 };
 
 export const isTrainer = (
-  trainers: TrainerType[],
+  trainers: TrainerType[] | undefined,
   x: number,
   y: number
 ): boolean => {
-  return trainers.some((trainer) => trainer.pos.x === x && trainer.pos.y === y);
+  return (
+    !!trainers &&
+    trainers.some((trainer) => trainer.pos.x === x && trainer.pos.y === y)
+  );
+};
+
+export const isItem = (
+  items: MapItemType[] | undefined,
+  x: number,
+  y: number,
+  collectedItems: string[],
+  mapId: string
+): boolean => {
+  return (
+    !!items &&
+    items.some((item) => {
+      const id = `${mapId}-${item.pos.x}-${item.pos.y}`;
+      const isPosition = item.pos.x === x && item.pos.y === y;
+      return isPosition && !collectedItems.includes(id);
+    })
+  );
+};
+
+export const canWalk = (
+  x: number,
+  y: number,
+  mapId: MapId,
+  collectedItems: string[]
+) => {
+  const map = mapData[mapId];
+  if (isItem(map.items, x, y, collectedItems, mapId)) return false;
+  if (isWall(map.walls, x, y)) return false;
+  if (isFence(map.fences, x, y)) return false;
+  if (isTrainer(map.trainers, x, y)) return false;
+  return true;
 };
 
 export const directionModifier = (direction: Direction): PosType => {

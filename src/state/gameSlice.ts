@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { MapId, TrainerType } from "../maps/map-types";
+import { MapId, MapItemType, TrainerType } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
 import { getMoveMetadata } from "../app/use-move-metadata";
 import { ItemType } from "../app/use-item-data";
-import { isFence, isTrainer, isWall } from "../app/map-helper";
+import { canWalk, isFence, isItem, isTrainer, isWall } from "../app/map-helper";
 import {
   Direction,
   GameState,
@@ -281,6 +281,7 @@ const initialState: GameState = {
   activePokemonIndex: 0,
   trainerEncounter: undefined,
   defeatedTrainers: [],
+  collectedItems: [],
 };
 
 export const gameSlice = createSlice({
@@ -290,39 +291,50 @@ export const gameSlice = createSlice({
     moveLeft: (state) => {
       state.direction = Direction.Left;
       if (state.pos.x === 0) return;
-      const map = mapData[state.map];
-      if (isWall(map.walls, state.pos.x - 1, state.pos.y)) return;
-      if (isFence(map.fences, state.pos.x - 1, state.pos.y)) return;
-      if (isTrainer(map.trainers ?? [], state.pos.x - 1, state.pos.y)) return;
+      if (
+        !canWalk(state.pos.x - 1, state.pos.y, state.map, state.collectedItems)
+      )
+        return;
       state.pos.x -= 1;
     },
     moveRight: (state) => {
       state.direction = Direction.Right;
       const map = mapData[state.map];
       if (state.pos.x === map.width - 1) return;
-      if (isWall(map.walls, state.pos.x + 1, state.pos.y)) return;
-      if (isFence(map.fences, state.pos.x + 1, state.pos.y)) return;
-      if (isTrainer(map.trainers ?? [], state.pos.x + 1, state.pos.y)) return;
+      if (
+        !canWalk(state.pos.x + 1, state.pos.y, state.map, state.collectedItems)
+      )
+        return;
       state.pos.x += 1;
     },
     moveUp: (state) => {
       state.direction = Direction.Up;
       if (state.pos.y === 0) return;
-      const map = mapData[state.map];
-      if (isWall(map.walls, state.pos.x, state.pos.y - 1)) return;
-      if (isFence(map.fences, state.pos.x, state.pos.y - 1)) return;
-      if (isTrainer(map.trainers ?? [], state.pos.x, state.pos.y - 1)) return;
+      if (
+        !canWalk(state.pos.x, state.pos.y - 1, state.map, state.collectedItems)
+      )
+        return;
       state.pos.y -= 1;
     },
     moveDown: (state) => {
       state.direction = Direction.Down;
       const map = mapData[state.map];
       if (state.pos.y === map.height - 1) return;
-      if (isWall(map.walls, state.pos.x, state.pos.y + 1)) return;
       if (isFence(map.fences, state.pos.x, state.pos.y + 1)) {
         state.jumping = true;
       }
-      if (isTrainer(map.trainers ?? [], state.pos.x, state.pos.y + 1)) return;
+      if (isWall(map.walls, state.pos.x, state.pos.y + 1)) return;
+      if (isTrainer(map.trainers, state.pos.x, state.pos.y + 1)) return;
+      if (
+        isItem(
+          map.items,
+          state.pos.x,
+          state.pos.y + 1,
+          state.collectedItems,
+          state.map
+        )
+      )
+        return;
       state.pos.y += 1;
     },
     setPos: (state, action: PayloadAction<PosType>) => {
@@ -390,6 +402,11 @@ export const gameSlice = createSlice({
       state.pokemon = savedGameState.pokemon;
       state.pokemonEncounter = savedGameState.pokemonEncounter;
       state.activePokemonIndex = savedGameState.activePokemonIndex;
+      state.money = savedGameState.money;
+      state.pc = savedGameState.pc;
+      state.trainerEncounter = savedGameState.trainerEncounter;
+      state.defeatedTrainers = savedGameState.defeatedTrainers;
+      state.collectedItems = savedGameState.collectedItems;
     },
     swapPokemonPositions: (state, action: PayloadAction<number[]>) => {
       const [index1, index2] = action.payload;
@@ -508,6 +525,11 @@ export const gameSlice = createSlice({
     faintToTrainer: (state) => {
       state.trainerEncounter = undefined;
     },
+    collectItem: (state, action: PayloadAction<MapItemType>) => {
+      const id = `${state.map}-${action.payload.pos.x}-${action.payload.pos.y}`;
+      state.collectedItems.push(id);
+      addInventory({ item: action.payload.item, amount: 1 });
+    },
   },
 });
 
@@ -545,6 +567,7 @@ export const {
   encounterTrainer,
   defeatTrainer,
   faintToTrainer,
+  collectItem,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -588,5 +611,8 @@ export const selectDefeatedTrainers = (state: RootState) =>
   state.game.defeatedTrainers;
 
 export const selectMapId = (state: RootState) => state.game.map;
+
+export const selectCollectedItems = (state: RootState) =>
+  state.game.collectedItems;
 
 export default gameSlice.reducer;

@@ -73,6 +73,11 @@ export interface TrainerType {
   pos: PosType;
 }
 
+export interface MapItemType {
+  pos: PosType;
+  item: ItemType;
+}
+
 export interface MapType {
   name: string;
   image: string;
@@ -97,4 +102,5 @@ export interface MapType {
   spinners?: Record<number, Record<number, Direction>>;
   stoppers?: Record<number, number[]>;
   trainers?: TrainerType[];
+  items?: MapItemType[];
 }

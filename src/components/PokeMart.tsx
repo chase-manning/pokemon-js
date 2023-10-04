@@ -214,10 +214,14 @@ const PokeMart = () => {
         close={() => setStage(0)}
         disabled={startMenuOpen || !!sellData}
         menuItems={inventory
-          .filter((item: InventoryItemType) => item.amount > 0)
+          .filter(
+            (item: InventoryItemType) =>
+              item.amount > 0 &&
+              !itemData[item.item].badge &&
+              !!itemData[item.item].sellPrice
+          )
           .map((item: InventoryItemType) => {
             const data = itemData[item.item];
-            if (!data.cost) throw new Error("No cost");
             return {
               label: data.name.toUpperCase(),
               action: () => sell(item.item),

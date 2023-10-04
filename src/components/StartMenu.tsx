@@ -82,8 +82,8 @@ const StartMenu = () => {
                           xp: 0,
                           hp: getPokemonStats(6, 100).hp,
                           moves: [
-                            { name: "scratch", pp: 35 },
-                            { name: "growl", pp: 40 },
+                            { id: "scratch", pp: 35 },
+                            { id: "growl", pp: 40 },
                           ],
                         },
                       })

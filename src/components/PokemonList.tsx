@@ -8,6 +8,7 @@ import { Event } from "../app/emitter";
 import Menu from "./Menu";
 import Frame from "./Frame";
 import { PokemonInstance } from "../state/state-types";
+import { MoveMetadata } from "../app/move-metadata";
 
 const StyledPokemonList = styled.div`
   position: absolute;
@@ -41,6 +42,7 @@ interface Props {
   clickPokemon?: (index: number) => void;
   text?: string;
   customPokemon?: PokemonInstance[];
+  moveData?: MoveMetadata;
 }
 
 const PokemonList = ({
@@ -49,6 +51,7 @@ const PokemonList = ({
   text,
   clickPokemon,
   customPokemon,
+  moveData,
 }: Props) => {
   const dispatch = useDispatch();
   const pokemon_ = useSelector(selectPokemon);
@@ -107,7 +110,14 @@ const PokemonList = ({
     <>
       <StyledPokemonList>
         {pokemon.slice(scroll, scroll + 6).map((p, i) => {
-          return <PokemonRow key={i} pokemon={p} active={active === i} />;
+          return (
+            <PokemonRow
+              key={i}
+              pokemon={p}
+              active={active === i}
+              moveData={moveData}
+            />
+          );
         })}
       </StyledPokemonList>
       <Container>

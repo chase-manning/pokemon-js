@@ -1,7 +1,6 @@
 ===========
 
-- Add ability to get items after battles
-- Get tiems from Brock (Boulder badge and TM 34 (Bide)) "Wait! Take this with you!", "BLUE received TM34!", "A TM contains a technique that can be taught to POKEMON!", "A TM is good only once! So when you use one to teach a new technique, pick the POKEMON carefully!", "TM34 contains BIDE!", "Your pokemon will absorb damage in battle then pay it back double!"
+- When selecting mvoes in battle, it shows the id not the name
 - Restrict east traversal before beating brock
 - first index not reset after heal
 - Add more maps

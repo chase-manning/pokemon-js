@@ -29,6 +29,7 @@ import DebugOverlay from "./DebugOverlay";
 import TrainerEncounter from "./TrainerEncounter";
 import Item from "./Item";
 import TextThenAction from "./TextThenAction";
+import LearnMove from "../app/LearnMove";
 
 const Container = styled.div`
   position: absolute;
@@ -116,6 +117,7 @@ const Game = () => {
       <TextThenAction />
       <StartMenu />
       <ItemsMenu />
+      <LearnMove />
       <PlayerMenu />
       <ActionOnPokemon />
       <LoadScreen />

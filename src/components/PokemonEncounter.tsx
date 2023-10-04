@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled, { css, keyframes } from "styled-components";
 import {
+  addInventory,
   addPokemon,
   defeatTrainer,
   encounterPokemon,
@@ -45,6 +46,7 @@ import {
   selectPokeballThrowing,
   selectStartMenu,
   showItemsMenu,
+  showTextThenAction,
   stopThrowingPokeball,
 } from "../state/uiSlice";
 import useIsMobile from "../app/use-is-mobile";
@@ -610,6 +612,7 @@ const PokemonEncounter = () => {
   const isThrowingEnemyPokeball = stage >= 34 && stage <= 38 && isTrainer;
 
   const endEncounter_ = () => {
+    // Bringing out the trainers next pokemon
     if (isTrainer && trainerPokemonIndex < trainer?.pokemon.length - 1) {
       const newIndex = trainerPokemonIndex + 1;
       const newPokemon = trainer?.pokemon[newIndex];
@@ -621,12 +624,14 @@ const PokemonEncounter = () => {
       return;
     }
 
+    // Trainer outtro
     if (isTrainer && trainerPokemonIndex === trainer?.pokemon.length - 1) {
       setStage(50);
       setTrainerPokemonIndex(10);
       return;
     }
 
+    // Ending encounter
     setTrainerPokemonIndex(0);
     dispatch(endEncounter());
     dispatch(resetActivePokemon());
@@ -635,6 +640,22 @@ const PokemonEncounter = () => {
       // Defeated trainer
       if (trainerPokemonIndex === 10) {
         dispatch(defeatTrainer());
+
+        // Handling post game
+        if (trainer.postGame) {
+          dispatch(
+            showTextThenAction({
+              text: trainer.postGame.message,
+              action: () => {
+                if (trainer.postGame?.items) {
+                  trainer.postGame.items.forEach((item) => {
+                    dispatch(addInventory({ item, amount: 1 }));
+                  });
+                }
+              },
+            })
+          );
+        }
       }
 
       // Fainted

@@ -172,8 +172,8 @@ const viridianForrest: MapType = {
   },
   maps: {
     0: {
-      1: MapId.PewterCity,
-      2: MapId.PewterCity,
+      1: MapId.Route2GateNorth,
+      2: MapId.Route2GateNorth,
     },
   },
   exits: {

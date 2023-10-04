@@ -2,6 +2,7 @@
 - Block the first gym in some way
 - Implement quests
 - Add ability to get items after battles
+- Populate all signs, from the lorem ipsums
 
 ===========
 

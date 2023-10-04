@@ -21,7 +21,7 @@ const pewterCity: MapType = {
     3: [3, 10, 17, 23, 24, 25, 26, 27, 35],
     4: [3, 10, 16, 17, 19, 23, 26, 35],
     5: [3, 10, 17, 18, 20, 21, 22, 23, 26, 27, 35],
-    6: [3, 10, 17, 27, 35],
+    6: [3, 10, 14, 17, 27, 35],
     7: [3, 10, 11, 12, 13, 15, 16, 17, 27, 35],
     8: [3, 35],
     9: [3, 15, 35],
@@ -104,10 +104,10 @@ const pewterCity: MapType = {
     35: [18, 19],
   },
   exitReturnPos: {
-    x: 1,
+    x: 5,
     y: 1,
   },
-  exitReturnMap: MapId.PalletTown,
+  exitReturnMap: MapId.Route2GateNorth,
 };
 
 export default pewterCity;

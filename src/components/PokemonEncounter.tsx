@@ -634,7 +634,6 @@ const PokemonEncounter = () => {
     // Ending encounter
     setTrainerPokemonIndex(0);
     dispatch(endEncounter());
-    dispatch(resetActivePokemon());
 
     if (isTrainer) {
       // Defeated trainer
@@ -667,6 +666,7 @@ const PokemonEncounter = () => {
 
   useEffect(() => {
     if (isInBattle) {
+      dispatch(resetActivePokemon());
       setStage(0);
       setTimeout(() => {
         setStage(1);
@@ -679,7 +679,7 @@ const PokemonEncounter = () => {
     if (!isInBattle) {
       setStage(-1);
     }
-  }, [isInBattle]);
+  }, [isInBattle, dispatch]);
 
   const throwPokeball = () => {
     setTimeout(() => {

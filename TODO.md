@@ -1,6 +1,5 @@
 ===========
 
-- first index not reset after heal
 - Restrict east traversal before beating brock
 - Implement meseum
 - Add more maps

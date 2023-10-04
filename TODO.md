@@ -3,6 +3,7 @@
 - Implement quests
 - Add ability to get items after battles
 - Populate all signs, from the lorem ipsums
+- Add transition from viridian forrest gate north to route 2 north side
 
 ===========
 

@@ -64,38 +64,29 @@ const pewterCity: MapType = {
   grass: {},
   text: {
     9: {
-      15: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      15: ["PEWTER MUSEUM OF SCIENCE"],
     },
     17: {
       11: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "PEWTER CITY POKEMON GYM LEADER: BROCK",
+        "The Rock Solid POKEMON Trainer!",
       ],
     },
     19: {
       33: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "NOTICE!",
+        "Thieves have been stealing POKEMON fossils at MT. MOON!",
+        "Please call PEWTER POLICE with any info!",
       ],
     },
     23: {
-      25: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      25: ["PEWTER CITY", "A Stone Gray City"],
     },
     29: {
       19: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "TRAINER TIPS",
+        "Any Pokemon that takes part in battle,",
+        "however short, earns Exp!",
       ],
     },
   },

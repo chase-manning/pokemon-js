@@ -258,9 +258,9 @@ const Evolution = ({ show, close, pokemonId }: Props) => {
     }
   });
 
-  if (!metadata || !evolvesMetadata) throw new Error("No metadata");
-
   if (!show) return null;
+
+  if (!metadata || !evolvesMetadata) throw new Error("No metadata");
 
   return (
     <>

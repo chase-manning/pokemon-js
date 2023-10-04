@@ -2,8 +2,12 @@
 - Block the first gym in some way
 - Implement quests
 - Add ability to get items after battles
+- Get tiems from Brock (Boulder badge and TM 34 (Bide)) "Wait! Take this with you!", "BLUE received TM34!", "A TM contains a technique that can be taught to POKEMON!", "A TM is good only once! So when you use one to teach a new technique, pick the POKEMON carefully!", "TM34 contains BIDE!", "Your pokemon will absorb damage in battle then pay it back double!"
 - Populate all signs, from the lorem ipsums
 - Add transition from viridian forrest gate north to route 2 north side
+- Implement town map in NPC houses
+- Restrict east traversal before beating brock
+- Gym leaders don't auto encounter, you need to talk to them
 
 ===========
 

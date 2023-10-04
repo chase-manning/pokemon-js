@@ -20,8 +20,13 @@ export enum MapId {
   Route2 = "route-2",
   Route2Gate = "route-2-gate",
   ViridianForrest = "viridian-forrest",
-  PewterCity = "pewter-city",
   Route2GateNorth = "route-2-gate-north",
+  PewterCity = "pewter-city",
+  PewterCityPokeMart = "pewter-city-poke-mart",
+  PewterCityPokemonCenter = "pewter-city-pokemon-center",
+  PewterCityNpcA = "pewter-city-npc-a",
+  PewterCityNpcB = "pewter-city-npc-b",
+  PewterCityGym = "pewter-city-gym",
 }
 
 export interface PokemonMinimalType {

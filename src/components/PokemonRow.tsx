@@ -26,6 +26,7 @@ import ballA from "../assets/pokemon/simple/ball-a.png";
 import ballB from "../assets/pokemon/simple/ball-b.png";
 import usePokemonStats from "../app/use-pokemon-stats";
 import { PokemonInstance } from "../state/state-types";
+import { MoveMetadata } from "../app/move-metadata";
 
 const getIcons = (metadata: PokemonMetadata): { a: string; b: string } => {
   // Is Voltorb or Electrode
@@ -178,9 +179,10 @@ const Health = styled.div`
 interface Props {
   pokemon: PokemonInstance;
   active: boolean;
+  moveData?: MoveMetadata;
 }
 
-const PokemonRow = ({ pokemon, active }: Props) => {
+const PokemonRow = ({ pokemon, active, moveData }: Props) => {
   const metadata = usePokemonMetadata(pokemon.id);
   const stats = usePokemonStats(pokemon.id, pokemon.level);
 
@@ -205,7 +207,13 @@ const PokemonRow = ({ pokemon, active }: Props) => {
       </InfoContainer>
       <StatsContainer>
         <Level>{`:L${pokemon.level}`}</Level>
-        <Health>{`${pokemon.hp}/${stats.hp}`}</Health>
+        <Health>
+          {moveData
+            ? moveData.learnedBy.includes(pokemon.id)
+              ? "ABLE"
+              : "NOT ABLE"
+            : `${pokemon.hp}/${stats.hp}`}
+        </Health>
       </StatsContainer>
     </StyledPokemonRow>
   );

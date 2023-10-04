@@ -22,11 +22,13 @@ import PokemonCenter from "./PokemonCenter";
 import Pc from "./Pc";
 import PokeMart from "./PokeMart";
 import SpinningHandler from "./SpinningHandler";
-import { TrainerType } from "../maps/map-types";
+import { MapItemType, TrainerType } from "../maps/map-types";
 import Trainer from "./Trainer";
 import { xToPx, yToPx } from "../app/position-helper";
 import DebugOverlay from "./DebugOverlay";
 import TrainerEncounter from "./TrainerEncounter";
+import Item from "./Item";
+import TextThenAction from "./TextThenAction";
 
 const Container = styled.div`
   position: absolute;
@@ -95,6 +97,10 @@ const Game = () => {
             map.trainers.map((trainer: TrainerType, index: number) => (
               <Trainer key={index} trainer={trainer} />
             ))}
+          {map.items &&
+            map.items.map((item: MapItemType, index: number) => (
+              <Item key={index} item={item} />
+            ))}
           <DebugOverlay />
         </BackgroundContainer>
         <Character />
@@ -107,6 +113,7 @@ const Game = () => {
       <PokemonCenter />
       <Pc />
       <PokeMart />
+      <TextThenAction />
       <StartMenu />
       <ItemsMenu />
       <PlayerMenu />

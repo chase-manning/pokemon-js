@@ -7,7 +7,7 @@ import useIsMobile from "../app/use-is-mobile";
 import { selectActivePokemon } from "../state/gameSlice";
 import Frame from "./Frame";
 import { useState } from "react";
-import useMoveMetadata from "../app/use-move-metadata";
+import useMoveMetadata, { getMoveMetadata } from "../app/use-move-metadata";
 
 const Stats = styled.div`
   position: absolute;
@@ -53,7 +53,7 @@ const MoveSelect = ({ show, select, close }: Props) => {
 
   const [active, setActive] = useState(0);
 
-  const move = useMoveMetadata(activePokemon.moves[active].name);
+  const move = useMoveMetadata(activePokemon.moves[active].id);
 
   return (
     <>
@@ -65,9 +65,10 @@ const MoveSelect = ({ show, select, close }: Props) => {
         padding={isMobile ? "100px" : "40vw"}
         show={show}
         menuItems={activePokemon.moves.map((m) => {
+          console.log(m.id);
           const item: MenuItemType = {
-            label: m.name,
-            action: () => select(m.name),
+            label: getMoveMetadata(m.id).name,
+            action: () => select(m.id),
           };
           return item;
         })}

@@ -107,7 +107,7 @@ const LearnMove = () => {
                     moves: [
                       ...pokemon[pokemonIndex].moves,
                       {
-                        name: moveData.id,
+                        id: moveData.id,
                         pp: moveData.pp || 0,
                       },
                     ],
@@ -126,7 +126,7 @@ const LearnMove = () => {
         menuItems={[
           ...pokemon[pokemonIndex].moves.map((m) => {
             const item: MenuItemType = {
-              label: m.name,
+              label: m.id,
               action: () => {
                 if (!moveData) return;
                 if (move.consume) {
@@ -139,10 +139,10 @@ const LearnMove = () => {
                       ...pokemon[pokemonIndex],
                       moves: [
                         ...pokemon[pokemonIndex].moves.filter(
-                          (move) => move.name !== m.name
+                          (move) => move.id !== m.id
                         ),
                         {
-                          name: moveData.id,
+                          id: moveData.id,
                           pp: moveData.pp || 0,
                         },
                       ],

@@ -943,7 +943,7 @@ const PokemonEncounter = () => {
           xp: 0,
           moves: enemy.moves.map((move) => {
             return {
-              name: move,
+              id: move,
               pp: getMoveMetadata(move).pp || 0,
             };
           }),
@@ -1405,7 +1405,7 @@ const PokemonEncounter = () => {
                     action: () => {},
                   };
                 const item: MenuItemType = {
-                  label: m.name,
+                  label: m.id,
                   action: () => {
                     const isEvolving =
                       activeMetadata &&
@@ -1420,9 +1420,7 @@ const PokemonEncounter = () => {
                       updatePokemon({
                         ...active,
                         moves: [
-                          ...active.moves.filter(
-                            (move) => move.name !== m.name
-                          ),
+                          ...active.moves.filter((move) => move.id !== m.id),
                           newMove,
                         ],
                       })
@@ -1432,7 +1430,7 @@ const PokemonEncounter = () => {
                 return item;
               }),
               {
-                label: getLearnedMove(active)?.name || "Error",
+                label: getLearnedMove(active)?.id || "Error",
                 action: () => {
                   const isEvolving =
                     activeMetadata &&

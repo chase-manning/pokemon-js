@@ -325,9 +325,9 @@ const useItemData = () => {
                   moves: pokemon[index].moves.map((move) => ({
                     ...move,
                     pp: Math.min(
-                      getMoveMetadata(move.name).pp || 0,
+                      getMoveMetadata(move.id).pp || 0,
                       Math.round(
-                        move.pp + (getMoveMetadata(move.name).pp || 0) * 0.2
+                        move.pp + (getMoveMetadata(move.id).pp || 0) * 0.2
                       )
                     ),
                   })),
@@ -509,7 +509,7 @@ const useItemData = () => {
                   moves: pokemon[index].moves.map((move) => ({
                     ...move,
                     pp: Math.min(
-                      getMoveMetadata(move.name).pp || 0,
+                      getMoveMetadata(move.id).pp || 0,
                       Math.round(move.pp + 10)
                     ),
                   })),
@@ -541,7 +541,7 @@ const useItemData = () => {
                   ...pokemon[index],
                   moves: pokemon[index].moves.map((move) => ({
                     ...move,
-                    pp: getMoveMetadata(move.name).pp || 0,
+                    pp: getMoveMetadata(move.id).pp || 0,
                   })),
                 },
               })
@@ -572,7 +572,7 @@ const useItemData = () => {
                   moves: pokemon[index].moves.map((move) => ({
                     ...move,
                     pp: Math.min(
-                      getMoveMetadata(move.name).pp || 0,
+                      getMoveMetadata(move.id).pp || 0,
                       Math.round(move.pp + 10)
                     ),
                   })),
@@ -604,7 +604,7 @@ const useItemData = () => {
                   ...pokemon[index],
                   moves: pokemon[index].moves.map((move) => ({
                     ...move,
-                    pp: getMoveMetadata(move.name).pp || 0,
+                    pp: getMoveMetadata(move.id).pp || 0,
                   })),
                 },
               })

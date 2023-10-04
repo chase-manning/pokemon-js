@@ -26,9 +26,9 @@ export const getLearnedMove = (pokemon: PokemonInstance): MoveState | null => {
   const moves = pokemonMetadata.moves;
   const move = moves.find((move) => move.levelLearnedAt === pokemon.level);
   if (!move) return null;
-  if (pokemon.moves.some((m) => m.name === move.name)) return null;
+  if (pokemon.moves.some((m) => m.id === move.name)) return null;
   return {
-    name: move.name,
+    id: move.name,
     pp: getMoveMetadata(move.name).pp || 0,
   };
 };

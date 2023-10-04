@@ -22,7 +22,7 @@ const getUs = (us: PokemonInstance, isAttacking: boolean, move: string) => {
   const newUs = {
     ...us,
     moves: us.moves.map((m) => {
-      if (m.name !== move) return m;
+      if (m.id !== move) return m;
       return {
         ...m,
         pp: Math.max(0, m.pp - 1),

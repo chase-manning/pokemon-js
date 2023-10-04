@@ -41,8 +41,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 10,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -51,8 +51,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -61,8 +61,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
   ],
@@ -73,8 +73,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -83,8 +83,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -93,8 +93,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
     {
@@ -103,8 +103,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -113,8 +113,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -123,8 +123,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
     {
@@ -133,8 +133,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -143,8 +143,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -153,8 +153,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
     {
@@ -163,8 +163,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -173,8 +173,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -183,8 +183,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
     {
@@ -193,8 +193,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "tackle", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -203,8 +203,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "scratch", pp: 35 },
-        { name: "growl", pp: 40 },
+        { id: "scratch", pp: 35 },
+        { id: "growl", pp: 40 },
       ],
     },
     {
@@ -213,8 +213,8 @@ const initialState: GameState = {
       xp: 0,
       hp: 19,
       moves: [
-        { name: "tackle", pp: 35 },
-        { name: "tail-whip", pp: 30 },
+        { id: "tackle", pp: 35 },
+        { id: "tail-whip", pp: 30 },
       ],
     },
   ],
@@ -388,7 +388,7 @@ export const gameSlice = createSlice({
         ).hp;
         for (let j = 0; j < state.pokemon[i].moves.length; j++) {
           state.pokemon[i].moves[j].pp =
-            getMoveMetadata(state.pokemon[i].moves[j].name).pp || 0;
+            getMoveMetadata(state.pokemon[i].moves[j].id).pp || 0;
         }
       }
     },
@@ -401,7 +401,7 @@ export const gameSlice = createSlice({
         ).hp;
         for (let j = 0; j < state.pokemon[i].moves.length; j++) {
           state.pokemon[i].moves[j].pp =
-            getMoveMetadata(state.pokemon[i].moves[j].name).pp || 0;
+            getMoveMetadata(state.pokemon[i].moves[j].id).pp || 0;
         }
       }
 

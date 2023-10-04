@@ -19,7 +19,7 @@ export interface PosType {
 }
 
 export interface MoveState {
-  name: string;
+  id: string;
   pp: number;
 }
 

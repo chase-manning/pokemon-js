@@ -1,8 +1,8 @@
 ===========
 
-- When selecting mvoes in battle, it shows the id not the name
-- Restrict east traversal before beating brock
 - first index not reset after heal
+- Restrict east traversal before beating brock
+- Implement meseum
 - Add more maps
 - Add support for app refreshing when there is an update
 - We still have an update menu

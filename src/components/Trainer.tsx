@@ -46,15 +46,17 @@ const Trainer = ({ trainer }: Props) => {
 
   const [stage, setStage] = useState<number>(0);
 
+  const isEncountered = encounter && encounter.pos === trainer.pos;
+
   useEffect(() => {
-    if (encounter) {
+    if (isEncountered) {
       setTimeout(() => {
         setStage(1);
       }, 200);
     } else {
       setStage(0);
     }
-  }, [encounter]);
+  }, [isEncountered]);
 
   const sprite = () => {
     if (trainer.facing === Direction.Left) return trainer.npc.sprites.left;

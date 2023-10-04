@@ -4,11 +4,13 @@ import dateformat from "dateformat";
 import Menu from "./Menu";
 import { hidePlayerMenu, selectPlayerMenu } from "../state/uiSlice";
 import { selectName } from "../state/gameSlice";
+import useBadges from "../app/use-badges";
 
 const PlayerMenu = () => {
   const dispatch = useDispatch();
   const show = useSelector(selectPlayerMenu);
   const name = useSelector(selectName);
+  const badges = useBadges();
 
   return (
     <Menu
@@ -22,7 +24,7 @@ const PlayerMenu = () => {
         },
         {
           label: "Badges",
-          value: 0,
+          value: badges.length,
           action: () => {},
         },
         // {

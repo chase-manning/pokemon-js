@@ -8,6 +8,13 @@ interface TextThenActionType {
   action: () => void;
 }
 
+interface LearningMoveType {
+  itemName: string;
+  move: string;
+  consume: boolean;
+  item: ItemType;
+}
+
 interface UiState {
   text: string[] | null;
   startMenu: boolean;
@@ -23,6 +30,7 @@ interface UiState {
   pokeballThrowing?: ItemType | null;
   spinning: Direction | null;
   textThenAction: TextThenActionType | null;
+  learningMove: LearningMoveType | null;
 }
 
 const initialState: UiState = {
@@ -40,6 +48,7 @@ const initialState: UiState = {
   pokeMartMenu: false,
   spinning: null,
   textThenAction: null,
+  learningMove: null,
 };
 
 export const uiSlice = createSlice({
@@ -127,6 +136,12 @@ export const uiSlice = createSlice({
     hideTextThenAction: (state) => {
       state.textThenAction = null;
     },
+    learnMove: (state, action: PayloadAction<LearningMoveType | null>) => {
+      state.learningMove = action.payload;
+    },
+    stopLearningMove: (state) => {
+      state.learningMove = null;
+    },
   },
 });
 
@@ -156,6 +171,8 @@ export const {
   stopSpinning,
   showTextThenAction,
   hideTextThenAction,
+  learnMove,
+  stopLearningMove,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -196,7 +213,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.pokemonCenterMenu ||
   state.ui.pcMenu ||
   state.ui.pokeMartMenu ||
-  state.ui.textThenAction !== null;
+  state.ui.textThenAction !== null ||
+  state.ui.learningMove !== null;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;
@@ -211,5 +229,7 @@ export const selectFrozen = (state: RootState) =>
 
 export const selectTextThenAction = (state: RootState) =>
   state.ui.textThenAction;
+
+export const selectLearningMove = (state: RootState) => state.ui.learningMove;
 
 export default uiSlice.reducer;

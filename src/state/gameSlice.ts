@@ -32,66 +32,6 @@ const initialState: GameState = {
       item: ItemType.PokeBall,
       amount: 2,
     },
-    {
-      item: ItemType.MaxPotion,
-      amount: 3,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 4,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 5,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 6,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 7,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 8,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 9,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 10,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 11,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 12,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 13,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 14,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 15,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 16,
-    },
-    {
-      item: ItemType.MaxPotion,
-      amount: 17,
-    },
   ],
   name: "Blue",
   pokemon: [

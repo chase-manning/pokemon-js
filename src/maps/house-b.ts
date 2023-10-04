@@ -18,15 +18,7 @@ const houseB: MapType = {
     6: [0, 7],
     7: [0, 7],
   },
-  text: {
-    0: {
-      3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
-    },
-  },
+  text: {},
   maps: {},
   exits: {
     7: [2, 3],

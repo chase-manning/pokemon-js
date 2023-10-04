@@ -4,6 +4,7 @@ import {
   hideItemsMenu,
   selectActionOnPokemon,
   selectItemsMenu,
+  selectLearningMove,
   showText,
 } from "../state/uiSlice";
 import {
@@ -25,6 +26,7 @@ const ItemsMenu = () => {
   const inBattle = !!useSelector(selectPokemonEncounter);
   const itemData = useItemData();
   const usingItem = !!useSelector(selectActionOnPokemon);
+  const learningMove = !!useSelector(selectLearningMove);
 
   const [selected, setSelected] = useState<number | null>(null);
   const [tossing, setTossing] = useState(false);
@@ -34,11 +36,14 @@ const ItemsMenu = () => {
   return (
     <>
       <Menu
-        disabled={selected !== null || usingItem}
+        disabled={selected !== null || usingItem || learningMove}
         show={show}
         close={() => dispatch(hideItemsMenu())}
         menuItems={inventory
-          .filter((item: InventoryItemType) => item.amount > 0)
+          .filter(
+            (item: InventoryItemType) =>
+              item.amount > 0 && !itemData[item.item].badge
+          )
           .map((item: InventoryItemType, index) => {
             return {
               label: item.item,

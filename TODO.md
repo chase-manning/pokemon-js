@@ -1,3 +1,5 @@
+- first index not reset after heal
+
 ===========
 
 - Implement items on ground

@@ -1,4 +1,5 @@
 import { bugCatcher } from "../app/npcs";
+import { ItemType } from "../app/use-item-data";
 import image from "../assets/map/viridian-forrest.png";
 import { Direction } from "../state/state-types";
 import getEncounterData from "./get-location-data";
@@ -241,6 +242,29 @@ const viridianForrest: MapType = {
       pos: {
         x: 30,
         y: 33,
+      },
+    },
+  ],
+  items: [
+    {
+      item: ItemType.PokeBall,
+      pos: {
+        x: 1,
+        y: 31,
+      },
+    },
+    {
+      item: ItemType.PpUp, // TODO: Should be Antidote
+      pos: {
+        x: 25,
+        y: 11,
+      },
+    },
+    {
+      item: ItemType.Potion,
+      pos: {
+        x: 12,
+        y: 29,
       },
     },
   ],

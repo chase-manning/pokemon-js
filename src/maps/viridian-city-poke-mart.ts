@@ -36,7 +36,12 @@ const viridianCityPokeMart: MapType = {
     x: 1,
     y: 5,
   },
-  storeItems: [ItemType.PokeBall],
+  storeItems: [
+    ItemType.PokeBall,
+    // ItemType.Antidote, TODO Add this
+    // ItemType.ParalyzeHeal, TODO Add this
+    // ItemType.BurnHeal, TODO Add this
+  ],
 };
 
 export default viridianCityPokeMart;

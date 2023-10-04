@@ -170,7 +170,12 @@ const viridianForrest: MapType = {
       2: ["LEAVING VIRIDIAN FOREST", "PEWTER CITY AHEAD"],
     },
   },
-  maps: {},
+  maps: {
+    0: {
+      1: MapId.PewterCity,
+      2: MapId.PewterCity,
+    },
+  },
   exits: {
     47: [15, 16, 17, 18],
   },

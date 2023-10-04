@@ -16,6 +16,7 @@ import viridianCityGym from "./viridian-city-gym";
 import viridianCityNpcHouse from "./viridian-city-npc-house";
 import viridianCityPokeMart from "./viridian-city-poke-mart";
 import viridianCityPokemonCenter from "./viridian-city-pokemon-center";
+import pewterCity from "./pewter-city";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -35,6 +36,7 @@ const mapData: Record<string, MapType> = {
   [MapId.Route2]: route2,
   [MapId.Route2Gate]: route2Gate,
   [MapId.ViridianForrest]: viridianForrest,
+  [MapId.PewterCity]: pewterCity,
 };
 
 export default mapData;

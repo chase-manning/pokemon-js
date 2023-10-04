@@ -3,6 +3,11 @@ import { RootState } from "./store";
 import { ItemType } from "../app/use-item-data";
 import { Direction } from "./state-types";
 
+interface TextThenActionType {
+  text: string[];
+  action: () => void;
+}
+
 interface UiState {
   text: string[] | null;
   startMenu: boolean;
@@ -17,6 +22,7 @@ interface UiState {
   actionOnPokemon: ((index: number) => void) | null;
   pokeballThrowing?: ItemType | null;
   spinning: Direction | null;
+  textThenAction: TextThenActionType | null;
 }
 
 const initialState: UiState = {
@@ -33,6 +39,7 @@ const initialState: UiState = {
   pcMenu: false,
   pokeMartMenu: false,
   spinning: null,
+  textThenAction: null,
 };
 
 export const uiSlice = createSlice({
@@ -111,6 +118,15 @@ export const uiSlice = createSlice({
     stopSpinning: (stage) => {
       stage.spinning = null;
     },
+    showTextThenAction: (
+      state,
+      action: PayloadAction<TextThenActionType | null>
+    ) => {
+      state.textThenAction = action.payload;
+    },
+    hideTextThenAction: (state) => {
+      state.textThenAction = null;
+    },
   },
 });
 
@@ -138,6 +154,8 @@ export const {
   hidePokeMartMenu,
   startSpinning,
   stopSpinning,
+  showTextThenAction,
+  hideTextThenAction,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -177,7 +195,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.game.pokemonEncounter !== undefined ||
   state.ui.pokemonCenterMenu ||
   state.ui.pcMenu ||
-  state.ui.pokeMartMenu;
+  state.ui.pokeMartMenu ||
+  state.ui.textThenAction !== null;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;
@@ -189,5 +208,8 @@ export const selectSpinning = (state: RootState) => state.ui.spinning;
 
 export const selectFrozen = (state: RootState) =>
   selectMenuOpen(state) || state.game.jumping || !!state.game.trainerEncounter;
+
+export const selectTextThenAction = (state: RootState) =>
+  state.ui.textThenAction;
 
 export default uiSlice.reducer;

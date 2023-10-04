@@ -78,6 +78,10 @@ export interface TrainerType {
   outtro: string[];
   money: number;
   pos: PosType;
+  postGame?: {
+    message: string[];
+    items?: ItemType[];
+  };
 }
 
 export interface MapItemType {

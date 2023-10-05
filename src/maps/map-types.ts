@@ -31,6 +31,7 @@ export enum MapId {
   PewterCityMuseum2f = "pewter-city-museum-2f",
   Route3 = "route-3",
   Route3PokemonCenter = "route-3-pokemon-center",
+  MtMoon1f = "mt-moon-1f",
 }
 
 export interface PokemonMinimalType {
@@ -103,6 +104,7 @@ export interface MapType {
   text: Record<number, Record<number, string[]>>;
   maps: Record<number, Record<number, MapId>>;
   exits: Record<number, number[]>;
+  cave?: boolean;
   exitReturnMap?: MapId;
   exitReturnPos?: PosType;
   music?: string;

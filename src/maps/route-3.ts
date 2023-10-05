@@ -104,6 +104,7 @@ const route3: MapType = {
   maps: {
     5: {
       61: MapId.Route3PokemonCenter,
+      68: MapId.MtMoon1f,
     },
   },
   exits: {

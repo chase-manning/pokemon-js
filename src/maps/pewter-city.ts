@@ -91,6 +91,9 @@ const pewterCity: MapType = {
     },
   },
   maps: {
+    7: {
+      14: MapId.PewterCityMuseum1f,
+    },
     13: {
       29: MapId.PewterCityNpcB,
     },

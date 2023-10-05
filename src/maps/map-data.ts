@@ -23,6 +23,8 @@ import pewterCityPokemonCenter from "./pewter-city-pokemon-center";
 import peweterCityNpcA from "./pewter-city-npc-a";
 import peweterCityNpcB from "./pewter-city-npc-b";
 import pewterCityGym from "./pewter-city-gym";
+import pewterMuseum1f from "./pewter-museum-1f";
+import pewterMuseum2f from "./pewter-museum-2f";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -49,6 +51,8 @@ const mapData: Record<string, MapType> = {
   [MapId.PewterCityNpcA]: peweterCityNpcA,
   [MapId.PewterCityNpcB]: peweterCityNpcB,
   [MapId.PewterCityGym]: pewterCityGym,
+  [MapId.PewterCityMuseum1f]: pewterMuseum1f,
+  [MapId.PewterCityMuseum2f]: pewterMuseum2f,
 };
 
 export default mapData;

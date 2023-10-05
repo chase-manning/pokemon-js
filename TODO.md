@@ -1,7 +1,9 @@
+- Bug with going back twice
+
 ===========
 
-- Restrict east traversal before beating brock
 - Implement meseum
+- Implmeent images in text
 - Add more maps
 - Add support for app refreshing when there is an update
 - We still have an update menu

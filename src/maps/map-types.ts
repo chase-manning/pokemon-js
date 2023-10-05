@@ -27,6 +27,8 @@ export enum MapId {
   PewterCityNpcA = "pewter-city-npc-a",
   PewterCityNpcB = "pewter-city-npc-b",
   PewterCityGym = "pewter-city-gym",
+  PewterCityMuseum1f = "pewter-city-museum-1f",
+  PewterCityMuseum2f = "pewter-city-museum-2f",
 }
 
 export interface PokemonMinimalType {

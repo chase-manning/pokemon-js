@@ -30,6 +30,7 @@ import TrainerEncounter from "./TrainerEncounter";
 import Item from "./Item";
 import TextThenAction from "./TextThenAction";
 import LearnMove from "../app/LearnMove";
+import QuestHandler from "./QuestHandler";
 
 const Container = styled.div`
   position: absolute;
@@ -131,6 +132,7 @@ const Game = () => {
       <SoundHandler />
       <EncounterHandler />
       <SpinningHandler />
+      <QuestHandler />
     </Container>
   );
 };

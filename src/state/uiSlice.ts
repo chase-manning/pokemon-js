@@ -31,6 +31,7 @@ interface UiState {
   spinning: Direction | null;
   textThenAction: TextThenActionType | null;
   learningMove: LearningMoveType | null;
+  blackScreen: boolean;
 }
 
 const initialState: UiState = {
@@ -49,6 +50,7 @@ const initialState: UiState = {
   spinning: null,
   textThenAction: null,
   learningMove: null,
+  blackScreen: false,
 };
 
 export const uiSlice = createSlice({
@@ -142,6 +144,9 @@ export const uiSlice = createSlice({
     stopLearningMove: (state) => {
       state.learningMove = null;
     },
+    setBlackScreen: (state, action: PayloadAction<boolean>) => {
+      state.blackScreen = action.payload;
+    },
   },
 });
 
@@ -173,6 +178,7 @@ export const {
   hideTextThenAction,
   learnMove,
   stopLearningMove,
+  setBlackScreen,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -231,5 +237,7 @@ export const selectTextThenAction = (state: RootState) =>
   state.ui.textThenAction;
 
 export const selectLearningMove = (state: RootState) => state.ui.learningMove;
+
+export const selectBlackScreen = (state: RootState) => state.ui.blackScreen;
 
 export default uiSlice.reducer;

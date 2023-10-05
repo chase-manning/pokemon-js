@@ -82,6 +82,7 @@ const initialState: GameState = {
   trainerEncounter: undefined,
   defeatedTrainers: [],
   collectedItems: [],
+  completedQuests: [],
 };
 
 export const gameSlice = createSlice({
@@ -330,6 +331,9 @@ export const gameSlice = createSlice({
       state.collectedItems.push(id);
       addInventory({ item: action.payload.item, amount: 1 });
     },
+    completeQuest: (state, action: PayloadAction<string>) => {
+      state.completedQuests.push(action.payload);
+    },
   },
 });
 
@@ -368,6 +372,7 @@ export const {
   defeatTrainer,
   faintToTrainer,
   collectItem,
+  completeQuest,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -414,5 +419,8 @@ export const selectMapId = (state: RootState) => state.game.map;
 
 export const selectCollectedItems = (state: RootState) =>
   state.game.collectedItems;
+
+export const selectCompletedQuests = (state: RootState) =>
+  state.game.completedQuests;
 
 export default gameSlice.reducer;

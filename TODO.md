@@ -1,9 +1,8 @@
-- Bug with going back twice
-
 ===========
 
-- Implement meseum
+- Add fee for entering
 - Implmeent images in text
+- Bug with going back twice
 - Add more maps
 - Add support for app refreshing when there is an update
 - We still have an update menu

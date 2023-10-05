@@ -54,4 +54,5 @@ export interface GameState {
   money: number;
   defeatedTrainers: string[];
   collectedItems: string[];
+  completedQuests: string[];
 }

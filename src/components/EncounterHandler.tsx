@@ -45,7 +45,7 @@ const EncounterHandler = () => {
     if (!map.encounters || DEBUG_MODE) return;
 
     // Handling walk encounters
-    const isWalk = isGrass(map.grass, pos.x, pos.y);
+    const isWalk = map.cave ? true : isGrass(map.grass, pos.x, pos.y);
     if (isWalk) {
       const encounter = shouldEncounter(map.encounters.walk.rate);
       if (encounter) {
@@ -55,7 +55,7 @@ const EncounterHandler = () => {
         }
       }
     }
-  }, [pos, map.grass, map.encounters, dispatch]);
+  }, [pos, map.grass, map.encounters, dispatch, map.cave]);
 
   return null;
 };

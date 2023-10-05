@@ -1,3 +1,7 @@
+- Implement escape rope
+- Implement rare candy
+- Implement moon stone
+
 ===========
 
 - Add more maps

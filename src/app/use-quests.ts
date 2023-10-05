@@ -40,7 +40,7 @@ const useQuests = () => {
         18: [35],
         19: [35],
       },
-      active: () => badges.length === 1,
+      active: () => badges.length === 0,
       text: [
         "You're a Trainer, right?",
         "Brock's looking for new challengers.",

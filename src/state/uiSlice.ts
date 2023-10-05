@@ -15,6 +15,13 @@ interface LearningMoveType {
   item: ItemType;
 }
 
+interface ConfimationMenuType {
+  preMessage: string;
+  postMessage: string;
+  confirm: () => void;
+  cancel?: () => void;
+}
+
 interface UiState {
   text: string[] | null;
   startMenu: boolean;
@@ -32,6 +39,7 @@ interface UiState {
   textThenAction: TextThenActionType | null;
   learningMove: LearningMoveType | null;
   blackScreen: boolean;
+  confirmationMenu: ConfimationMenuType | null;
 }
 
 const initialState: UiState = {
@@ -51,6 +59,7 @@ const initialState: UiState = {
   textThenAction: null,
   learningMove: null,
   blackScreen: false,
+  confirmationMenu: null,
 };
 
 export const uiSlice = createSlice({
@@ -147,6 +156,15 @@ export const uiSlice = createSlice({
     setBlackScreen: (state, action: PayloadAction<boolean>) => {
       state.blackScreen = action.payload;
     },
+    showConfirmationMenu: (
+      state,
+      action: PayloadAction<ConfimationMenuType>
+    ) => {
+      state.confirmationMenu = action.payload;
+    },
+    hideConfirmationMenu: (state) => {
+      state.confirmationMenu = null;
+    },
   },
 });
 
@@ -179,6 +197,8 @@ export const {
   learnMove,
   stopLearningMove,
   setBlackScreen,
+  showConfirmationMenu,
+  hideConfirmationMenu,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -220,7 +240,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.pcMenu ||
   state.ui.pokeMartMenu ||
   state.ui.textThenAction !== null ||
-  state.ui.learningMove !== null;
+  state.ui.learningMove !== null ||
+  state.ui.confirmationMenu !== null;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;
@@ -239,5 +260,8 @@ export const selectTextThenAction = (state: RootState) =>
 export const selectLearningMove = (state: RootState) => state.ui.learningMove;
 
 export const selectBlackScreen = (state: RootState) => state.ui.blackScreen;
+
+export const selectConfirmationMenu = (state: RootState) =>
+  state.ui.confirmationMenu;
 
 export default uiSlice.reducer;

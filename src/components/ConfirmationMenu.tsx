@@ -5,6 +5,8 @@ import Menu from "./Menu";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import useIsMobile from "../app/use-is-mobile";
+import { useDispatch, useSelector } from "react-redux";
+import { hideConfirmationMenu, selectConfirmationMenu } from "../state/uiSlice";
 
 const Container = styled.div`
   position: absolute;
@@ -19,23 +21,13 @@ const Container = styled.div`
   }
 `;
 
-interface Props {
-  show: boolean;
-  preMessage: string;
-  postMessage: string;
-  confirm: () => void;
-  cancel: () => void;
-}
-
-const ConfirmationMenu = ({
-  show,
-  preMessage,
-  postMessage,
-  confirm,
-  cancel,
-}: Props) => {
+const ConfirmationMenu = () => {
+  const dispatch = useDispatch();
   const [confirmed, setConfirmed] = useState(false);
   const isMobile = useIsMobile();
+  const data = useSelector(selectConfirmationMenu);
+
+  const show = !!data;
 
   useEffect(() => {
     if (!show) setConfirmed(false);
@@ -43,7 +35,7 @@ const ConfirmationMenu = ({
 
   useEvent(Event.A, () => {
     if (!confirmed) return;
-    cancel();
+    dispatch(hideConfirmationMenu());
   });
 
   if (!show) return null;
@@ -52,7 +44,7 @@ const ConfirmationMenu = ({
     <>
       <Container>
         <Frame wide tall>
-          {confirmed ? postMessage : preMessage}
+          {confirmed ? data.postMessage : data.preMessage}
         </Frame>
       </Container>
       <Menu
@@ -67,14 +59,14 @@ const ConfirmationMenu = ({
             label: "Yes",
             action: () => {
               setConfirmed(true);
-              confirm();
+              data.confirm();
             },
           },
           {
             label: "No",
             action: () => {
-              setConfirmed(true);
-              cancel();
+              if (data.cancel) data.cancel();
+              dispatch(hideConfirmationMenu());
             },
           },
         ]}

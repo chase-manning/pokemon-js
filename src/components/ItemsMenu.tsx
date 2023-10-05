@@ -3,8 +3,10 @@ import Menu from "./Menu";
 import {
   hideItemsMenu,
   selectActionOnPokemon,
+  selectConfirmationMenu,
   selectItemsMenu,
   selectLearningMove,
+  showConfirmationMenu,
   showText,
 } from "../state/uiSlice";
 import {
@@ -14,7 +16,6 @@ import {
   selectPokemonEncounter,
 } from "../state/gameSlice";
 import { useState } from "react";
-import ConfirmationMenu from "./ConfirmationMenu";
 import useItemData from "../app/use-item-data";
 import { InventoryItemType } from "../state/state-types";
 
@@ -27,9 +28,9 @@ const ItemsMenu = () => {
   const itemData = useItemData();
   const usingItem = !!useSelector(selectActionOnPokemon);
   const learningMove = !!useSelector(selectLearningMove);
+  const tossing = !!useSelector(selectConfirmationMenu);
 
   const [selected, setSelected] = useState<number | null>(null);
-  const [tossing, setTossing] = useState(false);
 
   const item = selected !== null ? itemData[inventory[selected].item] : null;
 
@@ -84,18 +85,18 @@ const ItemsMenu = () => {
             },
             {
               label: "Toss",
-              action: () => setTossing(true),
+              action: () => {
+                dispatch(
+                  showConfirmationMenu({
+                    preMessage: `Is it OK to toss ${inventory[selected].item}`,
+                    postMessage: `${name} tossed ${inventory[selected].item}`,
+                    confirm: () =>
+                      dispatch(consumeItem(inventory[selected].item)),
+                  })
+                );
+              },
             },
           ]}
-        />
-      )}
-      {selected !== null && (
-        <ConfirmationMenu
-          show={tossing}
-          preMessage={`Is it OK to toss ${inventory[selected].item}`}
-          postMessage={`${name} tossed ${inventory[selected].item}`}
-          confirm={() => dispatch(consumeItem(inventory[selected].item))}
-          cancel={() => setTossing(false)}
         />
       )}
     </>

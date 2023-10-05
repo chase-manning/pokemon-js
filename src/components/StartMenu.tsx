@@ -2,8 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import Menu from "./Menu";
 import {
   hideStartMenu,
+  selectConfirmationMenu,
   selectStartMenu,
   selectStartMenuSubOpen,
+  showConfirmationMenu,
   showItemsMenu,
   showPlayerMenu,
   showStartMenu,
@@ -11,7 +13,6 @@ import {
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
-import ConfirmationMenu from "./ConfirmationMenu";
 import { save, selectName, updateSpecificPokemon } from "../state/gameSlice";
 import PokemonList from "./PokemonList";
 import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
@@ -23,8 +24,8 @@ const StartMenu = () => {
   const show = useSelector(selectStartMenu);
   const disabled = useSelector(selectStartMenuSubOpen);
   const name = useSelector(selectName);
+  const saving = !!useSelector(selectConfirmationMenu);
 
-  const [saving, setSaving] = useState(false);
   const [pokemon, setPokemon] = useState(false);
 
   useEvent(Event.Start, () => {
@@ -57,7 +58,17 @@ const StartMenu = () => {
           },
           {
             label: "Save",
-            action: () => setSaving(true),
+            action: () => {
+              dispatch(
+                showConfirmationMenu({
+                  preMessage: "Would you like to SAVE the game?",
+                  postMessage: `${name} saved the game!`,
+                  confirm: () => {
+                    dispatch(save());
+                  },
+                })
+              );
+            },
           },
           {
             label: "Update",
@@ -99,15 +110,6 @@ const StartMenu = () => {
         ]}
       />
       {pokemon && <PokemonList close={() => setPokemon(false)} />}
-      <ConfirmationMenu
-        show={saving}
-        preMessage="Would you like to SAVE the game?"
-        postMessage={`${name} saved the game!`}
-        confirm={() => {
-          dispatch(save());
-        }}
-        cancel={() => setSaving(false)}
-      />
     </>
   );
 };

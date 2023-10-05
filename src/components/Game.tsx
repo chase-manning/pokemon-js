@@ -31,6 +31,7 @@ import Item from "./Item";
 import TextThenAction from "./TextThenAction";
 import LearnMove from "../app/LearnMove";
 import QuestHandler from "./QuestHandler";
+import ConfirmationMenu from "./ConfirmationMenu";
 
 const Container = styled.div`
   position: absolute;
@@ -121,6 +122,7 @@ const Game = () => {
       <LearnMove />
       <PlayerMenu />
       <ActionOnPokemon />
+      <ConfirmationMenu />
       <LoadScreen />
       <TitleScreen />
       <GameboyMenu />

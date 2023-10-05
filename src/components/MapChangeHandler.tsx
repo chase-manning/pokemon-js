@@ -34,6 +34,7 @@ const MapChangeHandler = () => {
     const exit = isExit(map.exits, pos.x, pos.y);
 
     if (!nextMap && !exit) return;
+    if (darkScreen) return;
 
     const updateMap = (map_?: MapId) => {
       dispatch(setBlackScreen(true));
@@ -55,7 +56,7 @@ const MapChangeHandler = () => {
     } else if (exit) {
       updateMap();
     }
-  }, [pos, map.maps, dispatch, map.exits]);
+  }, [pos, map.maps, dispatch, map.exits, darkScreen]);
 
   return <Overlay $show={darkScreen} />;
 };

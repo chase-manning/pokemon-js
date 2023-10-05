@@ -208,6 +208,7 @@ export const gameSlice = createSlice({
       state.trainerEncounter = savedGameState.trainerEncounter;
       state.defeatedTrainers = savedGameState.defeatedTrainers;
       state.collectedItems = savedGameState.collectedItems;
+      state.completedQuests = savedGameState.completedQuests;
     },
     swapPokemonPositions: (state, action: PayloadAction<number[]>) => {
       const [index1, index2] = action.payload;

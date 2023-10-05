@@ -80,6 +80,14 @@ const StyledText = styled.div<TextProps>`
   }
 `;
 
+const Image = styled.img`
+  height: 60%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 const Text = () => {
   const dispatch = useDispatch();
   const [liveIndex, setLiveIndex] = useState(0);
@@ -142,9 +150,15 @@ const Text = () => {
   if (!text) return null;
 
   return (
-    <StyledText className="framed no-hd" $done={liveIndex > text.length}>
-      <h1>{text[textIndex].substring(0, liveIndex)}</h1>
-    </StyledText>
+    <>
+      {text[textIndex].length > 300 ? (
+        <Image src={text[textIndex]} />
+      ) : (
+        <StyledText className="framed no-hd" $done={liveIndex > text.length}>
+          <h1>{text[textIndex].substring(0, liveIndex)}</h1>
+        </StyledText>
+      )}
+    </>
   );
 };
 

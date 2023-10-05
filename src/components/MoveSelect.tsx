@@ -65,7 +65,6 @@ const MoveSelect = ({ show, select, close }: Props) => {
         padding={isMobile ? "100px" : "40vw"}
         show={show}
         menuItems={activePokemon.moves.map((m) => {
-          console.log(m.id);
           const item: MenuItemType = {
             label: getMoveMetadata(m.id).name,
             action: () => select(m.id),

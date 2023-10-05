@@ -97,9 +97,19 @@ const pewterCity: MapType = {
     13: {
       29: MapId.PewterCityNpcB,
     },
+    16: {
+      39: MapId.Route3,
+    },
     17: {
       16: MapId.PewterCityGym,
       23: MapId.PewterCityPokeMart,
+      39: MapId.Route3,
+    },
+    18: {
+      39: MapId.Route3,
+    },
+    19: {
+      39: MapId.Route3,
     },
     25: {
       13: MapId.PewterCityPokemonCenter,

@@ -26,6 +26,7 @@ import pewterCityGym from "./pewter-city-gym";
 import pewterMuseum1f from "./pewter-museum-1f";
 import pewterMuseum2f from "./pewter-museum-2f";
 import route3 from "./route-3";
+import route3PokemonCenter from "./route-3-pokemon-center";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -55,6 +56,7 @@ const mapData: Record<string, MapType> = {
   [MapId.PewterCityMuseum1f]: pewterMuseum1f,
   [MapId.PewterCityMuseum2f]: pewterMuseum2f,
   [MapId.Route3]: route3,
+  [MapId.Route3PokemonCenter]: route3PokemonCenter,
 };
 
 export default mapData;

@@ -101,7 +101,11 @@ const route3: MapType = {
       59: ["ROUTE 3", "MT. MOON AHEAD"],
     },
   },
-  maps: {},
+  maps: {
+    5: {
+      61: MapId.Route3PokemonCenter,
+    },
+  },
   exits: {
     26: [0],
     27: [0],

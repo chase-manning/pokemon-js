@@ -1,6 +1,9 @@
 import image from "../assets/map/pewter-museum-1f.png";
 import { MapId, MapType } from "./map-types";
 
+import arodactyl from "../assets/map/pewter-museum-photo-1.png";
+import kabutops from "../assets/map/pewter-museum-photo-2.png";
+
 const pewterMuseum1f: MapType = {
   name: "Pewter Museum 1F",
   image,
@@ -24,13 +27,13 @@ const pewterMuseum1f: MapType = {
   grass: {},
   text: {
     3: {
-      2: ["AERODACTYL FOSSIL", "A primitive and rare POKEMON."],
+      2: [arodactyl, "AERODACTYL FOSSIL", "A primitive and rare POKEMON."],
     },
     4: {
       11: ["Take plenty of time to look!"],
     },
     6: {
-      2: ["KABUTOPS FOSSIL", "A primitive and rare POKEMON."],
+      2: [kabutops, "KABUTOPS FOSSIL", "A primitive and rare POKEMON."],
     },
   },
   maps: {

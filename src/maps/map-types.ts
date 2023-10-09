@@ -32,6 +32,7 @@ export enum MapId {
   Route3 = "route-3",
   Route3PokemonCenter = "route-3-pokemon-center",
   MtMoon1f = "mt-moon-1f",
+  MtMoon2f = "mt-moon-2f",
 }
 
 export interface PokemonMinimalType {
@@ -94,6 +95,11 @@ export interface MapItemType {
   item: ItemType;
 }
 
+export interface MapWithPos {
+  map: MapId;
+  pos: PosType;
+}
+
 export interface MapType {
   name: string;
   image: string;
@@ -103,6 +109,7 @@ export interface MapType {
   walls: Record<number, number[]>;
   text: Record<number, Record<number, string[]>>;
   maps: Record<number, Record<number, MapId>>;
+  teleports?: Record<number, Record<number, MapWithPos>>;
   exits: Record<number, number[]>;
   cave?: boolean;
   exitReturnMap?: MapId;

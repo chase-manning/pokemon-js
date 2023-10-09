@@ -67,7 +67,11 @@ const mtMoon1f: MapType = {
       15: ["Beware! ZUBAT is a blood sucker!"],
     },
   },
-  maps: {},
+  maps: {
+    15: {
+      25: MapId.MtMoon2f,
+    },
+  },
   exits: {
     35: [14, 15],
   },

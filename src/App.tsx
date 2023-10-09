@@ -3,6 +3,8 @@ import Gameboy from "./components/Gameboy";
 import Game from "./components/Game";
 
 import "./App.css";
+import Paint from "./components/Paint";
+import { PAINT_MODE } from "./app/constants";
 
 const StyledApp = styled.div`
   background: black;
@@ -24,6 +26,7 @@ const App = () => {
     <StyledApp>
       <Gameboy>
         <Game />
+        {PAINT_MODE && <Paint />}
       </Gameboy>
     </StyledApp>
   );

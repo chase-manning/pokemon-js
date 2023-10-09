@@ -1,6 +1,7 @@
 - Implement escape rope
 - Implement rare candy
 - Implement moon stone
+- Map 2f is only half done, finish that
 
 ===========
 

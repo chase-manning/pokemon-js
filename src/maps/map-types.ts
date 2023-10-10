@@ -33,6 +33,7 @@ export enum MapId {
   Route3PokemonCenter = "route-3-pokemon-center",
   MtMoon1f = "mt-moon-1f",
   MtMoon2f = "mt-moon-2f",
+  MtMoon3f = "mt-moon-3f",
 }
 
 export interface PokemonMinimalType {

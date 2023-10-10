@@ -29,6 +29,7 @@ import route3 from "./route-3";
 import route3PokemonCenter from "./route-3-pokemon-center";
 import mtMoon1f from "./mt-moon-1f";
 import mtMoon2f from "./mt-moon-2f";
+import mtMoon3f from "./mt-moon-3f";
 
 const mapData: Record<string, MapType> = {
   [MapId.PalletTown]: palletTown,
@@ -61,6 +62,7 @@ const mapData: Record<string, MapType> = {
   [MapId.Route3PokemonCenter]: route3PokemonCenter,
   [MapId.MtMoon1f]: mtMoon1f,
   [MapId.MtMoon2f]: mtMoon2f,
+  [MapId.MtMoon3f]: mtMoon3f,
 };
 
 export default mapData;

@@ -1,9 +1,14 @@
+import { superNerd, teamRocketGrunt } from "../app/npcs";
 import image from "../assets/map/mt-moon-2f.png";
 import music from "../assets/music/maps/mt-moon.mp3";
+import { Direction } from "../state/state-types";
+import getEncounterData from "./get-location-data";
 import { MapId, MapType } from "./map-types";
 
 // TODO Add propper exit
-// TODO Add encoutners
+// TODO Add propper start
+// TODO Add items
+// TODO Add fossils (You want the HELIX FOSSIL? (yes no) on the right... You want the DOME FOSSIL? (yes no) on the left...
 
 const mtMoon2f: MapType = {
   name: "Mt Moon 2F",
@@ -83,11 +88,125 @@ const mtMoon2f: MapType = {
   text: {},
   maps: {},
   exits: {},
+  encounters: getEncounterData("mt-moon-2f"),
   exitReturnPos: {
     x: 1,
     y: 1,
   },
   exitReturnMap: MapId.MtMoon1f,
+  trainers: [
+    {
+      npc: teamRocketGrunt,
+      pokemon: [
+        {
+          id: 27, // Sandshrew
+          level: 11,
+        },
+        {
+          id: 19, // Rattata
+          level: 11,
+        },
+        {
+          id: 41, // Zubat
+          level: 11,
+        },
+      ],
+      facing: Direction.Down,
+      intro: ["We, Team Rocket, are POKEMON gangsters!"],
+      outtro: ["Darn it all! MY associates won't stand for this!"],
+      money: 330,
+      pos: {
+        x: 15,
+        y: 22,
+      },
+    },
+    {
+      npc: teamRocketGrunt,
+      pokemon: [
+        {
+          id: 41, // Zubat
+          level: 12,
+        },
+        {
+          id: 23, // Ekans
+          level: 12,
+        },
+      ],
+      facing: Direction.Up,
+      intro: ["We're pulling a big job here! Get lost, kid!"],
+      outtro: ["If you find a fossil, give it to me and scram!"],
+      money: 360,
+      pos: {
+        x: 29,
+        y: 11,
+      },
+    },
+    {
+      npc: teamRocketGrunt,
+      pokemon: [
+        {
+          id: 20, // Raticate
+          level: 16,
+        },
+      ],
+      facing: Direction.Left,
+      intro: ["Little kid should leave grown-ups alone!"],
+      outtro: ["Pokemon lived here long before people came."],
+      money: 390,
+      pos: {
+        x: 29,
+        y: 17,
+      },
+    },
+    {
+      npc: teamRocketGrunt,
+      pokemon: [
+        {
+          id: 19, // Rattata
+          level: 13,
+        },
+        {
+          id: 41, // Zubat
+          level: 13,
+        },
+      ],
+      facing: Direction.Down,
+      intro: [
+        "TEAM ROCKET will find the fossils, revive and sell them for cash!",
+      ],
+      outtro: ["You made me mad! TEAM ROCKET will blacklist you!"],
+      money: 390,
+      pos: {
+        x: 11,
+        y: 16,
+      },
+    },
+    {
+      npc: superNerd,
+      pokemon: [
+        {
+          id: 88, // Grimer
+          level: 12,
+        },
+        {
+          id: 100, // Voltorb
+          level: 12,
+        },
+        {
+          id: 109, // Koffing
+          level: 12,
+        },
+      ],
+      facing: Direction.Right,
+      intro: ["Hey stop!", "I found these fossils! They're both mine!"],
+      outtro: ["We'll each take one!", "No being greedy!"],
+      money: 300,
+      pos: {
+        x: 12,
+        y: 8,
+      },
+    },
+  ],
 };
 
 export default mtMoon2f;

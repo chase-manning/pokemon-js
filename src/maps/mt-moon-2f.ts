@@ -88,7 +88,7 @@ const mtMoon2f: MapType = {
   text: {},
   maps: {},
   exits: {},
-  encounters: getEncounterData("mt-moon-2f"),
+  encounters: getEncounterData("mt-moon-b2f"),
   exitReturnPos: {
     x: 1,
     y: 1,

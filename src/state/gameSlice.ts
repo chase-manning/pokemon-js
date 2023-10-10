@@ -189,10 +189,10 @@ export const gameSlice = createSlice({
       state.name = action.payload;
     },
     save: (state) => {
-      localStorage.setItem("game", JSON.stringify(state));
+      localStorage.setItem(state.name, JSON.stringify(state));
     },
     load: (state) => {
-      const savedGame = localStorage.getItem("game");
+      const savedGame = localStorage.getItem(state.name);
       if (!savedGame) return;
       const savedGameState = JSON.parse(savedGame) as GameState;
       state.pos = savedGameState.pos;

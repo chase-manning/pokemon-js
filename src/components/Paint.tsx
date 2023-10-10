@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import map from "../assets/map/mt-moon-2f.png";
+import map from "../assets/map/mt-moon-3f.png";
 import { useState } from "react";
 import { PosType } from "../state/state-types";
 
@@ -51,15 +51,18 @@ const Item = styled.button<ItemProps>`
   color: transparent;
   border: solid 1px blue;
 
-  background: ${(props) => (props.active ? "rgba(0,0,0,0.5)" : "transparent")};
+  /* background: ${(props) =>
+    props.active ? "rgba(0,0,0,0.5)" : "transparent"}; */
+  background: ${(props) =>
+    props.active ? "rgba(255,255,255,0.5)" : "transparent"};
 
   padding: 0 !important;
   margin: 0 !important;
 `;
 
 const Paint = () => {
-  const HEIGHT = 36;
-  const WIDTH = 40;
+  const HEIGHT = 28;
+  const WIDTH = 28;
   const [points, setPoints] = useState<PosType[]>([]);
   const [mouseDown, setMouseDown] = useState(false);
 

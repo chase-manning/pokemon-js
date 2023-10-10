@@ -33,7 +33,7 @@ const initialState: GameState = {
       amount: 2,
     },
   ],
-  name: "Blue",
+  name: "Lien",
   pokemon: [
     {
       id: 1,

@@ -1,13 +1,9 @@
-- Implement escape rope
-- Implement rare candy
-- Implement moon stone
-- Map 2f is only half done, finish that
-- Add support for invisible items
-- Stop manual encounters after defeated trainer
-- Outros aren't playing
-
 ===========
 
+- Add support for invisible items
+- Finish mt moon map
+- Outros aren't playing
+- Stop manual encounters after defeated trainer
 - Add more maps
 - Add support for app refreshing when there is an update
 - We still have an update menu
@@ -17,6 +13,7 @@
 
 ===========
 
+- Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them
 - battle sounds
 - Add transition from viridian forrest gate north to route 2 north side
@@ -27,9 +24,10 @@
 - Add Pokemon Stats to PokemonList
 - Battle music starts slowly, trim start (maybe trim all songs)
 - Make sure you can't catch trainers pokemon "The trainer blocked the BALL! Don't be a thief!"
-- Add trainer encounters to maps
 - Simplify the `Character` useEffect
 - Change the movement handler to not have a hard coded movement speed there
+- Implement rare candy
+- Implement moon stone
 - Make music a seamless infinite loop
 - Pallet town colors don't mate Route 1
 - Trainers should walk towards player before encounter

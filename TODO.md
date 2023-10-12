@@ -1,14 +1,11 @@
 ===========
 
-- Save not working
-- Withdraw bug
-- CSS breakpoints not working on iPhone
-
 ===========
 
+- Go through changes and bring over ones we need on main
+- Save not working
 - Add support for app refreshing when there is an update
 - We still have an update menu
-- Go through chnages and bring over ones we need on main
 
 ===========
 

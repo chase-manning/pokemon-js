@@ -26,7 +26,7 @@ const pewterMuseum2f: MapType = {
       11: ["SPACE SHUTTLE COLUMBIA"],
     },
     5: {
-      2: ["Meteorite that fell on Mt. Moon", "(MOON STONE?)"],
+      2: ["Some boring rocks", "(should have gone to see jellyfish instead)"],
     },
   },
   maps: {},

@@ -13,11 +13,11 @@ import {
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
-import { save, selectName, updateSpecificPokemon } from "../state/gameSlice";
+import { addInventory, save, selectName } from "../state/gameSlice";
 import PokemonList from "./PokemonList";
 import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 import { DEBUG_MODE } from "../app/constants";
-import { getPokemonStats } from "../app/use-pokemon-stats";
+import { ItemType } from "../app/use-item-data";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
@@ -85,19 +85,7 @@ const StartMenu = () => {
                   label: "Magic",
                   action: () => {
                     dispatch(
-                      updateSpecificPokemon({
-                        index: 0,
-                        pokemon: {
-                          id: 6,
-                          level: 100,
-                          xp: 0,
-                          hp: getPokemonStats(6, 100).hp,
-                          moves: [
-                            { id: "scratch", pp: 35 },
-                            { id: "growl", pp: 40 },
-                          ],
-                        },
-                      })
+                      addInventory({ item: ItemType.BoulderBadge, amount: 1 })
                     );
                   },
                 },

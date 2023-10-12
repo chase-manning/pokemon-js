@@ -119,7 +119,7 @@ const route2: MapType = {
       ],
     },
     65: {
-      5: ["Route 2 VIRIDIAN CITY to PEWTER CITY"],
+      5: ["Bethnal Green Road to Weavers Fields"],
     },
   },
   maps: {

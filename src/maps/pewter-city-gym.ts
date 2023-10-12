@@ -90,7 +90,6 @@ const pewterCityGym: MapType = {
         "As proof of your victory, here's the BOULDER BADGE!",
         "That's an official POKEMON LEAGUE badge!",
         "Its bearer's POKEMON become more powerful!",
-        "The technique FLASH can now be used any time!",
       ],
       facing: Direction.Down,
       pos: {

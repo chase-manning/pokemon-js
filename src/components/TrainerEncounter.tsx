@@ -21,6 +21,7 @@ import Frame from "./Frame";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import getPokemonEncounter from "../app/pokemon-encounter-helper";
+import { DEBUG_MODE } from "../app/constants";
 
 const StyledTrainerEncounter = styled.div`
   position: absolute;
@@ -62,6 +63,7 @@ const TrainerEncounter = () => {
     );
 
     if (!encounter_) return;
+    if (DEBUG_MODE) return;
     dispatch(encounterTrainer(encounter_));
     setTimeout(() => {
       setIntroIndex(0);

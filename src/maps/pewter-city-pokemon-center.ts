@@ -22,12 +22,7 @@ const pewterCityPokemonCenter: MapType = {
   },
   text: {
     4: {
-      0: [
-        "Yawn!",
-        "When Jigglypuff sings, POKEMON get drowsy.",
-        "...Me too...",
-        "Snore...",
-      ],
+      0: ["I'm such a hipster!", "I liked POKEMON before it was cool!"],
     },
   },
   maps: {},

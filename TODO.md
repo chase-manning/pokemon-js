@@ -2,7 +2,7 @@
 
 ===========
 
-- Personalise all text
+- Rename items
 - Outros aren't playing
 - Wrong names of items
 - Stop manual encounters after defeated trainer

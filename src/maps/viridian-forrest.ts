@@ -137,37 +137,36 @@ const viridianForrest: MapType = {
   text: {
     45: {
       18: [
-        "TRAINER TIPS",
-        "Weaken Pokemon before attempting capture.",
-        "When healthy, they may escape.",
+        "PUBLIC NOTICE",
+        "Squirrels can be found in WEAVES FIELDS",
+        "They are cute and like nuts",
       ],
     },
     32: {
-      16: ["For POISON use ANTIDOTE!", "Get it at a POKEMON MARTs!"],
+      16: [
+        "Careful not to talk to strangers",
+        "They may be dangerous",
+        "But... They sometimes give you money...",
+      ],
     },
     40: {
       24: [
-        "TRAINER TIPS",
-        "If you want to avoid battles,",
-        "stay away from grassy areas!",
+        "Pokemon can be found in grassy areas",
+        "There are rumours that Pikachu can be found here",
       ],
     },
     17: {
       26: [
-        "TRAINER TIPS",
-        "Contact PROF. OAK via PC to get",
-        "your POKEDEX evaluated!",
+        "Some trainers try to complete their Pokedex",
+        "That could be a fun goal!",
+        "If Chase had bothered to implement it in the game...",
       ],
     },
     42: {
-      4: [
-        "TRAINER TIPS",
-        "No stealing of POKEMON from other trainers!",
-        "Catch only wild POKEMON!",
-      ],
+      4: ["What did one Geodude say to the other Geodude?", "Let’s rock!"],
     },
     1: {
-      2: ["LEAVING VIRIDIAN FOREST", "PEWTER CITY AHEAD"],
+      2: ["LEAVING WEAVERS FIELDS", "SHOREDITCH AHEAD"],
     },
   },
   maps: {
@@ -195,8 +194,8 @@ const viridianForrest: MapType = {
           level: 9,
         },
       ],
-      intro: ["Lorem ipsum dolor sit amet, consectetur"],
-      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      intro: ["Look at my bugs!! Aren't they the best?"],
+      outtro: ["Wahhhhh, my bugs!"],
       money: 60,
       pos: {
         x: 2,
@@ -220,8 +219,8 @@ const viridianForrest: MapType = {
           level: 7,
         },
       ],
-      intro: ["Lorem ipsum dolor sit amet, consectetur"],
-      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      intro: ["Hey!!", "You're the brat that beat me in the pub quiz!"],
+      outtro: ["I'll beat you in the quiz next time!"],
       money: 70,
       pos: {
         x: 29,
@@ -241,8 +240,8 @@ const viridianForrest: MapType = {
           level: 6,
         },
       ],
-      intro: ["Lorem ipsum dolor sit amet, consectetur"],
-      outtro: ["Lorem ipsum dolor sit amet, consectetur"],
+      intro: ["Bethnal Green is nice", "But I wish I lived in Stratford"],
+      outtro: ["Please! Take me back to Stratford with you!"],
       money: 60,
       pos: {
         x: 30,

@@ -22,7 +22,11 @@ const route3PokemonCenter: MapType = {
   },
   text: {
     4: {
-      0: ["If you have too many POKEMON,", "you should store them via PC."],
+      0: [
+        "I'm visiting Peckham for the first time!",
+        "I'm so excited to see the sights!",
+        "I heard it's where the king lives!",
+      ],
     },
   },
   maps: {},

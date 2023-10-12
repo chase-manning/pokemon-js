@@ -30,7 +30,7 @@ const pewterMuseum1f: MapType = {
       2: [arodactyl, "AERODACTYL FOSSIL", "A primitive and rare POKEMON."],
     },
     4: {
-      11: ["Take plenty of time to look!"],
+      11: ["Take a look at our stolen artifacts!"],
     },
     6: {
       2: [kabutops, "KABUTOPS FOSSIL", "A primitive and rare POKEMON."],

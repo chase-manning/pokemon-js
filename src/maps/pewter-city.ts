@@ -65,7 +65,7 @@ const pewterCity: MapType = {
   grass: {},
   text: {
     9: {
-      15: ["PEWTER MUSEUM OF SCIENCE"],
+      15: ["BRITISH MUSEUM", "(They moved it to Shoreditch...)"],
     },
     17: {
       11: [
@@ -75,20 +75,16 @@ const pewterCity: MapType = {
     },
     19: {
       33: [
-        "NOTICE!",
-        "Thieves have been stealing POKEMON fossils at MT. MOON!",
-        "Please call PEWTER POLICE with any info!",
+        "There are more thrift stores in Shoreditch than people!",
+        "More graffiti than squirrels!",
+        "And more coffee shops than pigeons!",
       ],
     },
     23: {
-      25: ["PEWTER CITY", "A Stone Gray City"],
+      25: ["Spitalfields City Farm", "The animals are on holiday..."],
     },
     29: {
-      19: [
-        "TRAINER TIPS",
-        "Any Pokemon that takes part in battle,",
-        "however short, earns Exp!",
-      ],
+      19: ["WELCOME TO SHOREDITCH"],
     },
   },
   maps: {

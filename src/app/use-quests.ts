@@ -87,12 +87,12 @@ const useQuests = () => {
         4: [9, 10],
       },
       active: () => !isComplete("pewter-museum-1f-paid"),
-      text: ["It's $50 for a child's ticket."],
+      text: ["It's $50 for a ticket."],
       action: () => {
         dispatch(
           showConfirmationMenu({
             preMessage: "Would you like to come in?",
-            postMessage: "Right $50! Thank you!",
+            postMessage: "ha ha ripped you off!",
             confirm: () => {
               dispatch(completeQuest("pewter-museum-1f-paid"));
               dispatch(takeMoney(50));

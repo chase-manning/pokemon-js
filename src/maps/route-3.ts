@@ -18,7 +18,7 @@ const route3: MapType = {
   walls: {
     3: [53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66],
     4: [53, 60, 61, 63, 66, 68],
-    5: [53, 60, 62, 63, 66, 67, 69, 70],
+    5: [53, 60, 62, 63, 66, 67, 68, 69, 70],
     6: [53, 70],
     7: [53, 67, 70],
     8: [53, 70],
@@ -93,18 +93,21 @@ const route3: MapType = {
     ],
   },
   text: {
+    5: {
+      68: ["Peckham closed", "(aka Chase hasn't implemented it yet...)"],
+    },
     7: {
-      67: ["MT. MOON", "Tunnel Entrance"],
+      67: ["PECKHAM ENTRANCE"],
     },
 
     27: {
-      59: ["ROUTE 3", "MT. MOON AHEAD"],
+      59: ["LONDON OVERGROUND", "PECKHAM AHEAD"],
     },
   },
   maps: {
     5: {
       61: MapId.Route3PokemonCenter,
-      68: MapId.MtMoon1f,
+      // 68: MapId.MtMoon1f,
     },
   },
   exits: {
@@ -158,11 +161,8 @@ const route3: MapType = {
         },
       ],
       facing: Direction.Right,
-      intro: ["Hey! I met you in VIRIDIAN FORREST!"],
-      outtro: [
-        "There are other kinds of POKEMON",
-        "than those found in the forests!",
-      ],
+      intro: ["Hey! Give me your wallet!", "Just kidding ha ha"],
+      outtro: ["But seriously... I do need your wallet"],
       money: 100,
       pos: {
         x: 10,
@@ -182,11 +182,8 @@ const route3: MapType = {
         },
       ],
       facing: Direction.Down,
-      intro: ["Hi! I like shorts! They're comfy and easy to wear!"],
-      outtro: [
-        "Are you storing your POKEMON on PC?",
-        "Each box can hold up to 20 POKEMON!",
-      ],
+      intro: ["Any spare change?", "Spare change please ma'am"],
+      outtro: ["I need to get the bus home"],
       money: 165,
       pos: {
         x: 14,
@@ -214,11 +211,8 @@ const route3: MapType = {
         },
       ],
       facing: Direction.Down,
-      intro: ["Are you a trainer? Let's fight!"],
-      outtro: [
-        "If a POKEMON BOX on the PC gets full,",
-        "just switch to another BOX!",
-      ],
+      intro: ["I love the overground, it's so convenient!"],
+      outtro: ["I wonder if they'll let me sleep on the overground?"],
       money: 90,
       pos: {
         x: 19,
@@ -234,8 +228,11 @@ const route3: MapType = {
         },
       ],
       facing: Direction.Left,
-      intro: ["Hey! You're not wearing shorts!"],
-      outtro: ["I always wear shorts, even in winter!"],
+      intro: [
+        "Hey! Can I borrow your newspaper?",
+        "I want to do the crossword",
+      ],
+      outtro: ["I probably couldn't do the crossword anyway"],
       money: 210,
       pos: {
         x: 22,
@@ -255,8 +252,8 @@ const route3: MapType = {
         },
       ],
       facing: Direction.Left,
-      intro: ["That look you gave me,", "it's so intriguing!"],
-      outtro: ["Avoid fights by not letting people see you!"],
+      intro: ["I'm going to the library", "I need to return my books"],
+      outtro: ["Oh no! I think I missed my stop!"],
       money: 150,
       pos: {
         x: 23,
@@ -277,7 +274,7 @@ const route3: MapType = {
       ],
       facing: Direction.Right,
       intro: ["You can fight my new POKEMON!"],
-      outtro: ["Trained POKEMON are stronger than the wild ones!"],
+      outtro: ["Maybe I should have stuck with the old ones"],
       money: 110,
       pos: {
         x: 24,
@@ -294,7 +291,7 @@ const route3: MapType = {
       ],
       facing: Direction.Up,
       intro: ["Eek! Did you touch me?"],
-      outtro: ["ROUTE 4 is at the foot of MT. MOON."],
+      outtro: ["Aaaaa Get away!!"],
       money: 210,
       pos: {
         x: 33,

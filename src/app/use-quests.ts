@@ -2,7 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { MapId } from "../maps/map-types";
 import useBadges from "./use-badges";
 import {
+  addPokemon,
   completeQuest,
+  gainMoney,
   healPokemon,
   selectCompletedQuests,
   selectPos,
@@ -10,6 +12,8 @@ import {
   takeMoney,
 } from "../state/gameSlice";
 import { setBlackScreen, showConfirmationMenu } from "../state/uiSlice";
+import { getPokemonStats } from "./use-pokemon-stats";
+import { getMoveMetadata } from "./use-move-metadata";
 
 export interface QuestType {
   trigger: "talk" | "walk";
@@ -30,6 +34,10 @@ const useQuests = () => {
   const badges = useBadges();
   const completedQuests = useSelector(selectCompletedQuests);
   const pos = useSelector(selectPos);
+
+  const isComplete = (questId: string) => {
+    return completedQuests.includes(questId);
+  };
 
   const quests: QuestType[] = [
     // Pewter City
@@ -63,7 +71,7 @@ const useQuests = () => {
       positions: {
         4: [9, 10],
       },
-      active: () => !completedQuests.includes("pewter-museum-1f-paid"),
+      active: () => !isComplete("pewter-museum-1f-paid"),
       text: ["It's $50 for a child's ticket."],
       action: () => {
         dispatch(
@@ -97,6 +105,84 @@ const useQuests = () => {
             confirm: () => {
               dispatch(healPokemon());
             },
+          })
+        );
+      },
+    },
+    {
+      trigger: "walk",
+      map: MapId.PalletTownHouseB,
+      positions: {
+        3: [0, 1, 2, 3, 4, 5, 6, 7],
+      },
+      active: () => !isComplete("chase-0"),
+      text: ["Lien!!! You're finally awake!", "Yay!!!"],
+      action: () => {
+        dispatch(completeQuest("chase-0"));
+      },
+    },
+    {
+      trigger: "talk",
+      map: MapId.PalletTownHouseB,
+      positions: {
+        1: [4],
+      },
+      active: () => !isComplete("chase-1"),
+      text: [
+        "Hey Lien!",
+        "It's so great to see you!",
+        "I've missed you!",
+        "Welcome to my home!",
+        "There's mini milks in the fridge if you are hungry",
+        "I heard you are going on a Pokemon adventure!",
+        "That's so cool!",
+        "I wish I could go with you!",
+        "But I have some programming to do",
+        "What's that?",
+        "You don't have any Pokemon!?",
+        "Oh no!!!",
+        "I have a spare one you can have!",
+        "Here you go!",
+        "Lien received EEVEE!",
+        "It's my favourite Pokemon!",
+        "It's so cute right!?",
+        "Please take good care of EEVEE!",
+        "Good luck on your adventure Lien!",
+        "Please come back and visit me often!",
+        "I will miss you lots while you're gone!",
+        "Oh before you go!",
+        "Can you do me a favour?",
+        "Can you pick me up something from the store?",
+        "In Bethnal Green there is a Poke Mart",
+        "They sell Poke Balls there",
+        "Can you buy me one and bring it back?",
+        "You can catch the central line from Stratford",
+        "Here, take this",
+        "Lien received $400",
+        "That should be enough to buy a Poke Ball",
+        "I'll be waiting for you here!",
+        "Good luck Lien!",
+        "I'll see you soon!",
+      ],
+      action: () => {
+        dispatch(gainMoney(400));
+        dispatch(completeQuest("chase-1"));
+        dispatch(
+          addPokemon({
+            id: 133,
+            level: 5,
+            xp: 0,
+            hp: getPokemonStats(133, 5).hp,
+            moves: [
+              {
+                id: "tackle",
+                pp: getMoveMetadata("tackle").pp ?? 0,
+              },
+              {
+                id: "sand-attack",
+                pp: getMoveMetadata("sand-attack").pp ?? 0,
+              },
+            ],
           })
         );
       },

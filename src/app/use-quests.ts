@@ -3,6 +3,7 @@ import { MapId } from "../maps/map-types";
 import useBadges from "./use-badges";
 import {
   completeQuest,
+  healPokemon,
   selectCompletedQuests,
   selectPos,
   setPos,
@@ -75,6 +76,26 @@ const useQuests = () => {
             },
             cancel: () => {
               dispatch(setPos({ x: pos.x, y: pos.y + 1 }));
+            },
+          })
+        );
+      },
+    },
+    {
+      trigger: "talk",
+      map: MapId.PalletTownHouseA1F,
+      positions: {
+        10: [18],
+      },
+      active: () => true,
+      text: ["You have some food in the oven!"],
+      action: () => {
+        dispatch(
+          showConfirmationMenu({
+            preMessage: "Eat it to recover your pokemon's health?",
+            postMessage: "Your pokemon are fully healed!",
+            confirm: () => {
+              dispatch(healPokemon());
             },
           })
         );

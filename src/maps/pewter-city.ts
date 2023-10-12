@@ -6,6 +6,7 @@ const pewterCity: MapType = {
   name: "Pewter City",
   music,
   image,
+  town: true,
   height: 36,
   width: 40,
   start: {

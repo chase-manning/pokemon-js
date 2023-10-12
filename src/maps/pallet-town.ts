@@ -7,6 +7,7 @@ import getEncounterData from "./get-location-data";
 const palletTown: MapType = {
   name: "Pallet Town",
   image: palletTownImage,
+  town: true,
   height: 18,
   width: 20,
   start: {

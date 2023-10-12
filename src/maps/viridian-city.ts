@@ -6,6 +6,7 @@ import getEncounterData from "./get-location-data";
 
 const viridianCity: MapType = {
   name: "Viridian City",
+  town: true,
   image: viridianCityImage,
   height: 36,
   width: 40,

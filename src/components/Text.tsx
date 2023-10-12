@@ -1,6 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import styled, { keyframes } from "styled-components";
-import { selectDirection, selectPos, selectMap } from "../state/gameSlice";
+import {
+  selectDirection,
+  selectPos,
+  selectMap,
+  selectMapId,
+} from "../state/gameSlice";
 import { useEffect, useState } from "react";
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
@@ -11,6 +16,7 @@ import {
   showText,
 } from "../state/uiSlice";
 import { Direction } from "../state/state-types";
+import { useActiveMapQuests } from "../app/use-quests";
 
 interface TextProps {
   $done: boolean;
@@ -97,6 +103,8 @@ const Text = () => {
   const map = useSelector(selectMap);
   const startMenuOpen = useSelector(selectStartMenu);
   const text = useSelector(selectText);
+  const mapId = useSelector(selectMapId);
+  const quests = useActiveMapQuests(mapId);
 
   useEffect(() => {
     setLiveIndex(0);
@@ -138,6 +146,18 @@ const Text = () => {
       case Direction.Right:
         x += 1;
         break;
+    }
+
+    // If there is a quest at this position, don't open text
+    if (quests.length > 0) {
+      const isQuest = quests.some((quest) => {
+        if (quest.trigger !== "talk") return false;
+        const yPos = quest.positions[y];
+        if (!yPos) return false;
+        if (!yPos.includes(x)) return false;
+        return true;
+      });
+      if (isQuest) return;
     }
 
     // Open new textbox

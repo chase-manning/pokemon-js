@@ -10,6 +10,7 @@ import {
   healPokemon,
   selectCompletedQuests,
   selectInventory,
+  selectPokemon,
   selectPos,
   setPos,
   takeMoney,
@@ -39,6 +40,7 @@ const useQuests = () => {
   const completedQuests = useSelector(selectCompletedQuests);
   const pos = useSelector(selectPos);
   const inventory = useSelector(selectInventory);
+  const pokemon = useSelector(selectPokemon);
 
   const isComplete = (questId: string) => {
     return completedQuests.includes(questId);
@@ -46,6 +48,10 @@ const useQuests = () => {
 
   const hasItem = (item: ItemType) => {
     return inventory.some((inventoryItem) => inventoryItem.item === item);
+  };
+
+  const hasPokemon = (id: number) => {
+    return pokemon.some((pokemon) => pokemon.id === id);
   };
 
   const quests: QuestType[] = [
@@ -239,6 +245,42 @@ const useQuests = () => {
         dispatch(completeQuest("chase-2"));
         dispatch(addInventory({ item: ItemType.PikachuDoll, amount: 1 }));
         dispatch(consumeItem(ItemType.PokeBall));
+      },
+    },
+    {
+      trigger: "talk",
+      map: MapId.PalletTownHouseB,
+      positions: {
+        1: [4],
+      },
+      active: () => !isComplete("chase-3") && hasPokemon(25),
+      text: [
+        "Lien!!!",
+        "Welcome back!",
+        "I've missed you! I've missed you!",
+        "You are looking beautiful today!",
+        "I'm so happy to see you!",
+        "How is your adventure going?",
+        "Have you caught a Pikachu yet?",
+        "You have!?",
+        "Yay!",
+        "Can I see it?",
+        "It's so cute!",
+        "I love it!",
+        "Thank you so much!",
+        "You can keep it!",
+        "I just wanted to see one!",
+        "To thank you, I have a gift for you!",
+        "Lien received ULTRA BALL",
+        "If you continue through Weavers Fields",
+        "You can walk to Shoreditch",
+        "There is a gym there!",
+        "Try to beat the gym leader!",
+        "I'll be waiting for you here!",
+      ],
+      action: () => {
+        dispatch(completeQuest("chase-3"));
+        dispatch(addInventory({ item: ItemType.UltraBall, amount: 1 }));
       },
     },
   ];

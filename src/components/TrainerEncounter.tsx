@@ -30,7 +30,7 @@ const StyledTrainerEncounter = styled.div`
   height: 20%;
   z-index: 100;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 30%;
   }
 `;

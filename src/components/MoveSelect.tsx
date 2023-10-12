@@ -18,7 +18,7 @@ const Stats = styled.div`
   width: 35rem;
   z-index: 100;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     bottom: 6rem;
     left: 0;
     width: 50%;
@@ -34,7 +34,7 @@ const StatsRow = styled.div`
   width: 100%;
   margin-top: 5px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 1rem;
     margin-top: 2px;
   }

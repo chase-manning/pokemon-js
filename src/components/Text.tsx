@@ -49,12 +49,12 @@ const StyledText = styled.div<TextProps>`
     font-size: 30px;
     font-family: "PokemonGB";
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       font-size: 9px;
     }
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 30%;
   }
 
@@ -76,7 +76,7 @@ const StyledText = styled.div<TextProps>`
     transform: rotate(90deg);
     animation: ${flashing} 1s infinite;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       bottom: ${(props) => (props.$done ? "13px" : "-100px")};
       right: 10px;
       width: 1.3px;

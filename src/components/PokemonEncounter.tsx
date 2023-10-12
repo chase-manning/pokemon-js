@@ -79,7 +79,7 @@ const StyledPokemonEncounter = styled.div`
   width: 100%;
 
   height: 80%;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 70%;
     padding-top: 3px;
   }
@@ -114,7 +114,7 @@ const Name = styled.div`
   font-family: "PokemonGB";
   text-transform: uppercase;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 13px;
   }
 `;
@@ -124,7 +124,7 @@ const Level = styled.div`
   margin: 0 12vh;
   font-family: "PressStart2P", sans-serif;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 12px;
     margin: 0 28px;
   }
@@ -134,7 +134,7 @@ const HealthBarContainer = styled.div`
   margin: 0 3.3vh;
   margin-top: 1.2vh;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     margin: 0 8px;
   }
 `;
@@ -145,7 +145,7 @@ const Health = styled.div`
   font-size: 5vh;
   margin: 0 3.3vh;
   margin-top: 1.2vh;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 13px;
     margin: 0 8px;
     margin-top: 3px;
@@ -361,14 +361,14 @@ const Corner = styled.img`
   transform: translateY(-50%);
 
   height: 8vh;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 19px;
   }
 `;
 
 const CornerContainer = styled.div`
   height: 5vh;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 10px;
   }
 `;
@@ -376,7 +376,7 @@ const CornerContainer = styled.div`
 const CornerRight = styled.img`
   height: 8vh;
   transform: translateY(-70%) scaleX(-1);
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 19px;
   }
 `;
@@ -389,7 +389,7 @@ const TextContainer = styled.div`
   height: 20%;
   z-index: 100;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 30%;
   }
 `;

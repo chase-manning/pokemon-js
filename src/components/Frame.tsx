@@ -30,7 +30,7 @@ const StyledFrame = styled.div<FrameProps>`
     font-size: 30px;
     font-family: "PokemonGB";
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       font-size: 9px;
     }
   }
@@ -53,7 +53,7 @@ const StyledFrame = styled.div<FrameProps>`
     transform: rotate(90deg);
     animation: ${animation} 1s infinite;
 
-    @media (max-width: 768px) {
+    @media (max-width: 1000px) {
       bottom: ${(props) => (props.$flashing ? "13px" : "-1000px")};
       right: 10px;
       width: 1.3px;

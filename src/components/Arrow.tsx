@@ -11,7 +11,7 @@ interface ArrowProps {
 const StyledArrow = styled(PixelImage)<ArrowProps>`
   height: ${(props) => (props.$menu ? "23px" : "3vh")};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: ${(props) => (props.$menu ? "11px" : "8px")};
   }
 `;

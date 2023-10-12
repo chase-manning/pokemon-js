@@ -8,7 +8,7 @@ import { PokemonEncounterType } from "../state/state-types";
 import getPokemonEncounter from "../app/pokemon-encounter-helper";
 
 const shouldEncounter = (rate: number) => {
-  const random = Math.random() * 100;
+  const random = Math.random() * 255;
   return random < rate;
 };
 

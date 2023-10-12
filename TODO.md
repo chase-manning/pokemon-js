@@ -4,7 +4,6 @@
 
 - Add support for app refreshing when there is an update
 - We still have an update menu
-- Encounter frequency seems off
 - Add a block for continuing unfinished content
 - Add support for invisible items
 - Finish mt moon map

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import map from "../assets/map/mt-moon-3f.png";
+import map from "../assets/map/lien-apartment.png";
 import { useState } from "react";
 import { PosType } from "../state/state-types";
 
@@ -8,7 +8,7 @@ const StyledPaint = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
+  height: 50%;
   background: white;
   z-index: 10000000;
 `;
@@ -61,8 +61,8 @@ const Item = styled.button<ItemProps>`
 `;
 
 const Paint = () => {
-  const HEIGHT = 28;
-  const WIDTH = 28;
+  const HEIGHT = 12;
+  const WIDTH = 22;
   const [points, setPoints] = useState<PosType[]>([]);
   const [mouseDown, setMouseDown] = useState(false);
 

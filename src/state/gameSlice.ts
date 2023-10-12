@@ -32,6 +32,7 @@ const initialState: GameState = {
   defeatedTrainers: [],
   collectedItems: [],
   completedQuests: [],
+  lastTeleport: null,
 };
 
 export const gameSlice = createSlice({
@@ -284,6 +285,19 @@ export const gameSlice = createSlice({
     completeQuest: (state, action: PayloadAction<string>) => {
       state.completedQuests.push(action.payload);
     },
+    teleport: (state) => {
+      if (state.lastTeleport) {
+        state.map = state.lastTeleport.map;
+        state.pos = state.lastTeleport.pos;
+      } else {
+        state.lastTeleport = {
+          map: state.map,
+          pos: state.pos,
+        };
+        state.map = MapId.PalletTownHouseA1F;
+        state.pos = { x: 16, y: 4 };
+      }
+    },
   },
 });
 
@@ -323,6 +337,7 @@ export const {
   faintToTrainer,
   collectItem,
   completeQuest,
+  teleport,
 } = gameSlice.actions;
 
 export const selectPos = (state: RootState) => state.game.pos;
@@ -372,5 +387,8 @@ export const selectCollectedItems = (state: RootState) =>
 
 export const selectCompletedQuests = (state: RootState) =>
   state.game.completedQuests;
+
+export const selectIsTeleporting = (state: RootState) =>
+  state.game.lastTeleport !== null;
 
 export default gameSlice.reducer;

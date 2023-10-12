@@ -126,6 +126,18 @@ const useQuests = () => {
     },
     {
       trigger: "walk",
+      map: MapId.PalletTown,
+      positions: {
+        1: [10, 11],
+      },
+      active: () => pokemon.length === 0,
+      text: ["You don't have any POKEMON!"],
+      action: () => {
+        dispatch(setPos({ x: pos.x, y: pos.y + 1 }));
+      },
+    },
+    {
+      trigger: "walk",
       map: MapId.PalletTownHouseB,
       positions: {
         3: [0, 1, 2, 3, 4, 5, 6, 7],

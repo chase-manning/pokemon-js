@@ -5,7 +5,6 @@
 ===========
 
 - Personalise all text
-- Stop leaving Pallet town until you have a Pokemon
 - Outros aren't playing
 - Wrong names of items
 - Stop manual encounters after defeated trainer

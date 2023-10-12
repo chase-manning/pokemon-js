@@ -2,11 +2,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { MapId } from "../maps/map-types";
 import useBadges from "./use-badges";
 import {
+  addInventory,
   addPokemon,
   completeQuest,
+  consumeItem,
   gainMoney,
   healPokemon,
   selectCompletedQuests,
+  selectInventory,
   selectPos,
   setPos,
   takeMoney,
@@ -14,6 +17,7 @@ import {
 import { setBlackScreen, showConfirmationMenu } from "../state/uiSlice";
 import { getPokemonStats } from "./use-pokemon-stats";
 import { getMoveMetadata } from "./use-move-metadata";
+import { ItemType } from "./use-item-data";
 
 export interface QuestType {
   trigger: "talk" | "walk";
@@ -34,9 +38,14 @@ const useQuests = () => {
   const badges = useBadges();
   const completedQuests = useSelector(selectCompletedQuests);
   const pos = useSelector(selectPos);
+  const inventory = useSelector(selectInventory);
 
   const isComplete = (questId: string) => {
     return completedQuests.includes(questId);
+  };
+
+  const hasItem = (item: ItemType) => {
+    return inventory.some((inventoryItem) => inventoryItem.item === item);
   };
 
   const quests: QuestType[] = [
@@ -185,6 +194,51 @@ const useQuests = () => {
             ],
           })
         );
+      },
+    },
+    {
+      trigger: "talk",
+      map: MapId.PalletTownHouseB,
+      positions: {
+        1: [4],
+      },
+      active: () => !isComplete("chase-2") && hasItem(ItemType.PokeBall),
+      text: [
+        "Yay Lien you're back!",
+        "So happy to see you!",
+        "Are you having fun on your adventure?",
+        "How is EEVEE?",
+        "Are you treating her well?",
+        "I hope so!",
+        "Oh yeah!",
+        "Did you get me that Poke Ball?",
+        "You did!?",
+        "Yay!",
+        "Chase took the Poke Ball",
+        "Thank you so much!",
+        "To thank you, I have a gift for you!",
+        "It's a pikachu doll!",
+        "Lien received PIKACHU DOLL!",
+        "It has a special ability",
+        "When you hug it, it will bring you home!",
+        "And if you hug it again",
+        "It will take you back to where you were!",
+        "You can only use it in towns though",
+        "It's so cool right!?",
+        "Try it out when you're next in Bethnal Green!",
+        "Can you do me another favour?",
+        "I really want to see a real life Pikachu!",
+        "I heard they live in Weavers Fields",
+        "Just outside Bethnal Green",
+        "Can you go there and catch one?",
+        "I'll be waiting for you here!",
+        "Good luck Lien!",
+        "I'll see you soon!",
+      ],
+      action: () => {
+        dispatch(completeQuest("chase-2"));
+        dispatch(addInventory({ item: ItemType.PikachuDoll, amount: 1 }));
+        dispatch(consumeItem(ItemType.PokeBall));
       },
     },
   ];

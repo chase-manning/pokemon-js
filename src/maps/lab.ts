@@ -15,17 +15,13 @@ const lab: MapType = {
   walls: {
     0: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
     1: [0, 1, 2, 3, 6, 7, 8, 9],
-    3: [6, 7, 8],
+    3: [5, 6, 7, 8],
     6: [0, 1, 2, 3, 6, 7, 8, 9],
     7: [0, 1, 2, 3, 6, 7, 8, 9],
   },
   text: {
-    1: {
-      0: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+    3: {
+      5: ["I'm so sorry but we have sold out of POKEMON!"],
     },
   },
   maps: {},
@@ -38,6 +34,11 @@ const lab: MapType = {
   },
   exitReturnMap: MapId.PalletTown,
   music,
+  pc: {
+    x: 0,
+    y: 1,
+  },
+
   grass: {},
 };
 

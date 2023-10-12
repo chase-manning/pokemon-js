@@ -22,6 +22,7 @@ import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import getPokemonEncounter from "../app/pokemon-encounter-helper";
 import { DEBUG_MODE } from "../app/constants";
+import { showText } from "../state/uiSlice";
 
 const StyledTrainerEncounter = styled.div`
   position: absolute;
@@ -83,6 +84,11 @@ const TrainerEncounter = () => {
           trainer.pos.y === pos.y + facingPos.y
       );
       if (!trainer) throw new Error("Trainer not found");
+      const trainerId = `${mapId}-${trainer.pos.x}-${trainer.pos.y}`;
+      if (defeatedTrainers.includes(trainerId)) {
+        dispatch(showText(trainer.outtro));
+        return;
+      }
       dispatch(encounterTrainer(trainer));
       setTimeout(() => {
         setIntroIndex(0);

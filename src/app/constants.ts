@@ -1,4 +1,4 @@
-export const DEBUG_MODE = true;
+export const DEBUG_MODE = false;
 export const PAINT_MODE = false;
 
 export const BLOCK_PIXEL_WIDTH = 16;

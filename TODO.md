@@ -2,8 +2,6 @@
 
 ===========
 
-- Outros aren't playing
-- Wrong names of items
 - Stop manual encounters after defeated trainer
 - Add support for app refreshing when there is an update
 - We still have an update menu

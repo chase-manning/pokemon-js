@@ -51,7 +51,7 @@ const ItemsMenu = () => {
           )
           .map((item: InventoryItemType, index) => {
             return {
-              label: item.item,
+              label: itemData[item.item].name,
               value: item.amount,
               action: () => setSelected(index),
             };

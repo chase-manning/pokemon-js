@@ -1,16 +1,20 @@
 ===========
 
+- Save not working
+- Withdraw bug
+- CSS breakpoints not working on iPhone
+
 ===========
 
 - Add support for app refreshing when there is an update
 - We still have an update menu
-- Add a block for continuing unfinished content
-- Add support for invisible items
-- Finish mt moon map
+- Go through chnages and bring over ones we need on main
 
 ===========
 
 - Should reset cursor position on menus when exiting
+- Add support for invisible items
+- Finish mt moon map
 - Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them

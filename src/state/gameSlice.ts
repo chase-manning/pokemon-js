@@ -22,62 +22,11 @@ const initialState: GameState = {
   moving: false,
   direction: Direction.Down,
   map: MapId.PalletTown,
-  money: 400,
-  inventory: [
-    {
-      item: ItemType.MaxPotion,
-      amount: 1,
-    },
-    {
-      item: ItemType.PokeBall,
-      amount: 2,
-    },
-  ],
+  money: 0,
+  inventory: [],
   name: "Lien",
-  pokemon: [
-    {
-      id: 1,
-      level: 5,
-      xp: 0,
-      hp: 10,
-      moves: [
-        { id: "tackle", pp: 35 },
-        { id: "growl", pp: 40 },
-      ],
-    },
-    {
-      id: 4,
-      level: 5,
-      xp: 0,
-      hp: 19,
-      moves: [
-        { id: "scratch", pp: 35 },
-        { id: "growl", pp: 40 },
-      ],
-    },
-    {
-      id: 7,
-      level: 5,
-      xp: 0,
-      hp: 19,
-      moves: [
-        { id: "tackle", pp: 35 },
-        { id: "tail-whip", pp: 30 },
-      ],
-    },
-  ],
-  pc: [
-    {
-      id: 1,
-      level: 5,
-      xp: 0,
-      hp: 19,
-      moves: [
-        { id: "tackle", pp: 35 },
-        { id: "growl", pp: 40 },
-      ],
-    },
-  ],
+  pokemon: [],
+  pc: [],
   activePokemonIndex: 0,
   trainerEncounter: undefined,
   defeatedTrainers: [],

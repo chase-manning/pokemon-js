@@ -13,7 +13,12 @@ import {
 import useEvent from "../app/use-event";
 import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
-import { save, selectName, updateSpecificPokemon } from "../state/gameSlice";
+import {
+  save,
+  selectName,
+  selectPokemon,
+  updateSpecificPokemon,
+} from "../state/gameSlice";
 import PokemonList from "./PokemonList";
 import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 import { DEBUG_MODE } from "../app/constants";
@@ -25,6 +30,7 @@ const StartMenu = () => {
   const disabled = useSelector(selectStartMenuSubOpen);
   const name = useSelector(selectName);
   const saving = !!useSelector(selectConfirmationMenu);
+  const allPokemon = useSelector(selectPokemon);
 
   const [pokemon, setPokemon] = useState(false);
 
@@ -46,7 +52,10 @@ const StartMenu = () => {
           // },
           {
             label: "Pokémon",
-            action: () => setPokemon(true),
+            action: () => {
+              if (allPokemon.length === 0) return;
+              setPokemon(true);
+            },
           },
           {
             label: "Item",

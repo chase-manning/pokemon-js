@@ -21,17 +21,14 @@ const viridianCityAcadamy: MapType = {
   text: {
     0: {
       3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "The specials for today:",
+        "- Cheeseburger $10",
+        "- Hamburger $11",
+        "- Pizza $13",
       ],
     },
     4: {
-      3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      3: ["It's the questions for the pub quiz!", "Don't cheat!"],
     },
   },
   maps: {},

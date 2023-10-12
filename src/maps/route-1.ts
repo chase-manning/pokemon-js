@@ -53,11 +53,7 @@ const route1: MapType = {
   },
   text: {
     27: {
-      9: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      9: ["The Central Line to Bethnal Green"],
     },
   },
   maps: {

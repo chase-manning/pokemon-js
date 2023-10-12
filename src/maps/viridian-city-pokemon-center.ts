@@ -23,9 +23,9 @@ const viridianCityPokemonCenter: MapType = {
   text: {
     4: {
       0: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "I love Bethnal Green!",
+        "Despite the fact that it's a bit of a dump.",
+        "I'm not sure why I'm telling you this.",
       ],
     },
   },

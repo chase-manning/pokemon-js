@@ -1,7 +1,5 @@
 ===========
 
-- Should reset cursor position on menus when exiting
-
 ===========
 
 - Personalise all text
@@ -11,13 +9,13 @@
 - Add support for app refreshing when there is an update
 - We still have an update menu
 - Encounter frequency seems off
-- Block the first gym in some way
 - Add a block for continuing unfinished content
 - Add support for invisible items
 - Finish mt moon map
 
 ===========
 
+- Should reset cursor position on menus when exiting
 - Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them

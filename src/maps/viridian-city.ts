@@ -5,7 +5,7 @@ import music from "../assets/music/maps/pewter-city.mp3";
 import getEncounterData from "./get-location-data";
 
 const viridianCity: MapType = {
-  name: "Viridian City",
+  name: "Bethnal Green",
   town: true,
   image: viridianCityImage,
   height: 36,
@@ -22,7 +22,7 @@ const viridianCity: MapType = {
     4: [5, 14, 28, 29, 30, 31, 32, 33, 36],
     5: [5, 8, 9, 10, 11, 12, 13, 14, 15, 28, 29, 30, 31, 32, 33, 36],
     6: [5, 7, 16, 20, 28, 29, 30, 31, 32, 33, 36],
-    7: [5, 7, 16, 20, 27, 28, 29, 30, 31, 33, 36],
+    7: [5, 7, 16, 20, 27, 28, 29, 30, 31, 32, 33, 36],
     8: [5, 7, 16, 20, 21, 22, 23, 36],
     9: [5, 7, 16, 20, 22, 23, 36],
     10: [5, 7, 16, 36],
@@ -67,46 +67,22 @@ const viridianCity: MapType = {
   },
   text: {
     29: {
-      21: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
-    },
-    25: {
-      24: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
-    },
-    19: {
-      30: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      21: ["Welcome to Bethnal Green!", "A cool town with some nice pubs"],
     },
     17: {
       17: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "PUBLIC NOTICE",
+        "Cute foxes have been seen in the area",
+        "If you see one, they may be hungy",
+        "Try feeding them some Pom-Bears",
       ],
     },
     7: {
-      27: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      27: ["The Bethnal Green gym", "Currently closed for repairs"],
+      32: ["Currently closed for repairs"],
     },
     1: {
-      19: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      19: ["The route to Weavers Fields"],
     },
   },
   maps: {
@@ -114,9 +90,6 @@ const viridianCity: MapType = {
       17: MapId.Route2,
       18: MapId.Route2,
       19: MapId.Route2,
-    },
-    7: {
-      32: MapId.ViridianCityGym,
     },
     9: {
       21: MapId.ViridianCityNpcHouse,

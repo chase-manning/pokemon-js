@@ -301,7 +301,7 @@ const useItemData = () => {
     },
     [ItemType.Nugget]: {
       type: ItemType.Nugget,
-      name: "Nugget",
+      name: "Rolex Watch",
       countable: true,
       consumable: false,
       usableInBattle: false,
@@ -407,7 +407,7 @@ const useItemData = () => {
     },
     [ItemType.FreshWater]: {
       type: ItemType.FreshWater,
-      name: "Fresh Water",
+      name: "Warm Water",
       countable: true,
       consumable: true,
       usableInBattle: true,
@@ -437,7 +437,7 @@ const useItemData = () => {
     },
     [ItemType.SodaPop]: {
       type: ItemType.SodaPop,
-      name: "Soda Pop",
+      name: "Ginger Beer",
       countable: true,
       consumable: true,
       usableInBattle: true,
@@ -467,7 +467,7 @@ const useItemData = () => {
     },
     [ItemType.Lemondade]: {
       type: ItemType.Lemondade,
-      name: "Lemondade",
+      name: "Pint of Cider",
       countable: true,
       consumable: true,
       usableInBattle: true,

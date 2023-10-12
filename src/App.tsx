@@ -16,7 +16,7 @@ const StyledApp = styled.div`
   padding: 5px;
   padding-bottom: 28px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1000px) {
     padding: 5px;
   }
 `;

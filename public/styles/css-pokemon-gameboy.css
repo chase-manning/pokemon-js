@@ -19,7 +19,7 @@ h6 {
   padding: 1em;
   max-width: 100%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     border-image: url("./images/frame.png") 7 round;
     border-width: 7px;
   }
@@ -111,7 +111,7 @@ button,
   margin-top: 13px;
   margin-bottom: 7px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 1rem;
     line-height: 1;
     margin-top: 7px;
@@ -122,7 +122,7 @@ button,
 .no-select-button {
   padding: 0 0 0 0.2em;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     padding: 0 0 0 0.5em;
   }
 }
@@ -144,7 +144,7 @@ button,
     2em 5em 0 #181010, 3em 5em 0 #181010, 1em 6em 0 #181010, 2em 6em 0 #181010;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .active-button::before {
     left: -1px;
     top: -2px;
@@ -178,7 +178,7 @@ ul.buttons li {
   padding: 0;
   margin: 0.5em;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     margin: 0;
   }
 }

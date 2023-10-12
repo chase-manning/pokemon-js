@@ -99,7 +99,7 @@ const Text = styled.div`
   -webkit-animation: ${colorAnimation} 3s 1 linear forwards;
   animation: ${colorAnimation} 3s 1 linear forwards;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 2.5rem;
   }
 `;

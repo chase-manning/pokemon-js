@@ -29,7 +29,7 @@ const StyledMenu = styled.div<MenuProps>`
   width: ${(props) =>
     props.$compact ? "410px" : props.$wide ? "100%" : "auto"};
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     width: ${(props) =>
       props.$compact ? "130px" : props.$wide ? "100%" : "auto"};
   }
@@ -48,7 +48,7 @@ const Bold = styled.div`
   margin-left: 45px;
 
   font-size: 3rem;
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     font-size: 1rem;
     line-height: 1;
     margin-left: 15px;
@@ -61,7 +61,7 @@ const ArrowContainer = styled.div`
   top: 50%;
   transform: translateY(-50%);
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     top: auto;
     bottom: -1px;
     left: 1px;

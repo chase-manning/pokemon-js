@@ -88,7 +88,7 @@ const StyledPokemonRow = styled.div`
   margin-bottom: 1px;
   align-items: center;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     margin-bottom: 1vh;
   }
 `;
@@ -107,7 +107,7 @@ const Image = styled.img`
   // The sprites seemd a bit yellow, so I added a hue-rotate filter to make them more red
   filter: hue-rotate(-25deg);
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     height: 8vh;
     margin-right: 4vh;
   }
@@ -126,7 +126,7 @@ const Name = styled.div`
   font-family: "PokemonGB";
   text-transform: uppercase;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     font-size: 3.7vh;
     transform: translateY(1vh);
   }
@@ -135,7 +135,7 @@ const Name = styled.div`
 const HealthBarContainer = styled.div`
   margin-left: 10px;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     margin-left: 4vh;
   }
 `;
@@ -147,7 +147,7 @@ const StatsContainer = styled.div`
   height: 100%;
   justify-content: space-between;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     margin-left: 4vh;
   }
 `;
@@ -158,7 +158,7 @@ const Level = styled.div`
   margin-bottom: 2px;
   margin-top: 1px;
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     font-size: 3.3vh;
     margin-bottom: 1vh;
     margin-top: 0.5vh;
@@ -170,7 +170,7 @@ const Health = styled.div`
   margin-left: 10px;
   font-family: "PokemonGB";
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     font-size: 3.3vh;
     margin-left: 4vh;
   }

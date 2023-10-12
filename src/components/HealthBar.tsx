@@ -15,7 +15,7 @@ const HealthContainer = styled.div`
   width: 75.2%;
   height: 46%;
 
-  @media (max-width: 768px) {
+  @media (max-width: 1000px) {
     height: 30%;
     top: 40%;
   }
@@ -52,7 +52,7 @@ const Image = styled(PixelImage)<ImageProps>`
   position: relative;
   height: ${(props) => (props.$big ? "6px" : "5px")};
 
-  @media (min-width: 769px) {
+  @media (min-width: 1000px) {
     height: 2.5vh;
   }
 `;

@@ -36,44 +36,24 @@ const palletTown: MapType = {
   },
   text: {
     5: {
-      3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
-      11: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      3: ["Lien's home", "Warm and cozy"],
+      11: ["Chase's home"],
     },
     8: {
       4: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "Hi there!",
+        "It's such a beautiful day in Stratford!",
+        "I'm going to the mall later",
       ],
     },
     9: {
-      7: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      7: ["Welcome to Stratford!", "The best town in the world!"],
     },
     13: {
-      13: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      13: ["The Stratford mall", "It's so big!"],
     },
     15: {
-      10: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      10: ["There's so much great food in Stratford", "I love the food court"],
     },
   },
   maps: {

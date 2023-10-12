@@ -2,7 +2,7 @@ import houseBImage from "../assets/map/house-b.png";
 import { MapId, MapType } from "./map-types";
 
 const houseB: MapType = {
-  name: "House B",
+  name: "Chase's House",
   image: houseBImage,
   height: 8,
   width: 8,
@@ -12,13 +12,17 @@ const houseB: MapType = {
   },
   walls: {
     0: [0, 1, 2, 3, 4, 5, 6, 7],
-    1: [0, 1, 7],
+    1: [0, 1, 4, 7],
     3: [3, 4],
     4: [3, 4],
     6: [0, 7],
     7: [0, 7],
   },
-  text: {},
+  text: {
+    1: {
+      4: ["Love you!!"],
+    },
+  },
   maps: {},
   exits: {
     7: [2, 3],

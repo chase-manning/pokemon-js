@@ -77,7 +77,7 @@ const ItemsMenu = () => {
                 ) {
                   dispatch(
                     showText([
-                      `OAK: ${name}! This isn't the`,
+                      `CHASE: ${name}! This isn't the`,
                       "time to use that!",
                     ])
                   );

@@ -1,18 +1,25 @@
 ===========
 
-- Add support for invisible items
-- Finish mt moon map
+- Should reset cursor position on menus when exiting
+
+===========
+
+- Personalise all text
+- Stop leaving Pallet town until you have a Pokemon
 - Outros aren't playing
+- Wrong names of items
 - Stop manual encounters after defeated trainer
-- Add more maps
 - Add support for app refreshing when there is an update
 - We still have an update menu
 - Encounter frequency seems off
 - Block the first gym in some way
-- Implement quests
+- Add a block for continuing unfinished content
+- Add support for invisible items
+- Finish mt moon map
 
 ===========
 
+- Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them
 - battle sounds

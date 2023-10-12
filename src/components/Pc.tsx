@@ -143,13 +143,18 @@ const Pc = () => {
           {
             label: "WITHDRAW",
             action: () => {
+              if (pcPokemon.length === 0) return;
               if (pokemon.length === 6) setStage(7);
               else setStage(5);
             },
           },
           {
             label: "DEPOSIT",
-            action: () => setStage(6),
+            action: () => {
+              if (pokemon.length === 0) return;
+              if (pokemon.length === 1) return;
+              setStage(6);
+            },
           },
           {
             label: "SEE YA!",

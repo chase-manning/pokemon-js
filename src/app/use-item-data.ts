@@ -2,18 +2,25 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   consumeItem,
   selectPokemon,
+  teleport,
   updateSpecificPokemon,
 } from "../state/gameSlice";
 import { getPokemonStats } from "./use-pokemon-stats";
 import {
   hideItemsMenu,
+  hideStartMenu,
   learnMove,
+  setBlackScreen,
   showActionOnPokemon,
   throwPokeball,
 } from "../state/uiSlice";
 import { getMoveMetadata } from "./use-move-metadata";
 
 export enum ItemType {
+  // Custom
+  PikachuDoll = "pikachu doll", // DONE
+
+  // Vanilla
   MasterBall = "master-ball", // DONE
   UltraBall = "ultra-ball", // DONE
   GreatBall = "great-ball", // DONE
@@ -1927,6 +1934,28 @@ const useItemData = () => {
             item: ItemType.Hm05,
           })
         );
+      },
+    },
+    [ItemType.PikachuDoll]: {
+      type: ItemType.PikachuDoll,
+      name: "Pikachu Doll",
+      countable: false,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: null,
+      action: () => {
+        dispatch(hideItemsMenu());
+        dispatch(hideStartMenu());
+        dispatch(setBlackScreen(true));
+        setTimeout(() => {
+          dispatch(teleport());
+        }, 300);
+        setTimeout(() => {
+          dispatch(setBlackScreen(false));
+        }, 600);
       },
     },
   };

@@ -611,7 +611,14 @@ const PokemonEncounter = () => {
   const isTrainer = !!trainer;
   const isThrowingEnemyPokeball = stage >= 34 && stage <= 38 && isTrainer;
 
-  const endEncounter_ = () => {
+  const endEncounter_ = (exitBattle = false) => {
+    if (exitBattle) {
+      setTrainerPokemonIndex(0);
+      dispatch(endEncounter());
+      dispatch(faintToTrainer());
+      return;
+    }
+
     // Bringing out the trainers next pokemon
     if (isTrainer && trainerPokemonIndex < trainer?.pokemon.length - 1) {
       const newIndex = trainerPokemonIndex + 1;
@@ -896,7 +903,7 @@ const PokemonEncounter = () => {
         dispatch(recoverFromFainting());
       }, 1000);
       setTimeout(() => {
-        endEncounter_();
+        endEncounter_(true);
       }, 1000 + 500);
     }
 

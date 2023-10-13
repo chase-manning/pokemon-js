@@ -2,9 +2,9 @@
 
 ===========
 
-- Save not working
 - Add support for app refreshing when there is an update
 - We still have an update menu
+- Save not working
 
 ===========
 

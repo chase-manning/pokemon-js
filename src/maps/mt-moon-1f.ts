@@ -67,17 +67,42 @@ const mtMoon1f: MapType = {
       15: ["Beware! ZUBAT is a blood sucker!"],
     },
   },
-  maps: {
-    15: {
-      25: MapId.MtMoon2f,
-    },
-  },
+  maps: {},
   exits: {
     35: [14, 15],
   },
   exitReturnPos: {
     x: 68,
     y: 6,
+  },
+  teleports: {
+    11: {
+      17: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 24,
+          y: 10,
+        },
+      },
+    },
+    15: {
+      25: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 26,
+          y: 16,
+        },
+      },
+    },
+    5: {
+      5: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 6,
+          y: 6,
+        },
+      },
+    },
   },
   exitReturnMap: MapId.Route3,
   encounters: getEncounterData("mt-moon-1f"),

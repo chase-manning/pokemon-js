@@ -8,8 +8,8 @@ import { MapId, MapType } from "./map-types";
 const mtMoon3f: MapType = {
   name: "Mt Moon 3F",
   image,
-  music,
   cave: true,
+  music,
   height: 28,
   width: 28,
   start: {
@@ -52,9 +52,74 @@ const mtMoon3f: MapType = {
   text: {},
   maps: {},
   exits: {},
+  teleports: {
+    3: {
+      23: {
+        map: MapId.MtMoon2f,
+        pos: {
+          x: 4,
+          y: 6,
+        },
+      },
+    },
+    5: {
+      5: {
+        map: MapId.MtMoon1f,
+        pos: {
+          x: 7,
+          y: 5,
+        },
+      },
+    },
+    9: {
+      25: {
+        map: MapId.MtMoon1f,
+        pos: {
+          x: 16,
+          y: 12,
+        },
+      },
+    },
+    11: {
+      17: {
+        map: MapId.MtMoon2f,
+        pos: {
+          x: 26,
+          y: 10,
+        },
+      },
+    },
+    17: {
+      21: {
+        map: MapId.MtMoon2f,
+        pos: {
+          x: 22,
+          y: 16,
+        },
+      },
+    },
+    15: {
+      25: {
+        map: MapId.MtMoon1f,
+        pos: {
+          x: 26,
+          y: 14,
+        },
+      },
+    },
+    27: {
+      13: {
+        map: MapId.MtMoon2f,
+        pos: {
+          x: 16,
+          y: 26,
+        },
+      },
+    },
+  },
   exitReturnPos: {
-    x: 1,
-    y: 1,
+    x: 6,
+    y: 5,
   },
   encounters: getEncounterData("mt-moon-b1f"),
   exitReturnMap: MapId.MtMoon1f,

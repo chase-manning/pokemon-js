@@ -115,6 +115,7 @@ const pewterCity: MapType = {
       7: MapId.PewterCityNpcA,
     },
   },
+  recoverLocation: { x: 13, y: 26 },
   exits: {
     35: [18, 19],
   },

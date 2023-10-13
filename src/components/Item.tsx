@@ -72,7 +72,7 @@ const Item = ({ item }: Props) => {
     }
   });
 
-  if (isCollected) return null;
+  if (isCollected || item.hidden) return null;
 
   return (
     <StyledItem x={item.pos.x} y={item.pos.y}>

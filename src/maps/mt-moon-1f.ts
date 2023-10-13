@@ -301,6 +301,7 @@ const mtMoon1f: MapType = {
     },
     {
       item: ItemType.PokeBall, // TODO: should be MoonStone
+      hidden: true,
       pos: {
         x: 2,
         y: 2,

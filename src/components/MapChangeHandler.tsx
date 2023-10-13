@@ -1,8 +1,13 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { exitMap, selectPos, selectMap, setMap } from "../state/gameSlice";
+import {
+  exitMap,
+  selectPos,
+  selectMap,
+  setMap,
+  setMapWithPos,
+} from "../state/gameSlice";
 import { useEffect } from "react";
-import { MapId } from "../maps/map-types";
 import emitter, { Event } from "../app/emitter";
 import { isExit } from "../app/map-helper";
 import { selectBlackScreen, setBlackScreen } from "../state/uiSlice";
@@ -32,19 +37,19 @@ const MapChangeHandler = () => {
   useEffect(() => {
     const nextMap = map.maps[pos.y] ? map.maps[pos.y][pos.x] : null;
     const exit = isExit(map.exits, pos.x, pos.y);
+    const teleport =
+      map.teleports && map.teleports[pos.y]
+        ? map.teleports[pos.y][pos.x]
+        : null;
 
-    if (!nextMap && !exit) return;
+    if (!nextMap && !exit && !teleport) return;
     if (darkScreen) return;
 
-    const updateMap = (map_?: MapId) => {
+    const transition = (action: () => void) => {
       dispatch(setBlackScreen(true));
       setTimeout(() => {
         emitter.emit(Event.EnterDoor);
-        if (map_) {
-          dispatch(setMap(map_));
-        } else {
-          dispatch(exitMap());
-        }
+        action();
       }, 300);
       setTimeout(() => {
         dispatch(setBlackScreen(false));
@@ -52,11 +57,13 @@ const MapChangeHandler = () => {
     };
 
     if (nextMap) {
-      updateMap(nextMap);
+      transition(() => dispatch(setMap(nextMap)));
     } else if (exit) {
-      updateMap();
+      transition(() => dispatch(exitMap()));
+    } else if (teleport) {
+      transition(() => dispatch(setMapWithPos(teleport)));
     }
-  }, [pos, map.maps, dispatch, map.exits, darkScreen]);
+  }, [pos, map.maps, dispatch, map.exits, darkScreen, map.teleports]);
 
   return <Overlay $show={darkScreen} />;
 };

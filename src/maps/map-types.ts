@@ -94,6 +94,7 @@ export interface TrainerType {
 export interface MapItemType {
   pos: PosType;
   item: ItemType;
+  hidden?: boolean;
 }
 
 export interface MapWithPos {

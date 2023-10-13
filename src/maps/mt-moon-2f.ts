@@ -88,6 +88,45 @@ const mtMoon2f: MapType = {
   text: {},
   maps: {},
   exits: {},
+  teleports: {
+    7: {
+      5: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 22,
+          y: 2,
+        },
+      },
+    },
+    9: {
+      25: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 18,
+          y: 10,
+        },
+      },
+    },
+    17: {
+      21: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 20,
+          y: 17,
+        },
+      },
+    },
+    27: {
+      15: {
+        map: MapId.MtMoon3f,
+        pos: {
+          x: 14,
+          y: 26,
+        },
+      },
+    },
+  },
+
   encounters: getEncounterData("mt-moon-b2f"),
   exitReturnPos: {
     x: 1,

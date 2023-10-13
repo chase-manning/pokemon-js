@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "./store";
-import { MapId, MapItemType, TrainerType } from "../maps/map-types";
+import { MapId, MapItemType, MapWithPos, TrainerType } from "../maps/map-types";
 import palletTown from "../maps/pallet-town";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 import mapData from "../maps/map-data";
@@ -95,6 +95,10 @@ export const gameSlice = createSlice({
       state.map = action.payload;
       const map = mapData[action.payload];
       state.pos = map.start;
+    },
+    setMapWithPos: (state, action: PayloadAction<MapWithPos>) => {
+      state.map = action.payload.map;
+      state.pos = action.payload.pos;
     },
     exitMap(state) {
       const map = mapData[state.map];
@@ -309,6 +313,7 @@ export const {
   moveDown,
   setMap,
   setPos,
+  setMapWithPos,
   exitMap,
   setMoving,
   addInventory,

@@ -74,6 +74,7 @@ const StartMenu = () => {
                 showConfirmationMenu({
                   preMessage: "Would you like to SAVE the game?",
                   postMessage: `${name} saved the game!`,
+                  loadingText: "Saving...",
                   confirm: async () => {
                     const timestamp = new Date().getTime();
                     await setDoc(doc(db, "lien", timestamp.toString()), {

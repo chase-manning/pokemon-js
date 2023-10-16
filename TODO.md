@@ -1,5 +1,8 @@
 ===========
 
+- Performance improrvement for getting latest save
+- Not enough space for text in attack menu
+
 ===========
 
 - Add support for app refreshing when there is an update

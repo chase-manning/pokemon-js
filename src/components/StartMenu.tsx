@@ -15,7 +15,7 @@ import emitter, { Event } from "../app/emitter";
 import { useState } from "react";
 import {
   addInventory,
-  save,
+  selectGameState,
   selectName,
   selectPokemon,
 } from "../state/gameSlice";
@@ -23,6 +23,8 @@ import PokemonList from "./PokemonList";
 import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 import { DEBUG_MODE } from "../app/constants";
 import { ItemType } from "../app/use-item-data";
+import { db } from "../app/db";
+import { doc, setDoc } from "firebase/firestore";
 
 const StartMenu = () => {
   const dispatch = useDispatch();
@@ -31,6 +33,7 @@ const StartMenu = () => {
   const name = useSelector(selectName);
   const saving = !!useSelector(selectConfirmationMenu);
   const allPokemon = useSelector(selectPokemon);
+  const gameState = useSelector(selectGameState);
 
   const [pokemon, setPokemon] = useState(false);
 
@@ -72,8 +75,12 @@ const StartMenu = () => {
                 showConfirmationMenu({
                   preMessage: "Would you like to SAVE the game?",
                   postMessage: `${name} saved the game!`,
-                  confirm: () => {
-                    dispatch(save());
+                  confirm: async () => {
+                    const timestamp = new Date().getTime();
+                    await setDoc(doc(db, "lien", timestamp.toString()), {
+                      timestamp,
+                      gameState,
+                    });
                   },
                 })
               );

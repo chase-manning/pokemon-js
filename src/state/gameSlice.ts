@@ -142,11 +142,8 @@ export const gameSlice = createSlice({
     setName: (state, action: PayloadAction<string>) => {
       state.name = action.payload;
     },
-    save: (state) => {
-      localStorage.setItem(state.name, JSON.stringify(state));
-    },
-    load: (state) => {
-      const savedGame = localStorage.getItem(state.name);
+    load: (state, action: PayloadAction<string>) => {
+      const savedGame = action.payload;
       if (!savedGame) return;
       const savedGameState = JSON.parse(savedGame) as GameState;
       state.pos = savedGameState.pos;
@@ -321,7 +318,6 @@ export const {
   removeInventory,
   consumeItem,
   setName,
-  save,
   load,
   swapPokemonPositions,
   encounterPokemon,
@@ -366,8 +362,6 @@ export const selectPreviousMap = (state: RootState) => {
 
 export const selectName = (state: RootState) => state.game.name;
 
-export const selectHasSave = () => localStorage.getItem("game") !== null;
-
 export const selectPokemon = (state: RootState) => state.game.pokemon;
 
 export const selectPokemonEncounter = (state: RootState) =>
@@ -396,5 +390,7 @@ export const selectCompletedQuests = (state: RootState) =>
 
 export const selectIsTeleporting = (state: RootState) =>
   state.game.lastTeleport !== null;
+
+export const selectGameState = (state: RootState) => JSON.stringify(state.game);
 
 export default gameSlice.reducer;

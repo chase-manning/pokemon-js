@@ -2,13 +2,14 @@ import styled from "styled-components";
 import Menu from "./Menu";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { load, selectHasSave } from "../state/gameSlice";
+import { load } from "../state/gameSlice";
 import {
   hideLoadMenu,
   selectGameboyMenu,
   selectLoadMenu,
   selectTitleMenu,
 } from "../state/uiSlice";
+import useLatestSave from "../app/use-latest-save";
 
 const StyledLoadScreen = styled.div`
   position: absolute;
@@ -23,10 +24,11 @@ const StyledLoadScreen = styled.div`
 const LoadScreen = () => {
   const dispatch = useDispatch();
   const [loaded, setLoaded] = useState(false);
-  const hasSave = useSelector(selectHasSave);
   const titleOpen = useSelector(selectTitleMenu);
   const show = useSelector(selectLoadMenu);
   const gameboyOpen = useSelector(selectGameboyMenu);
+  const save = useLatestSave();
+  const hasSave = !!save;
 
   const loadComplete = () => {
     setLoaded(true);
@@ -45,7 +47,8 @@ const LoadScreen = () => {
   const loadGame = {
     label: "Continue",
     action: () => {
-      dispatch(load());
+      if (!save) throw new Error("No save found");
+      dispatch(load(save));
       loadComplete();
     },
   };

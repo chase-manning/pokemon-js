@@ -18,8 +18,9 @@ interface LearningMoveType {
 interface ConfimationMenuType {
   preMessage: string;
   postMessage: string;
-  confirm: () => void;
+  confirm: (() => Promise<void>) | (() => void);
   cancel?: () => void;
+  loadingText?: string;
 }
 
 interface UiState {

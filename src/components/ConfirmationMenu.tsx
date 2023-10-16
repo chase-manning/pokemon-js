@@ -23,6 +23,7 @@ const Container = styled.div`
 
 const ConfirmationMenu = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
   const isMobile = useIsMobile();
   const data = useSelector(selectConfirmationMenu);
@@ -30,7 +31,10 @@ const ConfirmationMenu = () => {
   const show = !!data;
 
   useEffect(() => {
-    if (!show) setConfirmed(false);
+    if (!show) {
+      setLoading(false);
+      setConfirmed(false);
+    }
   }, [show]);
 
   useEvent(Event.A, () => {
@@ -44,7 +48,13 @@ const ConfirmationMenu = () => {
     <>
       <Container>
         <Frame wide tall>
-          {confirmed ? data.postMessage : data.preMessage}
+          {confirmed
+            ? data.postMessage
+            : loading
+            ? data.loadingText
+              ? data.loadingText
+              : "Loading..."
+            : data.preMessage}
         </Frame>
       </Container>
       <Menu
@@ -57,9 +67,10 @@ const ConfirmationMenu = () => {
         menuItems={[
           {
             label: "Yes",
-            action: () => {
+            action: async () => {
+              setLoading(true);
+              await data.confirm();
               setConfirmed(true);
-              data.confirm();
             },
           },
           {

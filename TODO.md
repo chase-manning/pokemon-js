@@ -1,18 +1,12 @@
 ===========
 
-- Add support for invisible items
-- Finish mt moon map
-- Outros aren't playing
-- Stop manual encounters after defeated trainer
-- Add more maps
+- Text cuttoff with attacks
 - Add support for app refreshing when there is an update
 - We still have an update menu
-- Encounter frequency seems off
-- Block the first gym in some way
-- Implement quests
 
 ===========
 
+- Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them
 - battle sounds

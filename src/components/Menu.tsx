@@ -60,12 +60,6 @@ const ArrowContainer = styled.div`
   left: 0;
   top: 50%;
   transform: translateY(-50%);
-
-  @media (max-width: 1000px) {
-    top: auto;
-    bottom: -1px;
-    left: 1px;
-  }
 `;
 
 export interface MenuItemType {

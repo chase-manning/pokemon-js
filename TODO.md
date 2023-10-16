@@ -1,19 +1,12 @@
 ===========
 
 - Performance improrvement for getting latest save
-- Not enough space for text in attack menu
-
-===========
-
-- Add support for app refreshing when there is an update
-- We still have an update menu
-- Save not working
-
-===========
-
 - Should reset cursor position on menus when exiting
-- Add support for invisible items
 - Finish mt moon map
+- Text cuttoff with attacks
+
+===========
+
 - Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them

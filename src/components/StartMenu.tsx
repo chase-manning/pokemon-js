@@ -20,7 +20,6 @@ import {
   selectPokemon,
 } from "../state/gameSlice";
 import PokemonList from "./PokemonList";
-import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 import { DEBUG_MODE } from "../app/constants";
 import { ItemType } from "../app/use-item-data";
 import { db } from "../app/db";
@@ -84,15 +83,6 @@ const StartMenu = () => {
                   },
                 })
               );
-            },
-          },
-          {
-            label: "Update",
-            action: () => {
-              // Our app is a PWA, the service worker caches the site.
-              // This action should remove the cache and load it again
-              serviceWorkerRegistration.unregister();
-              window.location.reload();
             },
           },
           ...(DEBUG_MODE

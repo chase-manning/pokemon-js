@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "lien-pokemon"
-  }
+    "default": "lien-pokemon",
+    "lien": "lien-pokemon"
+  },
+  "targets": {},
+  "etags": {}
 }

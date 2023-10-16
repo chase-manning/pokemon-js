@@ -78,12 +78,6 @@ const StartMenu = () => {
               );
             },
           },
-          {
-            label: "Update",
-            action: () => {
-              window.location.href = `/?v=${Date.now()}`;
-            },
-          },
           ...(DEBUG_MODE
             ? [
                 {

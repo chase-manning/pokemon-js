@@ -20,7 +20,6 @@ import {
   updateSpecificPokemon,
 } from "../state/gameSlice";
 import PokemonList from "./PokemonList";
-import * as serviceWorkerRegistration from "../serviceWorkerRegistration";
 import { DEBUG_MODE } from "../app/constants";
 import { getPokemonStats } from "../app/use-pokemon-stats";
 
@@ -82,10 +81,7 @@ const StartMenu = () => {
           {
             label: "Update",
             action: () => {
-              // Our app is a PWA, the service worker caches the site.
-              // This action should remove the cache and load it again
-              serviceWorkerRegistration.unregister();
-              window.location.reload();
+              window.location.href = `/?v=${Date.now()}`;
             },
           },
           ...(DEBUG_MODE

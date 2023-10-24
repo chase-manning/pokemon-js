@@ -1,8 +1,6 @@
 ===========
 
-- Performance improrvement for getting latest save
-- Should reset cursor position on menus when exiting
-- Finish mt moon map
+- Performance improrvement for getting latest save (by filtering in query instead of locally)
 - Text cuttoff with attacks
 
 ===========
@@ -42,4 +40,4 @@
 - Update route 22 music
 - Rename all walk-sprite and portrait assets to be the correct name of the sprites
 - Add all the npcs in these areas
-- Implement town map in NPC houses
+- Implement town map in NPC house

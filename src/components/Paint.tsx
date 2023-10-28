@@ -3,6 +3,7 @@ import styled from "styled-components";
 import map from "../assets/map/mt-moon-3f.png";
 import { useState } from "react";
 import { PosType } from "../state/state-types";
+import PixelImage from "../styles/PixelImage";
 
 const StyledPaint = styled.div`
   position: fixed;
@@ -19,7 +20,7 @@ const ImageContainer = styled.div`
   height: 100%;
 `;
 
-const Image = styled.img`
+const Image = styled(PixelImage)`
   height: 100%;
 `;
 

@@ -4,6 +4,7 @@ import { useState } from "react";
 import usePokemonMetadata from "../app/use-pokemon-metadata";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
+import PixelImage from "../styles/PixelImage";
 
 const StyledEvolution = styled.div`
   position: absolute;
@@ -110,7 +111,7 @@ const firstAnimation = keyframes`
   }
 `;
 
-const FirstPokemon = styled.img`
+const FirstPokemon = styled(PixelImage)`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -213,7 +214,7 @@ const secondAnimation = keyframes`
   }
 `;
 
-const SecondPokemon = styled.img`
+const SecondPokemon = styled(PixelImage)`
   position: absolute;
   top: 50%;
   left: 50%;

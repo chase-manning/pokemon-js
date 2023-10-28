@@ -1,7 +1,6 @@
 ===========
 
-- Text cuttoff with attacks (meow)
-- Add nodrag to images
+- Text cuttoff with attacks
 
 ===========
 

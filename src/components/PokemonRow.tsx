@@ -27,6 +27,7 @@ import ballB from "../assets/pokemon/simple/ball-b.png";
 import usePokemonStats from "../app/use-pokemon-stats";
 import { PokemonInstance } from "../state/state-types";
 import { MoveMetadata } from "../app/move-metadata";
+import PixelImage from "../styles/PixelImage";
 
 const getIcons = (metadata: PokemonMetadata): { a: string; b: string } => {
   // Is Voltorb or Electrode
@@ -100,7 +101,7 @@ const ArrowContainer = styled.div`
   align-items: center;
 `;
 
-const Image = styled.img`
+const Image = styled(PixelImage)`
   height: 19px;
   margin-right: 10px;
 

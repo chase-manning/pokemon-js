@@ -60,6 +60,7 @@ import MoveSelect from "./MoveSelect";
 import catchesPokemon from "../app/pokeball-helper";
 import { PokemonEncounterType, PokemonInstance } from "../state/state-types";
 import getPokemonEncounter from "../app/pokemon-encounter-helper";
+import PixelImage from "../styles/PixelImage";
 
 const MOVEMENT_ANIMATION = 1300;
 const FRAME_DURATION = 100;
@@ -286,7 +287,7 @@ const inFromRight = keyframes`
   }
 `;
 
-const LeftImage = styled.img`
+const LeftImage = styled(PixelImage)`
   height: 100%;
 
   transform: translate(400%);
@@ -302,7 +303,7 @@ const inFromLeft = keyframes`
   }
 `;
 
-const RightImage = styled.img`
+const RightImage = styled(PixelImage)`
   height: 100%;
 
   transform: translate(-400%);
@@ -357,7 +358,7 @@ const AttackLeft = styled.div<AttackingProps>`
     `};
 `;
 
-const Corner = styled.img`
+const Corner = styled(PixelImage)`
   transform: translateY(-50%);
 
   height: 8vh;
@@ -373,7 +374,7 @@ const CornerContainer = styled.div`
   }
 `;
 
-const CornerRight = styled.img`
+const CornerRight = styled(PixelImage)`
   height: 8vh;
   transform: translateY(-70%) scaleX(-1);
   @media (max-width: 1000px) {

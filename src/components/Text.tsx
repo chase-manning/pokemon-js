@@ -17,6 +17,7 @@ import {
 } from "../state/uiSlice";
 import { Direction } from "../state/state-types";
 import { useActiveMapQuests } from "../app/use-quests";
+import PixelImage from "../styles/PixelImage";
 
 interface TextProps {
   $done: boolean;
@@ -86,7 +87,7 @@ const StyledText = styled.div<TextProps>`
   }
 `;
 
-const Image = styled.img`
+const Image = styled(PixelImage)`
   height: 60%;
   position: absolute;
   top: 50%;

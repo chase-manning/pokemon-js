@@ -255,6 +255,7 @@ const Evolution = ({ show, close, pokemonId }: Props) => {
 
   useEvent(Event.A, () => {
     if (evolved) {
+      setEvolved(false);
       close();
     }
   });

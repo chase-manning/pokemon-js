@@ -1,6 +1,6 @@
 ===========
 
-- Text cuttoff with attacks
+- Implement moon stone
 
 ===========
 

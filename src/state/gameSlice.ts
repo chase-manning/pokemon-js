@@ -429,4 +429,7 @@ export const selectCollectedItems = (state: RootState) =>
 export const selectCompletedQuests = (state: RootState) =>
   state.game.completedQuests;
 
+export const selectActivePokemonIndex = (state: RootState) =>
+  state.game.activePokemonIndex;
+
 export default gameSlice.reducer;

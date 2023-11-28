@@ -9,6 +9,7 @@ import {
   hideItemsMenu,
   learnMove,
   showActionOnPokemon,
+  showEvolution,
   throwPokeball,
 } from "../state/uiSlice";
 import { getMoveMetadata } from "./use-move-metadata";
@@ -22,7 +23,7 @@ export enum ItemType {
   Bicycle = "bicycle",
   SafariBall = "safari-ball",
   Pokedex = "pokedex",
-  MoonStone = "moon-stone",
+  MoonStone = "moon-stone", // DONE
   Antidote = "antidote",
   BurnHeal = "burn-heal",
   IceHeal = "ice-heal",
@@ -44,9 +45,9 @@ export enum ItemType {
   EscapeRope = "escape-rope",
   Repel = "repel",
   OldAmber = "old-amber",
-  FireStone = "fire-stone",
-  ThunderStone = "thunder-stone",
-  WaterStone = "water-stone",
+  FireStone = "fire-stone", // DONE
+  ThunderStone = "thunder-stone", // DONE
+  WaterStone = "water-stone", // DONE
   HpUp = "hp-up",
   Protein = "protein",
   Iron = "iron",
@@ -58,7 +59,7 @@ export enum ItemType {
   SecretKey = "secret-key",
   BikeVoucher = "bike-voucher",
   XAccuracy = "x-accuracy",
-  LeafStone = "leaf-stone",
+  LeafStone = "leaf-stone", // DONE
   CardKey = "card-key",
   Nugget = "nugget", // DONE
   PpUp = "pp-up", // DONE
@@ -612,6 +613,156 @@ const useItemData = () => {
           })
         );
         dispatch(consumeItem(ItemType.MaxElixer));
+      },
+    },
+    [ItemType.MoonStone]: {
+      type: ItemType.MoonStone,
+      name: "Moon Stone",
+      countable: true,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        const EVOLUTIONS: Record<number, number> = {
+          133: 136, // TODO
+        };
+
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            const evolveToId = EVOLUTIONS[index];
+            if (!evolveToId) return;
+            dispatch(
+              showEvolution({
+                index,
+                evolveToId,
+              })
+            );
+            dispatch(consumeItem(ItemType.MoonStone));
+          })
+        );
+      },
+    },
+    [ItemType.LeafStone]: {
+      type: ItemType.LeafStone,
+      name: "Leaf Stone",
+      countable: true,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        const EVOLUTIONS: Record<number, number> = {
+          133: 136, // TODO
+        };
+
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            const evolveToId = EVOLUTIONS[index];
+            if (!evolveToId) return;
+            dispatch(
+              showEvolution({
+                index,
+                evolveToId,
+              })
+            );
+            dispatch(consumeItem(ItemType.LeafStone));
+          })
+        );
+      },
+    },
+    [ItemType.FireStone]: {
+      type: ItemType.FireStone,
+      name: "Fire Stone",
+      countable: true,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        const EVOLUTIONS: Record<number, number> = {
+          133: 136, // TODO
+        };
+
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            const evolveToId = EVOLUTIONS[index];
+            if (!evolveToId) return;
+            dispatch(
+              showEvolution({
+                index,
+                evolveToId,
+              })
+            );
+            dispatch(consumeItem(ItemType.FireStone));
+          })
+        );
+      },
+    },
+    [ItemType.WaterStone]: {
+      type: ItemType.WaterStone,
+      name: "Water Stone",
+      countable: true,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        const EVOLUTIONS: Record<number, number> = {
+          133: 136, // TODO
+        };
+
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            const evolveToId = EVOLUTIONS[index];
+            if (!evolveToId) return;
+            dispatch(
+              showEvolution({
+                index,
+                evolveToId,
+              })
+            );
+            dispatch(consumeItem(ItemType.WaterStone));
+          })
+        );
+      },
+    },
+    [ItemType.ThunderStone]: {
+      type: ItemType.ThunderStone,
+      name: "Thunder Stone",
+      countable: true,
+      consumable: true,
+      usableInBattle: false,
+      pokeball: false,
+      badge: false,
+      cost: null,
+      sellPrice: 0,
+      action: () => {
+        const EVOLUTIONS: Record<number, number> = {
+          133: 136, // TODO
+        };
+
+        dispatch(
+          showActionOnPokemon((index: number) => {
+            const evolveToId = EVOLUTIONS[index];
+            if (!evolveToId) return;
+            dispatch(
+              showEvolution({
+                index,
+                evolveToId,
+              })
+            );
+            dispatch(consumeItem(ItemType.ThunderStone));
+          })
+        );
       },
     },
     [ItemType.MasterBall]: {

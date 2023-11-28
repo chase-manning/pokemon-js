@@ -6,7 +6,7 @@ import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import PixelImage from "../styles/PixelImage";
 import { useDispatch, useSelector } from "react-redux";
-import { selectEvolution } from "../state/uiSlice";
+import { hideEvolution, selectEvolution } from "../state/uiSlice";
 import { selectPokemon, updateSpecificPokemon } from "../state/gameSlice";
 
 const StyledEvolution = styled.div`
@@ -244,15 +244,13 @@ const TextContainer = styled.div`
 
 const Evolution = () => {
   const dispatch = useDispatch();
-  const pokemonIndex = useSelector(selectEvolution);
+  const evolution = useSelector(selectEvolution);
   const allPokemon = useSelector(selectPokemon);
-  const evolvingPokemon = allPokemon[pokemonIndex || 0];
+  const evolvingPokemon = allPokemon[evolution?.index || 0];
   const evolvingId = evolvingPokemon ? evolvingPokemon.id : null;
   const metadata = usePokemonMetadata(evolvingId);
-  const evolvesMetadata = usePokemonMetadata(
-    metadata?.evolution?.pokemon || null
-  );
-  const show = pokemonIndex !== null;
+  const evolvesMetadata = usePokemonMetadata(evolution?.evolveToId || null);
+  const show = evolution !== null;
 
   const [evolved, setEvolved] = useState(false);
 
@@ -260,18 +258,18 @@ const Evolution = () => {
     if (!show) return;
     if (!evolved) return;
     if (!metadata) throw new Error("No metadata for evolution");
-    if (!metadata.evolution) throw new Error("No evolving pokemon");
 
     setEvolved(false);
     dispatch(
       updateSpecificPokemon({
-        index: pokemonIndex,
+        index: evolution.index,
         pokemon: {
           ...evolvingPokemon,
-          id: metadata.evolution.pokemon,
+          id: evolution.evolveToId,
         },
       })
     );
+    dispatch(hideEvolution());
   });
 
   if (!show) return null;

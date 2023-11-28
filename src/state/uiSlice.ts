@@ -22,6 +22,11 @@ interface ConfimationMenuType {
   cancel?: () => void;
 }
 
+interface EvolutionType {
+  index: number;
+  evolveToId: number;
+}
+
 interface UiState {
   text: string[] | null;
   startMenu: boolean;
@@ -40,7 +45,7 @@ interface UiState {
   learningMove: LearningMoveType | null;
   blackScreen: boolean;
   confirmationMenu: ConfimationMenuType | null;
-  evolution: number | null;
+  evolution: EvolutionType | null;
 }
 
 const initialState: UiState = {
@@ -167,7 +172,7 @@ export const uiSlice = createSlice({
     hideConfirmationMenu: (state) => {
       state.confirmationMenu = null;
     },
-    showEvolution: (state, action: PayloadAction<number>) => {
+    showEvolution: (state, action: PayloadAction<EvolutionType>) => {
       state.evolution = action.payload;
     },
     hideEvolution: (state) => {

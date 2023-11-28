@@ -621,7 +621,23 @@ const PokemonEncounter = () => {
   const isTrainer = !!trainer;
   const isThrowingEnemyPokeball = stage >= 34 && stage <= 38 && isTrainer;
 
+  const handleEvolution = () => {
+    if (!processingMetadata) return;
+    if (!processingMetadata.evolution) return;
+    if (processingPokemon.level < processingMetadata.evolution.level) return;
+    dispatch(
+      showEvolution({
+        index: involvedPokemon[processingInvolvedPokemon],
+        evolveToId: processingMetadata.evolution.pokemon,
+      })
+    );
+  };
+
   const endEncounter_ = (exitBattle = false) => {
+    // Handle evolutions
+    handleEvolution();
+
+    // Handling switching to the next processing pokemon
     if (processingInvolvedPokemon < involvedPokemon.length - 1) {
       const nextIndex = processingInvolvedPokemon + 1;
       if (enemy) {
@@ -914,11 +930,6 @@ const PokemonEncounter = () => {
       }
     }
 
-    const isEvolving =
-      processingMetadata &&
-      processingMetadata.evolution &&
-      processingPokemon.level >= processingMetadata.evolution.level;
-
     if (stage === 22) {
       const move = getLearnedMove(processingPokemon);
       const hasFourMoves = active.moves.length === 4;
@@ -927,9 +938,6 @@ const PokemonEncounter = () => {
       } else if (move && hasFourMoves) {
         setStage(30);
       } else {
-        if (isEvolving) {
-          dispatch(showEvolution(involvedPokemon[processingInvolvedPokemon]));
-        }
         endEncounter_();
       }
     }
@@ -970,9 +978,6 @@ const PokemonEncounter = () => {
         })
       );
 
-      if (isEvolving) {
-        dispatch(showEvolution(involvedPokemon[processingInvolvedPokemon]));
-      }
       endEncounter_();
     }
 
@@ -1463,18 +1468,6 @@ const PokemonEncounter = () => {
                 const item: MenuItemType = {
                   label: m.id,
                   action: () => {
-                    const isEvolving =
-                      processingMetadata &&
-                      processingMetadata.evolution &&
-                      processingPokemon.level >=
-                        processingMetadata.evolution.level;
-                    if (isEvolving) {
-                      dispatch(
-                        showEvolution(
-                          involvedPokemon[processingInvolvedPokemon]
-                        )
-                      );
-                    }
                     endEncounter_();
                     dispatch(
                       updateSpecificPokemon({
@@ -1497,32 +1490,11 @@ const PokemonEncounter = () => {
               {
                 label: getLearnedMove(processingPokemon)?.id || "Error",
                 action: () => {
-                  const isEvolving =
-                    processingMetadata &&
-                    processingMetadata.evolution &&
-                    processingPokemon.level >=
-                      processingMetadata.evolution.level;
-                  if (isEvolving) {
-                    dispatch(
-                      showEvolution(involvedPokemon[processingInvolvedPokemon])
-                    );
-                  }
                   endEncounter_();
                 },
               },
             ]}
-            close={() => {
-              const isEvolving =
-                processingMetadata &&
-                processingMetadata.evolution &&
-                processingPokemon.level >= processingMetadata.evolution.level;
-              if (isEvolving) {
-                dispatch(
-                  showEvolution(involvedPokemon[processingInvolvedPokemon])
-                );
-              }
-              endEncounter_();
-            }}
+            close={() => endEncounter_()}
             bottom="0"
             right="0"
           />

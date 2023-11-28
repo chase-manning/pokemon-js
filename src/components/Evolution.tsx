@@ -5,6 +5,9 @@ import usePokemonMetadata from "../app/use-pokemon-metadata";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import PixelImage from "../styles/PixelImage";
+import { useDispatch, useSelector } from "react-redux";
+import { selectEvolution } from "../state/uiSlice";
+import { selectPokemon, updateSpecificPokemon } from "../state/gameSlice";
 
 const StyledEvolution = styled.div`
   position: absolute;
@@ -239,25 +242,36 @@ const TextContainer = styled.div`
   }
 `;
 
-interface Props {
-  show: boolean;
-  close: () => void;
-  pokemonId: number;
-}
-
-const Evolution = ({ show, close, pokemonId }: Props) => {
-  const metadata = usePokemonMetadata(pokemonId);
+const Evolution = () => {
+  const dispatch = useDispatch();
+  const pokemonIndex = useSelector(selectEvolution);
+  const allPokemon = useSelector(selectPokemon);
+  const evolvingPokemon = allPokemon[pokemonIndex || 0];
+  const evolvingId = evolvingPokemon ? evolvingPokemon.id : null;
+  const metadata = usePokemonMetadata(evolvingId);
   const evolvesMetadata = usePokemonMetadata(
     metadata?.evolution?.pokemon || null
   );
+  const show = pokemonIndex !== null;
 
   const [evolved, setEvolved] = useState(false);
 
   useEvent(Event.A, () => {
-    if (evolved) {
-      setEvolved(false);
-      close();
-    }
+    if (!show) return;
+    if (!evolved) return;
+    if (!metadata) throw new Error("No metadata for evolution");
+    if (!metadata.evolution) throw new Error("No evolving pokemon");
+
+    setEvolved(false);
+    dispatch(
+      updateSpecificPokemon({
+        index: pokemonIndex,
+        pokemon: {
+          ...evolvingPokemon,
+          id: metadata.evolution.pokemon,
+        },
+      })
+    );
   });
 
   if (!show) return null;

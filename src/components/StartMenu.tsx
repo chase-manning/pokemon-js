@@ -87,10 +87,10 @@ const StartMenu = () => {
                       updateSpecificPokemon({
                         index: 0,
                         pokemon: {
-                          id: 6,
-                          level: 100,
+                          id: 1,
+                          level: 15,
                           xp: 0,
-                          hp: getPokemonStats(6, 100).hp,
+                          hp: getPokemonStats(3, 100).hp,
                           moves: [
                             { id: "scratch", pp: 35 },
                             { id: "growl", pp: 40 },

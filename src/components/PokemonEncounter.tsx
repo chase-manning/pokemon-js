@@ -44,9 +44,11 @@ import ballRight from "../assets/battle/ball-right.png";
 import Menu, { MenuItemType } from "./Menu";
 import PokemonList from "./PokemonList";
 import {
+  selectEvolution,
   selectItemsMenu,
   selectPokeballThrowing,
   selectStartMenu,
+  showEvolution,
   showItemsMenu,
   showTextThenAction,
   stopThrowingPokeball,
@@ -57,7 +59,6 @@ import { MoveMetadata } from "../app/move-metadata";
 import processMove, { MoveResult } from "../app/move-helper";
 import getXp from "../app/xp-helper";
 import getLevelData, { getLearnedMove } from "../app/level-helper";
-import Evolution from "./Evolution";
 import MoveSelect from "./MoveSelect";
 import catchesPokemon from "../app/pokeball-helper";
 import { PokemonEncounterType, PokemonInstance } from "../state/state-types";
@@ -573,7 +574,6 @@ const PokemonEncounter = () => {
   // 20 = they fainted
   // 21 = gained xp
   // 22 = leveled up
-  // 23 = Evolving
   // 24 = active fainted
   // 25 = select new pokemon
   // 26 = out of pokemon
@@ -611,6 +611,7 @@ const PokemonEncounter = () => {
   const processingPokemon =
     pokemon[involvedPokemon[processingInvolvedPokemon] || 0];
   const processingMetadata = usePokemonMetadata(processingPokemon?.id || null);
+  const pokemonEvolving = useSelector(selectEvolution);
 
   const [alertText, setAlertText] = useState<string | null>(null);
   const [clickableNotice, setClickableNotice] = useState<string | null>(null);
@@ -839,6 +840,7 @@ const PokemonEncounter = () => {
 
   useEvent(Event.A, () => {
     if (startMenuOpen) return;
+    if (pokemonEvolving !== null) return;
 
     if (clickableNotice) {
       setClickableNotice(null);
@@ -924,9 +926,10 @@ const PokemonEncounter = () => {
         setStage(29);
       } else if (move && hasFourMoves) {
         setStage(30);
-      } else if (isEvolving) {
-        setStage(23);
       } else {
+        if (isEvolving) {
+          dispatch(showEvolution(involvedPokemon[processingInvolvedPokemon]));
+        }
         endEncounter_();
       }
     }
@@ -968,10 +971,9 @@ const PokemonEncounter = () => {
       );
 
       if (isEvolving) {
-        setStage(23);
-      } else {
-        endEncounter_();
+        dispatch(showEvolution(involvedPokemon[processingInvolvedPokemon]));
       }
+      endEncounter_();
     }
 
     if (stage === 30) {
@@ -1433,26 +1435,6 @@ const PokemonEncounter = () => {
             select={(move: string) => processBattle(move)}
             close={() => setStage(11)}
           />
-          <Evolution
-            pokemonId={processingPokemon.id}
-            show={stage === 23}
-            close={() => {
-              if (!processingMetadata)
-                throw new Error("No processing metadata");
-              if (!processingMetadata.evolution)
-                throw new Error("No evolution");
-              dispatch(
-                updateSpecificPokemon({
-                  index: involvedPokemon[processingInvolvedPokemon],
-                  pokemon: {
-                    ...processingPokemon,
-                    id: processingMetadata.evolution.pokemon,
-                  },
-                })
-              );
-              endEncounter_();
-            }}
-          />
           {stage === 25 && (
             <PokemonList
               text="Bring out which POKéMON?"
@@ -1487,10 +1469,13 @@ const PokemonEncounter = () => {
                       processingPokemon.level >=
                         processingMetadata.evolution.level;
                     if (isEvolving) {
-                      setStage(23);
-                    } else {
-                      endEncounter_();
+                      dispatch(
+                        showEvolution(
+                          involvedPokemon[processingInvolvedPokemon]
+                        )
+                      );
                     }
+                    endEncounter_();
                     dispatch(
                       updateSpecificPokemon({
                         index: involvedPokemon[processingInvolvedPokemon],
@@ -1518,10 +1503,11 @@ const PokemonEncounter = () => {
                     processingPokemon.level >=
                       processingMetadata.evolution.level;
                   if (isEvolving) {
-                    setStage(23);
-                  } else {
-                    endEncounter_();
+                    dispatch(
+                      showEvolution(involvedPokemon[processingInvolvedPokemon])
+                    );
                   }
+                  endEncounter_();
                 },
               },
             ]}
@@ -1531,10 +1517,11 @@ const PokemonEncounter = () => {
                 processingMetadata.evolution &&
                 processingPokemon.level >= processingMetadata.evolution.level;
               if (isEvolving) {
-                setStage(23);
-              } else {
-                endEncounter_();
+                dispatch(
+                  showEvolution(involvedPokemon[processingInvolvedPokemon])
+                );
               }
+              endEncounter_();
             }}
             bottom="0"
             right="0"

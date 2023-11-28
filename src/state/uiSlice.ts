@@ -40,6 +40,7 @@ interface UiState {
   learningMove: LearningMoveType | null;
   blackScreen: boolean;
   confirmationMenu: ConfimationMenuType | null;
+  evolution: number | null;
 }
 
 const initialState: UiState = {
@@ -60,6 +61,7 @@ const initialState: UiState = {
   learningMove: null,
   blackScreen: false,
   confirmationMenu: null,
+  evolution: null,
 };
 
 export const uiSlice = createSlice({
@@ -165,6 +167,12 @@ export const uiSlice = createSlice({
     hideConfirmationMenu: (state) => {
       state.confirmationMenu = null;
     },
+    showEvolution: (state, action: PayloadAction<number>) => {
+      state.evolution = action.payload;
+    },
+    hideEvolution: (state) => {
+      state.evolution = null;
+    },
   },
 });
 
@@ -199,6 +207,8 @@ export const {
   setBlackScreen,
   showConfirmationMenu,
   hideConfirmationMenu,
+  showEvolution,
+  hideEvolution,
 } = uiSlice.actions;
 
 export const selectText = (state: RootState) => state.ui.text;
@@ -241,7 +251,8 @@ export const selectMenuOpen = (state: RootState) =>
   state.ui.pokeMartMenu ||
   state.ui.textThenAction !== null ||
   state.ui.learningMove !== null ||
-  state.ui.confirmationMenu !== null;
+  state.ui.confirmationMenu !== null ||
+  state.ui.evolution !== null;
 
 export const selectStartMenuSubOpen = (state: RootState) =>
   state.ui.itemsMenu || state.ui.playerMenu;
@@ -263,5 +274,7 @@ export const selectBlackScreen = (state: RootState) => state.ui.blackScreen;
 
 export const selectConfirmationMenu = (state: RootState) =>
   state.ui.confirmationMenu;
+
+export const selectEvolution = (state: RootState) => state.ui.evolution;
 
 export default uiSlice.reducer;

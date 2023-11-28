@@ -32,6 +32,7 @@ import TextThenAction from "./TextThenAction";
 import LearnMove from "../app/LearnMove";
 import QuestHandler from "./QuestHandler";
 import ConfirmationMenu from "./ConfirmationMenu";
+import Evolution from "./Evolution";
 
 const Container = styled.div`
   position: absolute;
@@ -122,6 +123,7 @@ const Game = () => {
       <LearnMove />
       <PlayerMenu />
       <ActionOnPokemon />
+      <Evolution />
       <ConfirmationMenu />
       <LoadScreen />
       <TitleScreen />

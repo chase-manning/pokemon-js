@@ -334,7 +334,6 @@ export const gameSlice = createSlice({
     collectItem: (state, action: PayloadAction<MapItemType>) => {
       const id = `${state.map}-${action.payload.pos.x}-${action.payload.pos.y}`;
       state.collectedItems.push(id);
-      addInventory({ item: action.payload.item, amount: 1 });
     },
     completeQuest: (state, action: PayloadAction<string>) => {
       state.completedQuests.push(action.payload);

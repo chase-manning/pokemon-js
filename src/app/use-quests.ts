@@ -3,6 +3,7 @@ import { MapId } from "../maps/map-types";
 import useBadges from "./use-badges";
 import {
   completeQuest,
+  moveLeft,
   selectCompletedQuests,
   selectPos,
   setPos,
@@ -47,6 +48,7 @@ const useQuests = () => {
         "Follow me!",
       ],
       action: () => {
+        dispatch(moveLeft());
         dispatch(setBlackScreen(true));
         setTimeout(() => {
           dispatch(setPos({ x: 14, y: 19 }));

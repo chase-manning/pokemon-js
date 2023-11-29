@@ -24,8 +24,6 @@ const SoundHandler = () => {
 
   const [musicOverride, setMusicOverride] = useState(null);
 
-  const meow: string = openingMusic;
-
   const isOpening = !isGameboyMenu && isLoadScreen;
 
   const getMapMusic = (map: MapType): string => {
@@ -37,7 +35,7 @@ const SoundHandler = () => {
   };
 
   const music = () => {
-    if (isOpening) return meow;
+    if (isOpening) return openingMusic;
     if (inBattle) return battleMusic;
     if (musicOverride) return musicOverride;
     const mapMusic = getMapMusic(map);

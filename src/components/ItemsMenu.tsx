@@ -18,7 +18,7 @@ import {
   selectPokemonEncounter,
 } from "../state/gameSlice";
 import { useState } from "react";
-import useItemData, { ItemType } from "../app/use-item-data";
+import useItemData, { ItemData, ItemType } from "../app/use-item-data";
 import { InventoryItemType } from "../state/state-types";
 
 const ItemsMenu = () => {
@@ -34,14 +34,12 @@ const ItemsMenu = () => {
   const map = useSelector(selectMap);
   const isTeleporting = useSelector(selectIsTeleporting);
 
-  const [selected, setSelected] = useState<number | null>(null);
-
-  const item = selected !== null ? itemData[inventory[selected].item] : null;
+  const [selected, setSelected] = useState<ItemData | null>(null);
 
   return (
     <>
       <Menu
-        disabled={selected !== null || usingItem || learningMove}
+        disabled={!!selected || usingItem || learningMove}
         show={show}
         close={() => dispatch(hideItemsMenu())}
         menuItems={inventory
@@ -53,14 +51,14 @@ const ItemsMenu = () => {
             return {
               label: itemData[item.item].name,
               value: item.amount,
-              action: () => setSelected(index),
+              action: () => setSelected(itemData[item.item]),
             };
           })}
       />
-      {item && selected !== null && (
+      {selected && (
         <Menu
           disabled={tossing || usingItem}
-          show={selected !== null}
+          show={!!selected}
           close={() => setSelected(null)}
           menuItems={[
             {
@@ -68,10 +66,10 @@ const ItemsMenu = () => {
               action: () => {
                 // Can't use
                 if (
-                  (inBattle && !item.usableInBattle) ||
-                  !item.consumable ||
-                  (item.pokeball && !inBattle) ||
-                  (item.type === ItemType.PikachuDoll &&
+                  (inBattle && !selected.usableInBattle) ||
+                  !selected.consumable ||
+                  (selected.pokeball && !inBattle) ||
+                  (selected.type === ItemType.PikachuDoll &&
                     !map.town &&
                     !isTeleporting)
                 ) {
@@ -85,7 +83,7 @@ const ItemsMenu = () => {
 
                 // Can use
                 else {
-                  item.action();
+                  selected.action();
                   setSelected(null);
                 }
               },
@@ -95,10 +93,9 @@ const ItemsMenu = () => {
               action: () => {
                 dispatch(
                   showConfirmationMenu({
-                    preMessage: `Is it OK to toss ${inventory[selected].item}`,
-                    postMessage: `${name} tossed ${inventory[selected].item}`,
-                    confirm: () =>
-                      dispatch(consumeItem(inventory[selected].item)),
+                    preMessage: `Is it OK to toss ${selected.name}`,
+                    postMessage: `${name} tossed ${selected.name}`,
+                    confirm: () => dispatch(consumeItem(selected.type)),
                   })
                 );
               },

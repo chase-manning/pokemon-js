@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import { hideGameboyMenu, selectGameboyMenu } from "../state/uiSlice";
+import PixelImage from "../styles/PixelImage";
 
 const StyledGameboyMenu = styled.div`
   position: absolute;
@@ -113,7 +114,7 @@ const apearIn = keyframes`
   }
 `;
 
-const Nintendo = styled.img`
+const Nintendo = styled(PixelImage)`
   height: 4%;
   opacity: 0;
 

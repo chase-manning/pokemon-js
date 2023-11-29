@@ -393,4 +393,7 @@ export const selectIsTeleporting = (state: RootState) =>
 
 export const selectGameState = (state: RootState) => JSON.stringify(state.game);
 
+export const selectActivePokemonIndex = (state: RootState) =>
+  state.game.activePokemonIndex;
+
 export default gameSlice.reducer;

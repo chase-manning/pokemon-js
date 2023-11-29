@@ -2,9 +2,6 @@
 
 - Performance improrvement for getting latest save (by filtering in query instead of locally)
 - Text cuttoff with attacks
-- Give lien fire stone
-- Give lien some more money
-- Increase spawn rate of Pikachu
 - Pikachu doll not working in bethnal green
 - Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
 - Rename consumable to usable

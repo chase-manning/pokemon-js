@@ -283,7 +283,8 @@ const useQuests = () => {
         "You can keep it!",
         "I just wanted to see one!",
         "To thank you, I have a gift for you!",
-        "Lien received ULTRA BALL",
+        "Lien received FIRE STONE",
+        "You can evolve your EEVEE now!!",
         "If you continue through Weavers Fields",
         "You can walk to Shoreditch",
         "There is a gym there!",
@@ -292,6 +293,32 @@ const useQuests = () => {
       ],
       action: () => {
         dispatch(completeQuest("chase-3"));
+        dispatch(addInventory({ item: ItemType.FireStone, amount: 1 }));
+      },
+    },
+    {
+      trigger: "talk",
+      map: MapId.PalletTownHouseB,
+      positions: {
+        1: [4],
+      },
+      active: () => !isComplete("chase-4") && hasItem(ItemType.BoulderBadge),
+      text: [
+        "It's my amazing girlfriend Lien!!",
+        "I've missed you so much!",
+        "How did you get on beating the gym leader?",
+        "You beat him!?",
+        "Yay!",
+        "You are so great!",
+        "I'm so proud of you!",
+        "I have a gift for you!",
+        "Lien received ULTRA BALL",
+        "Go catch some more Pokemon!",
+        "I'll be waiting for you here!",
+        "Come back to me when you get another badge!",
+      ],
+      action: () => {
+        dispatch(completeQuest("chase-4"));
         dispatch(addInventory({ item: ItemType.UltraBall, amount: 1 }));
       },
     },

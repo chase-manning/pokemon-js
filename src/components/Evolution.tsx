@@ -253,9 +253,6 @@ const Evolution = () => {
   const evolvesMetadata = usePokemonMetadata(evolution?.evolveToId || null);
   const show = evolution !== null;
 
-  console.log("show", show);
-  console.log(evolution);
-
   const [evolved, setEvolved] = useState(false);
 
   useEvent(Event.A, () => {

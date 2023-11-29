@@ -8,6 +8,7 @@ import useEvent from "../app/use-event";
 import { Event } from "../app/emitter";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  addInventory,
   collectItem,
   selectCollectedItems,
   selectDirection,
@@ -66,7 +67,10 @@ const Item = ({ item }: Props) => {
       dispatch(
         showTextThenAction({
           text: [`${name} found ${itemData[item.item].name}!`],
-          action: () => dispatch(collectItem(item)),
+          action: () => {
+            dispatch(collectItem(item));
+            dispatch(addInventory({ item: item.item, amount: 1 }));
+          },
         })
       );
     }

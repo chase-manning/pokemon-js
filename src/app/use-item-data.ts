@@ -627,7 +627,10 @@ const useItemData = () => {
       sellPrice: 0,
       action: () => {
         const EVOLUTIONS: Record<number, number> = {
-          133: 136, // TODO
+          30: 31,
+          33: 34,
+          35: 36,
+          39: 40,
         };
 
         dispatch(
@@ -653,11 +656,13 @@ const useItemData = () => {
       usableInBattle: false,
       pokeball: false,
       badge: false,
-      cost: null,
-      sellPrice: 0,
+      cost: 2100,
+      sellPrice: 1050,
       action: () => {
         const EVOLUTIONS: Record<number, number> = {
-          133: 136, // TODO
+          44: 45,
+          70: 71,
+          102: 103,
         };
 
         dispatch(
@@ -683,11 +688,13 @@ const useItemData = () => {
       usableInBattle: false,
       pokeball: false,
       badge: false,
-      cost: null,
-      sellPrice: 0,
+      cost: 2100,
+      sellPrice: 1050,
       action: () => {
         const EVOLUTIONS: Record<number, number> = {
-          133: 136, // TODO
+          37: 38,
+          58: 59,
+          133: 136,
         };
 
         dispatch(
@@ -713,11 +720,14 @@ const useItemData = () => {
       usableInBattle: false,
       pokeball: false,
       badge: false,
-      cost: null,
-      sellPrice: 0,
+      cost: 2100,
+      sellPrice: 1050,
       action: () => {
         const EVOLUTIONS: Record<number, number> = {
-          133: 136, // TODO
+          61: 62,
+          90: 91,
+          120: 121,
+          133: 134,
         };
 
         dispatch(
@@ -743,11 +753,12 @@ const useItemData = () => {
       usableInBattle: false,
       pokeball: false,
       badge: false,
-      cost: null,
-      sellPrice: 0,
+      cost: 2100,
+      sellPrice: 1050,
       action: () => {
         const EVOLUTIONS: Record<number, number> = {
-          133: 136, // TODO
+          25: 26,
+          133: 135,
         };
 
         dispatch(

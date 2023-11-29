@@ -8,6 +8,7 @@ import {
   consumeItem,
   gainMoney,
   healPokemon,
+  moveLeft,
   selectCompletedQuests,
   selectInventory,
   selectPokemon,
@@ -71,6 +72,7 @@ const useQuests = () => {
         "Follow me!",
       ],
       action: () => {
+        dispatch(moveLeft());
         dispatch(setBlackScreen(true));
         setTimeout(() => {
           dispatch(setPos({ x: 14, y: 19 }));

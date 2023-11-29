@@ -265,7 +265,7 @@ const viridianForrest: MapType = {
       },
     },
     {
-      item: ItemType.Potion,
+      item: ItemType.Nugget,
       pos: {
         x: 12,
         y: 29,

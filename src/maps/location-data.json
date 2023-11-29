@@ -11394,14 +11394,14 @@
           },
           {
             "id": 25,
-            "chance": 20,
+            "chance": 25,
             "conditionValues": [],
             "maxLevel": 3,
             "minLevel": 3
           },
           {
             "id": 25,
-            "chance": 5,
+            "chance": 10,
             "conditionValues": [],
             "maxLevel": 5,
             "minLevel": 5

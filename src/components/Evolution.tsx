@@ -16,6 +16,7 @@ const StyledEvolution = styled.div`
   width: 100%;
   height: 100%;
   background: var(--bg);
+  z-index: 200;
 
   height: 80%;
   @media (max-width: 1000px) {
@@ -251,6 +252,9 @@ const Evolution = () => {
   const metadata = usePokemonMetadata(evolvingId);
   const evolvesMetadata = usePokemonMetadata(evolution?.evolveToId || null);
   const show = evolution !== null;
+
+  console.log("show", show);
+  console.log(evolution);
 
   const [evolved, setEvolved] = useState(false);
 

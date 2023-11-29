@@ -635,7 +635,8 @@ const useItemData = () => {
 
         dispatch(
           showActionOnPokemon((index: number) => {
-            const evolveToId = EVOLUTIONS[index];
+            const pokemonId = pokemon[index].id;
+            const evolveToId = EVOLUTIONS[pokemonId];
             if (!evolveToId) return;
             dispatch(
               showEvolution({
@@ -667,7 +668,8 @@ const useItemData = () => {
 
         dispatch(
           showActionOnPokemon((index: number) => {
-            const evolveToId = EVOLUTIONS[index];
+            const pokemonId = pokemon[index].id;
+            const evolveToId = EVOLUTIONS[pokemonId];
             if (!evolveToId) return;
             dispatch(
               showEvolution({
@@ -699,7 +701,8 @@ const useItemData = () => {
 
         dispatch(
           showActionOnPokemon((index: number) => {
-            const evolveToId = EVOLUTIONS[index];
+            const pokemonId = pokemon[index].id;
+            const evolveToId = EVOLUTIONS[pokemonId];
             if (!evolveToId) return;
             dispatch(
               showEvolution({
@@ -732,7 +735,8 @@ const useItemData = () => {
 
         dispatch(
           showActionOnPokemon((index: number) => {
-            const evolveToId = EVOLUTIONS[index];
+            const pokemonId = pokemon[index].id;
+            const evolveToId = EVOLUTIONS[pokemonId];
             if (!evolveToId) return;
             dispatch(
               showEvolution({
@@ -763,7 +767,8 @@ const useItemData = () => {
 
         dispatch(
           showActionOnPokemon((index: number) => {
-            const evolveToId = EVOLUTIONS[index];
+            const pokemonId = pokemon[index].id;
+            const evolveToId = EVOLUTIONS[pokemonId];
             if (!evolveToId) return;
             dispatch(
               showEvolution({

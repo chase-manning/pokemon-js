@@ -1,6 +1,7 @@
 ===========
 
-- Implement moon stone
+- Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
+- Rename consumable to usable
 
 ===========
 
@@ -19,7 +20,6 @@
 - Simplify the `Character` useEffect
 - Change the movement handler to not have a hard coded movement speed there
 - Implement rare candy
-- Implement moon stone
 - Make music a seamless infinite loop
 - Pallet town colors don't mate Route 1
 - Trainers should walk towards player before encounter

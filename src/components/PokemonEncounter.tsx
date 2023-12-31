@@ -932,7 +932,7 @@ const PokemonEncounter = () => {
 
     if (stage === 22) {
       const move = getLearnedMove(processingPokemon);
-      const hasFourMoves = active.moves.length === 4;
+      const hasFourMoves = processingPokemon.moves.length === 4;
       if (move && !hasFourMoves) {
         setStage(29);
       } else if (move && hasFourMoves) {

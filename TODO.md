@@ -1,8 +1,5 @@
 ===========
 
-- Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
-- Rename consumable to usable
-
 ===========
 
 - Add more maps
@@ -11,9 +8,11 @@
 - battle sounds
 - Add transition from viridian forrest gate north to route 2 north side
 - Populate all signs, from the lorem ipsums
+- Rename consumable to usable
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass
+- Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
 - Add Pokemon Stats to PokemonList
 - Battle music starts slowly, trim start (maybe trim all songs)
 - Make sure you can't catch trainers pokemon "The trainer blocked the BALL! Don't be a thief!"

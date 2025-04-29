@@ -36,43 +36,25 @@ const palletTown: MapType = {
   },
   text: {
     5: {
-      3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
-      11: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      3: ["ASH's house"],
+      11: ["GARRY's house"],
     },
     8: {
       4: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "I'm raising POKEMON too!",
+        "When they get strong, they can protect me!",
       ],
     },
     9: {
-      7: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      7: ["PALLET TOWN Shades of your journey await!"],
     },
     13: {
-      13: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      13: ["OAK POKEMON RESEARCH LAB"],
     },
     15: {
       10: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "Technology is incredible!",
+        "You can now store and recall items and POKEMON as data via PC!",
       ],
     },
   },

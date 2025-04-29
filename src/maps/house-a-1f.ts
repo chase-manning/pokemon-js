@@ -19,9 +19,9 @@ const houseA1f: MapType = {
   text: {
     1: {
       3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
+        "There's a movie on TV.",
+        "Four boys are walking on railraod tracks.",
+        "I better go too.",
       ],
     },
   },

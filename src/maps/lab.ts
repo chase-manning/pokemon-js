@@ -21,11 +21,7 @@ const lab: MapType = {
   },
   text: {
     1: {
-      0: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      0: ["ASH turned on the PC.", "It's not working..."],
     },
   },
   maps: {},

@@ -25,7 +25,7 @@ const Item = styled.div`
   border: solid 1px red;
   font-size: 3rem;
   font-weight: bold;
-  color: yellow;
+  color: red;
 `;
 
 const DebugOverlay = () => {

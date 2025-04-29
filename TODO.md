@@ -1,21 +1,20 @@
 ===========
 
-- Performance improrvement for getting latest save (by filtering in query instead of locally)
-- Text cuttoff with attacks
-- Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
-- Rename consumable to usable
-
 ===========
 
+- Text cuttoff with attacks
+- Performance improrvement for getting latest save (by filtering in query instead of locally)
 - Add more maps
 - Implement escape rope
 - Gym leaders shouldn't auto encounter, you need to talk to them
 - battle sounds
 - Add transition from viridian forrest gate north to route 2 north side
 - Populate all signs, from the lorem ipsums
+- Rename consumable to usable
 - Add support for moves that aren't attacks (Buffs and debuffs, healing moves like leech seed)
 - Add animation to pokemon row while pokemon is active
 - Show grass in front of the player when in grass
+- Should we evolve before we learn moves? I think there are some pokemon that only learn the move after evolving?
 - Add Pokemon Stats to PokemonList
 - Battle music starts slowly, trim start (maybe trim all songs)
 - Make sure you can't catch trainers pokemon "The trainer blocked the BALL! Don't be a thief!"

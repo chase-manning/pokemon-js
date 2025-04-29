@@ -20,18 +20,10 @@ const houseA2f: MapType = {
   },
   text: {
     5: {
-      3: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      3: ["ASH is playing the SNES!", "... Okay! It's time to go!"],
     },
     1: {
-      0: [
-        "Lorem ipsum dolor sit amet, consectetur",
-        "adipiscing elit, sed do eiusmod tempor",
-        "incididunt ut labore et dolore magna aliqua.",
-      ],
+      0: ["ASH turned on the PC.", "It's not working..."],
     },
   },
   maps: {},

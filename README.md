@@ -1,6 +1,6 @@
 # Pokemon JS
 
-A faithful recreation of the classic Pokemon Red/Blue games built with React and TypeScript. This project aims to recreate the original Pokemon experience in the browser, maintaining the authentic feel while leveraging modern web technologies.
+A recreation of the classic Pokemon Red/Blue games built with React and TypeScript. This project aims to recreate the original Pokemon experience in the browser, maintaining the authentic feel while leveraging modern web technologies.
 
 <img width="1675" alt="image" src="https://github.com/user-attachments/assets/7fc7324f-a0cb-4da1-b6a7-3f3941b39117" />
 
